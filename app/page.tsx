@@ -13,6 +13,7 @@ export default function Home() {
   const [heroScale, setHeroScale] = useState(1)
   const [showFinalBody, setShowFinalBody] = useState(false)
   const [showFinalTitle, setShowFinalTitle] = useState(false)
+  const [showSlides, setShowSlides] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
   const videoSectionRef = useRef<HTMLDivElement>(null)
   const heroRef = useRef<HTMLDivElement>(null)
@@ -33,18 +34,48 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
+    const isTransitionPlaying = sessionStorage.getItem('page-transition-playing') === 'true'
+
+    if (!isTransitionPlaying) {
+      setShowSlides(true)
+      return
+    }
+
+    const timer = setTimeout(() => {
+      setShowSlides(true)
+      sessionStorage.setItem('page-transition-playing', 'false')
+    }, 5000)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   // スライド自動切り替え（最初の2つだけ）
   useEffect(() => {
+    if (!showSlides) return
     if (currentSlide < 2) {
       const timer = setTimeout(() => {
         setCurrentSlide(prev => prev + 1)
       }, 5000)
       return () => clearTimeout(timer)
     }
-  }, [currentSlide])
+  }, [currentSlide, showSlides])
 
   // 3番目のスライドのアニメーション
   useEffect(() => {
+    if (!showSlides) {
+      setShowFinalBody(false)
+      setShowFinalTitle(false)
+      if (slideVideoRefs.current[2]) {
+        slideVideoRefs.current[2].pause()
+        slideVideoRefs.current[2].currentTime = 0
+      }
+      return
+    }
     if (currentSlide === 2) {
       // 3番目の動画を最初から再生
       if (slideVideoRefs.current[2]) {
@@ -128,7 +159,11 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white text-gray-900">
       {/* Hero Section with Slides */}
-      <section ref={heroRef} className="relative h-[70vh] overflow-hidden">
+      <section
+        ref={heroRef}
+        className="relative h-[70vh] overflow-hidden transition-opacity duration-700"
+        style={{ opacity: showSlides ? 1 : 0 }}
+      >
         {/* Background Videos for Slides */}
         {slides.map((slide, index) => (
           <div

@@ -26,7 +26,7 @@ export default function Header() {
             href="/"
             className="grid grid-cols-[auto_auto] items-center gap-6 text-base md:text-lg font-light tracking-[0.35em] text-gray-900 uppercase"
           >
-            <span className="-ml-6 md:-ml-10">
+            <span className="ml-0 md:-ml-10">
               <Image src="/1M%20Logo.png" alt="MOGCIA ロゴ" width={32} height={32} priority />
             </span>
             <span>株式会社MOGCIA</span>

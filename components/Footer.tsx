@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 const navLinks = [
@@ -33,8 +34,13 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr_1fr] gap-10 relative z-10 text-sm text-gray-600">
             <div className="space-y-4">
               <div>
-                <h3 className="text-base md:text-lg font-light text-gray-900 tracking-[0.35em] uppercase mb-2">株式会社MOGCIA</h3>
-                <p className="text-sm text-gray-500">AIが支え、人の創造力が未来を動かす</p>
+                <div className="flex items-center gap-4">
+                  <div className="relative h-10 w-10">
+                    <Image src="/1M%20Logo.png" alt="MOGCIA ロゴ" fill className="object-contain" sizes="40px" priority />
+                  </div>
+                  <h3 className="text-base md:text-lg font-light text-gray-900 tracking-[0.35em] uppercase">株式会社MOGCIA</h3>
+                </div>
+                <p className="mt-3 text-sm text-gray-500">AIが支え、人の創造力が未来を動かす</p>
               </div>
               <div className="space-y-2 text-sm text-gray-500 leading-relaxed">
                 <p>〒810-0001</p>

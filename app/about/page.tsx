@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 import ContactSection from '@/components/ContactSection'
@@ -7,12 +8,12 @@ const milestones = [
   {
     year: '2023',
     title: 'MOGCIA 設立',
-    body: 'AI×クリエイティブの新しいスタンダードをつくることを掲げて創業。創業メンバーで福岡に拠点を構え、少数精鋭のチームでスタート。',
+    body: 'AI×人間の新しいスタンダードをつくることを掲げて創業。創業メンバーで福岡に拠点を構え、少数精鋭のチームでスタート。',
   },
   {
     year: '2024',
     title: 'AIソリューション拡充',
-    body: 'PoC支援から本番導入までをカバーする体制を構築。SaaSパートナーとの協業やカスタムAI開発でプロジェクト領域を拡大。',
+    body: 'PoC支援から本番導入までをカバーする体制を構築。自社開発AIツールでプロジェクト領域を拡大。',
   },
   {
     year: '2025',
@@ -70,12 +71,24 @@ export default function AboutPage() {
           <div className="group relative border border-gray-200 bg-white px-12 py-16 shadow-[0_18px_55px_rgba(24,32,56,0.12)] overflow-hidden">
             <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff]"></span>
             <div className="pointer-events-none absolute -top-24 -right-20 w-80 h-80 bg-gradient-to-br from-[#f6e27a]/20 via-transparent to-transparent blur-3xl"></div>
-            <div className="space-y-6 relative z-10">
-              <p className="text-xs uppercase tracking-[0.35em] text-gray-400">Vision & Value</p>
-              <h2 className="text-3xl md:text-4xl font-light tracking-wide text-gray-900">未来を共に描くための約束</h2>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed max-w-3xl">
-                クライアント、パートナー、そして私たち自身が、持続的に価値を生みだせる体制を構築する。それがMOGCIAの存在意義です。3つの視点で、私たちの立ち位置と提供価値をご紹介します。
-              </p>
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
+              <div className="space-y-6">
+                <p className="text-xs uppercase tracking-[0.35em] text-gray-400">Vision & Value</p>
+                <h2 className="text-3xl md:text-4xl font-light tracking-wide text-gray-900">未来を共に描くための約束</h2>
+                <p className="text-sm md:text-base text-gray-600 leading-relaxed max-w-3xl">
+                  クライアント、パートナー、そして私たち自身が、持続的に価値を生みだせる体制を構築する。それがMOGCIAの存在意義です。3つの視点で、私たちの立ち位置と提供価値をご紹介します。
+                </p>
+              </div>
+              <div className="relative h-56 md:h-64 lg:h-72">
+                <Image
+                  src="/MG%20Logo.png"
+                  alt="MOGCIA ロゴ"
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 60vw, (max-width: 1024px) 35vw, 30vw"
+                  priority
+                />
+              </div>
             </div>
           </div>
 

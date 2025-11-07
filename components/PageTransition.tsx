@@ -52,9 +52,11 @@ export default function PageTransition() {
     const isReload = navigationEntry?.type === 'reload'
 
     if (!isExternalReferrer && !isReload) {
+      sessionStorage.setItem('page-transition-playing', 'false')
       return
     }
 
+    sessionStorage.setItem('page-transition-playing', 'true')
     setShouldRender(true)
     requestAnimationFrame(() => setIsVisible(true))
 
@@ -62,6 +64,7 @@ export default function PageTransition() {
       setIsVisible(false)
       fadeTimeout.current = setTimeout(() => {
         setShouldRender(false)
+        sessionStorage.setItem('page-transition-playing', 'false')
         const currentVideo = videoRef.current
         if (currentVideo) {
           currentVideo.pause()
@@ -79,6 +82,7 @@ export default function PageTransition() {
         clearTimeout(fadeTimeout.current)
         fadeTimeout.current = null
       }
+      sessionStorage.setItem('page-transition-playing', 'false')
     }
   }, [])
 
