@@ -220,7 +220,7 @@ export default function Home() {
                   // 3番目のスライドは順番に表示
                   <>
                     <p
-                      className={`text-xl md:text-2xl font-light text-gray-600 transition-all duration-1000 ease-out ${
+                      className={`text-[12px] md:text-xl font-light text-gray-600 transition-all duration-1000 ease-out ${
                         showFinalBody ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                       }`}
                     >

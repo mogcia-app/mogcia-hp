@@ -50,8 +50,9 @@ export default function PageTransition() {
     const navigationEntries = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[]
     const navigationEntry = navigationEntries[0]
     const isReload = navigationEntry?.type === 'reload'
+    const isInitialNavigation = navigationEntry?.type === 'navigate'
 
-    if (!isExternalReferrer && !isReload) {
+    if (!isExternalReferrer && !isReload && !isInitialNavigation) {
       sessionStorage.setItem('page-transition-playing', 'false')
       return
     }
