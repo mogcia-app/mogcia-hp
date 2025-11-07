@@ -96,14 +96,17 @@ export default function PageTransition() {
       style={{ transitionDuration: `${FADE_DURATION}ms` }}
     >
       <div className="flex h-full w-full items-center justify-center p-6">
-        <video
-          ref={videoRef}
-          className="w-full max-w-[480px] max-h-[70vh] object-contain"
-          src="/3M%20Logo.mp4"
-          muted
-          playsInline
-          preload="auto"
-        />
+        <div className="w-full max-w-[480px]">
+          <video
+            ref={videoRef}
+            className="w-full max-h-[70vh] object-contain mx-auto"
+            src="/3M%20Logo.mp4"
+            autoPlay
+            muted
+            playsInline
+            preload="auto"
+          />
+        </div>
       </div>
     </div>
   )

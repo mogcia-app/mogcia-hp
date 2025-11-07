@@ -292,7 +292,7 @@ export default function Home() {
               <div className="space-y-4">
                 <p className="text-xs uppercase tracking-[0.4em] text-gray-400">Our Story</p>
                 <div className="relative inline-block">
-                  <h2 className="text-3xl md:text-4xl font-light tracking-wide relative z-10">
+                  <h2 className="text-xl md:text-4xl font-light tracking-wide relative z-10">
                     テクノロジーが切り拓く無限の可能性
                   </h2>
                   <span className="absolute -bottom-2 left-0 w-full h-4 bg-gradient-to-r from-[#f6e27a]/60 via-[#d2c7ff]/40 to-transparent -z-10"></span>
@@ -400,7 +400,7 @@ export default function Home() {
               <div className="space-y-4">
                 <p className="text-xs uppercase tracking-[0.4em] text-gray-400">Why Choose MOGCIA</p>
                 <div className="relative inline-block">
-                  <h2 className="text-3xl md:text-4xl font-light tracking-wide relative z-10">
+                  <h2 className="text-xl md:text-4xl font-light tracking-wide relative z-10">
                     MOGCIAが選ばれる理由
                   </h2>
                   <span className="absolute -bottom-2 left-0 w-full h-4 bg-gradient-to-r from-[#f6e27a]/60 via-[#d2c7ff]/40 to-transparent -z-10"></span>
