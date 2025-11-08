@@ -152,7 +152,8 @@ export default function Home() {
       body: 'AIが支え、人の創造力が未来を動かす',
       video: '/istockphoto-2207327866-640_adpp_is.mp4',
       image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80',
-      center: true
+      center: true,
+      titleClassName: 'text-xl md:text-2xl uppercase tracking-[0.35em] font-light'
     },
   ]
 
@@ -209,25 +210,27 @@ export default function Home() {
               style={{ transitionDuration: '4000ms' }}
             >
               <div
-                className={`max-w-3xl px-6 md:px-10 py-12 bg-white/80 backdrop-blur border border-gray-200/70 shadow-[0_25px_70px_rgba(24,32,56,0.12)] ${
+                className={`max-w-3xl px-4 md:px-10 py-10 md:py-12 bg-white/80 backdrop-blur border border-gray-200/70 shadow-[0_25px_70px_rgba(24,32,56,0.12)] ${
                   slide.center ? 'text-center' : 'text-right'
-                } relative z-40 flex flex-col gap-4`}
+                } relative z-40 flex flex-col gap-3 md:gap-4`}
               >
-                <p className="text-xs uppercase tracking-[0.4em] text-gray-400">
+                <p className="text-[0.65rem] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] text-gray-400">
                   {index === 0 ? 'Business Intelligence' : index === 1 ? 'Automation' : 'Corporate'}
                 </p>
                 {index === 2 ? (
                   // 3番目のスライドは順番に表示
                   <>
                     <p
-                      className={`text-[12px] md:text-xl font-light text-gray-600 transition-all duration-1000 ease-out ${
+                      className={`text-sm md:text-xl font-light text-gray-600 transition-all duration-1000 ease-out ${
                         showFinalBody ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                       }`}
                     >
                       {slide.body}
                     </p>
                     <h1
-                      className={`text-3xl md:text-4xl font-light text-gray-900 leading-tight mt-4 transition-all duration-1000 ease-out ${
+                      className={`${
+                        slide.titleClassName ?? 'text-2xl md:text-4xl font-light'
+                      } text-gray-900 leading-tight mt-3 md:mt-4 transition-all duration-1000 ease-out ${
                         showFinalTitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                       }`}
                     >
@@ -238,16 +241,20 @@ export default function Home() {
                   // 他のスライドは通常表示
                   <>
                     <div className="space-y-2">
-                      <h1 className="text-4xl md:text-5xl font-light text-gray-900 leading-tight">
+                      <h1
+                        className={`${
+                          slide.titleClassName ?? 'text-3xl md:text-5xl font-light'
+                        } text-gray-900 leading-tight`}
+                      >
                         {slide.title}
                       </h1>
                       {slide.subtitle && (
-                        <h2 className="text-2xl md:text-3xl font-light text-gray-600">
+                        <h2 className="text-lg md:text-3xl font-light text-gray-600">
                           {slide.subtitle}
                         </h2>
                       )}
                     </div>
-                    <p className="text-base md:text-lg text-gray-600 mt-2 leading-relaxed">
+                    <p className="text-sm md:text-lg text-gray-600 mt-2 leading-relaxed">
                       {slide.body}
                     </p>
                   </>
@@ -281,7 +288,6 @@ export default function Home() {
           <div className="group relative border border-gray-200 bg-white px-12 py-16 overflow-visible shadow-[0_18px_55px_rgba(24,32,56,0.12)] transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_26px_70px_rgba(24,32,56,0.16)]">
             <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff] opacity-80 transition-opacity duration-700 group-hover:opacity-100"></span>
             <div className="pointer-events-none absolute -top-24 -right-16 w-80 h-80 bg-gradient-to-br from-[#f6e27a]/30 via-transparent to-transparent blur-3xl"></div>
-            <div className="pointer-events-none absolute top-24 -left-16 w-64 h-64 border border-dashed border-gray-200/70 rounded-full"></div>
             <img
               src="/1661.png"
               alt="AI dashboard"
@@ -292,37 +298,28 @@ export default function Home() {
               <div className="space-y-4">
                 <p className="text-xs uppercase tracking-[0.4em] text-gray-400">Our Story</p>
                 <div className="relative inline-block">
-                  <h2 className="text-xl md:text-4xl font-light tracking-wide relative z-10">
-                    テクノロジーが切り拓く無限の可能性
+                  <h2 className="text-[18px] md:text-4xl font-light tracking-wide relative z-10">
+                    AIが切り拓く無限の可能性
                   </h2>
-                  <span className="absolute -bottom-2 left-0 w-full h-4 bg-gradient-to-r from-[#f6e27a]/60 via-[#d2c7ff]/40 to-transparent -z-10"></span>
+                  <span className="absolute -bottom-2 left-0 w-full h-4 overflow-hidden -z-10">
+                    <span className="gradient-line block h-full w-full"></span>
+                  </span>
                 </div>
-                <p className="text-sm uppercase tracking-[0.25em] text-gray-400 text-right pr-2">
-                  Co-create the Future with Human × AI
+                <p className="text-sm uppercase tracking-[0.25em] text-gray-400 pl-2">
+                Co-Innovate with AI
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-10">
-                <div className="space-y-5 text-sm md:text-base text-gray-600 leading-relaxed">
-                  <p>
-                    AI・デジタル技術で企業の未来を創造するパートナーとして、スタートアップから大企業まで幅広く伴走。テクノロジーの力を、人と企業の創造性に結び付けることが私たちの使命です。
-                  </p>
-                  <p>
-                    課題の解像度を高め、最適なソリューションを素早く実装することで、ビジネスの前進を軽やかにする。そのためのデザインとテクノロジーを磨き続けています。
-                  </p>
-                  <p>
-                    私たちは“未来をつくる現場”に立ち続け、変化の兆しを読み取りながら、新たな価値の創出に挑みます。
-                  </p>
-                </div>
-
-                <div className="space-y-5 text-sm md:text-base text-gray-600 leading-relaxed">
-                  <p>
-                    データとクリエイティブの双方を理解する専門家が、戦略立案から実装・運用までをワンチームで支援。スピードと品質を両立するフレームワークで、実装後のアップデートまで伴走します。
-                  </p>
-                  <p>
-                    プロジェクトの大小に関わらず、企業のビジョンを共に描き、その実現を支えること。それがMOGCIAのストーリーです。
-                  </p>
-                </div>
+              <div className="space-y-5 text-sm md:text-base text-gray-600 leading-relaxed">
+                <p>
+                  AI・デジタル技術で企業の未来を創造するパートナーとして、スタートアップなど幅広く支援<br />AIの力を、人と企業の創造性に結び付けることが私たちの使命です。
+                </p>
+                <p>
+                  私たちは“未来をつくる現場”に立ち続け、変化の兆しを読み取りながら、新たな価値の創出に挑みます。
+                </p>
+                <p>
+                  プロジェクトの大小に関わらず、企業のビジョンを共に描き、その実現を支えること。<br />それがMOGCIAのストーリーです。
+                </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs uppercase tracking-[0.3em] text-gray-400">
@@ -334,7 +331,6 @@ export default function Home() {
               <div className="flex flex-wrap gap-4 text-xs uppercase tracking-[0.3em] text-gray-400">
                 <span className="px-4 py-2 border border-gray-200">Innovation</span>
                 <span className="px-4 py-2 border border-gray-200">Strategy</span>
-                <span className="px-4 py-2 border border-gray-200">Design</span>
                 <span className="px-4 py-2 border border-gray-200">AI Integration</span>
               </div>
             </div>
@@ -352,7 +348,9 @@ export default function Home() {
                 <h2 className="text-2xl md:text-3xl font-light tracking-wide relative z-10">
                   News & Topics
                 </h2>
-                <span className="absolute -bottom-2 left-0 w-full h-4 bg-gradient-to-r from-[#b3e1ff]/50 via-transparent to-transparent -z-10"></span>
+                <span className="absolute -bottom-2 left-0 w-full h-4 overflow-hidden -z-10">
+                  <span className="gradient-line block h-full w-full"></span>
+                </span>
               </div>
             </div>
             <p className="text-sm md:text-base text-gray-500 max-w-xl leading-relaxed">
@@ -362,9 +360,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { date: '2025.09.05', title: 'AI業務改善支援ツールUpmoの開発開始', description: '企業の業務改善支援ツールUpmoの開発を開始しました。現場の知を束ね、業務の変革を後押しします。', tag: 'PRESS' },
-              { date: '2025.08.15', title: 'Signal.テスト導入スタート', description: 'SNS運用の90%自動化AIツールSignal.のテスト導入を複数社で開始。マーケティング業務の再定義に挑みます。', tag: 'NEWS' },
-              { date: '2025.01.08', title: 'MOGCIA Coffee POPUP', description: 'Choosebase SHIBUYAにてMOGCIA Coffeeを販売中。テクノロジーとカルチャーの交差点を体験してください。', tag: 'EVENT' },
+              { date: '2025.09.05', title: 'AI業務改善支援ツールUpmoの開発開始', description: '企業の業務改善支援ツールUpmoの開発を開始しました。', tag: 'PRESS' },
+              { date: '2025.08.15', title: 'Signal.テスト導入スタート', description: 'SNS運用の90%自動化AIツールSignal.のテスト導入を複数社で開始。', tag: 'NEWS' },
+              { date: '2025.01.08', title: 'MOGCIA Coffee POPUP', description: 'Choosebase SHIBUYAにてMOGCIA Coffeeを販売中。', tag: 'EVENT' },
             ].map((news, index) => (
               <div
                 key={index}
@@ -403,10 +401,12 @@ export default function Home() {
                   <h2 className="text-xl md:text-4xl font-light tracking-wide relative z-10">
                     MOGCIAが選ばれる理由
                   </h2>
-                  <span className="absolute -bottom-2 left-0 w-full h-4 bg-gradient-to-r from-[#f6e27a]/60 via-[#d2c7ff]/40 to-transparent -z-10"></span>
+                <span className="absolute -bottom-2 left-0 w-full h-4 overflow-hidden -z-10">
+                  <span className="gradient-line block h-full w-full"></span>
+                </span>
                 </div>
-                <p className="text-sm uppercase tracking-[0.25em] text-gray-400 text-right pr-2">
-                  Tailored Innovation, Delivered End-to-End
+                <p className="text-sm uppercase tracking-[0.25em] text-gray-400 pl-2">
+                  Human × AI Partnership
                 </p>
               </div>
 
@@ -414,9 +414,7 @@ export default function Home() {
                 <p>
                   AI・デジタル技術で企業の未来を創造するMOGCIAは、戦略立案から実装・運用までワンストップで支援します。御社固有の課題に寄り添い、最適なチームとアプローチで、スピードと品質を両立します。
                 </p>
-                <p>
-                  各領域のスペシャリストが一体となり、ビジネスゴールに直結するソリューションをデザイン。導入後の運用・改善まで伴走し、継続的な成功を共創します。
-                </p>
+              
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs uppercase tracking-[0.3em] text-gray-400">
@@ -432,7 +430,7 @@ export default function Home() {
               {
                 tag: 'Automation',
                 title: '業務自動化で効率化',
-                body: 'AIツールを活用した業務改善で作業時間を大幅に削減。人の創造性が活きるオペレーションへシフトします。',
+                body: 'AIツールを活用した業務改善で作業時間を大幅に削減。',
                 icon: (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 ),

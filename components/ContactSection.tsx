@@ -1,6 +1,7 @@
 'use client'
 
-import { ReactNode } from 'react'
+import { ReactNode, useEffect } from 'react'
+import { getCalApi } from '@calcom/embed-react'
 
 type ContactChannel = {
   title: string
@@ -10,6 +11,12 @@ type ContactChannel = {
     label: string
     href: string
   }
+  cal?: {
+    namespace: string
+    link: string
+    config?: Record<string, unknown>
+    label: string
+  }
 }
 
 const contactHighlights = [
@@ -18,11 +25,13 @@ const contactHighlights = [
   'Confidential Support',
 ]
 
+const CAL_ONLINE_MEETING_LINK = 'marina-ishida-4yj93j/初回ミティンク'
+
 const contactPoints = [
   'AI/デジタル活用に関するご相談',
   '導入済みプロダクトのチューニング',
   'PoC やフルカスタム開発のご依頼',
-  'パートナー/メディアからのお問い合わせ',
+  'パートナー/メディアのお問い合わせ',
 ]
 
 const contactChannels: ContactChannel[] = [
@@ -53,9 +62,13 @@ const contactChannels: ContactChannel[] = [
         d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14m-6 0l-4.553 2.276A1 1 0 013 15.382V8.618a1 1 0 011.447-.894L9 10m6 0l-6 4m6-4l-6-4"
       />
     ),
-    action: {
+    cal: {
+      namespace: 'mogcia-online-meeting',
+      link: CAL_ONLINE_MEETING_LINK,
       label: '日程を調整する',
-      href: 'https://cal.com',
+      config: {
+        layout: 'month_view',
+      },
     },
   },
   {
@@ -77,6 +90,28 @@ const contactChannels: ContactChannel[] = [
 ]
 
 export default function ContactSection() {
+  useEffect(() => {
+    const initCal = async () => {
+      const namespaces = Array.from(
+        new Set(
+          contactChannels
+            .map(channel => channel.cal?.namespace)
+            .filter((namespace): namespace is string => Boolean(namespace)),
+        ),
+      )
+
+      for (const namespace of namespaces) {
+        const cal = await getCalApi({ namespace })
+        cal('ui', {
+          hideEventTypeDetails: false,
+          layout: 'month_view',
+        })
+      }
+    }
+
+    void initCal()
+  }, [])
+
   return (
     <section id="contact" className="py-32 px-6 bg-white">
       <div className="max-w-6xl mx-auto space-y-16">
@@ -88,19 +123,21 @@ export default function ContactSection() {
             <div className="space-y-4">
               <p className="text-xs uppercase tracking-[0.4em] text-gray-400">Contact</p>
               <div className="relative inline-block">
-                <h2 className="text-3xl md:text-4xl font-light tracking-wide relative z-10">
+                <h2 className="text-xl md:text-2xl font-light tracking-wide relative z-10">
                   まずはお気軽にご相談ください
                 </h2>
-                <span className="absolute -bottom-2 left-0 w-full h-4 bg-gradient-to-r from-[#f6e27a]/60 via-[#d2c7ff]/40 to-transparent -z-10"></span>
+                <span className="absolute -bottom-2 left-0 w-full h-4 overflow-hidden -z-10">
+                  <span className="gradient-line block h-full w-full"></span>
+                </span>
               </div>
-              <p className="text-sm uppercase tracking-[0.25em] text-gray-400 text-right pr-2">
+              <p className="text-[10px] uppercase tracking-[0.25em] text-gray-400 pl-2">
                 Together, We Shape The Next Step
               </p>
             </div>
 
             <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-10 text-sm md:text-base text-gray-600 leading-relaxed">
               <p>
-                プロジェクトのご相談から導入後の伴走支援まで、MOGCIAのコンタクトチームが迅速に対応いたします。現状把握と理想の姿を共有し、最適な進め方をご提案します。
+                プロジェクトのご相談から導入後の伴走支援まで、迅速に対応いたします。現状把握と理想の姿を共有し、最適な進め方をご提案します。
               </p>
               <div className="space-y-3">
                 {contactPoints.map(point => (
@@ -135,7 +172,18 @@ export default function ContactSection() {
                 <h3 className="text-lg font-light text-gray-900 leading-snug">{item.title}</h3>
               </div>
               <p className="text-sm text-gray-600 leading-relaxed flex-1">{item.body}</p>
-              {item.action && (
+              {item.cal ? (
+                <button
+                  type="button"
+                  data-cal-namespace={item.cal.namespace}
+                  data-cal-link={item.cal.link}
+                  data-cal-config={JSON.stringify(item.cal.config ?? { layout: 'month_view' })}
+                  className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-gray-400 group-hover:text-gray-900 transition-colors"
+                >
+                  {item.cal.label}
+                  <span className="h-px w-6 bg-gray-300 group-hover:bg-gray-900"></span>
+                </button>
+              ) : item.action ? (
                 <a
                   href={item.action.href}
                   className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-gray-400 group-hover:text-gray-900 transition-colors"
@@ -143,7 +191,7 @@ export default function ContactSection() {
                   {item.action.label}
                   <span className="h-px w-6 bg-gray-300 group-hover:bg-gray-900"></span>
                 </a>
-              )}
+              ) : null}
             </div>
           ))}
         </div>

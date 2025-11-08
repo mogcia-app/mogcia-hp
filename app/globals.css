@@ -109,3 +109,33 @@ html {
 .animate-pattern-pulse {
   animation: pattern-pulse 3s ease-in-out infinite;
 }
+
+.gradient-line {
+  background-image: linear-gradient(
+    90deg,
+    rgba(246, 226, 122, 0) 0%,
+    rgba(246, 226, 122, 0.6) 30%,
+    rgba(210, 199, 255, 0.4) 60%,
+    rgba(246, 226, 122, 0) 100%
+  );
+  background-size: 220% 100%;
+  transform: translateX(-110%);
+  animation: gradient-line-slide 5s ease-in-out infinite;
+}
+
+@keyframes gradient-line-slide {
+  0% {
+    transform: translateX(-110%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(110%);
+    opacity: 0;
+  }
+}

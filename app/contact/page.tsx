@@ -114,6 +114,7 @@ export default function ContactPage() {
               action="https://form.run/api/v1/r/7tbbkege85us5qykn1vsn7i3"
               method="post"
               data-formrun-success-url="/thanks"
+              autoComplete="off"
             >
               <div className="space-y-2">
                 <label className="block text-xs uppercase tracking-[0.3em] text-gray-400">お名前</label>
@@ -121,6 +122,7 @@ export default function ContactPage() {
                   name="お名前"
                   type="text"
                   className="w-full border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-900/40"
+                  autoComplete="off"
                 />
               </div>
 
@@ -130,6 +132,7 @@ export default function ContactPage() {
                   name="会社名"
                   type="text"
                   className="w-full border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-900/40"
+                  autoComplete="off"
                 />
               </div>
 
@@ -141,6 +144,7 @@ export default function ContactPage() {
                   data-formrun-type="email"
                   data-formrun-required
                   className="w-full border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-900/40"
+                  autoComplete="off"
                 />
                 <div className="text-xs text-red-500" data-formrun-show-if-error="メールアドレス">
                   メールアドレスを正しく入力してください

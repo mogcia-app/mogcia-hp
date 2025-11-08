@@ -135,7 +135,9 @@ export default function ProductsSection() {
                 <h2 className="text-3xl md:text-4xl font-light tracking-wide relative z-10">
                   Our Products
                 </h2>
-                <span className="absolute -bottom-2 left-0 w-full h-4 bg-gradient-to-r from-[#b3e1ff]/50 via-[#f6e27a]/40 to-transparent -z-10"></span>
+                <span className="absolute -bottom-2 left-0 w-full h-4 overflow-hidden -z-10">
+                  <span className="gradient-line block h-full w-full"></span>
+                </span>
               </div>
               <p className="text-sm uppercase tracking-[0.25em] text-gray-400 text-right pr-2">
                 Crafted Solutions, Ready to Launch
@@ -145,10 +147,10 @@ export default function ProductsSection() {
             <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
               <div className="space-y-5 text-sm md:text-base text-gray-600 leading-relaxed">
                 <p>
-                  MOGCIAがお届けするプロダクトは、AIと人的サポートの力でビジネス成長を後押しします。既存ツールの導入からカスタム開発まで、未来を見据えた体験を素早く提供します。
+                  MOGCIAがお届けするプロダクトは、AIと人的サポートの力でビジネス成長を後押しします。<br />既存ツールの導入からカスタム開発まで、未来を見据えた体験を素早く提供します。
                 </p>
                 <p>
-                  導入後もデータを起点にアップデートを重ね、成果につながる運用体制を構築。確かな品質で、現場にフィットするソリューションを届けます。
+                  導入後もデータを起点にアップデートを重ね、成果につながる運用体制を構築。<br />確かな品質で、現場にフィットするソリューションを届けます。
                 </p>
               </div>
               <div className="relative border border-gray-200 bg-black/5 overflow-hidden">

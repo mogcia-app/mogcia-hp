@@ -57,7 +57,7 @@ const defaultFlows: ProcessFlow[] = [
   },
   {
     heading: 'システム開発の流れ',
-    description: 'フルカスタムのシステム開発では、PoCからスケールまでをシームレスに支援します。',
+    description: 'フルカスタムのシステム開発では、一貫したサポートを行います。',
     steps: [
       {
         title: 'Contact',
