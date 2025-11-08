@@ -54,15 +54,23 @@ export default function Home() {
     return () => clearTimeout(timer)
   }, [])
 
-  // スライド自動切り替え（最初の2つだけ）
   useEffect(() => {
     if (!showSlides) return
-    if (currentSlide < 2) {
-      const timer = setTimeout(() => {
-        setCurrentSlide(prev => prev + 1)
-      }, 5000)
-      return () => clearTimeout(timer)
-    }
+
+    slideVideoRefs.current.forEach((video, index) => {
+      if (!video) return
+
+      if (index === currentSlide) {
+        video.currentTime = 0
+        const playPromise = video.play()
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {})
+        }
+      } else {
+        video.pause()
+        video.currentTime = 0
+      }
+    })
   }, [currentSlide, showSlides])
 
   // 3番目のスライドのアニメーション
@@ -134,7 +142,7 @@ export default function Home() {
       title: 'Upmo',
       subtitle: '',
       body: '分散した社内ナレッジを結合し、業務改善に繋げる',
-      video: '/istockphoto-2162666822-640_adpp_is.mp4',
+      video: '/videos/mv1.mp4',
       image: '/iStock-2187782281.jpg',
       center: true
     },
@@ -142,7 +150,7 @@ export default function Home() {
       title: 'Signal.',
       subtitle: 'SNS運用の90%自動化AIツール',
       body: '',
-      video: '/istockphoto-684470302-640_adpp_is.mp4',
+      video: '/videos/mv2.mp4',
       image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80',
       center: true
     },
@@ -150,12 +158,19 @@ export default function Home() {
       title: '株式会社MOGCIA',
       subtitle: '',
       body: 'AIが支え、人の創造力が未来を動かす',
-      video: '/istockphoto-2207327866-640_adpp_is.mp4',
+      video: '/videos/mv3.mp4',
       image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80',
       center: true,
       titleClassName: 'text-xl md:text-2xl uppercase tracking-[0.35em] font-light'
     },
   ]
+
+  const handleVideoEnded = (index: number) => {
+    if (!showSlides) return
+    if (index < slides.length - 1) {
+      setCurrentSlide(index + 1)
+    }
+  }
 
   return (
     <main className="min-h-screen bg-white text-gray-900">
@@ -184,11 +199,12 @@ export default function Home() {
               <video
                 ref={(el) => { slideVideoRefs.current[index] = el }}
                 className="absolute inset-0 w-full h-full object-cover"
-                autoPlay
-                loop={index !== 2}
+                autoPlay={index === currentSlide && showSlides}
+                loop={false}
                 muted
                 playsInline
                 key={`slide-video-${index}`}
+                onEnded={() => handleVideoEnded(index)}
               >
                 <source src={slide.video} type="video/mp4" />
               </video>
@@ -240,23 +256,23 @@ export default function Home() {
                 ) : (
                   // 他のスライドは通常表示
                   <>
-                    <div className="space-y-2">
-                      <h1
-                        className={`${
-                          slide.titleClassName ?? 'text-3xl md:text-5xl font-light'
-                        } text-gray-900 leading-tight`}
-                      >
-                        {slide.title}
-                      </h1>
-                      {slide.subtitle && (
-                        <h2 className="text-lg md:text-3xl font-light text-gray-600">
-                          {slide.subtitle}
-                        </h2>
-                      )}
-                    </div>
-                    <p className="text-sm md:text-lg text-gray-600 mt-2 leading-relaxed">
-                      {slide.body}
-                    </p>
+                    {slide.subtitle && (
+                      <p className="text-[0.65rem] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] text-gray-400">
+                        {slide.subtitle}
+                      </p>
+                    )}
+                    {slide.body && (
+                      <p className="text-sm md:text-xl font-light text-gray-600 leading-relaxed">
+                        {slide.body}
+                      </p>
+                    )}
+                    <h1
+                      className={`${
+                        slide.titleClassName ?? 'text-2xl md:text-4xl font-light'
+                      } text-gray-900 leading-tight mt-3 md:mt-4`}
+                    >
+                      {slide.title}
+                    </h1>
                   </>
                 )}
               </div>

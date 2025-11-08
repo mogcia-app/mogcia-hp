@@ -18,6 +18,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 @layer utilities {
@@ -29,6 +30,7 @@ body {
 /* スムーズスクロール */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 /* カスタムアニメーション */

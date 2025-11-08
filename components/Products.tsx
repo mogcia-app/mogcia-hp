@@ -29,13 +29,13 @@ const products: Product[] = [
   },
   {
     title: "SNS運用",
-    image: "/istockphoto-2226889082-1024x1024.jpg",
+    image: "/sns-1.jpg",
     date: "2025/04/25",
     category: "事業・プロダクト情報",
   },
   {
     title: "HP作成",
-    image: "/istockphoto-1391357996-1024x1024.jpg",
+    image: "/hp.jpg",
     date: "2025/04/02",
     category: "事業・プロダクト情報",
   },
