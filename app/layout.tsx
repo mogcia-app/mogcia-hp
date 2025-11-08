@@ -4,12 +4,15 @@ import Header from '@/components/Header'
 import PageTransition from '@/components/PageTransition'
 import FloatingContact from '@/components/FloatingContact'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mogcia.jp'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mogcia.net'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: 'MOGCIA - AIが支え、人の創造力が未来を動かす',
   description: 'AIコンサルティング・DX支援・プロダクト開発で企業の未来を共創するMOGCIAの公式サイト。',
+  other: {
+    'google-site-verification': 'LHrNgdIlh6Lg9TM4sbVkqzoCiRWifXjkAJiK0OSUNOs',
+  },
   openGraph: {
     title: 'MOGCIA - AIが支え、人の創造力が未来を動かす',
     description: 'AIコンサルティング・DX支援・プロダクト開発で企業の未来を共創するMOGCIAの公式サイト。',
