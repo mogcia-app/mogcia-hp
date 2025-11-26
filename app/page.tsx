@@ -71,6 +71,15 @@ export default function Home() {
         video.currentTime = 0
       }
     })
+
+    // スライドごとに異なる時間で次のスライドに切り替え
+    if (currentSlide < slides.length - 1) {
+      const delay = currentSlide === 0 ? 3000 : 4000 // 1番目は3秒、2番目は4秒
+      const timer = setTimeout(() => {
+        setCurrentSlide(prev => prev + 1)
+      }, delay)
+      return () => clearTimeout(timer)
+    }
   }, [currentSlide, showSlides])
 
   // 3番目のスライドのアニメーション
@@ -91,11 +100,13 @@ export default function Home() {
         slideVideoRefs.current[2].play()
       }
       
-      // 6秒後にボディとタイトルを同時表示
+      // 背景が表示された後、少し遅れて文字を表示
+      setShowFinalBody(false)
+      setShowFinalTitle(false)
       const timer = setTimeout(() => {
         setShowFinalBody(true)
         setShowFinalTitle(true)
-      }, 6000)
+      }, 1000) // 1秒後に文字を表示
       
       return () => {
         clearTimeout(timer)
