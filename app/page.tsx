@@ -74,7 +74,7 @@ export default function Home() {
 
     // スライドごとに異なる時間で次のスライドに切り替え
     if (currentSlide < slides.length - 1) {
-      const delay = currentSlide === 0 ? 3000 : 4000 // 1番目は3秒、2番目は4秒
+      const delay = currentSlide === 0 ? 5000 : 4000 // 1番目は5秒、2番目は4秒
       const timer = setTimeout(() => {
         setCurrentSlide(prev => prev + 1)
       }, delay)
