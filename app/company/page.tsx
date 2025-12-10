@@ -47,8 +47,7 @@ export default function CompanyPage() {
       <section className="py-28 px-6">
         <div className="max-w-5xl mx-auto space-y-14">
           <div className="group relative border border-gray-200 bg-white px-10 md:px-16 py-16 shadow-[0_18px_55px_rgba(24,32,56,0.12)] overflow-hidden">
-            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff]"></span>
-            <div className="pointer-events-none absolute -top-24 -right-20 w-80 h-80 bg-gradient-to-br from-[#f6e27a]/20 via-transparent to-transparent blur-3xl"></div>
+            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
             <div className="space-y-6 relative z-10">
               <h2 className="text-2xl md:text-3xl font-light tracking-wide text-gray-900">基本情報</h2>
               <div className="divide-y divide-gray-200 text-sm md:text-base text-gray-600">

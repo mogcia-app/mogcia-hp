@@ -19,7 +19,7 @@ export default function Header() {
     <header className="sticky top-0 z-50">
       <div className="relative border-b border-gray-200 bg-white/90 backdrop-blur">
         <div className="absolute inset-x-0 top-0 h-1 overflow-hidden">
-          <span className="block h-full w-full bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff] animate-gradient-slide"></span>
+          <span className="block h-full w-full bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900 animate-gradient-slide"></span>
         </div>
         <div className="w-full mx-auto px-6 sm:px-12 lg:px-24 h-16 flex items-center justify-between">
           <Link

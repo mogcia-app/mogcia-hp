@@ -313,8 +313,7 @@ export default function Home() {
       <section className="py-32 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="group relative border border-gray-200 bg-white px-12 py-16 overflow-visible shadow-[0_18px_55px_rgba(24,32,56,0.12)] transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_26px_70px_rgba(24,32,56,0.16)]">
-            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff] opacity-80 transition-opacity duration-700 group-hover:opacity-100"></span>
-            <div className="pointer-events-none absolute -top-24 -right-16 w-80 h-80 bg-gradient-to-br from-[#f6e27a]/30 via-transparent to-transparent blur-3xl"></div>
+            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900 opacity-80 transition-opacity duration-700 group-hover:opacity-100"></span>
             <img
               src="/1661.png"
               alt="AI dashboard"
@@ -329,7 +328,15 @@ export default function Home() {
                     AIが切り拓く無限の可能性
                   </h2>
                   <span className="absolute -bottom-2 left-0 w-full h-4 overflow-hidden -z-10">
-                    <span className="gradient-line block h-full w-full"></span>
+                    <span 
+                      className="block h-full w-full"
+                      style={{
+                        backgroundImage: 'linear-gradient(90deg, rgba(156, 163, 175, 0) 0%, rgba(156, 163, 175, 0.4) 30%, rgba(107, 114, 128, 0.3) 60%, rgba(156, 163, 175, 0) 100%)',
+                        backgroundSize: '220% 100%',
+                        transform: 'translateX(-110%)',
+                        animation: 'gradient-line-slide 5s ease-in-out infinite'
+                      }}
+                    ></span>
                   </span>
                 </div>
                 <p className="text-sm uppercase tracking-[0.25em] text-gray-400 pl-2">
@@ -395,7 +402,7 @@ export default function Home() {
                 key={index}
                 className="group relative border border-gray-200 bg-white px-8 py-10 flex flex-col gap-5 shadow-[0_12px_40px_rgba(24,32,56,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_55px_rgba(24,32,56,0.12)]"
               >
-                <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#b3e1ff] via-[#d2c7ff] to-[#f6e27a] opacity-75 transition-opacity duration-700 group-hover:opacity-100"></span>
+                <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900 opacity-75 transition-opacity duration-700 group-hover:opacity-100"></span>
                 <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-gray-400">
                   <span>{news.tag}</span>
                   <span className="text-gray-500 tracking-normal">{news.date}</span>
@@ -418,8 +425,7 @@ export default function Home() {
       <section id="services" className="py-32 px-6 bg-white">
         <div className="max-w-6xl mx-auto space-y-16">
           <div className="group relative border border-gray-200 bg-white px-12 py-16 overflow-hidden shadow-[0_18px_55px_rgba(24,32,56,0.12)] transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_26px_70px_rgba(24,32,56,0.16)]">
-            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff] opacity-80 transition-opacity duration-700 group-hover:opacity-100"></span>
-            <div className="pointer-events-none absolute -top-24 -right-12 w-80 h-80 bg-gradient-to-br from-[#d2c7ff]/30 via-transparent to-transparent blur-3xl"></div>
+            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900 opacity-80 transition-opacity duration-700 group-hover:opacity-100"></span>
 
             <div className="space-y-10 relative z-10">
               <div className="space-y-4">
@@ -429,7 +435,15 @@ export default function Home() {
                     MOGCIAが選ばれる理由
                   </h2>
                 <span className="absolute -bottom-2 left-0 w-full h-4 overflow-hidden -z-10">
-                  <span className="gradient-line block h-full w-full"></span>
+                  <span 
+                    className="block h-full w-full"
+                    style={{
+                      backgroundImage: 'linear-gradient(90deg, rgba(156, 163, 175, 0) 0%, rgba(156, 163, 175, 0.4) 30%, rgba(107, 114, 128, 0.3) 60%, rgba(156, 163, 175, 0) 100%)',
+                      backgroundSize: '220% 100%',
+                      transform: 'translateX(-110%)',
+                      animation: 'gradient-line-slide 5s ease-in-out infinite'
+                    }}
+                  ></span>
                 </span>
                 </div>
                 <p className="text-sm uppercase tracking-[0.25em] text-gray-400 pl-2">
@@ -507,7 +521,7 @@ export default function Home() {
                 key={index}
                 className="group relative border border-gray-200 bg-white px-8 py-10 flex flex-col gap-6 shadow-[0_12px_40px_rgba(24,32,56,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_55px_rgba(24,32,56,0.12)]"
               >
-                <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff] opacity-75 transition-opacity duration-700 group-hover:opacity-100"></span>
+                <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900 opacity-75 transition-opacity duration-700 group-hover:opacity-100"></span>
                 <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-gray-400">
                   <span>{item.tag}</span>
                   <span className="h-px w-10 bg-gray-200"></span>
@@ -541,7 +555,7 @@ export default function Home() {
                 <h2 className="text-3xl md:text-4xl font-light tracking-wide relative z-10">
                   MOGCIAの価値観
                 </h2>
-                <span className="absolute -bottom-2 left-0 w-full h-5 bg-gradient-to-r from-[#f6e27a]/60 via-[#d2c7ff]/40 to-transparent -z-10"></span>
+                <span className="absolute -bottom-2 left-0 w-full h-5 bg-gradient-to-r from-gray-400/60 via-gray-700/40 to-transparent -z-10"></span>
               </div>
             </div>
             <p className="text-sm md:text-base text-gray-600 leading-relaxed">
@@ -563,7 +577,7 @@ export default function Home() {
                 key={index}
                 className="group relative border border-gray-200 bg-white px-8 py-10 flex flex-col gap-6 shadow-[0_12px_40px_rgba(24,32,56,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_55px_rgba(24,32,56,0.12)]"
               >
-                <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff] opacity-75 transition-opacity duration-700 group-hover:opacity-100"></span>
+                <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900 opacity-75 transition-opacity duration-700 group-hover:opacity-100"></span>
                 <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-gray-400">
                   <span>{value.tag}</span>
                   <span className="h-px w-10 bg-gray-200"></span>

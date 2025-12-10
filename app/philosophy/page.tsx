@@ -33,8 +33,7 @@ export default function PhilosophyPage() {
       <section className="py-32 px-6 bg-gradient-to-b from-white via-[#f6f7fb] to-[#eef0f6]">
         <div className="max-w-6xl mx-auto space-y-10">
           <div className="group relative border border-gray-200 bg-white px-12 py-16 overflow-hidden shadow-[0_18px_55px_rgba(24,32,56,0.12)]">
-            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff]"></span>
-            <div className="pointer-events-none absolute -top-24 -right-12 w-80 h-80 bg-gradient-to-br from-[#d2c7ff]/30 via-transparent to-transparent blur-3xl"></div>
+            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
             <div className="space-y-6 relative z-10 text-sm md:text-base text-gray-600">
               <p className="text-xs uppercase tracking-[0.4em] text-gray-400">Philosophy</p>
               <h2 className="text-3xl md:text-4xl font-light text-gray-900 tracking-wide">
@@ -74,7 +73,7 @@ export default function PhilosophyPage() {
                 key={index}
                 className="group relative border border-gray-200 bg-white px-8 py-10 flex flex-col gap-4 shadow-[0_12px_40px_rgba(24,32,56,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_55px_rgba(24,32,56,0.12)]"
               >
-                <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff]"></span>
+                <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
                 <span className="text-sm uppercase tracking-[0.35em] text-gray-400">{item.number}</span>
                 <h3 className="text-lg font-light text-gray-900">{item.title}</h3>
                 <p className="text-xs uppercase tracking-[0.35em] text-gray-400">{item.subtitle}</p>
@@ -88,8 +87,7 @@ export default function PhilosophyPage() {
       <section className="py-32 px-6 bg-white">
         <div className="max-w-6xl mx-auto space-y-14">
           <div className="group relative border border-gray-200 bg-white px-12 py-16 shadow-[0_18px_55px_rgba(24,32,56,0.12)] overflow-hidden">
-            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff]"></span>
-            <div className="pointer-events-none absolute -bottom-24 -left-16 w-80 h-80 bg-gradient-to-br from-[#b3e1ff]/20 via-transparent to-transparent blur-3xl"></div>
+            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
             <div className="space-y-8 relative z-10 text-sm md:text-base text-gray-600 leading-relaxed">
               <div className="space-y-3">
                 <p className="text-xs uppercase tracking-[0.35em] text-gray-400">Corporate Philosophy</p>
@@ -131,7 +129,7 @@ export default function PhilosophyPage() {
                 key={index}
                 className="group relative border border-gray-200 bg-white px-8 py-10 flex flex-col gap-6 shadow-[0_12px_40px_rgba(24,32,56,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_55px_rgba(24,32,56,0.12)]"
               >
-                <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff]"></span>
+                <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
                 <h3 className="text-lg font-light text-gray-900 tracking-wide group-hover:translate-x-1 transition-transform duration-400">
                   {philosophy.title}
                 </h3>
@@ -142,8 +140,7 @@ export default function PhilosophyPage() {
           </div>
 
           <div className="group relative border border-gray-200 bg-white px-12 py-14 shadow-[0_18px_55px_rgba(24,32,56,0.12)] overflow-hidden">
-            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff]"></span>
-            <div className="pointer-events-none absolute -top-32 right-10 w-72 h-72 bg-gradient-to-br from-[#f6e27a]/20 via-transparent to-transparent blur-3xl"></div>
+            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
             <div className="space-y-8 relative z-10">
               <div className="space-y-3">
                 <p className="text-xs uppercase tracking-[0.35em] text-gray-400">Philosophy Core</p>
@@ -175,7 +172,7 @@ export default function PhilosophyPage() {
                     key={index}
                     className="relative border border-gray-200 bg-white/95 px-6 py-8 flex flex-col gap-4 shadow-[0_8px_30px_rgba(24,32,56,0.08)]"
                   >
-                    <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff]"></span>
+                    <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
                     <h4 className="text-base md:text-lg font-light text-gray-900 tracking-wide">{core.title}</h4>
                     <p className="text-sm text-gray-600 leading-relaxed">{core.body}</p>
                   </div>
@@ -189,7 +186,7 @@ export default function PhilosophyPage() {
       <section className="py-32 px-6">
         <div className="max-w-6xl mx-auto space-y-16">
           <div className="group relative border border-gray-200 bg-white px-12 py-16 shadow-[0_18px_55px_rgba(24,32,56,0.12)] overflow-hidden">
-            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff]"></span>
+            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
             <div className="space-y-10 relative z-10">
               <div className="space-y-4">
                 <p className="text-xs uppercase tracking-[0.3em] text-gray-400">Mission</p>
@@ -225,7 +222,7 @@ export default function PhilosophyPage() {
                   key={index}
                   className="group relative border border-gray-200 bg-white px-8 py-10 flex flex-col gap-6 shadow-[0_12px_40px_rgba(24,32,56,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_55px_rgba(24,32,56,0.12)] h-full"
                 >
-                  <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff]"></span>
+                  <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
                   <div className="flex items-center gap-4">
                     <div className="w-14 h-14 border border-gray-200 flex items-center justify-center text-2xl font-semibold text-gray-900">
                       {value.initial}
@@ -248,7 +245,7 @@ export default function PhilosophyPage() {
       <section className="py-32 px-6 bg-gradient-to-b from-white via-[#f6f7fb] to-[#eef0f6]">
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="group relative border border-gray-200 bg-white px-12 py-16 shadow-[0_18px_55px_rgba(24,32,56,0.12)] overflow-hidden">
-            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff]"></span>
+            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
             <div className="space-y-8 relative z-10 text-sm md:text-base text-gray-600 leading-relaxed">
               <div className="space-y-3">
                 <p className="text-xs uppercase tracking-[0.3em] text-gray-400">Message</p>

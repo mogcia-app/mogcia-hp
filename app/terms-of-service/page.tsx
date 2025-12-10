@@ -85,8 +85,7 @@ export default function TermsOfServicePage() {
       <section className="py-28 px-6">
         <div className="max-w-5xl mx-auto space-y-16">
           <div className="group relative border border-gray-200 bg-white px-10 md:px-16 py-16 shadow-[0_18px_55px_rgba(24,32,56,0.12)] overflow-hidden">
-            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff]"></span>
-            <div className="pointer-events-none absolute -top-24 -right-20 w-80 h-80 bg-gradient-to-br from-[#f6e27a]/25 via-transparent to-transparent blur-3xl"></div>
+            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
             <div className="space-y-6 relative z-10">
               <p className="text-xs uppercase tracking-[0.35em] text-gray-400">Agreement</p>
               <h2 className="text-2xl md:text-3xl font-light tracking-wide text-gray-900">本規約について</h2>
@@ -103,7 +102,7 @@ export default function TermsOfServicePage() {
                 key={section.title}
                 className="group relative border border-gray-200 bg-white px-8 md:px-12 py-12 shadow-[0_12px_40px_rgba(24,32,56,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_55px_rgba(24,32,56,0.12)]"
               >
-                <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff]"></span>
+                <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
                 <h3 className="text-lg md:text-xl font-light text-gray-900 tracking-wide group-hover:translate-x-1 transition-transform duration-400">
                   {section.title}
                 </h3>
@@ -113,7 +112,7 @@ export default function TermsOfServicePage() {
           </div>
 
           <div className="group relative border border-gray-200 bg-white px-10 md:px-16 py-16 shadow-[0_18px_55px_rgba(24,32,56,0.12)] overflow-hidden">
-            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff]"></span>
+            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
             <div className="space-y-6 relative z-10 text-sm md:text-base text-gray-600 leading-relaxed">
               <h3 className="text-lg md:text-xl font-light text-gray-900 tracking-wide">お問い合わせ窓口</h3>
               <p>

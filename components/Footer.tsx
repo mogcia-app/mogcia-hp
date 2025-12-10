@@ -28,8 +28,7 @@ export default function Footer() {
     <footer className="bg-white">
       <div className="py-16 space-y-12">
         <div className="group relative border-y border-gray-200 bg-white px-6 sm:px-12 lg:px-24 py-14 overflow-hidden">
-          <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff]"></span>
-          <div className="pointer-events-none absolute -bottom-16 right-16 w-56 h-56 bg-gradient-to-tr from-[#d2c7ff]/25 via-transparent to-transparent blur-3xl"></div>
+          <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
 
           <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr_1fr] gap-10 relative z-10 text-sm text-gray-600">
             <div className="space-y-4">

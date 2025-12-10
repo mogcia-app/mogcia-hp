@@ -116,8 +116,7 @@ export default function ContactSection() {
     <section id="contact" className="py-32 px-6 bg-white">
       <div className="max-w-6xl mx-auto space-y-16">
         <div className="group relative border border-gray-200 bg-white px-12 py-16 overflow-hidden shadow-[0_18px_55px_rgba(24,32,56,0.12)] transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_26px_70px_rgba(24,32,56,0.16)]">
-          <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff] opacity-80 transition-opacity duration-700 group-hover:opacity-100"></span>
-          <div className="pointer-events-none absolute -top-24 -right-10 w-72 h-72 bg-gradient-to-br from-[#b3e1ff]/25 via-transparent to-transparent blur-3xl"></div>
+          <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900 opacity-80 transition-opacity duration-700 group-hover:opacity-100"></span>
 
           <div className="space-y-10 relative z-10">
             <div className="space-y-4">
@@ -127,7 +126,15 @@ export default function ContactSection() {
                   まずはお気軽にご相談ください
                 </h2>
                 <span className="absolute -bottom-2 left-0 w-full h-4 overflow-hidden -z-10">
-                  <span className="gradient-line block h-full w-full"></span>
+                  <span 
+                    className="block h-full w-full"
+                    style={{
+                      backgroundImage: 'linear-gradient(90deg, rgba(156, 163, 175, 0) 0%, rgba(156, 163, 175, 0.4) 30%, rgba(107, 114, 128, 0.3) 60%, rgba(156, 163, 175, 0) 100%)',
+                      backgroundSize: '220% 100%',
+                      transform: 'translateX(-110%)',
+                      animation: 'gradient-line-slide 5s ease-in-out infinite'
+                    }}
+                  ></span>
                 </span>
               </div>
               <p className="text-[10px] uppercase tracking-[0.25em] text-gray-400 pl-2">
@@ -162,7 +169,7 @@ export default function ContactSection() {
               key={index}
               className="group relative border border-gray-200 bg-white px-8 py-10 flex flex-col gap-6 shadow-[0_12px_40px_rgba(24,32,56,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_55px_rgba(24,32,56,0.12)]"
             >
-              <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff]"></span>
+              <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 border border-gray-200 flex items-center justify-center text-gray-900">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -197,7 +204,7 @@ export default function ContactSection() {
         </div>
 
         <div className="group relative border border-gray-200 bg-white px-12 py-12 flex flex-col md:flex-row md:items-center md:justify-between gap-8 shadow-[0_18px_55px_rgba(24,32,56,0.12)] transition-all duration-700 hover:-translate-y-1 hover:shadow-[0_24px_65px_rgba(24,32,56,0.15)]">
-          <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff]"></span>
+          <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
           <div>
             <h3 className="text-lg md:text-xl font-light text-gray-900 mb-2">プロジェクトの構想段階でも、お気軽に</h3>
             <p className="text-sm text-gray-600 leading-relaxed">
