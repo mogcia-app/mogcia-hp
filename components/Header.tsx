@@ -21,15 +21,13 @@ export default function Header() {
         <div className="absolute inset-x-0 top-0 h-1 overflow-hidden">
           <span className="block h-full w-full bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900 animate-gradient-slide"></span>
         </div>
-        <div className="w-full mx-auto px-6 sm:px-12 lg:px-24 h-16 flex items-center justify-between">
+        
+        <div className="w-full mx-auto px-6 sm:px-12 lg:px-24 h-20 flex items-center justify-between">
           <Link
             href="/"
-            className="grid grid-cols-[auto_auto] items-center gap-6 text-base md:text-lg font-light tracking-[0.35em] text-gray-900 uppercase"
+            className="text-base md:text-lg font-light tracking-[0.35em] text-gray-900 uppercase"
           >
-            <span className="ml-0 md:-ml-10">
-              <Image src="/1M%20Logo.png" alt="MOGCIA ロゴ" width={32} height={32} priority />
-            </span>
-            <span>株式会社MOGCIA</span>
+            株式会社MOGCIA
           </Link>
 
           <nav className="hidden md:flex items-center gap-8 text-sm text-gray-700">

@@ -34,9 +34,7 @@ export default function Footer() {
             <div className="space-y-4">
               <div>
                 <div className="flex items-center gap-4">
-                  <div className="relative h-10 w-10">
-                    <Image src="/1M%20Logo.png" alt="MOGCIA ロゴ" fill className="object-contain" sizes="40px" priority />
-                  </div>
+                  
                   <h3 className="text-base md:text-lg font-light text-gray-900 tracking-[0.35em] uppercase">株式会社MOGCIA</h3>
                 </div>
                 <p className="mt-3 text-sm text-gray-500">AIが支え、人の創造力が未来を動かす</p>
