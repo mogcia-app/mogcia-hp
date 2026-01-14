@@ -106,24 +106,24 @@ export default function ProcessSection({
   return (
     <section
       id={id}
-      className="bg-white py-32 px-6"
+      className="bg-white py-10 px-6"
     >
-      <div className="max-w-6xl mx-auto text-gray-900">
-        <div className="mb-16 md:mb-20 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+      <div className="w-full text-gray-900">
+        <div className="mb-16 md:mb-20">
           <div>
             <p className="text-sm uppercase tracking-[0.35em] text-gray-400 mb-4">
               {eyebrow}
             </p>
-            <div className="relative inline-block">
+            <div className="relative inline-block mb-6">
               <h2 className="text-3xl md:text-3xl lg:text-4xl font-light tracking-wide relative z-10">
                 {title}
               </h2>
               <span className="absolute -bottom-2 left-0 w-full h-5 bg-gradient-to-r from-gray-400/60 via-gray-700/40 to-transparent -z-10"></span>
             </div>
+            <p className="text-sm md:text-base text-gray-500 max-w-2xl leading-relaxed">
+              {description}
+            </p>
           </div>
-          <p className="text-sm md:text-base text-gray-500 max-w-2xl leading-relaxed">
-            {description}
-          </p>
         </div>
 
         <div className="space-y-16">

@@ -14,14 +14,15 @@ type Product = {
 const products: Product[] = [
   {
     title: "Upmo 業務改善サポートツール",
-    image: "/0198.png",
+    image: "/upmomein.png",
     date: "2025/10/23",
     category: "事業・プロダクト情報",
     categorySub: "",
+    link: "https://upmotool.com",
   },
   {
     title: "Signal. SNSの90%自動化AIツール",
-    image: "/0987.png",
+    image: "/signalmein.png",
     date: "2025/06/01",
     category: "事業・プロダクト情報",
     categorySub: "",
@@ -121,8 +122,8 @@ export default function ProductsSection() {
   const bottomProducts = products.slice(2)
 
   return (
-    <section className="py-32 px-6 bg-white">
-      <div className="max-w-6xl mx-auto space-y-16">
+    <section className="py-10 px-6 bg-white">
+     <div className="w-full">
         <div className="group relative border border-gray-200 bg-white px-12 py-16 overflow-hidden shadow-[0_18px_55px_rgba(24,32,56,0.12)] transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_26px_70px_rgba(24,32,56,0.16)]">
           <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
 
@@ -145,7 +146,7 @@ export default function ProductsSection() {
                   ></span>
                 </span>
               </div>
-              <p className="text-sm uppercase tracking-[0.25em] text-gray-400 text-right pr-2">
+              <p className="text-sm uppercase tracking-[0.25em] text-gray-400 pl-2">
                 Crafted Solutions, Ready to Launch
               </p>
             </div>
@@ -153,10 +154,17 @@ export default function ProductsSection() {
             <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
               <div className="space-y-5 text-sm md:text-base text-gray-600 leading-relaxed">
                 <p>
-                  MOGCIAがお届けするプロダクトは、AIと人的サポートの力でビジネス成長を後押しします。<br />既存ツールの導入からカスタム開発まで、未来を見据えた体験を素早く提供します。
+                  MOGCIAのプロダクトは、<br />
+                  すぐに使い始められるAIツールから、業務に合わせたカスタム開発まで<br />
+                  目的に応じて選べるラインナップを用意しています。
                 </p>
                 <p>
-                  導入後もデータを起点にアップデートを重ね、成果につながる運用体制を構築。<br />確かな品質で、現場にフィットするソリューションを届けます。
+                  業務効率化、情報整理、意思決定支援など、<br />
+                  現場で必要とされる機能に絞って設計。<br />
+                  導入後も運用を前提にしたアップデートを行います。
+                </p>
+                <p>
+                  以下に、現在提供している主なプロダクトをご紹介します。
                 </p>
               </div>
               <div className="relative border border-gray-200 bg-black/5 overflow-hidden">
@@ -182,7 +190,7 @@ export default function ProductsSection() {
           </div>
         </div>
 
-        <div className="space-y-12">
+        <div className="space-y-12 mt-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 xl:gap-12">
             {topProducts.map((product, index) => renderCard(product, index))}
           </div>

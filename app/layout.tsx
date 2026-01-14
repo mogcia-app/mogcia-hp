@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import Header from '@/components/Header'
-import PageTransition from '@/components/PageTransition'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mogcia.net'
 
@@ -48,7 +47,6 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body>
-        <PageTransition />
         <Header />
         {children}
       </body>

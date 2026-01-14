@@ -13,7 +13,7 @@ export default function Home() {
   const [heroScale, setHeroScale] = useState(1)
   const [showFinalBody, setShowFinalBody] = useState(false)
   const [showFinalTitle, setShowFinalTitle] = useState(false)
-  const [showSlides, setShowSlides] = useState(false)
+  const [showSlides, setShowSlides] = useState(true)
   const videoRef = useRef<HTMLVideoElement>(null)
   const videoSectionRef = useRef<HTMLDivElement>(null)
   const heroRef = useRef<HTMLDivElement>(null)
@@ -34,25 +34,6 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  useEffect(() => {
-    if (typeof window === 'undefined') {
-      return
-    }
-
-    const isTransitionPlaying = sessionStorage.getItem('page-transition-playing') === 'true'
-
-    if (!isTransitionPlaying) {
-      setShowSlides(true)
-      return
-    }
-
-    const timer = setTimeout(() => {
-      setShowSlides(true)
-      sessionStorage.setItem('page-transition-playing', 'false')
-    }, 5000)
-
-    return () => clearTimeout(timer)
-  }, [])
 
   useEffect(() => {
     if (!showSlides) return
@@ -82,22 +63,22 @@ export default function Home() {
     }
   }, [currentSlide, showSlides])
 
-  // 3番目のスライドのアニメーション
+  // スライドのアニメーション
   useEffect(() => {
     if (!showSlides) {
       setShowFinalBody(false)
       setShowFinalTitle(false)
-      if (slideVideoRefs.current[2]) {
-        slideVideoRefs.current[2].pause()
-        slideVideoRefs.current[2].currentTime = 0
+      if (slideVideoRefs.current[0]) {
+        slideVideoRefs.current[0].pause()
+        slideVideoRefs.current[0].currentTime = 0
       }
       return
     }
-    if (currentSlide === 2) {
-      // 3番目の動画を最初から再生
-      if (slideVideoRefs.current[2]) {
-        slideVideoRefs.current[2].currentTime = 0
-        slideVideoRefs.current[2].play()
+    if (currentSlide === 0) {
+      // 動画を最初から再生
+      if (slideVideoRefs.current[0]) {
+        slideVideoRefs.current[0].currentTime = 0
+        slideVideoRefs.current[0].play()
       }
       
       // 背景が表示された後、少し遅れて文字を表示
@@ -106,7 +87,7 @@ export default function Home() {
       const timer = setTimeout(() => {
         setShowFinalBody(true)
         setShowFinalTitle(true)
-      }, 1000) // 1秒後に文字を表示
+      }, 7000) // 7秒後に文字を表示
       
       return () => {
         clearTimeout(timer)
@@ -115,12 +96,12 @@ export default function Home() {
       // 他のスライドに戻ったらリセット
       setShowFinalBody(false)
       setShowFinalTitle(false)
-      // 3番目の動画を一時停止
-      if (slideVideoRefs.current[2]) {
-        slideVideoRefs.current[2].pause()
+      // 動画を一時停止
+      if (slideVideoRefs.current[0]) {
+        slideVideoRefs.current[0].pause()
       }
     }
-  }, [currentSlide])
+  }, [currentSlide, showSlides])
 
   // ビデオスクロール同期
   useEffect(() => {
@@ -149,22 +130,6 @@ export default function Home() {
   }, [])
 
   const slides = [
-    { 
-      title: 'Upmo',
-      subtitle: '',
-      body: '分散した社内ナレッジを結合し、業務改善に繋げる',
-      video: '/videos/mv1.mp4',
-      image: '/iStock-2187782281.jpg',
-      center: true
-    },
-    { 
-      title: 'Signal.',
-      subtitle: 'SNS運用の90%自動化AIツール',
-      body: '',
-      video: '/videos/mv2.mp4',
-      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80',
-      center: true
-    },
     { 
       title: '株式会社MOGCIA',
       subtitle: '',
@@ -219,6 +184,8 @@ export default function Home() {
               >
                 <source src={slide.video} type="video/mp4" />
               </video>
+              {/* 白いオーバーレイ */}
+              <div className="absolute inset-0 bg-white/25 pointer-events-none"></div>
             </div>
           </div>
         ))}
@@ -237,18 +204,22 @@ export default function Home() {
               style={{ transitionDuration: '4000ms' }}
             >
               <div
-                className={`max-w-3xl px-4 md:px-10 py-10 md:py-12 bg-white/80 backdrop-blur border border-gray-200/70 shadow-[0_25px_70px_rgba(24,32,56,0.12)] ${
+                className={`max-w-3xl px-4 md:px-10 py-10 md:py-12 bg-white/15 backdrop-blur border border-gray-200/30 shadow-[0_25px_70px_rgba(24,32,56,0.12)] ${
                   slide.center ? 'text-center' : 'text-right'
-                } relative z-40 flex flex-col gap-3 md:gap-4`}
+                } relative z-40 flex flex-col gap-3 md:gap-4 transition-all duration-1000 ease-out ${
+                  index === 0 && showFinalBody ? 'opacity-100 translate-y-0' : index === 0 ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'
+                }`}
               >
-                <p className="text-[0.65rem] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] text-gray-400">
-                  {index === 0 ? 'Business Intelligence' : index === 1 ? 'Automation' : 'Corporate'}
+                <p className={`text-[0.65rem] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] text-gray-900 transition-all duration-1000 ease-out ${
+                  index === 0 && showFinalBody ? 'opacity-100 translate-y-0' : index === 0 ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'
+                }`}>
+                  Enterprise
                 </p>
-                {index === 2 ? (
-                  // 3番目のスライドは順番に表示
+                {index === 0 ? (
+                  // スライドは順番に表示
                   <>
                     <p
-                      className={`text-sm md:text-xl font-light text-gray-600 transition-all duration-1000 ease-out ${
+                      className={`text-sm md:text-xl font-light text-gray-900 transition-all duration-1000 ease-out ${
                         showFinalBody ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                       }`}
                     >
@@ -310,23 +281,89 @@ export default function Home() {
       </section>
 
       {/* Story Section - MOGCIA */}
-      <section className="py-32 px-6">
-        <div className="max-w-5xl mx-auto">
+      <section className="py-10 px-6">
+        <div className="w-full">
           <div className="group relative border border-gray-200 bg-white px-12 py-16 overflow-visible shadow-[0_18px_55px_rgba(24,32,56,0.12)] transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_26px_70px_rgba(24,32,56,0.16)]">
             <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900 opacity-80 transition-opacity duration-700 group-hover:opacity-100"></span>
-            <img
-              src="/1661.png"
-              alt="AI dashboard"
-              className="hidden md:block absolute -right-24 -bottom-48 w-60 opacity-95 pointer-events-none drop-shadow-[0_18px_45px_rgba(24,32,56,0.32)] rotate-3"
-            />
+           
 
-            <div className="space-y-10 relative z-10">
-              <div className="space-y-4">
-                <p className="text-xs uppercase tracking-[0.4em] text-gray-400">Our Story</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 relative z-10">
+              <div className="space-y-10">
+                <div className="space-y-4">
+                  <p className="text-xs uppercase tracking-[0.4em] text-gray-400">Our Story</p>
+                  <div className="relative inline-block">
+                    <h2 className="text-[18px] md:text-4xl font-light tracking-wide relative z-10">
+                      AIが切り拓く無限の可能性
+                    </h2>
+                    <span className="absolute -bottom-2 left-0 w-full h-4 overflow-hidden -z-10">
+                      <span 
+                        className="block h-full w-full"
+                        style={{
+                          backgroundImage: 'linear-gradient(90deg, rgba(156, 163, 175, 0) 0%, rgba(156, 163, 175, 0.4) 30%, rgba(107, 114, 128, 0.3) 60%, rgba(156, 163, 175, 0) 100%)',
+                          backgroundSize: '220% 100%',
+                          transform: 'translateX(-110%)',
+                          animation: 'gradient-line-slide 5s ease-in-out infinite'
+                        }}
+                      ></span>
+                    </span>
+                  </div>
+                  <p className="text-sm uppercase tracking-[0.25em] text-gray-400 pl-2">
+                  Co-Innovate with AI.
+                  </p>
+                </div>
+
+                <div className="space-y-5 text-base md:text-lg text-gray-600 leading-relaxed">
+                  <p>
+                    私たちは、AI・デジタル技術を活用し<br />企業の業務改善と生産性向上を支援しています
+                  </p>
+                  <p>
+                    現場の課題を起点に<br />戦略設計から導入、運用までを一貫してサポート<br />継続的に成果が出る仕組みづくりを行います
+                  </p>
+                  <p>
+                    変化の多い時代においても<br />安定して使い続けられるAI活用を目指しています
+                  </p>
+                  <p>MOGCIA.</p>
+                </div>
+              </div>
+
+              <div className="relative flex items-center justify-center mt-8 md:mt-20">
+                <div className="relative w-full md:w-[95%]">
+                  <video
+                    className="w-full h-[280px] md:h-auto object-cover"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  >
+                    <source src="/videos/mv1.mp4" type="video/mp4" />
+                  </video>
+                  {/* 白いオーバーレイ */}
+                  <div className="absolute inset-0 bg-white/20 pointer-events-none"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* News Section 2 */}
+      <section className="py-10 px-6">
+        <div className="w-full">
+          <div className="group relative border border-gray-200 bg-white px-12 py-16 overflow-visible shadow-[0_18px_55px_rgba(24,32,56,0.12)] transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_26px_70px_rgba(24,32,56,0.16)]">
+            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900 opacity-80 transition-opacity duration-700 group-hover:opacity-100"></span>
+            
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 relative z-10">
+              <div>
+                <p className="text-xs uppercase tracking-[0.4em] text-gray-400 mb-3">Updates</p>
                 <div className="relative inline-block">
-                  <h2 className="text-[18px] md:text-4xl font-light tracking-wide relative z-10">
-                    AIが切り拓く無限の可能性
-                  </h2>
+                  <div className="flex items-center gap-3">
+                    <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <h2 className="text-2xl md:text-3xl font-light tracking-wide relative z-10">
+                      News & Topics
+                    </h2>
+                  </div>
                   <span className="absolute -bottom-2 left-0 w-full h-4 overflow-hidden -z-10">
                     <span 
                       className="block h-full w-full"
@@ -339,91 +376,42 @@ export default function Home() {
                     ></span>
                   </span>
                 </div>
-                <p className="text-sm uppercase tracking-[0.25em] text-gray-400 pl-2">
-                Co-Innovate with AI
-                </p>
               </div>
-
-              <div className="space-y-5 text-sm md:text-base text-gray-600 leading-relaxed">
-                <p>
-                  AI・デジタル技術で企業の未来を創造するパートナーとして、スタートアップなど幅広く支援<br />AIの力を、人と企業の創造性に結び付けることが私たちの使命です。
-                </p>
-                <p>
-                  私たちは“未来をつくる現場”に立ち続け、変化の兆しを読み取りながら、新たな価値の創出に挑みます。
-                </p>
-                <p>
-                  プロジェクトの大小に関わらず、企業のビジョンを共に描き、その実現を支えること。<br />それがMOGCIAのストーリーです。
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs uppercase tracking-[0.3em] text-gray-400">
-                <div className="border border-gray-200 py-4 px-6 text-center">Trusted Partner</div>
-                <div className="border border-gray-200 py-4 px-6 text-center">End-to-End Support</div>
-                <div className="border border-gray-200 py-4 px-6 text-center">Future-Ready</div>
-              </div>
-
-              <div className="flex flex-wrap gap-4 text-xs uppercase tracking-[0.3em] text-gray-400">
-                <span className="px-4 py-2 border border-gray-200">Innovation</span>
-                <span className="px-4 py-2 border border-gray-200">Strategy</span>
-                <span className="px-4 py-2 border border-gray-200">AI Integration</span>
-              </div>
+             
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* News Section 2 */}
-      <section className="py-28 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-            <div>
-              <p className="text-xs uppercase tracking-[0.4em] text-gray-400 mb-3">Updates</p>
-              <div className="relative inline-block">
-                <h2 className="text-2xl md:text-3xl font-light tracking-wide relative z-10">
-                  News & Topics
-                </h2>
-                <span className="absolute -bottom-2 left-0 w-full h-4 overflow-hidden -z-10">
-                  <span className="gradient-line block h-full w-full"></span>
-                </span>
-              </div>
-            </div>
-            <p className="text-sm md:text-base text-gray-500 max-w-xl leading-relaxed">
-              MOGCIAの最新情報やイベント、プロジェクトの進捗をご紹介します。<br />企業とともに描く未来の一端をご覧ください。
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { date: '2025.09.05', title: 'AI業務改善支援ツールUpmoの開発開始', description: '企業の業務改善支援ツールUpmoの開発を開始しました。', tag: 'PRESS' },
-              { date: '2025.08.15', title: 'Signal.テスト導入スタート', description: 'SNS運用の90%自動化AIツールSignal.のテスト導入を複数社で開始。', tag: 'NEWS' },
-              { date: '2025.01.08', title: 'MOGCIA Coffee POPUP', description: 'Choosebase SHIBUYAにてMOGCIA Coffeeを販売中。', tag: 'EVENT' },
-            ].map((news, index) => (
-              <div
-                key={index}
-                className="group relative border border-gray-200 bg-white px-8 py-10 flex flex-col gap-5 shadow-[0_12px_40px_rgba(24,32,56,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_55px_rgba(24,32,56,0.12)]"
-              >
-                <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900 opacity-75 transition-opacity duration-700 group-hover:opacity-100"></span>
-                <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-gray-400">
-                  <span>{news.tag}</span>
-                  <span className="text-gray-500 tracking-normal">{news.date}</span>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+              {[
+                { date: '2025.09.05', title: 'AI業務改善支援ツールUpmoの開発開始', description: '企業の業務改善支援ツールUpmoの開発を開始しました。', tag: 'PRESS' },
+                { date: '2025.08.15', title: 'Signal.テスト導入スタート', description: 'SNS運用の90%自動化AIツールSignal.のテスト導入を複数社で開始。', tag: 'NEWS' },
+                { date: '2025.01.08', title: 'MOGCIA Coffee POPUP', description: 'Choosebase SHIBUYAにてMOGCIA Coffeeを販売中。', tag: 'EVENT' },
+              ].map((news, index) => (
+                <div
+                  key={index}
+                  className="group relative py-6 px-6 border border-gray-200 bg-gray-50/30 hover:bg-gray-50 hover:border-gray-300 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-all duration-300"
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-xs uppercase tracking-[0.3em] text-gray-500 font-medium">{news.tag}</span>
+                    <span className="text-xs text-gray-400">•</span>
+                    <span className="text-xs text-gray-500">{news.date}</span>
+                  </div>
+                  <h3 className="text-base md:text-lg font-light text-gray-900 leading-snug mb-2 group-hover:text-gray-700 transition-colors">
+                    {news.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    {news.description}
+                  </p>
                 </div>
-                <h3 className="text-lg font-light text-gray-900 leading-snug group-hover:translate-x-1 transition-transform duration-400">
-                  {news.title}
-                </h3>
-                <p className="text-sm text-gray-600 leading-relaxed flex-1">
-                  {news.description}
-                </p>
-                <span className="text-xs uppercase tracking-[0.25em] text-gray-400 group-hover:text-gray-600 transition-colors">Read More</span>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
 
       {/* Why Choose MOGCIA Section */}
-      <section id="services" className="py-32 px-6 bg-white">
-        <div className="max-w-6xl mx-auto space-y-16">
+      <section id="services" className="py-10 px-6 bg-white">
+      <div className="w-full">
           <div className="group relative border border-gray-200 bg-white px-12 py-16 overflow-hidden shadow-[0_18px_55px_rgba(24,32,56,0.12)] transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_26px_70px_rgba(24,32,56,0.16)]">
             <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900 opacity-80 transition-opacity duration-700 group-hover:opacity-100"></span>
 
@@ -451,103 +439,119 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-10 text-sm md:text-base text-gray-600 leading-relaxed">
-                <p>
-                  AI・デジタル技術で企業の未来を創造するMOGCIAは、戦略立案から実装・運用までワンストップで支援します。御社固有の課題に寄り添い、最適なチームとアプローチで、スピードと品質を両立します。
+              <div className="grid md:grid-cols-[1fr_1fr] gap-10 items-center">
+                <p className="text-base md:text-lg text-gray-700 leading-loose">
+                AI・デジタル技術を活用し、<br />
+                戦略設計から実装、運用までを一貫して支援しています。<br />
+                <br />
+                業務フローや既存システムを理解した上で、<br />
+                課題に合わせたAI活用を設計・導入。<br />
+                単なる技術提供に留まらず、実務で機能する形に落とし込みます。<br />
+                <br />
+                導入後は、データをもとに改善を重ね、<br />
+                運用の最適化や機能拡張を継続的にサポート。<br />
+                変化する市場環境にも対応できる体制づくりを支援します。<br />
+                <br />
+                こうした取り組みを通じて、<br />
+                お客様のパートナーとして、中長期的な成長を共に目指します。
                 </p>
-              
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs uppercase tracking-[0.3em] text-gray-400">
-                <div className="border border-gray-200 py-4 px-6 text-center">Automation × Strategy</div>
-                <div className="border border-gray-200 py-4 px-6 text-center">One Team Support</div>
-                <div className="border border-gray-200 py-4 px-6 text-center">Data-Driven Design</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
-            {[
-              {
-                tag: 'Automation',
-                title: '業務自動化で効率化',
-                body: 'AIツールを活用した業務改善で作業時間を大幅に削減。',
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                ),
-              },
-              {
-                tag: 'Full Service',
-                title: 'ワンストップサービス',
-                body: 'SNS運用・HP作成・AIツール開発・システム開発まで目的達成に必要な領域を一貫して提供します。',
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548-.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                ),
-              },
-              {
-                tag: 'Strategy',
-                title: '課題解決に特化',
-                body: '経営と現場双方の視点で課題を捉え、成果に直結するソリューションをデザインします。',
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                ),
-              },
-              {
-                tag: 'Secure',
-                title: 'セキュリティ対策',
-                body: '企業情報や顧客データを適切に保護し、最新のセキュリティ基準に沿った環境を構築します。',
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                ),
-              },
-              {
-                tag: 'Care',
-                title: '運用サポート充実',
-                body: '導入後の運用・保守・改善まで伴走。データドリブンに成果を検証し、最適化を繰り返します。',
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                ),
-              },
-              {
-                tag: 'Flexible',
-                title: '柔軟な対応',
-                body: 'スタートアップから大企業まで、規模や業界を問わず最適な体制とスピード感でご支援します。',
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                ),
-              },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="group relative border border-gray-200 bg-white px-8 py-10 flex flex-col gap-6 shadow-[0_12px_40px_rgba(24,32,56,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_55px_rgba(24,32,56,0.12)]"
-              >
-                <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900 opacity-75 transition-opacity duration-700 group-hover:opacity-100"></span>
-                <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-gray-400">
-                  <span>{item.tag}</span>
-                  <span className="h-px w-10 bg-gray-200"></span>
+                <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-lg">
+                  <video
+                    className="w-full h-full object-cover"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  >
+                    <source src="/videos/istockphoto-1623072252-640_adpp_is.mp4" type="video/mp4" />
+                  </video>
                 </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 border border-gray-200 flex items-center justify-center text-gray-900">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      {item.icon}
-                    </svg>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 pt-10 border-t border-gray-200">
+                {[
+                  {
+                    tag: 'Automation',
+                    title: '業務自動化で効率化',
+                    body: 'AIツールを活用した業務改善で作業時間を大幅に削減。',
+                    icon: (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    ),
+                  },
+                  {
+                    tag: 'Full Service',
+                    title: 'ワンストップサービス',
+                    body: 'SNS運用・HP作成・AIツール開発・システム開発まで課題解決に必要な領域を一貫して提供します。',
+                    icon: (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548-.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    ),
+                  },
+                  {
+                    tag: 'Strategy',
+                    title: '課題解決に特化',
+                    body: '経営と現場双方の視点で課題を捉え、成果に直結するソリューションをデザインします。',
+                    icon: (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                    ),
+                  },
+                  {
+                    tag: 'Secure',
+                    title: 'セキュリティ対策',
+                    body: '企業情報や顧客データを適切に保護し、最新のセキュリティ基準に沿った環境を構築します。',
+                    icon: (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    ),
+                  },
+                  {
+                    tag: 'Care',
+                    title: '運用サポート充実',
+                    body: '導入後の運用・保守・改善まで伴走。データドリブンに成果を検証し、最適化を繰り返します。',
+                    icon: (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                    ),
+                  },
+                  {
+                    tag: 'Flexible',
+                    title: '柔軟な対応',
+                    body: 'スタートアップから大企業まで、規模や業界を問わず最適な体制とスピード感でご支援します。',
+                    icon: (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    ),
+                  },
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col gap-6"
+                  >
+                    <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-gray-400">
+                      <span>{item.tag}</span>
+                      <span className="h-px w-10 bg-gray-200"></span>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 border border-gray-200 flex items-center justify-center text-gray-900">
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          {item.icon}
+                        </svg>
+                      </div>
+                      <h3 className="text-lg font-light text-gray-900 leading-snug">
+                        {item.title}
+                      </h3>
+                    </div>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      {item.body}
+                    </p>
                   </div>
-                  <h3 className="text-lg font-light text-gray-900 leading-snug">
-                    {item.title}
-                  </h3>
-                </div>
-                <p className="text-sm text-gray-600 leading-relaxed flex-1">
-                  {item.body}
-                </p>
+                ))}
               </div>
-            ))}
+
+            </div>
           </div>
         </div>
       </section>
 
       {/* Values Section - MOGCIA */}
-      <section className="py-32 px-6">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-10 px-6">
+      <div className="w-full">
           <div className="text-center mb-16 space-y-6">
             <div className="inline-flex flex-col items-center gap-3">
               <p className="text-xs uppercase tracking-[0.4em] text-gray-400">Our Values</p>
