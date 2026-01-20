@@ -280,38 +280,38 @@ export default function Home() {
       
       </section>
 
-      {/* Story Section - MOGCIA */}
+      {/* About Us Section */}
       <section className="py-10 px-6">
         <div className="w-full">
           <div className="group relative border border-gray-200 bg-white px-12 py-16 overflow-visible shadow-[0_18px_55px_rgba(24,32,56,0.12)] transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_26px_70px_rgba(24,32,56,0.16)]">
             <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900 opacity-80 transition-opacity duration-700 group-hover:opacity-100"></span>
            
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 relative z-10">
-              <div className="space-y-10">
-                <div className="space-y-4">
-                  <p className="text-xs uppercase tracking-[0.4em] text-gray-400">Our Story</p>
-                  <div className="relative inline-block">
-                    <h2 className="text-[18px] md:text-4xl font-light tracking-wide relative z-10">
-                      AIが切り拓く無限の可能性
-                    </h2>
-                    <span className="absolute -bottom-2 left-0 w-full h-4 overflow-hidden -z-10">
-                      <span 
-                        className="block h-full w-full"
-                        style={{
-                          backgroundImage: 'linear-gradient(90deg, rgba(156, 163, 175, 0) 0%, rgba(156, 163, 175, 0.4) 30%, rgba(107, 114, 128, 0.3) 60%, rgba(156, 163, 175, 0) 100%)',
-                          backgroundSize: '220% 100%',
-                          transform: 'translateX(-110%)',
-                          animation: 'gradient-line-slide 5s ease-in-out infinite'
-                        }}
-                      ></span>
-                    </span>
-                  </div>
-                  <p className="text-sm uppercase tracking-[0.25em] text-gray-400 pl-2">
-                  Co-Innovate with AI.
-                  </p>
+            <div className="space-y-10 relative z-10">
+              <div className="space-y-4">
+                <p className="text-xs uppercase tracking-[0.4em] text-gray-400">About Us</p>
+                <div className="relative inline-block">
+                  <h2 className="text-[18px] md:text-4xl font-light tracking-wide relative z-10">
+                    AIが切り拓く無限の可能性
+                  </h2>
+                  <span className="absolute -bottom-2 left-0 w-full h-4 overflow-hidden -z-10">
+                    <span 
+                      className="block h-full w-full"
+                      style={{
+                        backgroundImage: 'linear-gradient(90deg, rgba(156, 163, 175, 0) 0%, rgba(156, 163, 175, 0.4) 30%, rgba(107, 114, 128, 0.3) 60%, rgba(156, 163, 175, 0) 100%)',
+                        backgroundSize: '220% 100%',
+                        transform: 'translateX(-110%)',
+                        animation: 'gradient-line-slide 5s ease-in-out infinite'
+                      }}
+                    ></span>
+                  </span>
                 </div>
+                <p className="text-sm uppercase tracking-[0.25em] text-gray-400 pl-2">
+                Co-Innovate with AI.
+                </p>
+              </div>
 
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 md:items-start">
                 <div className="space-y-5 text-base md:text-lg text-gray-600 leading-relaxed">
                   <p>
                     私たちは、AI・デジタル技術を活用し<br />企業の業務改善と生産性向上を支援しています
@@ -322,23 +322,26 @@ export default function Home() {
                   <p>
                     変化の多い時代においても<br />安定して使い続けられるAI活用を目指しています
                   </p>
-                  <p>MOGCIA.</p>
+                 
+                  <p className="pt-4">
+                    代表取締役　北村　健太郎
+                  </p>
                 </div>
-              </div>
 
-              <div className="relative flex items-center justify-center mt-8 md:mt-20">
-                <div className="relative w-full md:w-[95%]">
-                  <video
-                    className="w-full h-[280px] md:h-auto object-cover"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                  >
-                    <source src="/videos/mv1.mp4" type="video/mp4" />
-                  </video>
-                  {/* 白いオーバーレイ */}
-                  <div className="absolute inset-0 bg-white/20 pointer-events-none"></div>
+                <div className="relative mt-8 md:mt-0">
+                  <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-lg">
+                    <video
+                      className="w-full h-full object-cover"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    >
+                      <source src="/videos/mv1.mp4" type="video/mp4" />
+                    </video>
+                    {/* 白いオーバーレイ */}
+                    <div className="absolute inset-0 bg-white/20 pointer-events-none"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -469,79 +472,79 @@ export default function Home() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 pt-10 border-t border-gray-200">
-                {[
-                  {
-                    tag: 'Automation',
-                    title: '業務自動化で効率化',
-                    body: 'AIツールを活用した業務改善で作業時間を大幅に削減。',
-                    icon: (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    ),
-                  },
-                  {
-                    tag: 'Full Service',
-                    title: 'ワンストップサービス',
-                    body: 'SNS運用・HP作成・AIツール開発・システム開発まで課題解決に必要な領域を一貫して提供します。',
-                    icon: (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548-.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                    ),
-                  },
-                  {
-                    tag: 'Strategy',
-                    title: '課題解決に特化',
-                    body: '経営と現場双方の視点で課題を捉え、成果に直結するソリューションをデザインします。',
-                    icon: (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                    ),
-                  },
-                  {
-                    tag: 'Secure',
-                    title: 'セキュリティ対策',
-                    body: '企業情報や顧客データを適切に保護し、最新のセキュリティ基準に沿った環境を構築します。',
-                    icon: (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    ),
-                  },
-                  {
-                    tag: 'Care',
-                    title: '運用サポート充実',
-                    body: '導入後の運用・保守・改善まで伴走。データドリブンに成果を検証し、最適化を繰り返します。',
-                    icon: (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                    ),
-                  },
-                  {
-                    tag: 'Flexible',
-                    title: '柔軟な対応',
-                    body: 'スタートアップから大企業まで、規模や業界を問わず最適な体制とスピード感でご支援します。',
-                    icon: (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                    ),
-                  },
-                ].map((item, index) => (
-                  <div
-                    key={index}
+            {[
+              {
+                tag: 'Automation',
+                title: '業務自動化で効率化',
+                body: 'AIツールを活用した業務改善で作業時間を大幅に削減。',
+                icon: (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                ),
+              },
+              {
+                tag: 'Full Service',
+                title: 'ワンストップサービス',
+                body: 'SNS運用・HP作成・AIツール開発・システム開発まで課題解決に必要な領域を一貫して提供します。',
+                icon: (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548-.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                ),
+              },
+              {
+                tag: 'Strategy',
+                title: '課題解決に特化',
+                body: '経営と現場双方の視点で課題を捉え、成果に直結するソリューションをデザインします。',
+                icon: (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                ),
+              },
+              {
+                tag: 'Secure',
+                title: 'セキュリティ対策',
+                body: '企業情報や顧客データを適切に保護し、最新のセキュリティ基準に沿った環境を構築します。',
+                icon: (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                ),
+              },
+              {
+                tag: 'Care',
+                title: '運用サポート充実',
+                body: '導入後の運用・保守・改善まで伴走。データドリブンに成果を検証し、最適化を繰り返します。',
+                icon: (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                ),
+              },
+              {
+                tag: 'Flexible',
+                title: '柔軟な対応',
+                body: 'スタートアップから大企業まで、規模や業界を問わず最適な体制とスピード感でご支援します。',
+                icon: (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                ),
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
                     className="flex flex-col gap-6"
-                  >
-                    <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-gray-400">
-                      <span>{item.tag}</span>
-                      <span className="h-px w-10 bg-gray-200"></span>
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 border border-gray-200 flex items-center justify-center text-gray-900">
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          {item.icon}
-                        </svg>
-                      </div>
-                      <h3 className="text-lg font-light text-gray-900 leading-snug">
-                        {item.title}
-                      </h3>
-                    </div>
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                      {item.body}
-                    </p>
+              >
+                <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-gray-400">
+                  <span>{item.tag}</span>
+                  <span className="h-px w-10 bg-gray-200"></span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 border border-gray-200 flex items-center justify-center text-gray-900">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      {item.icon}
+                    </svg>
                   </div>
-                ))}
+                  <h3 className="text-lg font-light text-gray-900 leading-snug">
+                    {item.title}
+                  </h3>
+                </div>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                  {item.body}
+                </p>
+              </div>
+            ))}
               </div>
 
             </div>
