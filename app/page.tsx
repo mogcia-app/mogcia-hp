@@ -323,9 +323,7 @@ export default function Home() {
                     変化の多い時代においても<br />安定して使い続けられるAI活用を目指しています
                   </p>
                  
-                  <p className="pt-4">
-                    代表取締役　北村　健太郎
-                  </p>
+                
                 </div>
 
                 <div className="relative mt-8 md:mt-0">
