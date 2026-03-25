@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 
 const navLinks = [
@@ -11,11 +10,9 @@ const navLinks = [
 ]
 
 const serviceLinks = [
-  { label: 'Upmo', href: '/services/enterprise-ai' },
-  { label: 'Signal.', href: 'https://www.sgnalapp.com' },
-  { label: 'WEB制作', href: '/services/web' },
-  { label: 'SNS運用', href: '/services/sns' },
-  { label: 'MOGCIA Coffee', href: 'https://mogcia.official.ec' },
+  { label: 'Upmo', href: 'https://upmotool.com/' },
+  { label: 'Signal.', href: 'https://www.sgnalapp.com/' },
+  { label: 'MOGCIA Coffee', href: 'https://mogcia.official.ec/' },
 ]
 
 const legalLinks = [

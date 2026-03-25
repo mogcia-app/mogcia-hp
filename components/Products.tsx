@@ -29,18 +29,6 @@ const products: Product[] = [
     link: "https://www.sgnalapp.com",
   },
   {
-    title: "SNS運用",
-    image: "/sns-1.jpg",
-    date: "2025/04/25",
-    category: "事業・プロダクト情報",
-  },
-  {
-    title: "HP作成",
-    image: "/hp.jpg",
-    date: "2025/04/02",
-    category: "事業・プロダクト情報",
-  },
-  {
     title: "MOGCIA Coffee",
     image: "/006.jpg",
     date: "2024/04/20",
@@ -202,4 +190,3 @@ export default function ProductsSection() {
     </section>
   )
 }
-

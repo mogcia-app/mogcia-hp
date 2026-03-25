@@ -5,6 +5,7 @@ import Footer from '@/components/Footer'
 
 const companyInfo = [
   { label: '会社名', value: '株式会社MOGCIA（モグシア）' },
+  { label: '代表取締役', value: '北村健太郎' },
   { label: '所在地', value: '〒810-0001 福岡県福岡市中央区天神4-6-28 いちご天神ノースビル7階' },
   { label: '設立', value: '2023年11月' },
   { label: '資本金', value: '300万円' },
@@ -69,5 +70,4 @@ export default function CompanyPage() {
     </main>
   )
 }
-
 
