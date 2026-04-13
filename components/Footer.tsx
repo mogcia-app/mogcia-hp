@@ -10,7 +10,8 @@ const navLinks = [
 ]
 
 const serviceLinks = [
-  { label: 'Upmo', href: 'https://upmotool.com/' },
+  { label: 'Roomly.', href: 'https://roomlychat.com/' },
+  { label: 'upmo', href: 'https://upmotool.com/' },
   { label: 'Signal.', href: 'https://www.sgnalapp.com/' },
   { label: 'MOGCIA Coffee', href: 'https://mogcia.official.ec/' },
 ]

@@ -9,24 +9,44 @@ type Product = {
   category: string
   categorySub?: string
   link?: string
+  buttonClassName?: string
+  titlePrefix?: string
+  titleDotColor?: string
+  titleSuffixClassName?: string
 }
 
 const products: Product[] = [
   {
-    title: "Upmo 業務改善サポートツール",
-    image: "/upmomein.png",
+    title: "Roomly. アプリ不要のチャットで、ホテルの問い合わせ対応をもっとシンプルに",
+    image: "/roomly.png",
+    date: "2026/02/28",
+    category: "事業・プロダクト情報",
+    categorySub: "",
+    link: "https://roomlychat.com/",
+    buttonClassName: "border-[#ad2218] bg-[#ad2218] text-white hover:bg-[#951d15] hover:border-[#951d15]",
+    titlePrefix: "Roomly",
+    titleDotColor: "#ad2218",
+    titleSuffixClassName: "text-base md:text-lg leading-relaxed",
+  },
+  {
+    title: "upmo 社内の情報をAIで一元化",
+    image: "/upmo.png",
     date: "2025/10/23",
     category: "事業・プロダクト情報",
     categorySub: "",
     link: "https://upmotool.com",
+    buttonClassName: "border-blue-600 bg-blue-600 text-white hover:bg-blue-700 hover:border-blue-700",
   },
   {
-    title: "Signal. SNSの90%自動化AIツール",
-    image: "/signalmein.png",
+    title: "Signal. あなた専用のSNSAI秘書",
+    image: "/signal.png",
     date: "2025/06/01",
     category: "事業・プロダクト情報",
     categorySub: "",
     link: "https://www.sgnalapp.com",
+    buttonClassName: "border-[#ff8a15] bg-[#ff8a15] text-white hover:bg-[#e57c12] hover:border-[#e57c12]",
+    titlePrefix: "Signal",
+    titleDotColor: "#ff8a15",
   },
   {
     title: "MOGCIA Coffee",
@@ -41,23 +61,23 @@ const products: Product[] = [
 export default function ProductsSection() {
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  const getCardConfig = (index: number) => {
-    const isFeatured = index < 2
-    return {
-      titleSize: isFeatured ? 'text-xl md:text-2xl' : 'text-lg md:text-xl',
-      dateSize: isFeatured ? 'text-xs md:text-sm' : 'text-[11px] md:text-xs',
-      padding: isFeatured ? 'p-8 md:p-9' : 'p-6 md:p-7',
-      minHeight: isFeatured ? 'min-h-[340px]' : 'min-h-[300px]',
-      mediaAspect: isFeatured ? 'aspect-[16/9]' : 'aspect-[4/3]'
-    }
+  const cardConfig = {
+    titleSize: 'text-xl md:text-2xl',
+    dateSize: 'text-xs md:text-sm',
+    padding: 'p-8 md:p-9',
+    minHeight: 'min-h-[340px]',
+    mediaAspect: 'aspect-[16/9]',
   }
 
   const renderCard = (product: Product, index: number) => {
-    const config = getCardConfig(index)
-    
+    const titleText =
+      product.titlePrefix && product.title.startsWith(`${product.titlePrefix}.`)
+        ? product.title.slice(product.titlePrefix.length + 1).trimStart()
+        : product.title
+
     const CardContent = (
       <>
-        <div className={`relative w-full ${config.mediaAspect} overflow-hidden`}
+        <div className={`relative w-full ${cardConfig.mediaAspect} overflow-hidden`}
         >
           <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
           {product.image && (
@@ -69,16 +89,49 @@ export default function ProductsSection() {
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         </div>
-        <div className={`${config.padding} flex-1 flex flex-col gap-4`}
+        <div className={`${cardConfig.padding} flex-1 flex flex-col gap-4`}
         >
           <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-gray-400">
             <span>{product.category}</span>
-            <span className={`${config.dateSize} text-gray-500 tracking-normal`}>{product.date}</span>
+            <span className={`${cardConfig.dateSize} text-gray-500 tracking-normal`}>{product.date}</span>
           </div>
-          <h3 className={`${config.titleSize} text-gray-900 font-light leading-snug`}>
-            {product.title}
+          <h3 className={`${cardConfig.titleSize} text-gray-900 font-light leading-snug`}>
+            {product.titlePrefix && product.titleDotColor ? (
+              <>
+                <span className="block">
+                  <span>{product.titlePrefix}</span>
+                  <span style={{ color: product.titleDotColor }}>.</span>
+                </span>
+                <span className={`block ${product.titleSuffixClassName ?? ''}`}>{titleText}</span>
+              </>
+            ) : (
+              product.title
+            )}
           </h3>
-          <span className="text-xs uppercase tracking-[0.25em] text-gray-400">View Details</span>
+          {product.link && (
+            <div className="pt-2">
+              <span
+                className={`inline-flex items-center justify-center gap-2 rounded-sm border px-4 py-2 text-xs tracking-[0.2em] shadow-sm transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-md ${product.buttonClassName ?? 'border-gray-300 bg-white text-gray-700 hover:border-gray-900 hover:text-gray-900'}`}
+              >
+                HPはこちら
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 20 20"
+                  className="h-4 w-4"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4.5 10H15.5M10.5 5L15.5 10L10.5 15"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </div>
+          )}
         </div>
       </>
     )
@@ -90,7 +143,7 @@ export default function ProductsSection() {
           href={product.link}
           target="_blank"
           rel="noopener noreferrer"
-          className={`group relative border border-gray-200 bg-white ${config.minHeight} flex flex-col overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_55px_rgba(24,32,56,0.12)]`}
+          className={`group relative border border-gray-200 bg-white ${cardConfig.minHeight} flex flex-col overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_55px_rgba(24,32,56,0.12)]`}
         >
           <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900 opacity-75 transition-opacity duration-700 group-hover:opacity-100"></span>
           {CardContent}
@@ -99,15 +152,12 @@ export default function ProductsSection() {
     }
     
     return (
-      <div key={index} className={`group relative border border-gray-200 bg-white ${config.minHeight} flex flex-col overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_55px_rgba(24,32,56,0.12)]`}>
+      <div key={index} className={`group relative border border-gray-200 bg-white ${cardConfig.minHeight} flex flex-col overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_55px_rgba(24,32,56,0.12)]`}>
         <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-[#f6e27a] via-[#d2c7ff] to-[#b3e1ff] opacity-75 transition-opacity duration-700 group-hover:opacity-100"></span>
         {CardContent}
       </div>
     )
   }
-
-  const topProducts = products.slice(0, 2)
-  const bottomProducts = products.slice(2)
 
   return (
     <section className="py-10 px-6 bg-white">
@@ -178,13 +228,8 @@ export default function ProductsSection() {
           </div>
         </div>
 
-        <div className="space-y-12 mt-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 xl:gap-12">
-            {topProducts.map((product, index) => renderCard(product, index))}
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10 xl:gap-12">
-            {bottomProducts.map((product, index) => renderCard(product, index + topProducts.length))}
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 xl:gap-12 mt-8">
+          {products.map((product, index) => renderCard(product, index))}
         </div>
       </div>
     </section>
