@@ -1,8 +1,20 @@
 import type { Metadata } from 'next'
+import { Inter, Noto_Sans_JP } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mogcia.net'
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-en',
+  display: 'swap',
+})
+
+const notoSansJp = Noto_Sans_JP({
+  subsets: ['latin'],
+  variable: '--font-ja',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -34,8 +46,8 @@ export const metadata: Metadata = {
     images: ['/MG%20Logo.png'],
   },
   icons: {
-    icon: '/MG%20Logo.png',
-    apple: '/MG%20Logo.png',
+    icon: '/ficon.png',
+    apple: '/ficon.png',
   },
 }
 
@@ -46,11 +58,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body>
+      <body className={`${inter.variable} ${notoSansJp.variable}`}>
         <Header />
         {children}
       </body>
     </html>
   )
 }
-

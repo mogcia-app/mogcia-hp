@@ -1,11 +1,11 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 const navLinks = [
-  { label: '企業理念', href: '/philosophy' },
   { label: 'サービス一覧', href: '/services' },
   { label: 'パートナー制度', href: '/partners' },
-  { label: '私たちについて', href: '/about' },
   { label: '会社概要', href: '/company' },
+  { label: '求人募集', href: '/recruit' },
   { label: 'お問い合わせ', href: '/contact' },
 ]
 
@@ -23,36 +23,56 @@ const legalLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-white">
-      <div className="py-16 space-y-12">
-        <div className="group relative border-y border-gray-200 bg-white px-6 sm:px-12 lg:px-24 py-14 overflow-hidden">
-          <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
+    <footer className="border-t border-neutral-200 bg-white">
+      <div className="px-6 py-14 md:px-10 md:py-16 lg:px-16 xl:px-20">
+        <div className="mx-auto w-full max-w-[1320px]">
+          <div className="grid gap-12 md:grid-cols-2 xl:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr] xl:gap-12">
+            <div className="space-y-6">
+              <div className="flex items-center gap-3">
+                <Image
+                  src="/m.png"
+                  alt="MOGCIA"
+                  width={160}
+                  height={48}
+                  className="h-auto w-[42px] md:w-[48px]"
+                />
+                <h2 className="text-[1.2rem] font-light tracking-[0.18em] text-neutral-950 md:text-[1.4rem]">
+                  株式会社MOGCIA
+                </h2>
+              </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr_1fr] gap-10 relative z-10 text-sm text-gray-600">
-            <div className="space-y-4">
-              <div>
-                <div className="flex items-center gap-4">
-                  
-                  <h3 className="text-base md:text-lg font-light text-gray-900 tracking-[0.35em] uppercase">株式会社MOGCIA</h3>
-                </div>
-                <p className="mt-3 text-sm text-gray-500">AIが支え、人の創造力が未来を動かす</p>
-              </div>
-              <div className="space-y-2 text-sm text-gray-500 leading-relaxed">
+              <div className="space-y-2 text-xs leading-6 text-neutral-600 md:text-sm">
                 <p>〒810-0001</p>
-                <p>福岡県福岡市中央区天神4-6-28<br/>いちご天神ノースビル７階</p>
+                <p>
+                  福岡県福岡市中央区天神4-6-28
+                  <br />
+                  いちご天神ノースビル7階
+                </p>
               </div>
-              <div className="space-y-1 text-sm text-gray-500">
-                <p>TEL: <a href="tel:092-517-9804" className="hover:text-gray-900 transition-colors">092-517-9804</a></p>
-                <p>MAIL: <a href="mailto:info@mogcia.jp" className="hover:text-gray-900 transition-colors">info@mogcia.jp</a></p>
+
+              <div className="space-y-2 text-xs leading-6 text-neutral-600 md:text-sm">
+                <p>
+                  TEL:{' '}
+                  <a href="tel:092-517-9804" className="transition-colors hover:text-neutral-950">
+                    092-517-9804
+                  </a>
+                </p>
+                <p>
+                  MAIL:{' '}
+                  <a href="mailto:info@mogcia.jp" className="transition-colors hover:text-neutral-950">
+                    info@mogcia.jp
+                  </a>
+                </p>
+                <p>営業時間：平日 10:00 - 17:00（土日祝除く）</p>
               </div>
             </div>
 
             <div>
-              <h4 className="text-xs uppercase tracking-[0.3em] text-gray-400 mb-4">ナビゲーション</h4>
-              <ul className="space-y-3 text-sm text-gray-600">
+              <h3 className="text-[10px] uppercase tracking-[0.42em] text-neutral-500">Navigation</h3>
+              <ul className="mt-5 space-y-3 text-xs text-neutral-600 md:text-sm">
                 {navLinks.map(link => (
                   <li key={link.label}>
-                    <Link href={link.href} className="hover:text-gray-900 transition-colors">
+                    <Link href={link.href} className="transition-colors hover:text-neutral-950">
                       {link.label}
                     </Link>
                   </li>
@@ -61,11 +81,24 @@ export default function Footer() {
             </div>
 
             <div>
-              <h4 className="text-xs uppercase tracking-[0.3em] text-gray-400 mb-4">サービス</h4>
-              <ul className="space-y-3 text-sm text-gray-600">
+              <h3 className="text-[10px] uppercase tracking-[0.42em] text-neutral-500">Products</h3>
+              <ul className="mt-5 space-y-3 text-xs text-neutral-600 md:text-sm">
                 {serviceLinks.map(link => (
                   <li key={link.label}>
-                    <Link href={link.href} className="hover:text-gray-900 transition-colors">
+                    <Link href={link.href} className="transition-colors hover:text-neutral-950">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-[10px] uppercase tracking-[0.42em] text-neutral-500">Legal</h3>
+              <ul className="mt-5 space-y-3 text-xs text-neutral-600 md:text-sm">
+                {legalLinks.map(link => (
+                  <li key={link.label}>
+                    <Link href={link.href} className="transition-colors hover:text-neutral-950">
                       {link.label}
                     </Link>
                   </li>
@@ -73,16 +106,9 @@ export default function Footer() {
               </ul>
             </div>
           </div>
-        </div>
 
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 px-6 sm:px-12 lg:px-24 text-xs text-gray-400">
-          <div>© 2023- MOGCIA Inc. All rights reserved.</div>
-          <div className="flex items-center gap-6">
-            {legalLinks.map(link => (
-              <Link key={link.label} href={link.href} className="hover:text-gray-900 transition-colors">
-                {link.label}
-              </Link>
-            ))}
+          <div className="mt-12 border-t border-neutral-200 pt-6 text-[11px] text-neutral-400">
+            © 2023- MOGCIA Inc. All rights reserved.
           </div>
         </div>
       </div>

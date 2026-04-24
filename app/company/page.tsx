@@ -14,54 +14,65 @@ const companyInfo = [
   { label: '取引銀行', value: '佐賀銀行' },
 ]
 
-const accessInfo = [
-  { label: '最寄駅', value: '福岡市地下鉄空港線「天神」駅 徒歩5分' },
-  { label: 'アクセス', value: '天神地下街東1b出口より北へ徒歩3分、1階にカフェが入っているビルの7階です。' },
-]
-
 export default function CompanyPage() {
   return (
-    <main className="bg-white text-gray-900">
+    <main className="bg-[#f7f7f5] text-neutral-950">
       <section className="relative h-[60vh] min-h-[440px] overflow-hidden">
-        <video
-          className="absolute inset-0 h-full w-full object-cover"
-          autoPlay
-          loop
-          muted
-          playsInline
-        >
-          <source src="/istockphoto-2196775101-640_adpp_is.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-black/35"></div>
-        <div className="relative z-10 flex h-full items-center justify-center">
-          <div className="max-w-3xl px-6 text-center text-white space-y-6">
-            <p className="text-xs uppercase tracking-[0.4em] text-white/70">Company Profile</p>
-            <h1 className="text-3xl md:text-5xl font-light tracking-wide">会社概要</h1>
-            <p className="text-sm md:text-base text-white/80 leading-relaxed">
-              MOGCIAの基本情報とアクセスを掲載しています。<br />
-              取引・採用・取材など各種お問い合わせの際にご参照ください。
+        <Image
+          src="/gt1.png"
+          alt="Company hero"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-bottom md:hidden"
+        />
+        <Image
+          src="/company.png"
+          alt="Company hero"
+          fill
+          priority
+          sizes="100vw"
+          className="hidden object-cover object-bottom md:block"
+        />
+      </section>
+
+      <section className="border-b border-neutral-200 px-6 py-16 md:px-10 md:py-20 lg:px-16 xl:px-20">
+        <div className="mx-auto w-full max-w-[1320px]">
+          <div className="max-w-3xl space-y-6">
+            <p className="text-[11px] uppercase tracking-[0.42em] text-neutral-500">Company Profile</p>
+            <h1 className="text-3xl font-light tracking-[-0.02em] text-neutral-950 md:text-5xl">会社概要</h1>
+            <p className="text-sm leading-8 text-neutral-600 md:text-base">
+              MOGCIAの基本情報とアクセスを掲載しています。
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-28 px-6">
-        <div className="max-w-5xl mx-auto space-y-14">
-          <div className="group relative border border-gray-200 bg-white px-10 md:px-16 py-16 shadow-[0_18px_55px_rgba(24,32,56,0.12)] overflow-hidden">
-            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
-            <div className="space-y-6 relative z-10">
-              <h2 className="text-2xl md:text-3xl font-light tracking-wide text-gray-900">基本情報</h2>
-              <div className="divide-y divide-gray-200 text-sm md:text-base text-gray-600">
+      <section className="px-6 py-20 md:px-10 md:py-24 lg:px-16 xl:px-20">
+        <div className="mx-auto w-full max-w-[1320px]">
+          <div className="grid gap-10 xl:grid-cols-[0.72fr_1.28fr] xl:gap-20">
+            <div>
+              <h2 className="text-3xl font-light tracking-[-0.02em] text-neutral-950 md:text-5xl">
+                基本情報
+              </h2>
+            </div>
+
+            <div className="border-t border-neutral-200 text-sm md:text-base text-neutral-700">
+              <div className="divide-y divide-neutral-200">
                 {companyInfo.map(item => (
-                  <div key={item.label} className="py-4 flex flex-col md:flex-row md:items-start md:gap-10">
-                    <dt className="md:w-48 uppercase text-xs tracking-[0.35em] text-gray-400 mb-2 md:mb-0">{item.label}</dt>
-                    <dd className="flex-1 leading-relaxed">{item.value}</dd>
+                  <div
+                    key={item.label}
+                    className="grid gap-2 py-5 md:grid-cols-[170px_1fr] md:gap-8"
+                  >
+                    <dt className="text-[11px] uppercase tracking-[0.3em] text-neutral-400">
+                      {item.label}
+                    </dt>
+                    <dd className="leading-8 text-neutral-700">{item.value}</dd>
                   </div>
                 ))}
               </div>
             </div>
           </div>
-
         </div>
       </section>
 

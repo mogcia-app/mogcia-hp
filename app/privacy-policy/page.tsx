@@ -34,63 +34,92 @@ const sections = [
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className="bg-white text-gray-900">
-      <section className="relative h-[55vh] min-h-[360px] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black opacity-85"></div>
-        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at top, rgba(255,255,255,0.25), transparent 55%)' }}></div>
-        <div className="relative z-10 flex h-full items-center justify-center">
-          <div className="max-w-3xl px-6 text-center text-white space-y-6">
-            <p className="text-xs uppercase tracking-[0.4em] text-white/70">Privacy Policy</p>
-            <h1 className="text-3xl md:text-5xl font-light tracking-wide">プライバシーポリシー</h1>
-            <p className="text-sm md:text-base text-white/80 leading-relaxed">
-              株式会社MOGCIA（以下、「当社」）は、お客様やパートナーの皆さまからお預かりする個人情報を適切に管理し、安心してサービスをご利用いただくために、以下の方針を定めます。
-            </p>
+    <main className="bg-[#f7f7f5] text-neutral-950">
+      <section className="border-b border-neutral-200 px-6 py-16 md:px-10 md:py-20 lg:px-16 xl:px-20">
+        <div className="mx-auto w-full max-w-[1320px]">
+          <div className="grid gap-10 xl:grid-cols-[0.72fr_1.28fr] xl:gap-20">
+            <div className="space-y-6">
+              <p className="text-[11px] uppercase tracking-[0.42em] text-neutral-500">Privacy Policy</p>
+              <h1 className="text-3xl font-light tracking-[-0.02em] text-neutral-950 md:text-5xl">
+                プライバシーポリシー
+              </h1>
+            </div>
+
+            <div className="space-y-8 border-t border-neutral-200 pt-7">
+              <p className="max-w-3xl text-sm leading-8 text-neutral-600 md:text-base">
+                株式会社MOGCIA（以下、「当社」）は、お客様やパートナーの皆さまからお預かりする個人情報を適切に管理し、
+                安心してサービスをご利用いただくために、以下の方針を定めます。
+              </p>
+              <p className="max-w-3xl text-sm leading-8 text-neutral-600 md:text-base">
+                当社は関連法令・ガイドラインを遵守し、取得した個人情報を適正に取り扱います。
+                利用目的を明確にし、必要な範囲で取得・利用・保存するとともに、
+                必要な安全管理措置を講じることで信頼性の高いサービス提供を目指します。
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="py-28 px-6">
-        <div className="max-w-5xl mx-auto space-y-16">
-          <div className="group relative border border-gray-200 bg-white px-10 md:px-16 py-16 shadow-[0_18px_55px_rgba(24,32,56,0.12)] overflow-hidden">
-            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
-            <div className="space-y-6 relative z-10">
-              <p className="text-xs uppercase tracking-[0.35em] text-gray-400">Policy Overview</p>
-              <h2 className="text-2xl md:text-3xl font-light tracking-wide text-gray-900">個人情報保護に関する基本方針</h2>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                当社は関連法令・ガイドラインを遵守し、取得した個人情報を適正に取り扱います。利用目的を明確にし、必要な範囲で取得・利用・保存するとともに、最新の安全管理措置を講じることで信頼性の高いサービス提供を目指します。
-              </p>
+      <section className="px-6 py-20 md:px-10 md:py-24 lg:px-16 xl:px-20">
+        <div className="mx-auto w-full max-w-[1320px]">
+          <div className="grid gap-10 xl:grid-cols-[0.72fr_1.28fr] xl:gap-20">
+            <div>
+              <p className="text-[11px] uppercase tracking-[0.42em] text-neutral-500">Policy</p>
+              <h2 className="mt-3 text-[1.45rem] font-light tracking-[-0.02em] text-neutral-950 md:text-[2.1rem]">
+                個人情報の取り扱い
+              </h2>
+            </div>
+
+            <div className="border-t border-neutral-200">
+              {sections.map(section => (
+                <article
+                  key={section.title}
+                  className="border-b border-neutral-200 py-7 md:py-8"
+                >
+                  <h3 className="text-[1.05rem] font-light tracking-[-0.02em] text-neutral-950 md:text-[1.2rem]">
+                    {section.title}
+                  </h3>
+                  <p className="mt-4 whitespace-pre-line text-sm leading-8 text-neutral-600 md:text-base">
+                    {section.body}
+                  </p>
+                </article>
+              ))}
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="space-y-10">
-            {sections.map(section => (
-              <div
-                key={section.title}
-                className="group relative border border-gray-200 bg-white px-8 md:px-12 py-12 shadow-[0_12px_40px_rgba(24,32,56,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_55px_rgba(24,32,56,0.12)]"
-              >
-                <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
-                <h3 className="text-lg md:text-xl font-light text-gray-900 tracking-wide group-hover:translate-x-1 transition-transform duration-400">
-                  {section.title}
-                </h3>
-                <p className="mt-4 text-sm md:text-base text-gray-600 leading-relaxed whitespace-pre-line">{section.body}</p>
-              </div>
-            ))}
-          </div>
+      <section className="px-6 pb-20 md:px-10 md:pb-24 lg:px-16 xl:px-20">
+        <div className="mx-auto w-full max-w-[1320px]">
+          <div className="grid gap-10 xl:grid-cols-[0.72fr_1.28fr] xl:gap-20">
+            <div>
+              <p className="text-[11px] uppercase tracking-[0.42em] text-neutral-500">Contact</p>
+              <h2 className="mt-3 text-[1.45rem] font-light tracking-[-0.02em] text-neutral-950 md:text-[2.1rem]">
+                お問い合わせ先
+              </h2>
+            </div>
 
-          <div className="group relative border border-gray-200 bg-white px-10 md:px-16 py-16 shadow-[0_18px_55px_rgba(24,32,56,0.12)] overflow-hidden">
-            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900"></span>
-            <div className="space-y-6 relative z-10 text-sm md:text-base text-gray-600 leading-relaxed">
-              <h3 className="text-lg md:text-xl font-light text-gray-900 tracking-wide">お問い合わせ先</h3>
+            <div className="border-t border-neutral-200 pt-7 text-sm leading-8 text-neutral-600 md:text-base">
               <p>
                 プライバシーポリシーに関するご質問・開示等のご依頼は、下記窓口までご連絡ください。
               </p>
-              <div className="space-y-2">
+              <div className="mt-6 space-y-1">
                 <p>株式会社MOGCIA 個人情報保護担当</p>
                 <p>〒810-0001 福岡県福岡市中央区天神4-6-28 いちご天神ノースビル7階</p>
-                <p>TEL: <a href="tel:092-517-9804" className="underline decoration-gray-300 hover:decoration-gray-900">092-517-9804</a></p>
-                <p>MAIL: <a href="mailto:info@mogcia.jp" className="underline decoration-gray-300 hover:decoration-gray-900">info@mogcia.jp</a></p>
+                <p>
+                  TEL:{' '}
+                  <a href="tel:092-517-9804" className="transition-colors hover:text-neutral-950">
+                    092-517-9804
+                  </a>
+                </p>
+                <p>
+                  MAIL:{' '}
+                  <a href="mailto:info@mogcia.jp" className="transition-colors hover:text-neutral-950">
+                    info@mogcia.jp
+                  </a>
+                </p>
               </div>
-              <p className="text-xs text-gray-400">制定日: 2025年4月1日</p>
+              <p className="mt-6 text-xs text-neutral-400">制定日: 2025年4月1日</p>
             </div>
           </div>
         </div>
@@ -101,5 +130,3 @@ export default function PrivacyPolicyPage() {
     </main>
   )
 }
-
-

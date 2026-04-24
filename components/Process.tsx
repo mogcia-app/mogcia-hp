@@ -1,10 +1,7 @@
-import { Fragment } from 'react'
-
 type ProcessStep = {
   title: string
   subtitle?: string
   description: string
-  subtitleClassName?: string
 }
 
 type ProcessSectionProps = {
@@ -40,50 +37,48 @@ const defaultFlows: ProcessFlow[] = [
       {
         title: 'Customization',
         subtitle: 'AIカスタマイズ',
-        description: '必要に応じてAI設定を調整。既存ツールでも柔軟に最適化を行います。',
+        description: '必要に応じて AI 設定を調整し、既存ツールでも柔軟に最適化を行います。',
       },
       {
         title: 'Launch',
         subtitle: '運用開始',
-        description: '短期間で本番運用へ。導入サポート資料の提供や初期オンボーディングも併せて実施します。',
+        description: '短期間で本番運用へ移行し、初期オンボーディングも併せて支援します。',
       },
       {
         title: 'Support',
         subtitle: '継続的なサポート',
-        subtitleClassName: 'text-sm md:text-base whitespace-nowrap',
-        description: '運用状況を定期的に確認し、効果測定や改善提案を実施。常に最大の成果が出るよう伴走します。',
+        description: '運用状況を定期的に確認し、効果測定や改善提案を継続します。',
       },
     ],
   },
   {
     heading: 'システム開発の流れ',
-    description: 'フルカスタムのシステム開発では、一貫したサポートを行います。',
+    description: 'フルカスタムのシステム開発では、要件整理から運用支援まで一貫してサポートします。',
     steps: [
       {
         title: 'Contact',
         subtitle: 'お問い合わせ',
-        description: 'まずは課題感・目的・スケジュール感などをヒアリングし、プロジェクトの前提を整理します。',
+        description: '課題感、目的、スケジュール感などをヒアリングし、プロジェクトの前提を整理します。',
       },
       {
         title: 'Hearing',
         subtitle: 'ヒアリング',
-        description: '関係者インタビューや業務フロー分析を通じて、要件定義に向けたインプットを網羅します。',
+        description: '関係者インタビューや業務フロー分析を通じて、要件定義に向けた材料を集めます。',
       },
       {
         title: 'Design',
         subtitle: '設計とご提案',
-        description: 'システム要件・UI/UX・データ構造などを整理し、ロードマップと概算見積を含む提案書を提示します。',
+        description: 'システム要件、UI/UX、データ構造を整理し、ロードマップと概算見積を提示します。',
       },
       {
         title: 'PoC',
         subtitle: '試験導入・検証',
-        description: '限定環境でのPoCやプロトタイプ検証を行い、効果測定・運用体制の検証を実施します。',
+        description: '限定環境での PoC やプロトタイプ検証を通じて、効果と運用体制を確認します。',
       },
       {
         title: 'Optimize',
         subtitle: '運用支援・最適化',
-        subtitleClassName: 'text-sm md:text-base whitespace-nowrap',
-        description: '本番導入後も継続的に改善を続け、追加開発や運用設計を含めた総合的な支援を提供します。',
+        description: '本番導入後も継続的な改善を行い、追加開発や運用設計を支援します。',
       },
     ],
   },
@@ -93,7 +88,7 @@ export default function ProcessSection({
   id,
   title = 'Process / How We Work',
   eyebrow = 'Our Approach',
-  description = 'お問い合わせから導入・運用まで、MOGCIAが提供する一連のプロセスをご紹介します。安心してお任せいただけるよう、各ステップで専門チームが伴走します。',
+  description = 'お問い合わせから導入、運用まで、MOGCIAが伴走する流れをご紹介します。',
   steps,
   flows,
 }: ProcessSectionProps) {
@@ -104,92 +99,49 @@ export default function ProcessSection({
       : defaultFlows
 
   return (
-    <section
-      id={id}
-      className="bg-white py-10 px-6"
-    >
-      <div className="w-full text-gray-900">
-        <div className="mb-16 md:mb-20">
+    <section id={id} className="border-b border-neutral-200 px-6 py-20 md:px-10 md:py-24 lg:px-16 xl:px-20">
+      <div className="mx-auto w-full max-w-[1320px] text-neutral-950">
+        <div className="grid gap-10 xl:grid-cols-[0.85fr_1.15fr] xl:gap-20">
           <div>
-            <p className="text-sm uppercase tracking-[0.35em] text-gray-400 mb-4">
-              {eyebrow}
-            </p>
-            <div className="relative inline-block mb-6">
-              <h2 className="text-3xl md:text-3xl lg:text-4xl font-light tracking-wide relative z-10">
-                {title}
-              </h2>
-              <span className="absolute -bottom-2 left-0 w-full h-5 bg-gradient-to-r from-gray-400/60 via-gray-700/40 to-transparent -z-10"></span>
-            </div>
-            <p className="text-sm md:text-base text-gray-500 max-w-2xl leading-relaxed">
-              {description}
-            </p>
+            <p className="text-[11px] uppercase tracking-[0.42em] text-neutral-500">{eyebrow}</p>
+            <h2 className="mt-5 text-3xl font-light tracking-[-0.02em] md:text-5xl">{title}</h2>
+            <p className="mt-8 max-w-xl text-base leading-8 text-neutral-700 md:text-lg">{description}</p>
           </div>
-        </div>
 
-        <div className="space-y-16">
-          {resolvedFlows.map((flow, flowIndex) => (
-            <div key={flowIndex}>
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
-                <h3 className="text-xl md:text-2xl font-light text-gray-900 tracking-wide">
-                  {flow.heading}
-                </h3>
-                {flow.description && (
-                  <p className="text-sm md:text-base text-gray-500 max-w-3xl leading-relaxed">
-                    {flow.description}
-                  </p>
-                )}
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-8 xl:gap-10">
-                {flow.steps.map((step, index) => (
-                  <div
-                    key={index}
-                    className="group relative bg-white border border-gray-200 px-8 py-12 flex flex-col gap-6 shadow-[0_15px_45px_rgba(15,23,42,0.08)] transition-all duration-700 hover:-translate-y-3 hover:shadow-[0_25px_60px_rgba(15,23,42,0.12)]"
-                  >
-                    <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900 opacity-75 transition-opacity duration-700 group-hover:opacity-100"></span>
-
-                    <div className="flex items-center justify-between">
-                      <div className="text-sm uppercase tracking-[0.3em] text-gray-400">
-                        Step {String(index + 1).padStart(2, '0')}
-                      </div>
-                      <div className="w-12 h-px bg-gray-200"></div>
-                    </div>
-
-                    <div>
-                      <p className="text-sm text-gray-400 mb-1 tracking-wide uppercase">
-                        {step.title}
-                      </p>
-                      {step.subtitle && (
-                        <h4 className={`text-base md:text-lg font-light text-gray-900 tracking-normal leading-snug group-hover:translate-x-1 transition-transform duration-500 ${step.subtitleClassName ?? ''}`}>
-                          {step.subtitle.includes('（') ? (
-                            step.subtitle.split('（').map((part, subIndex) => (
-                              <span key={subIndex} className="block">
-                                {subIndex === 0 ? part : `（${part}`}
-                              </span>
-                            ))
-                          ) : (
-                            step.subtitle
-                          )}
-                        </h4>
-                      )}
-                    </div>
-
-                    <p className="text-sm text-gray-500 leading-relaxed flex-1">
-                      {step.description}
+          <div className="space-y-14">
+            {resolvedFlows.map(flow => (
+              <div key={flow.heading}>
+                <div className="border-t border-neutral-200 pt-6">
+                  <h3 className="text-2xl font-light text-neutral-950">{flow.heading}</h3>
+                  {flow.description ? (
+                    <p className="mt-3 max-w-3xl text-sm leading-7 text-neutral-700 md:text-base">
+                      {flow.description}
                     </p>
+                  ) : null}
+                </div>
 
-                    <div className="flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-gray-300">
-                      <span className="h-px w-8 bg-gray-200"></span>
-                      Next
+                <div className="mt-6 border-t border-neutral-200">
+                  {flow.steps.map((step, index) => (
+                    <div
+                      key={`${flow.heading}-${step.title}-${index}`}
+                      className="grid gap-3 border-b border-neutral-200 py-5 md:grid-cols-[88px_220px_1fr] md:gap-6"
+                    >
+                      <p className="text-sm text-neutral-400">{String(index + 1).padStart(2, '0')}</p>
+                      <div>
+                        <p className="text-[11px] uppercase tracking-[0.28em] text-neutral-500">{step.title}</p>
+                        {step.subtitle ? (
+                          <h4 className="mt-2 text-lg font-light text-neutral-950">{step.subtitle}</h4>
+                        ) : null}
+                      </div>
+                      <p className="text-sm leading-7 text-neutral-700 md:text-base">{step.description}</p>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
   )
 }
-

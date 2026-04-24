@@ -1,620 +1,415 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 import ProductsSection from '@/components/Products'
-import ProcessSection from '@/components/Process'
 import Footer from '@/components/Footer'
 import ContactSection from '@/components/ContactSection'
 
+const newsItems = [
+  {
+    date: '2025.12.05',
+    title: 'upmoのテスト導入スタート',
+    description: '企業の情報整理と業務改善を支援する AI ツールのテスト導入を複数社で開始しました。',
+    tag: 'PRESS',
+  },
+  {
+    date: '2025.08.15',
+    title: 'Signal. テスト導入スタート',
+    description: 'SNS運用の自動化を目指す AI ツールのテスト導入を複数社で開始しました。',
+    tag: 'NEWS',
+  },
+  {
+    date: '2025.01.08',
+    title: 'MOGCIA Coffee POPUP',
+    description: 'Choosebase SHIBUYA にて MOGCIA Coffee の販売を実施しました。',
+    tag: 'EVENT',
+  },
+]
+
+const newsTagStyles: Record<string, string> = {
+  PRESS: 'bg-[#e8f1ff] text-[#2457a6]',
+  NEWS: 'bg-[#edf7ee] text-[#2f6b3b]',
+  EVENT: 'bg-[#fff1e7] text-[#a45a1c]',
+}
+
+const blogPosts = [
+  {
+    title: 'LP作成って、何から始めるべき？',
+    image: '/blog5.png',
+    href: '/blog/lp-start-guide',
+    tag: 'お役立ち',
+  },
+  {
+    title: 'SNS運用代行の流れとは？',
+    image: '/sns2.png',
+    href: '/blog/sns-management-flow',
+    tag: 'プロダクト',
+  },
+  {
+    title: 'チャット対応を入れても満足度が上がらない理由',
+    image: '/blog3.png',
+    href: '/blog/sns-operations',
+    tag: 'お役立ち',
+  },
+  {
+    title: 'SNS運用が続かない会社の共通点',
+    image: '/blog2.png',
+    href: '/blog/product-design',
+    tag: 'お役立ち',
+  },
+  {
+    title: '「導入したのに変わらない」会社に共通する問題',
+    image: '/blog1.png',
+    href: '/blog/ai-adoption',
+    tag: 'お役立ち',
+  },
+]
+
+const blogFilters = ['すべて', 'お役立ち', 'プロダクト'] as const
+
+const heroBackgrounds = ['/mein1.svg', '/mein2.svg', '/mein3.svg']
+const heroMobileBackgrounds = ['/gt1.png', '/gt2.png', '/gt3.png']
+
 export default function Home() {
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [isVideoVisible, setIsVideoVisible] = useState(false)
-  const [heroOpacity, setHeroOpacity] = useState(1)
-  const [heroScale, setHeroScale] = useState(1)
-  const [showFinalBody, setShowFinalBody] = useState(false)
-  const [showFinalTitle, setShowFinalTitle] = useState(false)
-  const [showSlides, setShowSlides] = useState(true)
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const videoSectionRef = useRef<HTMLDivElement>(null)
-  const heroRef = useRef<HTMLDivElement>(null)
-  const slideVideoRefs = useRef<(HTMLVideoElement | null)[]>([])
+  const aboutRef = useRef<HTMLElement | null>(null)
+  const blogScrollerRef = useRef<HTMLDivElement | null>(null)
+  const [aboutVisible, setAboutVisible] = useState(false)
+  const [heroBackgroundIndex, setHeroBackgroundIndex] = useState(0)
+  const [selectedBlogTag, setSelectedBlogTag] = useState<(typeof blogFilters)[number]>('すべて')
 
-  // ヒーローセクションのスクロール効果
   useEffect(() => {
-    const handleScroll = () => {
-      if (!heroRef.current) return
-      const scroll = window.scrollY
-      const heroHeight = window.innerHeight
-      const progress = Math.min(scroll / (heroHeight * 0.3), 1)
-      setHeroOpacity(1 - progress)
-      setHeroScale(1 - progress * 0.2)
-    }
+    const node = aboutRef.current
+    if (!node) return
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    const observer = new IntersectionObserver(
+      entries => {
+        const entry = entries[0]
+        setAboutVisible(Boolean(entry?.isIntersecting))
+      },
+      { threshold: 0.25, rootMargin: '0px 0px -10% 0px' },
+    )
+
+    observer.observe(node)
+
+    return () => observer.disconnect()
   }, [])
 
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setHeroBackgroundIndex(current => (current + 1) % heroBackgrounds.length)
+    }, 4500)
+
+    return () => window.clearInterval(timer)
+  }, [])
 
   useEffect(() => {
-    if (!showSlides) return
+    const nodes = Array.from(
+      document.querySelectorAll<HTMLElement>('[data-scroll-reveal]'),
+    )
 
-    slideVideoRefs.current.forEach((video, index) => {
-      if (!video) return
+    if (nodes.length === 0) return
 
-      if (index === currentSlide) {
-        video.currentTime = 0
-        const playPromise = video.play()
-        if (playPromise !== undefined) {
-          playPromise.catch(() => {})
-        }
-      } else {
-        video.pause()
-        video.currentTime = 0
-      }
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return
+
+          entry.target.classList.add('is-visible')
+          observer.unobserve(entry.target)
+        })
+      },
+      { threshold: 0.16, rootMargin: '0px 0px -8% 0px' },
+    )
+
+    nodes.forEach(node => observer.observe(node))
+
+    return () => observer.disconnect()
+  }, [])
+
+  const scrollBlogCards = (direction: 'left' | 'right') => {
+    const node = blogScrollerRef.current
+    if (!node) return
+
+    const amount = Math.min(node.clientWidth * 0.9, 420)
+    node.scrollBy({
+      left: direction === 'left' ? -amount : amount,
+      behavior: 'smooth',
     })
-
-    // スライドごとに異なる時間で次のスライドに切り替え
-    if (currentSlide < slides.length - 1) {
-      const delay = currentSlide === 0 ? 5000 : 4000 // 1番目は5秒、2番目は4秒
-      const timer = setTimeout(() => {
-        setCurrentSlide(prev => prev + 1)
-      }, delay)
-      return () => clearTimeout(timer)
-    }
-  }, [currentSlide, showSlides])
-
-  // スライドのアニメーション
-  useEffect(() => {
-    if (!showSlides) {
-      setShowFinalBody(false)
-      setShowFinalTitle(false)
-      if (slideVideoRefs.current[0]) {
-        slideVideoRefs.current[0].pause()
-        slideVideoRefs.current[0].currentTime = 0
-      }
-      return
-    }
-    if (currentSlide === 0) {
-      // 動画を最初から再生
-      if (slideVideoRefs.current[0]) {
-        slideVideoRefs.current[0].currentTime = 0
-        slideVideoRefs.current[0].play()
-      }
-      
-      // 背景が表示された後、少し遅れて文字を表示
-      setShowFinalBody(false)
-      setShowFinalTitle(false)
-      const timer = setTimeout(() => {
-        setShowFinalBody(true)
-        setShowFinalTitle(true)
-      }, 7000) // 7秒後に文字を表示
-      
-      return () => {
-        clearTimeout(timer)
-      }
-    } else {
-      // 他のスライドに戻ったらリセット
-      setShowFinalBody(false)
-      setShowFinalTitle(false)
-      // 動画を一時停止
-      if (slideVideoRefs.current[0]) {
-        slideVideoRefs.current[0].pause()
-      }
-    }
-  }, [currentSlide, showSlides])
-
-  // ビデオスクロール同期
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!videoRef.current || !videoSectionRef.current) return
-
-      const rect = videoSectionRef.current.getBoundingClientRect()
-      const isVisible = rect.top < window.innerHeight && rect.bottom > 0
-
-      if (isVisible) {
-        setIsVideoVisible(true)
-        // スクロール位置に基づいて動画の再生位置を調整
-        const scrollProgress =
-          (window.innerHeight - rect.top) / (window.innerHeight + rect.height)
-        const time = Math.max(0, Math.min(1, scrollProgress)) * videoRef.current.duration
-        if (!isNaN(time)) {
-          videoRef.current.currentTime = time
-        }
-      } else {
-        setIsVideoVisible(false)
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const slides = [
-    { 
-      title: '株式会社MOGCIA',
-      subtitle: '',
-      body: 'AIが支え、人の創造力が未来を動かす',
-      video: '/videos/mv3.mp4',
-      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80',
-      center: true,
-      titleClassName: 'text-xl md:text-2xl uppercase tracking-[0.35em] font-light'
-    },
-  ]
-
-  const handleVideoEnded = (index: number) => {
-    if (!showSlides) return
-    if (index < slides.length - 1) {
-      setCurrentSlide(index + 1)
-    }
   }
 
+  const filteredBlogPosts =
+    selectedBlogTag === 'すべて'
+      ? blogPosts
+      : blogPosts.filter(post => post.tag === selectedBlogTag)
+
   return (
-    <main className="min-h-screen bg-white text-gray-900">
-      {/* Hero Section with Slides */}
-      <section
-        ref={heroRef}
-        className="relative h-[70vh] overflow-hidden transition-opacity duration-700"
-        style={{ opacity: showSlides ? 1 : 0 }}
-      >
-        {/* Background Videos for Slides */}
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-opacity ease-out ${
-              index === currentSlide ? 'opacity-100 z-0' : 'opacity-0 z-0'
-            }`}
-            style={{ transitionDuration: '4000ms' }}
-          >
-            <div className="absolute inset-0 transition-all ease-out"
-              style={{
-                transform: index === currentSlide ? 'scale(1.1)' : 'scale(1)',
-                filter: index === currentSlide ? 'blur(0px)' : 'blur(2px)',
-                transition: 'transform 4000ms ease-out, filter 4000ms ease-out'
-              }}
-            >
-              <video
-                ref={(el) => { slideVideoRefs.current[index] = el }}
-                className="absolute inset-0 w-full h-full object-cover"
-                autoPlay={index === currentSlide && showSlides}
-                loop={false}
-                muted
-                playsInline
-                key={`slide-video-${index}`}
-                onEnded={() => handleVideoEnded(index)}
-              >
-                <source src={slide.video} type="video/mp4" />
-              </video>
-              {/* 白いオーバーレイ */}
-              <div className="absolute inset-0 bg-white/25 pointer-events-none"></div>
-            </div>
-          </div>
-        ))}
-
-        {/* Content on top of images */}
-        <div
-          className="absolute inset-0 transition-opacity z-30"
-          style={{ opacity: heroOpacity, transform: `scale(${heroScale})`, transitionDuration: '2000ms' }}
-        >
-          {slides.map((slide, index) => (
+    <main className="min-h-screen bg-[#f7f7f5] text-neutral-950">
+      <section className="relative min-h-[86vh] overflow-hidden">
+        <div className="absolute inset-0">
+          {heroMobileBackgrounds.map((src, index) => (
             <div
-              key={`content-${index}`}
-              className={`absolute inset-0 flex ${slide.center ? 'items-center justify-center' : 'items-end justify-end'} transition-opacity ease-out ${
-                index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+              key={src}
+              aria-hidden="true"
+              className={`absolute inset-0 transition-all duration-[2400ms] ease-[cubic-bezier(0.16,1,0.3,1)] md:hidden ${
+                index === heroBackgroundIndex
+                  ? 'scale-[1.01] opacity-100'
+                  : 'scale-[1.03] opacity-0'
               }`}
-              style={{ transitionDuration: '4000ms' }}
-            >
-              <div
-                className={`max-w-3xl px-4 md:px-10 py-10 md:py-12 bg-white/15 backdrop-blur border border-gray-200/30 shadow-[0_25px_70px_rgba(24,32,56,0.12)] ${
-                  slide.center ? 'text-center' : 'text-right'
-                } relative z-40 flex flex-col gap-3 md:gap-4 transition-all duration-1000 ease-out ${
-                  index === 0 && showFinalBody ? 'opacity-100 translate-y-0' : index === 0 ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'
-                }`}
-              >
-                <p className={`text-[0.65rem] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] text-gray-900 transition-all duration-1000 ease-out ${
-                  index === 0 && showFinalBody ? 'opacity-100 translate-y-0' : index === 0 ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'
-                }`}>
-                  Enterprise
-                </p>
-                {index === 0 ? (
-                  // スライドは順番に表示
-                  <>
-                    <p
-                      className={`text-sm md:text-xl font-light text-gray-900 transition-all duration-1000 ease-out ${
-                        showFinalBody ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                      }`}
-                    >
-                      {slide.body}
-                    </p>
-                    <h1
-                      className={`${
-                        slide.titleClassName ?? 'text-2xl md:text-4xl font-light'
-                      } text-gray-900 leading-tight mt-3 md:mt-4 transition-all duration-1000 ease-out ${
-                        showFinalTitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                      }`}
-                    >
-                      {slide.title}
-                    </h1>
-                  </>
-                ) : (
-                  // 他のスライドは通常表示
-                  <>
-                    {slide.subtitle && (
-                      <p className="text-[0.65rem] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] text-gray-400">
-                        {slide.subtitle}
-                      </p>
-                    )}
-                    {slide.body && (
-                      <p className="text-sm md:text-xl font-light text-gray-600 leading-relaxed">
-                        {slide.body}
-                      </p>
-                    )}
-                    <h1
-                      className={`${
-                        slide.titleClassName ?? 'text-2xl md:text-4xl font-light'
-                      } text-gray-900 leading-tight mt-3 md:mt-4`}
-                    >
-                      {slide.title}
-                    </h1>
-                  </>
-                )}
-              </div>
-            </div>
+              style={{
+                backgroundImage: `url('${src}')`,
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+              }}
+            />
           ))}
-        </div>
-
-        {/* Slide Indicators */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`h-3 rounded-full transition-all duration-300 ${
-                index === currentSlide
-                  ? 'bg-gray-900 w-10'
-                  : 'bg-gray-300 w-3 hover:bg-gray-400'
+          {heroBackgrounds.map((src, index) => (
+            <div
+              key={src}
+              aria-hidden="true"
+              className={`absolute inset-0 hidden transition-all duration-[2400ms] ease-[cubic-bezier(0.16,1,0.3,1)] md:block ${
+                index === heroBackgroundIndex
+                  ? 'scale-[1.01] opacity-100'
+                  : 'scale-[1.03] opacity-0'
               }`}
+              style={{
+                backgroundImage: `url('${src}')`,
+                backgroundPosition: '82% center',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+              }}
             />
           ))}
         </div>
-
-      
-      </section>
-
-      {/* About Us Section */}
-      <section className="py-10 px-6">
-        <div className="w-full">
-          <div className="group relative border border-gray-200 bg-white px-12 py-16 overflow-visible shadow-[0_18px_55px_rgba(24,32,56,0.12)] transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_26px_70px_rgba(24,32,56,0.16)]">
-            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900 opacity-80 transition-opacity duration-700 group-hover:opacity-100"></span>
-           
-
-            <div className="space-y-10 relative z-10">
-              <div className="space-y-4">
-                <p className="text-xs uppercase tracking-[0.4em] text-gray-400">About Us</p>
-                <div className="relative inline-block">
-                  <h2 className="text-[18px] md:text-4xl font-light tracking-wide relative z-10">
-                    AIが切り拓く無限の可能性
-                  </h2>
-                  <span className="absolute -bottom-2 left-0 w-full h-4 overflow-hidden -z-10">
-                    <span 
-                      className="block h-full w-full"
-                      style={{
-                        backgroundImage: 'linear-gradient(90deg, rgba(156, 163, 175, 0) 0%, rgba(156, 163, 175, 0.4) 30%, rgba(107, 114, 128, 0.3) 60%, rgba(156, 163, 175, 0) 100%)',
-                        backgroundSize: '220% 100%',
-                        transform: 'translateX(-110%)',
-                        animation: 'gradient-line-slide 5s ease-in-out infinite'
-                      }}
-                    ></span>
-                  </span>
-                </div>
-                <p className="text-sm uppercase tracking-[0.25em] text-gray-400 pl-2">
-                Co-Innovate with AI.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 md:items-start">
-                <div className="space-y-5 text-base md:text-lg text-gray-600 leading-relaxed">
-                  <p>
-                    私たちは、AI・デジタル技術を活用し<br />企業の業務改善と生産性向上を支援しています
-                  </p>
-                  <p>
-                    現場の課題を起点に<br />戦略設計から導入、運用までを一貫してサポート<br />継続的に成果が出る仕組みづくりを行います
-                  </p>
-                  <p>
-                    変化の多い時代においても<br />安定して使い続けられるAI活用を目指しています
-                  </p>
-                 
-                
-                </div>
-
-                <div className="relative mt-8 md:mt-0">
-                  <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-lg">
-                    <video
-                      className="w-full h-full object-cover"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                    >
-                      <source src="/videos/mv1.mp4" type="video/mp4" />
-                    </video>
-                    {/* 白いオーバーレイ */}
-                    <div className="absolute inset-0 bg-white/20 pointer-events-none"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div className="relative mx-auto flex min-h-[86vh] w-full max-w-[1320px] items-end px-6 pb-14 md:px-10 md:pb-18 lg:px-16 lg:pb-24 xl:px-20">
+          <div className="max-w-[680px]">
+            <h1
+              className="max-w-none text-[1.28rem] font-light leading-[1.22] tracking-[-0.035em] text-white opacity-0 md:text-[1.95rem] lg:text-[2.3rem] lg:leading-[1.14]"
+              style={{ animation: 'slide-up 0.9s ease-out 0.1s forwards' }}
+            >
+              戦略も、体験も、運用も
+              <span className="mt-2 block lg:mt-3">すべて、ひとつの仕組みで。</span>
+            </h1>
           </div>
         </div>
       </section>
 
-      {/* News Section 2 */}
-      <section className="py-10 px-6">
-        <div className="w-full">
-          <div className="group relative border border-gray-200 bg-white px-12 py-16 overflow-visible shadow-[0_18px_55px_rgba(24,32,56,0.12)] transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_26px_70px_rgba(24,32,56,0.16)]">
-            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900 opacity-80 transition-opacity duration-700 group-hover:opacity-100"></span>
-            
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 relative z-10">
-              <div>
-                <p className="text-xs uppercase tracking-[0.4em] text-gray-400 mb-3">Updates</p>
-                <div className="relative inline-block">
-                  <div className="flex items-center gap-3">
-                    <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    <h2 className="text-2xl md:text-3xl font-light tracking-wide relative z-10">
-                      News & Topics
-                    </h2>
-                  </div>
-                  <span className="absolute -bottom-2 left-0 w-full h-4 overflow-hidden -z-10">
-                    <span 
-                      className="block h-full w-full"
-                      style={{
-                        backgroundImage: 'linear-gradient(90deg, rgba(156, 163, 175, 0) 0%, rgba(156, 163, 175, 0.4) 30%, rgba(107, 114, 128, 0.3) 60%, rgba(156, 163, 175, 0) 100%)',
-                        backgroundSize: '220% 100%',
-                        transform: 'translateX(-110%)',
-                        animation: 'gradient-line-slide 5s ease-in-out infinite'
-                      }}
-                    ></span>
-                  </span>
-                </div>
-              </div>
-             
+      <ProductsSection />
+
+      <section data-scroll-reveal className="scroll-reveal px-6 py-20 md:px-10 md:py-24 lg:px-16 xl:px-20">
+        <div className="mx-auto w-full max-w-[1320px]">
+          <div className="grid gap-12 xl:grid-cols-[0.62fr_1.38fr] xl:gap-20">
+            <div>
+              <p className="text-[11px] uppercase tracking-[0.42em] text-neutral-500">News</p>
+              <h2 className="text-3xl font-light tracking-[-0.02em] text-neutral-950 md:text-5xl">
+                お知らせ
+              </h2>
+              <p className="mt-6 max-w-sm text-sm leading-7 text-neutral-600 md:text-base">
+                MOGCIAの取り組みやプロダクトに関する最新情報を掲載しています。
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
-              {[
-                { date: '2025.09.05', title: 'AI業務改善支援ツールUpmoの開発開始', description: '企業の業務改善支援ツールUpmoの開発を開始しました。', tag: 'PRESS' },
-                { date: '2025.08.15', title: 'Signal.テスト導入スタート', description: 'SNS運用の90%自動化AIツールSignal.のテスト導入を複数社で開始。', tag: 'NEWS' },
-                { date: '2025.01.08', title: 'MOGCIA Coffee POPUP', description: 'Choosebase SHIBUYAにてMOGCIA Coffeeを販売中。', tag: 'EVENT' },
-              ].map((news, index) => (
-                <div
-                  key={index}
-                  className="group relative py-6 px-6 border border-gray-200 bg-gray-50/30 hover:bg-gray-50 hover:border-gray-300 hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-all duration-300"
+            <div className="border-t border-neutral-200">
+              {newsItems.map(item => (
+                <article
+                  key={`${item.date}-${item.title}`}
+                  className="grid gap-3 border-b border-neutral-200 py-7 transition-colors duration-300 md:grid-cols-[140px_90px_1fr] md:gap-6"
                 >
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="text-xs uppercase tracking-[0.3em] text-gray-500 font-medium">{news.tag}</span>
-                    <span className="text-xs text-gray-400">•</span>
-                    <span className="text-xs text-gray-500">{news.date}</span>
-                  </div>
-                  <h3 className="text-base md:text-lg font-light text-gray-900 leading-snug mb-2 group-hover:text-gray-700 transition-colors">
-                    {news.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    {news.description}
+                  <p className="text-sm text-neutral-500">{item.date}</p>
+                  <p
+                    className={`inline-flex w-fit items-center rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.24em] ${
+                      newsTagStyles[item.tag] ?? 'bg-neutral-200 text-neutral-700'
+                    }`}
+                  >
+                    {item.tag}
                   </p>
-                </div>
+                  <div>
+                    <h3 className="text-[1.15rem] font-light leading-[1.35] text-neutral-950 md:text-[1.35rem]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 max-w-3xl text-[12px] leading-6 text-neutral-600 md:text-[13px]">
+                      {item.description}
+                    </p>
+                  </div>
+                </article>
               ))}
             </div>
           </div>
         </div>
       </section>
 
+      <section
+        id="about"
+        ref={aboutRef}
+        className="scroll-reveal relative overflow-hidden px-6 py-20 md:px-10 md:py-24 lg:px-16 xl:px-20"
+        data-scroll-reveal
+      >
+        <div
+          className="pointer-events-none absolute inset-0 bg-center bg-no-repeat md:hidden"
+          style={{ backgroundImage: "url('/gt3.png')", backgroundSize: 'cover' }}
+        />
+        <div
+          className="pointer-events-none absolute inset-0 hidden bg-center bg-no-repeat md:block"
+          style={{ backgroundImage: "url('/mein3.svg')", backgroundSize: 'cover' }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/38 via-black/12 to-transparent" />
+        <div className="relative mx-auto flex min-h-[72vh] w-full max-w-[1320px] items-end">
+          <div className="relative z-10 ml-auto max-w-3xl space-y-8 pb-4 md:pb-8">
+            <div
+              className={aboutVisible ? 'space-y-5 opacity-0' : 'space-y-5 opacity-100'}
+              style={aboutVisible ? { animation: 'slide-up 0.9s ease-out 0.1s forwards' } : undefined}
+            >
+              <p className="text-[11px] uppercase tracking-[0.42em] text-white">About Us</p>
+            </div>
 
-      {/* Why Choose MOGCIA Section */}
-      <section id="services" className="py-10 px-6 bg-white">
-      <div className="w-full">
-          <div className="group relative border border-gray-200 bg-white px-12 py-16 overflow-hidden shadow-[0_18px_55px_rgba(24,32,56,0.12)] transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_26px_70px_rgba(24,32,56,0.16)]">
-            <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900 opacity-80 transition-opacity duration-700 group-hover:opacity-100"></span>
+            <div
+              className={aboutVisible ? 'space-y-5 pt-1 opacity-0' : 'space-y-5 pt-1 opacity-100'}
+              style={aboutVisible ? { animation: 'slide-up 0.9s ease-out 0.28s forwards' } : undefined}
+            >
+              <p className="text-[1.2rem] font-light leading-[1.5] tracking-[-0.02em] text-white md:text-[1.45rem]">
+                MOGCIAは、AIとテクノロジーで
+              </p>
+              <p className="text-[1.2rem] font-light leading-[1.5] tracking-[-0.02em] text-white md:text-[1.45rem]">
+                戦略から、実装・運用までを一気通貫で支援するIT企業です。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="space-y-10 relative z-10">
-              <div className="space-y-4">
-                <p className="text-xs uppercase tracking-[0.4em] text-gray-400">Why Choose MOGCIA</p>
-                <div className="relative inline-block">
-                  <h2 className="text-xl md:text-4xl font-light tracking-wide relative z-10">
-                    MOGCIAが選ばれる理由
-                  </h2>
-                <span className="absolute -bottom-2 left-0 w-full h-4 overflow-hidden -z-10">
-                  <span 
-                    className="block h-full w-full"
-                    style={{
-                      backgroundImage: 'linear-gradient(90deg, rgba(156, 163, 175, 0) 0%, rgba(156, 163, 175, 0.4) 30%, rgba(107, 114, 128, 0.3) 60%, rgba(156, 163, 175, 0) 100%)',
-                      backgroundSize: '220% 100%',
-                      transform: 'translateX(-110%)',
-                      animation: 'gradient-line-slide 5s ease-in-out infinite'
+      <section data-scroll-reveal className="scroll-reveal px-6 py-12 md:px-10 md:py-16 lg:px-16 xl:px-20">
+        <div className="mx-auto grid w-full max-w-[1320px] gap-5 md:grid-cols-2 md:gap-6">
+          <Link href="/recruit" className="group relative block aspect-[4/3] overflow-hidden">
+            <Image
+              src="/a.png"
+              alt="About visual A"
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+            />
+            <div className="absolute inset-0 bg-black/50 transition-colors duration-500 group-hover:bg-black/58" />
+            <div className="absolute inset-0 flex items-center justify-center p-6 md:p-8">
+              <p className="text-lg font-light tracking-[0.08em] text-white transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1 md:text-2xl">
+                求人募集
+              </p>
+            </div>
+            <div className="absolute inset-x-0 bottom-0 h-px bg-white/0 transition-all duration-500 group-hover:bg-white/70" />
+          </Link>
+          <Link href="/company" className="group relative block aspect-[4/3] overflow-hidden">
+            <Image
+              src="/e.png"
+              alt="About visual B"
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover object-[42%_center] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+            />
+            <div className="absolute inset-0 bg-black/50 transition-colors duration-500 group-hover:bg-black/58" />
+            <div className="absolute inset-0 flex items-center justify-center p-6 md:p-8">
+              <p className="text-lg font-light tracking-[0.08em] text-white transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1 md:text-2xl">
+                会社概要
+              </p>
+            </div>
+            <div className="absolute inset-x-0 bottom-0 h-px bg-white/0 transition-all duration-500 group-hover:bg-white/70" />
+          </Link>
+        </div>
+      </section>
+
+      <section data-scroll-reveal className="scroll-reveal px-6 py-16 md:px-10 md:py-20 lg:px-16 xl:px-20">
+        <div className="mx-auto w-full max-w-[1320px]">
+          <div className="mb-8 flex flex-col gap-6 md:mb-10">
+            <div>
+              <p className="text-[11px] uppercase tracking-[0.42em] text-neutral-500">Blog</p>
+            </div>
+
+            <div>
+              <h2 className="text-[1.9rem] font-light tracking-[-0.02em] text-neutral-950 md:text-[2.8rem]">
+                ブログ
+              </h2>
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              {blogFilters.map(filter => {
+                const isActive = selectedBlogTag === filter
+
+                return (
+                  <button
+                    key={filter}
+                    type="button"
+                    onClick={() => {
+                      setSelectedBlogTag(filter)
+                      blogScrollerRef.current?.scrollTo({ left: 0, behavior: 'smooth' })
                     }}
-                  ></span>
-                </span>
-                </div>
-                <p className="text-sm uppercase tracking-[0.25em] text-gray-400 pl-2">
-                  Human × AI Partnership
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-[1fr_1fr] gap-10 items-center">
-                <p className="text-base md:text-lg text-gray-700 leading-loose">
-                AI・デジタル技術を活用し、<br />
-                戦略設計から実装、運用までを一貫して支援しています。<br />
-                <br />
-                業務フローや既存システムを理解した上で、<br />
-                課題に合わせたAI活用を設計・導入。<br />
-                単なる技術提供に留まらず、実務で機能する形に落とし込みます。<br />
-                <br />
-                導入後は、データをもとに改善を重ね、<br />
-                運用の最適化や機能拡張を継続的にサポート。<br />
-                変化する市場環境にも対応できる体制づくりを支援します。<br />
-                <br />
-                こうした取り組みを通じて、<br />
-                お客様のパートナーとして、中長期的な成長を共に目指します。
-                </p>
-                <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-lg">
-                  <video
-                    className="w-full h-full object-cover"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
+                    className={`inline-flex rounded-full border px-4 py-2 text-[11px] tracking-[0.18em] transition-colors md:text-xs ${
+                      isActive
+                        ? 'border-neutral-950 bg-neutral-950 text-white'
+                        : 'border-neutral-200 text-neutral-500 hover:border-neutral-950 hover:text-neutral-950'
+                    }`}
                   >
-                    <source src="/videos/istockphoto-1623072252-640_adpp_is.mp4" type="video/mp4" />
-                  </video>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 pt-10 border-t border-gray-200">
-            {[
-              {
-                tag: 'Automation',
-                title: '業務自動化で効率化',
-                body: 'AIツールを活用した業務改善で作業時間を大幅に削減。',
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                ),
-              },
-              {
-                tag: 'Full Service',
-                title: 'ワンストップサービス',
-                body: 'SNS運用・HP作成・AIツール開発・システム開発まで課題解決に必要な領域を一貫して提供します。',
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548-.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                ),
-              },
-              {
-                tag: 'Strategy',
-                title: '課題解決に特化',
-                body: '経営と現場双方の視点で課題を捉え、成果に直結するソリューションをデザインします。',
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                ),
-              },
-              {
-                tag: 'Secure',
-                title: 'セキュリティ対策',
-                body: '企業情報や顧客データを適切に保護し、最新のセキュリティ基準に沿った環境を構築します。',
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                ),
-              },
-              {
-                tag: 'Care',
-                title: '運用サポート充実',
-                body: '導入後の運用・保守・改善まで伴走。データドリブンに成果を検証し、最適化を繰り返します。',
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                ),
-              },
-              {
-                tag: 'Flexible',
-                title: '柔軟な対応',
-                body: 'スタートアップから大企業まで、規模や業界を問わず最適な体制とスピード感でご支援します。',
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                ),
-              },
-            ].map((item, index) => (
-              <div
-                key={index}
-                    className="flex flex-col gap-6"
-              >
-                <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-gray-400">
-                  <span>{item.tag}</span>
-                  <span className="h-px w-10 bg-gray-200"></span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 border border-gray-200 flex items-center justify-center text-gray-900">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      {item.icon}
-                    </svg>
-                  </div>
-                  <h3 className="text-lg font-light text-gray-900 leading-snug">
-                    {item.title}
-                  </h3>
-                </div>
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                  {item.body}
-                </p>
-              </div>
-            ))}
-              </div>
-
+                    {filter}
+                  </button>
+                )
+              })}
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Values Section - MOGCIA */}
-      <section className="py-10 px-6">
-      <div className="w-full">
-          <div className="text-center mb-16 space-y-6">
-            <div className="inline-flex flex-col items-center gap-3">
-              <p className="text-xs uppercase tracking-[0.4em] text-gray-400">Our Values</p>
-              <div className="relative inline-block">
-                <h2 className="text-3xl md:text-4xl font-light tracking-wide relative z-10">
-                  MOGCIAの価値観
-                </h2>
-                <span className="absolute -bottom-2 left-0 w-full h-5 bg-gradient-to-r from-gray-400/60 via-gray-700/40 to-transparent -z-10"></span>
-              </div>
-            </div>
-            <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-              MOGCIAの頭文字には、私たちが大切にしている6つの価値が込められています。
-              日々の意思決定やプロジェクト推進において、この理念を軸に伴走します。
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10">
-            {[
-              { initial: 'M', title: 'Mission', body: '使命を果たす', tag: 'Mindset' },
-              { initial: 'O', title: 'Originality', body: '独創性を追求', tag: 'Creativity' },
-              { initial: 'G', title: 'Growth', body: '共に成長する', tag: 'Growth' },
-              { initial: 'C', title: 'Challenge', body: '挑戦し続ける', tag: 'Challenge' },
-              { initial: 'I', title: 'Innovation', body: '革新を創造', tag: 'Innovation' },
-              { initial: 'A', title: 'Achievement', body: '成果を実現', tag: 'Impact' },
-            ].map((value, index) => (
-              <div
-                key={index}
-                className="group relative border border-gray-200 bg-white px-8 py-10 flex flex-col gap-6 shadow-[0_12px_40px_rgba(24,32,56,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_55px_rgba(24,32,56,0.12)]"
-              >
-                <span className="absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-gray-400 via-gray-700 to-gray-900 opacity-75 transition-opacity duration-700 group-hover:opacity-100"></span>
-                <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-gray-400">
-                  <span>{value.tag}</span>
-                  <span className="h-px w-10 bg-gray-200"></span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 border border-gray-200 flex items-center justify-center text-2xl font-semibold text-gray-900">
-                    {value.initial}
+          <div ref={blogScrollerRef} className="overflow-x-auto pb-2">
+            <div className="flex w-max gap-5 md:gap-6">
+              {filteredBlogPosts.map(post => (
+                <Link
+                  key={post.href}
+                  href={post.href}
+                  className="group block w-[74vw] max-w-[420px] overflow-hidden border border-neutral-200 bg-white md:w-[38vw] lg:w-[30vw]"
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      sizes="(min-width: 1024px) 30vw, (min-width: 768px) 38vw, 74vw"
+                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+                    />
                   </div>
-                  <div>
-                    <h3 className="text-lg font-light text-gray-900 tracking-wide group-hover:translate-x-1 transition-transform duration-400">
-                      {value.title}
+                  <div className="p-5 md:p-6">
+                    <p className="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-[10px] uppercase tracking-[0.24em] text-neutral-600">
+                      {post.tag}
+                    </p>
+                    <h3 className="mt-4 text-[1rem] font-light leading-[1.5] text-neutral-950 md:text-[1.1rem]">
+                      {post.title}
                     </h3>
-                    <p className="text-sm text-gray-500">{value.body}</p>
+                    <div className="mt-5 inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.24em] text-neutral-600 transition-transform duration-300 group-hover:translate-x-1">
+                      Read More
+                      <span className="h-px w-8 bg-current" />
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-6 flex items-center justify-end gap-3">
+            <button
+              type="button"
+              aria-label="Scroll blog left"
+              onClick={() => scrollBlogCards('left')}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-300 text-neutral-700 transition-colors hover:border-neutral-950 hover:text-neutral-950"
+            >
+              ←
+            </button>
+            <button
+              type="button"
+              aria-label="Scroll blog right"
+              onClick={() => scrollBlogCards('right')}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-300 text-neutral-700 transition-colors hover:border-neutral-950 hover:text-neutral-950"
+            >
+              →
+            </button>
           </div>
         </div>
       </section>
 
-    
-
-      {/* Products Section */}
-      <ProductsSection />
-
-      {/* Process Section */}
-      <ProcessSection />
-
-      {/* Contact Section */}
       <ContactSection />
-
       <Footer />
     </main>
   )
