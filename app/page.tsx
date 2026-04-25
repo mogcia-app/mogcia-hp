@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import AiGeneratedNotice from '@/components/AiGeneratedNotice'
 import ProductsSection from '@/components/Products'
 import Footer from '@/components/Footer'
 import ContactSection from '@/components/ContactSection'
@@ -183,6 +184,7 @@ export default function Home() {
             />
           ))}
         </div>
+        <AiGeneratedNotice />
         <div className="relative mx-auto flex min-h-[86vh] w-full max-w-[1320px] items-end px-6 pb-14 md:px-10 md:pb-18 lg:px-16 lg:pb-24 xl:px-20">
           <div className="max-w-[680px]">
             <h1
@@ -255,6 +257,7 @@ export default function Home() {
           style={{ backgroundImage: "url('/mein3.svg')", backgroundSize: 'cover' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/38 via-black/12 to-transparent" />
+        <AiGeneratedNotice />
         <div className="relative mx-auto flex min-h-[72vh] w-full max-w-[1320px] items-end">
           <div className="relative z-10 ml-auto max-w-3xl space-y-8 pb-4 md:pb-8">
             <div
@@ -295,6 +298,7 @@ export default function Home() {
                 求人募集
               </p>
             </div>
+            <AiGeneratedNotice textClassName="text-white/15 md:text-white/20" />
             <div className="absolute inset-x-0 bottom-0 h-px bg-white/0 transition-all duration-500 group-hover:bg-white/70" />
           </Link>
           <Link href="/company" className="group relative block aspect-[4/3] overflow-hidden">
@@ -311,6 +315,7 @@ export default function Home() {
                 会社概要
               </p>
             </div>
+            <AiGeneratedNotice textClassName="text-white/15 md:text-white/20" />
             <div className="absolute inset-x-0 bottom-0 h-px bg-white/0 transition-all duration-500 group-hover:bg-white/70" />
           </Link>
         </div>
@@ -370,6 +375,7 @@ export default function Home() {
                       sizes="(min-width: 1024px) 30vw, (min-width: 768px) 38vw, 74vw"
                       className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
                     />
+                    <AiGeneratedNotice />
                   </div>
                   <div className="p-5 md:p-6">
                     <p className="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-[10px] uppercase tracking-[0.24em] text-neutral-600">

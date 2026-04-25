@@ -1,5 +1,6 @@
 import Image from 'next/image'
 
+import AiGeneratedNotice from '@/components/AiGeneratedNotice'
 import ContactSection from '@/components/ContactSection'
 import Footer from '@/components/Footer'
 
@@ -34,6 +35,7 @@ export default function CompanyPage() {
           sizes="100vw"
           className="hidden object-cover object-bottom md:block"
         />
+        <AiGeneratedNotice />
       </section>
 
       <section className="border-b border-neutral-200 px-6 py-16 md:px-10 md:py-20 lg:px-16 xl:px-20">

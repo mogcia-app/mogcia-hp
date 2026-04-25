@@ -1,5 +1,6 @@
 import Image from 'next/image'
 
+import AiGeneratedNotice from '@/components/AiGeneratedNotice'
 import ContactSection from '@/components/ContactSection'
 import Footer from '@/components/Footer'
 
@@ -30,6 +31,7 @@ export default function PartnersPage() {
           sizes="100vw"
           className="hidden object-cover md:block"
         />
+        <AiGeneratedNotice />
       </section>
 
       <section className="px-6 py-16 md:px-10 md:py-20 lg:px-16 xl:px-20">
@@ -73,6 +75,7 @@ export default function PartnersPage() {
                 sizes="100vw"
                 className="object-contain"
               />
+              <AiGeneratedNotice />
             </div>
           </div>
         </div>
@@ -95,6 +98,7 @@ export default function PartnersPage() {
                 sizes="100vw"
                 className="object-contain"
               />
+              <AiGeneratedNotice />
             </div>
           </div>
         </div>
@@ -118,6 +122,7 @@ export default function PartnersPage() {
                   sizes="100vw"
                   className="object-contain"
                 />
+                <AiGeneratedNotice />
               </div>
               <div className="relative aspect-[16/8] overflow-hidden">
                 <Image
@@ -127,6 +132,7 @@ export default function PartnersPage() {
                   sizes="100vw"
                   className="object-contain"
                 />
+                <AiGeneratedNotice />
               </div>
             </div>
           </div>
@@ -150,6 +156,7 @@ export default function PartnersPage() {
                 sizes="100vw"
                 className="object-contain"
               />
+              <AiGeneratedNotice />
             </div>
             <div className="relative aspect-[16/8] overflow-hidden">
               <Image
@@ -159,6 +166,7 @@ export default function PartnersPage() {
                 sizes="100vw"
                 className="object-contain"
               />
+              <AiGeneratedNotice />
             </div>
           </div>
         </div>

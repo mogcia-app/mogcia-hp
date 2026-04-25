@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import AiGeneratedNotice from '@/components/AiGeneratedNotice'
 import ContactSection from '@/components/ContactSection'
 import Footer from '@/components/Footer'
 
@@ -91,6 +92,7 @@ export default function ServicesPage() {
           sizes="100vw"
           className="hidden object-cover md:block"
         />
+        <AiGeneratedNotice />
       </section>
 
       <section className="px-6 py-16 md:px-10 md:py-20 lg:px-16 xl:px-20">
@@ -182,6 +184,7 @@ export default function ServicesPage() {
                       sizes="(min-width: 768px) 220px, 100vw"
                       className={item.imageClassName}
                     />
+                    <AiGeneratedNotice className="bottom-2 right-2 md:bottom-3 md:right-3 lg:bottom-3 lg:right-3" />
                   </div>
                   <div className="space-y-4">
                     <h3 className="text-xl font-light text-neutral-950 md:text-2xl">{item.title}</h3>
@@ -219,6 +222,7 @@ export default function ServicesPage() {
                         sizes="(min-width: 768px) 50vw, 100vw"
                         className={item.imageClassName}
                       />
+                      <AiGeneratedNotice className="bottom-2 right-2 md:bottom-3 md:right-3 lg:bottom-3 lg:right-3" />
                     </div>
                   ) : null}
                   <h3 className="mt-4 text-xl font-light text-neutral-950">{item.title}</h3>

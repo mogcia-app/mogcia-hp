@@ -1,5 +1,6 @@
 import Image from 'next/image'
 
+import AiGeneratedNotice from '@/components/AiGeneratedNotice'
 import Footer from '@/components/Footer'
 
 export default function ContactThanksPage() {
@@ -15,6 +16,7 @@ export default function ContactThanksPage() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-black/45" />
+        <AiGeneratedNotice />
       </section>
 
       <section className="px-6 py-16 md:px-10 md:py-20 lg:px-16 xl:px-20">

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 
+import AiGeneratedNotice from '@/components/AiGeneratedNotice'
 import ContactSection from '@/components/ContactSection'
 import Footer from '@/components/Footer'
 
@@ -331,6 +332,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           sizes="100vw"
           className="object-contain"
         />
+        <AiGeneratedNotice className="z-20" />
       </section>
 
       <section className="px-6 py-14 md:px-10 md:py-18 lg:px-16 xl:px-20">

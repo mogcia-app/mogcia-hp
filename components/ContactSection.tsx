@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import AiGeneratedNotice from '@/components/AiGeneratedNotice'
+
 export default function ContactSection() {
   return (
     <section id="contact" className="px-3 py-20 md:px-4 md:py-24 lg:px-6 xl:px-8">
@@ -34,6 +36,7 @@ export default function ContactSection() {
             sizes="100vw"
             className="object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]"
           />
+          <AiGeneratedNotice />
         </Link>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Script from 'next/script'
 
+import AiGeneratedNotice from '@/components/AiGeneratedNotice'
 import ContactSection from '@/components/ContactSection'
 import Footer from '@/components/Footer'
 
@@ -23,6 +24,7 @@ export default function ContactPage() {
           sizes="100vw"
           className="object-cover"
         />
+        <AiGeneratedNotice />
       </section>
 
       <section className="px-6 py-16 md:px-10 md:py-20 lg:px-16 xl:px-20">
