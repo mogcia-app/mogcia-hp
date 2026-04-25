@@ -21,6 +21,11 @@ export default function Header() {
           <Link
             href="/"
             className="inline-flex items-center"
+            onClick={() => {
+              if (typeof window !== 'undefined') {
+                window.sessionStorage.setItem('force-home-transition', 'true')
+              }
+            }}
           >
             <Image
               src="/m.png"

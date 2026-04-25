@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Noto_Sans_JP } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
+import PageTransition from '@/components/PageTransition'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mogcia.net'
 const inter = Inter({
@@ -59,6 +60,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={`${inter.variable} ${notoSansJp.variable}`}>
+        <PageTransition />
         <Header />
         {children}
       </body>
