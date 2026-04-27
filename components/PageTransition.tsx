@@ -132,30 +132,32 @@ export default function PageTransition() {
           }`}
           style={{ transitionDuration: `${isExiting ? FADE_DURATION : 480}ms` }}
         >
-          <Image
-            src="/m.png"
-            alt="MOGCIA"
-            width={500}
-            height={500}
-            priority
-            className="mx-auto h-auto w-[110px] md:w-[132px]"
-          />
+          <div className="relative mx-auto h-[86px] w-[110px] overflow-hidden md:h-[102px] md:w-[132px]">
+            <Image
+              src="/m.png"
+              alt="MOGCIA"
+              fill
+              priority
+              sizes="132px"
+              className="object-contain object-bottom"
+            />
+          </div>
           <div className="mx-auto mt-7 w-full max-w-[240px]">
             <div
-              className={`h-px w-full overflow-hidden bg-black/10 transition-all duration-500 ${
-                isCompleteAccentVisible ? 'scale-y-[2.2] bg-black/15 shadow-[0_0_18px_rgba(0,0,0,0.14)]' : ''
+              className={`h-[3px] w-full overflow-hidden rounded-full bg-black/10 transition-all duration-500 ${
+                isCompleteAccentVisible ? 'scale-y-[1.35] bg-black/15 shadow-[0_0_18px_rgba(0,0,0,0.14)]' : ''
               }`}
             >
               <div
-                className={`relative h-full bg-black/80 transition-[width,transform,box-shadow,background-color] duration-150 ease-linear ${
-                  isCompleteAccentVisible ? 'scale-x-100 bg-black shadow-[0_0_18px_rgba(0,0,0,0.2)]' : ''
+                className={`relative h-full rounded-full bg-black/75 transition-[width,transform,box-shadow,background-color] duration-150 ease-linear ${
+                  isCompleteAccentVisible ? 'scale-x-100 bg-black shadow-[0_0_18px_rgba(0,0,0,0.2)]' : 'shadow-[0_0_10px_rgba(0,0,0,0.08)]'
                 }`}
                 style={{ width: `${progress}%` }}
               >
                 <span
-                  className={`absolute right-0 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-[#f4d35e] transition-all duration-500 ${
+                  className={`absolute right-0 top-1/2 h-2.5 w-2.5 -translate-y-1/2 translate-x-1/2 rounded-full bg-[#c8b59d] transition-all duration-500 ${
                     progress > 2 ? 'opacity-100' : 'opacity-0'
-                  } ${isCompleteAccentVisible ? 'scale-125 shadow-[0_0_14px_rgba(244,211,94,0.9)]' : 'scale-100'}`}
+                  } ${isCompleteAccentVisible ? 'scale-125 shadow-[0_0_14px_rgba(200,181,157,0.9)]' : 'scale-100 shadow-[0_0_10px_rgba(200,181,157,0.45)]'}`}
                 />
               </div>
             </div>
