@@ -1,9 +1,9 @@
-import Image from 'next/image'
 import Link from 'next/link'
 
 import AiGeneratedNotice from '@/components/AiGeneratedNotice'
 import ContactSection from '@/components/ContactSection'
 import Footer from '@/components/Footer'
+import ResponsiveHeroImage from '@/components/ResponsiveHeroImage'
 import ServiceOfferings from '@/components/ServiceOfferings'
 
 const partnerFit = [
@@ -40,21 +40,11 @@ export default function PartnersPage() {
   return (
     <main className="bg-[#f7f7f5] text-neutral-950">
       <section className="relative h-[75vh] min-h-[520px] overflow-hidden md:h-screen">
-        <Image
-          src="/gt6.png"
+        <ResponsiveHeroImage
+          mobileSrc="/gt6.png"
+          desktopSrc="/gt8.jpg"
           alt="Partners hero"
-          fill
           priority
-          sizes="100vw"
-          className="object-cover md:hidden"
-        />
-        <Image
-          src="/gt8.png"
-          alt="Partners hero"
-          fill
-          priority
-          sizes="100vw"
-          className="hidden object-cover md:block"
         />
         <AiGeneratedNotice />
       </section>

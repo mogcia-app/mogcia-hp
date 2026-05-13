@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -71,7 +72,14 @@ export default function FloatingContact() {
             aria-controls="floating-contact-panel"
           >
             <span className="pointer-events-none absolute -inset-3 -z-10 rounded-full bg-gradient-to-br from-[#f6e27a]/40 via-[#d2c7ff]/30 to-transparent blur-2xl opacity-80 sm:-inset-4" />
-            <img src="/1M%20Logo.png" alt="お問い合わせ" className="relative h-10 w-10 -translate-y-[1px] object-contain sm:h-12 sm:w-12 md:h-14 md:w-14" />
+            <Image
+              src="/m.png"
+              alt="お問い合わせ"
+              width={56}
+              height={56}
+              sizes="(min-width: 768px) 56px, (min-width: 640px) 48px, 40px"
+              className="relative h-10 w-10 -translate-y-[1px] object-contain sm:h-12 sm:w-12 md:h-14 md:w-14"
+            />
           </button>
           <div className="mt-2 text-[8px] uppercase tracking-[0.35em] text-gray-400 sm:text-[9px] md:text-[10px]">
             Ask
@@ -125,7 +133,14 @@ export default function FloatingContact() {
               >
                 {message.sender === "bot" && (
                   <span className="mt-1 inline-flex h-7 w-7 shrink-0 items-center justify-center">
-                    <img src="/1M%20Logo.png" alt="MOGCIA" className="h-6 w-6 object-contain" />
+                    <Image
+                      src="/m.png"
+                      alt="MOGCIA"
+                      width={24}
+                      height={24}
+                      sizes="24px"
+                      className="h-6 w-6 object-contain"
+                    />
                   </span>
                 )}
                 <div
@@ -173,4 +188,3 @@ export default function FloatingContact() {
     </>
   )
 }
-

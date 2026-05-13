@@ -8,7 +8,7 @@ import Footer from '@/components/Footer'
 const posts = {
   'ai-adoption': {
     title: '「導入したのに変わらない」会社に共通する問題',
-    image: '/blog1.png',
+    image: '/blog1.jpg',
     tag: 'ノウハウ',
     body: [
       '新しいツールを導入したのに、思ったほど成果が出ないそんなお悩みを抱えていませんか？',
@@ -34,7 +34,7 @@ const posts = {
   },
   'product-design': {
     title: 'SNS運用が続かない会社の共通点',
-    image: '/blog2.png',
+    image: '/blog2.jpg',
     tag: 'ノウハウ',
     body: [
       'SNSを始めたものの、気づけば更新が止まっている。最初は意気込んで投稿していたのに、数ヶ月後には放置状態。',
@@ -74,7 +74,7 @@ const posts = {
   },
   'sns-operations': {
     title: 'チャット対応を入れても満足度が上がらない理由',
-    image: '/blog3.png',
+    image: '/blog3.jpg',
     tag: 'ノウハウ',
     body: [
       '問い合わせ対応を改善するために、チャットツールを導入する企業は増えています。',
@@ -206,7 +206,7 @@ const posts = {
   },
   'lp-start-guide': {
     title: 'LP作成って、何から始めるべき？',
-    image: '/blog5.png',
+    image: '/blog5.jpg',
     tag: 'お役立ち',
     body: [
       'LP（ランディングページ）を作ろうとすると、「とりあえずデザインから？」とか「まず文章？」みたいに迷うことが多いです。',

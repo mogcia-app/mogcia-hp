@@ -17,7 +17,7 @@ export default function ContactPage() {
     <main className="bg-[#f7f7f5] text-neutral-950">
       <section className="relative hidden h-[70vh] min-h-[480px] overflow-hidden md:block">
         <Image
-          src="/d.png"
+          src="/d.jpg"
           alt="Contact hero"
           fill
           priority

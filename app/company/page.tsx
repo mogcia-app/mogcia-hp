@@ -1,8 +1,7 @@
-import Image from 'next/image'
-
 import AiGeneratedNotice from '@/components/AiGeneratedNotice'
 import ContactSection from '@/components/ContactSection'
 import Footer from '@/components/Footer'
+import ResponsiveHeroImage from '@/components/ResponsiveHeroImage'
 
 const companyInfo = [
   { label: '会社名', value: '株式会社MOGCIA（モグシア）' },
@@ -19,21 +18,13 @@ export default function CompanyPage() {
   return (
     <main className="bg-[#f7f7f5] text-neutral-950">
       <section className="relative h-[60vh] min-h-[440px] overflow-hidden">
-        <Image
-          src="/gt1.png"
+        <ResponsiveHeroImage
+          mobileSrc="/gt1.png"
+          desktopSrc="/company.jpg"
           alt="Company hero"
-          fill
           priority
-          sizes="100vw"
-          className="object-cover object-bottom md:hidden"
-        />
-        <Image
-          src="/company.png"
-          alt="Company hero"
-          fill
-          priority
-          sizes="100vw"
-          className="hidden object-cover object-bottom md:block"
+          mobileClassName="object-cover object-bottom"
+          desktopClassName="object-cover object-bottom"
         />
         <AiGeneratedNotice />
       </section>

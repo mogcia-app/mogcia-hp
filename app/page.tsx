@@ -38,7 +38,7 @@ const newsTagStyles: Record<string, string> = {
 const blogPosts = [
   {
     title: 'LP作成って、何から始めるべき？',
-    image: '/blog5.png',
+    image: '/blog5.jpg',
     href: '/blog/lp-start-guide',
     tag: 'お役立ち',
   },
@@ -50,19 +50,19 @@ const blogPosts = [
   },
   {
     title: 'チャット対応を入れても満足度が上がらない理由',
-    image: '/blog3.png',
+    image: '/blog3.jpg',
     href: '/blog/sns-operations',
     tag: 'お役立ち',
   },
   {
     title: 'SNS運用が続かない会社の共通点',
-    image: '/blog2.png',
+    image: '/blog2.jpg',
     href: '/blog/product-design',
     tag: 'お役立ち',
   },
   {
     title: '「導入したのに変わらない」会社に共通する問題',
-    image: '/blog1.png',
+    image: '/blog1.jpg',
     href: '/blog/ai-adoption',
     tag: 'お役立ち',
   },
@@ -70,15 +70,19 @@ const blogPosts = [
 
 const blogFilters = ['すべて', 'お役立ち', 'プロダクト'] as const
 
-const heroBackgrounds = ['/mein1.svg', '/mein2.svg', '/mein3.svg']
+const heroBackgrounds = ['/mein1.jpg', '/mein2.jpg', '/mein3.jpg']
 const heroMobileBackgrounds = ['/gt1.png', '/gt2.png', '/gt3.png']
 
 export default function Home() {
   const aboutRef = useRef<HTMLElement | null>(null)
   const blogScrollerRef = useRef<HTMLDivElement | null>(null)
   const [aboutVisible, setAboutVisible] = useState(false)
+  const [isDesktopViewport, setIsDesktopViewport] = useState(false)
   const [heroBackgroundIndex, setHeroBackgroundIndex] = useState(0)
   const [selectedBlogTag, setSelectedBlogTag] = useState<(typeof blogFilters)[number]>('すべて')
+
+  const activeHeroBackgrounds = isDesktopViewport ? heroBackgrounds : heroMobileBackgrounds
+  const activeHeroBackground = activeHeroBackgrounds[heroBackgroundIndex % activeHeroBackgrounds.length]
 
   useEffect(() => {
     const node = aboutRef.current
@@ -103,6 +107,23 @@ export default function Home() {
     }, 4500)
 
     return () => window.clearInterval(timer)
+  }, [])
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)')
+    const syncViewport = (event?: MediaQueryListEvent) => {
+      setIsDesktopViewport(event ? event.matches : mediaQuery.matches)
+    }
+
+    syncViewport()
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', syncViewport)
+      return () => mediaQuery.removeEventListener('change', syncViewport)
+    }
+
+    mediaQuery.addListener(syncViewport)
+    return () => mediaQuery.removeListener(syncViewport)
   }, [])
 
   useEffect(() => {
@@ -149,40 +170,17 @@ export default function Home() {
     <main className="min-h-screen bg-[#f7f7f5] text-neutral-950">
       <section className="relative min-h-[86vh] overflow-hidden">
         <div className="absolute inset-0">
-          {heroMobileBackgrounds.map((src, index) => (
-            <div
-              key={src}
-              aria-hidden="true"
-              className={`absolute inset-0 transition-all duration-[2400ms] ease-[cubic-bezier(0.16,1,0.3,1)] md:hidden ${
-                index === heroBackgroundIndex
-                  ? 'scale-[1.01] opacity-100'
-                  : 'scale-[1.03] opacity-0'
-              }`}
-              style={{
-                backgroundImage: `url('${src}')`,
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
-              }}
-            />
-          ))}
-          {heroBackgrounds.map((src, index) => (
-            <div
-              key={src}
-              aria-hidden="true"
-              className={`absolute inset-0 hidden transition-all duration-[2400ms] ease-[cubic-bezier(0.16,1,0.3,1)] md:block ${
-                index === heroBackgroundIndex
-                  ? 'scale-[1.01] opacity-100'
-                  : 'scale-[1.03] opacity-0'
-              }`}
-              style={{
-                backgroundImage: `url('${src}')`,
-                backgroundPosition: '82% center',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
-              }}
-            />
-          ))}
+          <Image
+            key={activeHeroBackground}
+            src={activeHeroBackground}
+            alt=""
+            aria-hidden="true"
+            fill
+            priority
+            sizes="100vw"
+            quality={isDesktopViewport ? 75 : 68}
+            className="object-cover object-center md:object-[82%_center]"
+          />
         </div>
         <AiGeneratedNotice />
         <div className="relative mx-auto flex min-h-[86vh] w-full max-w-[1320px] items-end px-6 pb-14 md:px-10 md:pb-18 lg:px-16 lg:pb-24 xl:px-20">
@@ -248,13 +246,14 @@ export default function Home() {
         className="scroll-reveal relative overflow-hidden px-6 py-20 md:px-10 md:py-24 lg:px-16 xl:px-20"
         data-scroll-reveal
       >
-        <div
-          className="pointer-events-none absolute inset-0 bg-center bg-no-repeat md:hidden"
-          style={{ backgroundImage: "url('/gt3.png')", backgroundSize: 'cover' }}
-        />
-        <div
-          className="pointer-events-none absolute inset-0 hidden bg-center bg-no-repeat md:block"
-          style={{ backgroundImage: "url('/mein3.svg')", backgroundSize: 'cover' }}
+        <Image
+          src={isDesktopViewport ? '/mein3.jpg' : '/gt3.png'}
+          alt=""
+          aria-hidden="true"
+          fill
+          sizes="100vw"
+          quality={isDesktopViewport ? 74 : 68}
+          className="pointer-events-none object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/38 via-black/12 to-transparent" />
         <AiGeneratedNotice />
@@ -286,7 +285,7 @@ export default function Home() {
         <div className="mx-auto grid w-full max-w-[1320px] gap-5 md:grid-cols-2 md:gap-6">
           <Link href="/recruit" className="group relative block aspect-[4/3] overflow-hidden">
             <Image
-              src="/a.png"
+              src="/a.jpg"
               alt="About visual A"
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
@@ -303,7 +302,7 @@ export default function Home() {
           </Link>
           <Link href="/company" className="group relative block aspect-[4/3] overflow-hidden">
             <Image
-              src="/e.png"
+              src="/e.jpg"
               alt="About visual B"
               fill
               sizes="(min-width: 768px) 50vw, 100vw"

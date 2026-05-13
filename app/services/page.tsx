@@ -25,7 +25,7 @@ export default function ServicesPage() {
     <main className="bg-[#f7f7f5] text-neutral-950">
       <section className="relative hidden h-[80vh] overflow-hidden md:block">
         <Image
-          src="/d.png"
+          src="/d.jpg"
           alt="Services hero"
           fill
           priority
