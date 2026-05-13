@@ -82,7 +82,6 @@ export default function Home() {
   const [selectedBlogTag, setSelectedBlogTag] = useState<(typeof blogFilters)[number]>('すべて')
 
   const activeHeroBackgrounds = isDesktopViewport ? heroBackgrounds : heroMobileBackgrounds
-  const activeHeroBackground = activeHeroBackgrounds[heroBackgroundIndex % activeHeroBackgrounds.length]
 
   useEffect(() => {
     const node = aboutRef.current
@@ -170,17 +169,23 @@ export default function Home() {
     <main className="min-h-screen bg-[#f7f7f5] text-neutral-950">
       <section className="relative min-h-[86vh] overflow-hidden">
         <div className="absolute inset-0">
-          <Image
-            key={activeHeroBackground}
-            src={activeHeroBackground}
-            alt=""
-            aria-hidden="true"
-            fill
-            priority
-            sizes="100vw"
-            quality={isDesktopViewport ? 75 : 68}
-            className="object-cover object-center md:object-[82%_center]"
-          />
+          {activeHeroBackgrounds.map((src, index) => (
+            <Image
+              key={src}
+              src={src}
+              alt=""
+              aria-hidden="true"
+              fill
+              priority={index === 0}
+              sizes="100vw"
+              quality={isDesktopViewport ? 75 : 68}
+              className={`object-cover object-center transition-[opacity,transform] duration-[1800ms] ease-out md:object-[82%_center] ${
+                index === heroBackgroundIndex
+                  ? 'scale-100 opacity-100'
+                  : 'scale-[1.02] opacity-0'
+              }`}
+            />
+          ))}
         </div>
         <AiGeneratedNotice />
         <div className="relative mx-auto flex min-h-[86vh] w-full max-w-[1320px] items-end px-6 pb-14 md:px-10 md:pb-18 lg:px-16 lg:pb-24 xl:px-20">
