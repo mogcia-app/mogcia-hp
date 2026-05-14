@@ -1,9 +1,13 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Script from 'next/script'
 
 import AiGeneratedNotice from '@/components/AiGeneratedNotice'
 import ContactSection from '@/components/ContactSection'
 import Footer from '@/components/Footer'
+import { createPageMetadata } from '../metadata'
+
+export const metadata: Metadata = createPageMetadata('お問い合わせ | 株式会社MOGCIA')
 
 const contactReasons = [
   { label: '課題整理・戦略立案' },

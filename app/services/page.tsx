@@ -1,9 +1,15 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 
 import AiGeneratedNotice from '@/components/AiGeneratedNotice'
 import ContactSection from '@/components/ContactSection'
 import Footer from '@/components/Footer'
 import ServiceOfferings from '@/components/ServiceOfferings'
+import { createPageMetadata } from '../metadata'
+
+export const metadata: Metadata = createPageMetadata(
+  'サービス一覧 | 株式会社MOGCIA（福岡のAI・Web制作）',
+)
 
 const inDevelopment = [
   {

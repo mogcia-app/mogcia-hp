@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 
 import AiGeneratedNotice from '@/components/AiGeneratedNotice'
@@ -5,6 +6,9 @@ import ContactSection from '@/components/ContactSection'
 import Footer from '@/components/Footer'
 import ResponsiveHeroImage from '@/components/ResponsiveHeroImage'
 import ServiceOfferings from '@/components/ServiceOfferings'
+import { createPageMetadata } from '../metadata'
+
+export const metadata: Metadata = createPageMetadata('パートナー制度 | 株式会社MOGCIA')
 
 const partnerFit = [
   '顧客にWeb・SNS・DX支援を提案したい方',

@@ -1,5 +1,12 @@
+import type { Metadata } from 'next'
+
 import ContactSection from '@/components/ContactSection'
 import Footer from '@/components/Footer'
+import { createPageMetadata } from '../metadata'
+
+export const metadata: Metadata = createPageMetadata(
+  '採用情報 | 株式会社MOGCIA（福岡のAI企業）',
+)
 
 export default function RecruitPage() {
   return (

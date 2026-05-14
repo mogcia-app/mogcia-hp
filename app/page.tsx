@@ -72,6 +72,16 @@ const blogFilters = ['すべて', 'お役立ち', 'プロダクト'] as const
 
 const heroBackgrounds = ['/mein1.jpg', '/mein2.jpg', '/mein3.jpg']
 const heroMobileBackgrounds = ['/gt1.png', '/gt2.png', '/gt3.png']
+const capabilityBannerItems = [
+  'AI Development',
+  'SNS Operations',
+  'LP Production',
+  'Web Production',
+  'Roomly',
+  'upmo',
+  'Signal',
+  'Strategy to Execution',
+]
 
 export default function Home() {
   const aboutRef = useRef<HTMLElement | null>(null)
@@ -201,6 +211,24 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="overflow-hidden border-y border-neutral-200 bg-[#ece9e1] py-6 md:py-7">
+        <div className="marquee-track">
+          {[0, 1].map(loop => (
+            <div key={loop} className="marquee-row">
+              {capabilityBannerItems.map(item => (
+                <div
+                  key={`${loop}-${item}`}
+                  className="inline-flex items-center gap-5 whitespace-nowrap px-5 text-[0.76rem] uppercase tracking-[0.28em] text-neutral-800 md:px-6 md:text-[0.86rem]"
+                >
+                  <span>{item}</span>
+                  <span className="h-[6px] w-[6px] rounded-full bg-neutral-950/50" />
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+
       <ProductsSection />
 
       <section data-scroll-reveal className="scroll-reveal px-6 py-20 md:px-10 md:py-24 lg:px-16 xl:px-20">
@@ -279,7 +307,9 @@ export default function Home() {
                 MOGCIAは、AIとテクノロジーで
               </p>
               <p className="text-[1.2rem] font-light leading-[1.5] tracking-[-0.02em] text-white md:text-[1.45rem]">
-                戦略から、実装・運用までを一気通貫で支援するIT企業です。
+                戦略も、体験も、運用も、ひとつの仕組みとして
+                <br />
+                設計から実装まで一気通貫で支援するIT企業です。
               </p>
             </div>
           </div>

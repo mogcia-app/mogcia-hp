@@ -83,6 +83,15 @@ html {
   }
 }
 
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 .animate-fade-in {
   animation: fade-in 0.8s ease-out forwards;
 }
@@ -151,4 +160,18 @@ html {
 .scroll-reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  min-width: 100%;
+  animation: marquee-scroll 26s linear infinite;
+  will-change: transform;
+}
+
+.marquee-row {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
 }

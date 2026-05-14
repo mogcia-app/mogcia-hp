@@ -3,6 +3,7 @@ import { Inter, Noto_Sans_JP } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import PageTransition from '@/components/PageTransition'
+import { defaultDescription, defaultOgTitle } from './metadata'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mogcia.net'
 const inter = Inter({
@@ -19,14 +20,14 @@ const notoSansJp = Noto_Sans_JP({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: 'MOGCIA - 戦略も、体験も、運用もすべて、ひとつの仕組みで。',
-  description: 'AIとテクノロジーで戦略から、実装・運用までを一気通貫で支援するIT企業です。',
+  title: defaultOgTitle,
+  description: defaultDescription,
   other: {
     'google-site-verification': 'LHrNgdIlh6Lg9TM4sbVkqzoCiRWifXjkAJiK0OSUNOs',
   },
   openGraph: {
-    title: 'MOGCIA - 戦略も、体験も、運用もすべて、ひとつの仕組みで。',
-    description: 'AIとテクノロジーで戦略から、実装・運用までを一気通貫で支援するIT企業です。',
+    title: defaultOgTitle,
+    description: defaultDescription,
     url: '/',
     siteName: 'MOGCIA',
     locale: 'ja_JP',
@@ -42,8 +43,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'MOGCIA - 戦略も、体験も、運用もすべて、ひとつの仕組みで。',
-    description: 'AIとテクノロジーで戦略から、実装・運用までを一気通貫で支援するIT企業です。',
+    title: defaultOgTitle,
+    description: defaultDescription,
     images: ['/MG%20Logo.png'],
   },
   icons: {

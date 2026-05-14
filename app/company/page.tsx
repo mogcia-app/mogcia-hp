@@ -1,7 +1,14 @@
+import type { Metadata } from 'next'
+
 import AiGeneratedNotice from '@/components/AiGeneratedNotice'
 import ContactSection from '@/components/ContactSection'
 import Footer from '@/components/Footer'
 import ResponsiveHeroImage from '@/components/ResponsiveHeroImage'
+import { createPageMetadata } from '../metadata'
+
+export const metadata: Metadata = createPageMetadata(
+  '会社概要 | 株式会社MOGCIA（福岡・天神）',
+)
 
 const companyInfo = [
   { label: '会社名', value: '株式会社MOGCIA（モグシア）' },
