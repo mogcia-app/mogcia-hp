@@ -21,6 +21,16 @@ type ServicePackage = {
 
 export const products: Product[] = [
   {
+    name: 'commo.',
+    image: '/commohp.png',
+    imageClassName: 'object-contain',
+    title:
+      '顧客は、集めるより育てる時代へ\nLINE公式アカウントの構築から\n予約導線づくり クーポン配信\nリピーター施策までまるっとサポート',
+    description:
+      'LINE公式アカウントの構築から予約導線づくり、クーポン配信、リピーター施策まで支援します。',
+    href: 'https://commotool.com/',
+  },
+  {
     name: 'Roomly.',
     image: '/roomly.png',
     imageClassName: 'object-contain',
@@ -83,6 +93,16 @@ export default function ServiceOfferings({
   servicesLabel = 'Support',
   servicesTitle = '支援サービス',
 }: ServiceOfferingsProps) {
+  const renderProductName = (name: string) => {
+    if (name !== 'commo.') return name
+
+    return (
+      <>
+        commo<span className="text-[#8b5cf6]">.</span>
+      </>
+    )
+  }
+
   return (
     <>
       <section className="px-6 pb-20 md:px-10 md:pb-24 lg:px-16 xl:px-20">
@@ -113,8 +133,10 @@ export default function ServiceOfferings({
 
                   <div className="space-y-4">
                     <p className="text-[11px] uppercase tracking-[0.3em] text-neutral-400">Product</p>
-                    <h3 className="mt-3 text-xl font-light text-neutral-950 md:text-2xl">{product.name}</h3>
-                    <p className="max-w-3xl text-[0.98rem] font-light leading-[1.65] text-neutral-950 md:text-[1.08rem]">
+                    <h3 className="mt-3 text-xl font-light text-neutral-950 md:text-2xl">
+                      {renderProductName(product.name)}
+                    </h3>
+                    <p className="max-w-3xl whitespace-pre-line text-[0.98rem] font-light leading-[1.65] text-neutral-950 md:text-[1.08rem]">
                       {product.title}
                     </p>
                   </div>

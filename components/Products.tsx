@@ -10,6 +10,7 @@ const productPreviewGroups = [
     description:
       "宿泊業向けチャット、社内AI、SNS支援、コーヒーブランドまで、複数の自社プロダクトを展開しています。",
     items: [
+      { src: "/commohp.png", alt: "commo" },
       { src: "/roomly.png", alt: "Roomly" },
       { src: "/signal.png", alt: "Signal" },
       { src: "/upmo.png", alt: "Upmo" },
