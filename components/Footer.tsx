@@ -1,15 +1,20 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { renderBrandText } from '@/components/BrandText'
+
 const navLinks = [
-  { label: 'サービス一覧', href: '/services' },
+  { label: 'サービス', href: '/services' },
   { label: 'パートナー制度', href: '/partners' },
-  { label: '会社概要', href: '/company' },
   { label: '求人募集', href: '/recruit' },
-  { label: 'お問い合わせ', href: '/contact' },
+  { label: '会社概要', href: '/company' },
+  { label: 'お知らせ', href: '/news' },
+  { label: 'ブログ', href: '/blog' },
 ]
 
 const serviceLinks = [
+  { label: 'selmo.', href: 'https://selmotool.com/' },
+  { label: 'commo.', href: 'https://commotool.com/' },
   { label: 'Roomly.', href: 'https://roomlychat.com/' },
   { label: 'upmo', href: 'https://upmotool.com/' },
   { label: 'Signal.', href: 'https://www.sgnalapp.com/' },
@@ -86,7 +91,7 @@ export default function Footer() {
                 {serviceLinks.map(link => (
                   <li key={link.label}>
                     <Link href={link.href} className="transition-colors hover:text-neutral-950">
-                      {link.label}
+                      {renderBrandText(link.label)}
                     </Link>
                   </li>
                 ))}

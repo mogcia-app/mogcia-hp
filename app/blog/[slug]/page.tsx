@@ -1,401 +1,185 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import AiGeneratedNotice from '@/components/AiGeneratedNotice'
-import ContactSection from '@/components/ContactSection'
 import Footer from '@/components/Footer'
+import { blogCategories, blogPosts, getAdjacentBlogPosts, getBlogPost, type BlogBlock } from '@/lib/blog'
+import { createPageMetadata } from '../../metadata'
 
-const posts = {
-  'ai-adoption': {
-    title: '「導入したのに変わらない」会社に共通する問題',
-    image: '/blog1.jpg',
-    tag: 'ノウハウ',
-    body: [
-      '新しいツールを導入したのに、思ったほど成果が出ないそんなお悩みを抱えていませんか？',
-      'SNS運用ツール、チャット対応ツール、社内ナレッジツール。どれも導入した時は期待が高いのに、数ヶ月後には「結局あまり使われていない」という状態になることは少なくありません。',
-      'よくあるのは次のような状態です。',
-      '・SNSは頑張っているが、問い合わせにつながらない',
-      '・問い合わせは増えたが、対応が追いつかない',
-      '・社内に情報はあるが、活用されていない',
-      'それぞれは問題に見えますが、本質は「分断されていること」です。',
-      '重要なのは、「ツール」ではなく「流れ」で考えることです。',
-      '集客 → 体験 → 社内',
-      'この流れがつながってはじめて、ビジネスは成果として回り始めます。',
-      'どこか1つを改善しても、他がつながっていなければ意味がありません。',
-      '例えば、',
-      'SNSで興味を持ったユーザーが、スムーズに問い合わせできる設計になっているか。',
-      '問い合わせの内容が、そのまま社内で共有・蓄積されているか。',
-      '蓄積された情報が、次の施策に活かされているか。',
-      'こうした「つながり」が設計されているかどうかが、成果の分かれ目になります。',
-      'ツールを導入すること自体は、スタートに過ぎません。',
-      '重要なのは、それらをどうつなぎ、ひとつの流れとして機能させるかです。',
-      'MOGCIAは、戦略・体験・運用を分断せず、ひとつの仕組みとして設計することで、ビジネスの成果を支えます。',
-    ],
-  },
-  'product-design': {
-    title: 'SNS運用が続かない会社の共通点',
-    image: '/blog2.jpg',
-    tag: 'ノウハウ',
-    body: [
-      'SNSを始めたものの、気づけば更新が止まっている。最初は意気込んで投稿していたのに、数ヶ月後には放置状態。',
-      'こうした状況は、多くの企業で起きています。',
-      'そしてその原因は、「やる気」や「リソース不足」ではありません。',
-      'よくあるお悩み',
-      '* 投稿のネタがない',
-      '* 担当者が忙しい',
-      '* 何を投稿すればいいかわからない',
-      'などです。',
-      'SNS運用が続かない会社の多くは、次のような状態になっています。',
-      '* 投稿はしているが、反応がそのまま放置されている',
-      '* 反応はあるが、問い合わせや来店につながらない',
-      '* 成果が見えないため、優先度が下がる',
-      'つまり、',
-      'SNSが「ただの作業」になっています',
-      '* 投稿しても意味があるかわからない',
-      '* 分析しても次にどう活かすかわからない',
-      '* 社内で共有されない',
-      'こうした状態では、SNSは“やらなくてもいいもの”になってしまいます。',
-      'SNSを続けるために必要なのは、投稿の工夫ではありません。',
-      '例えば、',
-      '* SNSで興味を持った人が、スムーズに問い合わせできるか',
-      '* 問い合わせ内容が、社内で共有されているか',
-      '* その情報が、次の投稿や施策に活かされているか',
-      'このような流れがあると、',
-      'SNSは「運用」ではなく「仕組み」になります',
-      'MOGCIAでは、SNSを単体の施策としてではなく、',
-      '* 集客',
-      '* 体験',
-      '* 社内運用',
-      'これらをつなぐ“ひとつの流れ”として設計します。',
-      'SNS運用が続かないのは、運用の問題ではなく「構造」の問題かもしれません。',
-      '自社のSNSがどこで止まっているのか、一度整理してみませんか。',
-      'MOGCIAでは、集客・体験・社内運用をつなぐ設計をもとに、現状の課題を整理するご相談も行っています。',
-    ],
-  },
-  'sns-operations': {
-    title: 'チャット対応を入れても満足度が上がらない理由',
-    image: '/blog3.jpg',
-    tag: 'ノウハウ',
-    body: [
-      '問い合わせ対応を改善するために、チャットツールを導入する企業は増えています。',
-      '電話やメールに比べて気軽に使え、対応スピードも上がる。一見すると、顧客満足度は自然に向上しそうに思えます。',
-      'しかし実際には、',
-      '* 導入したのに評価が変わらない',
-      '* むしろ対応が増えて現場が疲弊する',
-      '* 思ったほど使われない',
-      'といったケースも少なくありません。',
-      '多くの場合、チャットは「問い合わせ対応の効率化」として導入されます。',
-      'ですが、',
-      'チャット対応がうまくいかない会社には、共通する状態があります。',
-      '* チャットはあるが、何を聞けばいいかわからない',
-      '* 回答は返ってくるが、問題が解決しない',
-      '* やり取りが増えるだけで、満足度につながらない',
-      '本来、チャットの価値は「対応すること」だけではありません。',
-      '* よくある質問を事前に解決する',
-      '* ユーザーが迷わない導線をつくる',
-      '* 必要な情報にすぐアクセスできる状態にする',
-      'こうした設計によって、',
-      'そもそも問い合わせが発生しにくい状態をつくること',
-      'が大切です。',
-      'ユーザーにとって重要なのは、',
-      '* すぐに解決できたか',
-      '* ストレスなく使えたか',
-      'であって、「チャットがあるかどうか」ではありません。',
-      'チャット対応が機能しない背景には、',
-      '* 集客（どんな期待で来ているか）',
-      '* 体験（何に困っているか）',
-      '* 社内（どう対応・共有されているか）',
-      'これらがつながっていない状態があります。',
-      'その結果、「その場の対応」で終わってしまいます。',
-      '例えば、',
-      '* チャットでの問い合わせ内容が社内に蓄積される',
-      '* よくある質問がUIに反映される',
-      '* 次の案内や導線が改善される',
-      'こうした流れがあると、',
-      'チャットは“対応ツール”から“改善の起点”に変わります',
-      '重要なのは、',
-      '* 対応することではなく',
-      '* 体験として設計されているか',
-      'です。',
-      'MOGCIAでは、チャットを単なる問い合わせ手段としてではなく、',
-      '* 集客',
-      '* 体験',
-      '* 社内運用',
-      'これらをつなぐ仕組みの一部として設計します。',
-      'チャットは、対応を増やすためのものではなく、',
-      '体験をなめらかにするためのものです。',
-      'チャット対応を入れているのに、思ったような成果が出ていない。',
-      'それは、ツールではなく「設計」の問題かもしれません。',
-      '現在の導線や対応の流れを、一度見直してみませんか。',
-    ],
-  },
-  'sns-management-flow': {
-    title: 'SNS運用代行の流れとは？',
-    image: '/sns2.png',
-    tag: 'プロダクト',
-    body: [
-      'SNS運用は「投稿して終わり」ではありません。戦略・コンテンツ・運用・分析がつながって初めて、成果につながります。',
-      'MOGCIAでは、これらを分断せず、一連の仕組みとして設計・運用しています。',
-      '本記事では、実際のSNS運用代行の流れを、具体的なステップに分けてご紹介します。',
-      'SNS運用代行の全体像',
-      'MOGCIAのSNS運用は、以下の5つのステップで構成されています。',
-      '戦略設計 → コンテンツ制作 → 投稿・運用 → 分析・レポート → 改善・最適化',
-      '単発の施策ではなく、“回し続けること”を前提に設計しています。',
-      '01. 戦略設計（すべてはここで決まる）',
-      'まず最初に行うのが、戦略設計です。',
-      '* ターゲットは誰か',
-      '* どんな状態をゴールとするか（CV / 来店 / 問い合わせ）',
-      '* 競合と比べたポジションはどこか',
-      '* どんなコンテンツが刺さるか',
-      'ここを曖昧にしたまま投稿しても、「なんとなく伸びないアカウント」になります。',
-      'MOGCIAでは、SNS単体ではなく“事業全体”を見て設計します。',
-      '02. コンテンツ制作（価値を形にする）',
-      '戦略に基づいて、実際の投稿を制作します。',
-      '* 投稿構成（フック・本文・CTA）',
-      '* 画像 / 動画の制作',
-      '* コピーライティング',
-      '* トンマナ設計',
-      '重要なのは「映えること」ではなく、ユーザーが“自分ごと化できるか”です。',
-      '保存・シェア・プロフィール遷移など、行動につながる設計を行います。',
-      '03. 投稿・運用（継続と精度）',
-      '制作したコンテンツを、適切なタイミングで投稿します。',
-      '* 投稿スケジュール管理',
-      '* コメント / DM対応',
-      '* 投稿改善の微調整',
-      'SNSは「一発当てるゲーム」ではなく、積み上げるメディアです。',
-      '日々の運用精度が、アカウントの信頼を形成していきます。',
-      '04. 分析・レポート（感覚を捨てる）',
-      '投稿後は必ずデータを分析します。',
-      '* リーチ / 保存 / エンゲージメント',
-      '* どの投稿がCVにつながったか',
-      '* ユーザーの反応傾向',
-      'MOGCIAでは、Signal.を使い、「なぜ伸びたのか / なぜ伸びなかったのか」を明確にします。',
-      '05. 改善・最適化（ここが一番重要）',
-      '分析結果をもとに、次の施策へつなげます。',
-      '* コンテンツの方向性修正',
-      '* 投稿フォーマットの改善',
-      '* ターゲットの再定義',
-      'このPDCAを回し続けることで、再現性のある運用ができるようになります。',
-      'MOGCIAのSNS運用代行の強み',
-      '① 一貫した支援体制',
-      '戦略〜運用〜改善まで分断せず対応 → 「作る人」と「運用する人」がズレない',
-      '② コンテンツ制作力',
-      '写真・動画・デザイン・コピーまで対応 → ブランドの魅力を最大化',
-      '③ Signal.で行う改善',
-      '感覚ではなく数値ベースで意思決定 → 成果につながる運用',
-      '④ 柔軟なコミュニケーション',
-      '定期的な共有・相談体制 → 運用を“外注”ではなく“チーム化”',
-      'SNS運用でよくある課題',
-      '* 投稿しているが成果につながらない',
-      '* フォロワーは増えても売上に結びつかない',
-      '* 分析や改善まで手が回らない',
-      '* 社内にノウハウが蓄積されない',
-      'これらはすべて、「流れが分断されていること」が原因です。',
-      'まとめ',
-      'SNS運用で成果を出すために必要なのは、',
-      '✔ 戦略',
-      '✔ コンテンツ',
-      '✔ 継続運用',
-      '✔ 分析',
-      '✔ 改善',
-      'このすべてを、一つの仕組みとして回し続けることです。',
-      'MOGCIAでは、SNSを単なる発信ツールではなく、「集客につながる導線」として設計します。',
-      'SNS運用でお悩みの方へ',
-      'まずはお気軽にご相談ください。',
-    ],
-  },
-  'lp-start-guide': {
-    title: 'LP作成って、何から始めるべき？',
-    image: '/blog5.jpg',
-    tag: 'お役立ち',
-    body: [
-      'LP（ランディングページ）を作ろうとすると、「とりあえずデザインから？」とか「まず文章？」みたいに迷うことが多いです。',
-      'でも実際は、順番を間違えるとそれっぽいページはできても、成果にはつながりません。',
-      '見た目が整っていても、伝わらないLPは普通に存在します。',
-      'だからこそ大事なのは、“作る順番”ではなく、設計の考え方です。',
-      '① 何を売るのかではなく「誰に売るのか」',
-      '最初に決めるべきなのは、サービスの説明ではなくターゲットです。',
-      '・どんな人が',
-      '・どんな状態で',
-      '・何に困っているのか',
-      'ここが曖昧なまま進むと、LP全体がぼやけます。',
-      '逆にここが決まれば、言葉も構成も自然と決まっていきます。',
-      '② 読んだ後にどうなってほしいかを決める',
-      'LPは「読むためのページ」ではなく、行動してもらうためのページです。',
-      '・問い合わせしてほしいのか',
-      '・資料請求なのか',
-      '・購入なのか',
-      'ゴールが決まっていないと、どれだけいい内容でも意味がなくなります。',
-      'ここで重要なのは、「ユーザーにとって自然な行動かどうか」です。',
-      '③ 情報の順番を設計する',
-      'LPはただ情報を並べるだけでは機能しません。',
-      '大事なのは、ユーザーの頭の中の流れに合わせることです。',
-      '例えば',
-      '・共感（それわかる）',
-      '・問題の明確化',
-      '・解決手段の提示',
-      '・信頼の補強',
-      '・行動の後押し',
-      'この順番を無視すると、いきなり売り込みっぽくなったり、離脱されます。',
-      '④ コピーを作る',
-      'ここでようやく文章です。',
-      'よくあるミスは、最初からキャッチコピーを考えようとすること。',
-      'それだと、表面的な言葉になりがちです。',
-      '先に設計をしておけば、コピーは「ひねり出すもの」じゃなくて自然に出てくるものになります。',
-      '⑤ デザインで“伝わり方”を整える',
-      'デザインは「おしゃれにする工程」ではありません。',
-      '・どこを見るか',
-      '・どこで止まるか',
-      '・どこで理解するか',
-      'この視線の動きを整えるのが役割です。',
-      'つまりデザインは、コピーを強くするための手段です。',
-      '⑥ 公開して終わりじゃない',
-      'LPは作って終わりではなく、むしろここからがスタートです。',
-      '・どこで離脱されているか',
-      '・どのCTAが押されているか',
-      '・どの訴求が弱いか',
-      'これを見ながら改善していくことで、初めて「機能するLP」になります。',
-      'まとめ',
-      'LPは、デザイン → 文章 → 公開という単純な作業ではありません。',
-      '設計 → 言語化 → 見せ方 → 改善',
-      'この順番で考えることで、やっと成果につながるページになります。',
-      'MOGCIAでは、見た目だけじゃなく“ちゃんと機能するLP”を前提に設計しています。',
-      'LPの設計や改善について、状況に合わせて一緒に整理できます。',
-      '「まだふわっとしている」状態でも問題ありません。',
-      '無理に進めることはしないので、まずは気軽にご相談ください。',
-    ],
-  },
-} as const
-
-type Slug = keyof typeof posts
-
-type ContentBlock =
-  | { type: 'paragraph'; text: string }
-  | { type: 'list'; items: string[] }
-  | { type: 'heading'; text: string }
-
-function toContentBlocks(body: readonly string[]): ContentBlock[] {
-  const blocks: ContentBlock[] = []
-  let listBuffer: string[] = []
-
-  const flushList = () => {
-    if (listBuffer.length > 0) {
-      blocks.push({ type: 'list', items: listBuffer })
-      listBuffer = []
-    }
+type BlogPostPageProps = {
+  params: {
+    slug: string
   }
-
-  for (const line of body) {
-    const isBullet = line.startsWith('* ') || line.startsWith('・')
-
-    if (isBullet) {
-      listBuffer.push(line.replace(/^(\* |・)/, '').trim())
-      continue
-    }
-
-    flushList()
-
-    const isHeadingLike =
-      line.length <= 18 &&
-      !line.includes('。') &&
-      !line.includes('、') &&
-      !line.includes('？') &&
-      !line.includes('?')
-
-    if (isHeadingLike) {
-      blocks.push({ type: 'heading', text: line })
-    } else {
-      blocks.push({ type: 'paragraph', text: line })
-    }
-  }
-
-  flushList()
-  return blocks
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = posts[params.slug as Slug]
+export function generateStaticParams() {
+  return blogPosts.map(post => ({ slug: post.slug }))
+}
+
+export function generateMetadata({ params }: BlogPostPageProps): Metadata {
+  const post = getBlogPost(params.slug)
 
   if (!post) {
-    notFound()
+    return createPageMetadata('ブログ | 株式会社MOGCIA')
+  }
+
+  return createPageMetadata(`${post.title} | 株式会社MOGCIA`)
+}
+
+function renderBlock(block: BlogBlock, index: number) {
+  if (block.type === 'h2') {
+    return <h2 key={index} className="pt-8 text-xl font-light tracking-[-0.02em] text-[#1F1F1F] md:text-3xl">{block.text}</h2>
+  }
+
+  if (block.type === 'h3') {
+    return <h3 key={index} className="pt-4 text-lg font-light text-[#1F1F1F] md:text-2xl">{block.text}</h3>
+  }
+
+  if (block.type === 'p') {
+    return <p key={index} className="text-sm leading-8 text-neutral-700 md:text-base md:leading-9">{block.text}</p>
+  }
+
+  if (block.type === 'ul') {
+    return (
+      <ul key={index} className="space-y-3 text-sm leading-8 text-neutral-700 md:text-base">
+        {block.items.map(item => (
+          <li key={item} className="flex gap-3">
+            <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-[#C7B299]" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  if (block.type === 'ol') {
+    return (
+      <ol key={index} className="list-decimal space-y-3 pl-5 text-sm leading-8 text-neutral-700 md:text-base">
+        {block.items.map(item => (
+          <li key={item}>{item}</li>
+        ))}
+      </ol>
+    )
+  }
+
+  if (block.type === 'blockquote') {
+    return (
+      <blockquote key={index} className="border-l-4 border-[#C7B299] bg-[#F7F4F1] px-5 py-5 text-sm leading-8 text-neutral-700 md:px-6 md:text-base">
+        {block.text}
+      </blockquote>
+    )
   }
 
   return (
-    <main className="bg-[#f7f7f5] text-neutral-950">
-      <section className="relative h-[52vh] min-h-[320px] overflow-hidden">
-        <div className="absolute inset-0 bg-[#ece8e1]" />
-        <Image
-          src={post.image}
-          alt={post.title}
-          fill
-          priority
-          sizes="100vw"
-          className="object-contain"
-        />
-        <AiGeneratedNotice className="z-20" />
-      </section>
+    <div key={index} className="rounded-[20px] border border-[#E7E1DA] bg-[#F7F4F1] p-5 md:p-6">
+      <p className="text-sm font-medium text-[#8f7a61]">{block.title}</p>
+      <p className="mt-3 text-sm leading-8 text-neutral-700 md:text-base">{block.body}</p>
+    </div>
+  )
+}
 
-      <section className="px-6 py-14 md:px-10 md:py-18 lg:px-16 xl:px-20">
-        <div className="mx-auto w-full max-w-[1320px]">
-          <div className="mx-auto max-w-3xl space-y-6 text-center">
-            <p className="text-[11px] uppercase tracking-[0.42em] text-neutral-500">Blog</p>
-            <p className="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-[10px] uppercase tracking-[0.24em] text-neutral-600">
-              {post.tag}
+export default function BlogPostPage({ params }: BlogPostPageProps) {
+  const post = getBlogPost(params.slug)
+
+  if (!post) notFound()
+
+  const { previous, next } = getAdjacentBlogPosts(post.slug)
+  const relatedPosts = blogPosts.filter(item => item.category === post.category && item.slug !== post.slug).slice(0, 3)
+
+  return (
+    <main className="bg-[#F7F4F1] text-[#1F1F1F]">
+      <section className="px-6 py-12 md:px-10 md:py-16 lg:px-16 xl:px-20">
+        <div className="mx-auto grid w-full max-w-[1320px] gap-8 lg:grid-cols-[0.7fr_0.3fr]">
+          <article className="rounded-[28px] border border-[#E7E1DA] bg-white p-6 shadow-[0_18px_60px_rgba(92,78,62,0.05)] md:p-10">
+            <p className="text-xs text-neutral-500">
+              <Link href="/" className="hover:text-[#8f7a61]">ホーム</Link>
+              {' 〉 '}
+              <Link href="/blog" className="hover:text-[#8f7a61]">ブログ</Link>
+              {' 〉 '}
+              {post.title}
             </p>
-            <h1 className="text-[1.65rem] font-light leading-[1.25] tracking-[-0.03em] text-neutral-950 md:text-[2.6rem]">
+
+            <div className="mt-10 flex flex-wrap items-center gap-3">
+              <time className="text-sm text-neutral-500">{post.date}</time>
+              <span className="rounded-full bg-[#F7F4F1] px-3 py-1 text-[11px] text-[#8f7a61]">
+                {post.category}
+              </span>
+            </div>
+            <h1 className="mt-6 text-2xl font-light leading-[1.28] tracking-[-0.03em] md:text-5xl">
               {post.title}
             </h1>
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 pb-20 md:px-10 md:pb-24 lg:px-16 xl:px-20">
-        <div className="mx-auto w-full max-w-[1320px]">
-          <article className="mx-auto max-w-3xl border-t border-neutral-200 pt-10 md:pt-12">
-            <div className="space-y-7">
-              {toContentBlocks(post.body).map((block, index) => {
-                if (block.type === 'list') {
-                  return (
-                    <ul
-                      key={`list-${index}`}
-                      className="space-y-3 pl-1 text-[15px] leading-8 text-neutral-700 md:text-[1.02rem]"
-                    >
-                      {block.items.map(item => (
-                        <li key={item} className="flex gap-3">
-                          <span className="mt-[0.72rem] h-1.5 w-1.5 shrink-0 rounded-full bg-neutral-400" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )
-                }
-
-                if (block.type === 'heading') {
-                  return (
-                    <h2
-                      key={`heading-${index}`}
-                      className="pt-4 text-[1.18rem] font-light tracking-[-0.02em] text-neutral-950 md:text-[1.4rem]"
-                    >
-                      {block.text}
-                    </h2>
-                  )
-                }
-
-                return (
-                  <p
-                    key={`paragraph-${index}`}
-                    className="text-[15px] leading-8 text-neutral-700 md:text-[1.02rem] md:leading-[2.1]"
-                  >
-                    {block.text}
-                  </p>
-                )
-              })}
+            <div className="relative mt-10 aspect-[16/9] overflow-hidden rounded-[24px] bg-[#F7F4F1]">
+              <Image
+                src={post.thumbnail}
+                alt={post.title}
+                fill
+                priority
+                sizes="(min-width: 1024px) 70vw, 100vw"
+                className="object-cover"
+              />
             </div>
+
+            <div className="mx-auto mt-12 max-w-3xl space-y-7">
+              {post.content.map(renderBlock)}
+            </div>
+
+            <div className="mx-auto mt-14 grid max-w-3xl gap-4 border-t border-[#E7E1DA] pt-8 md:grid-cols-2">
+              {previous ? (
+                <Link href={`/blog/${previous.slug}`} className="rounded-[18px] border border-[#E7E1DA] p-4 text-sm leading-7 hover:bg-[#F7F4F1]">
+                  <span className="text-neutral-400">前の記事</span>
+                  <p className="mt-2 text-neutral-800">{previous.title}</p>
+                </Link>
+              ) : <div />}
+              {next ? (
+                <Link href={`/blog/${next.slug}`} className="rounded-[18px] border border-[#E7E1DA] p-4 text-sm leading-7 hover:bg-[#F7F4F1] md:text-right">
+                  <span className="text-neutral-400">次の記事</span>
+                  <p className="mt-2 text-neutral-800">{next.title}</p>
+                </Link>
+              ) : null}
+            </div>
+
+            {relatedPosts.length > 0 ? (
+              <div className="mx-auto mt-12 max-w-3xl border-t border-[#E7E1DA] pt-8">
+                <h2 className="text-2xl font-light tracking-[-0.02em]">関連記事</h2>
+                <div className="mt-6 grid gap-4 md:grid-cols-3">
+                  {relatedPosts.map(item => (
+                    <Link key={item.slug} href={`/blog/${item.slug}`} className="rounded-[18px] border border-[#E7E1DA] p-4 text-sm leading-7 hover:bg-[#F7F4F1]">
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : null}
           </article>
+
+          <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">
+            <div className="rounded-[24px] border border-[#E7E1DA] bg-white p-6 shadow-[0_14px_44px_rgba(92,78,62,0.05)]">
+              <h2 className="text-base font-semibold">カテゴリー</h2>
+              <div className="mt-6 space-y-4">
+                {blogCategories.map(category => (
+                  <p key={category} className="flex items-center justify-between text-sm text-neutral-700">
+                    <span>{category}</span>
+                    <span className="text-[#C7B299]">›</span>
+                  </p>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-[24px] border border-[#E7E1DA] bg-white p-6 shadow-[0_14px_44px_rgba(92,78,62,0.05)]">
+              <h2 className="text-base font-semibold">人気の記事</h2>
+              <div className="mt-6 space-y-4">
+                {blogPosts.slice(0, 3).map(item => (
+                  <Link key={item.slug} href={`/blog/${item.slug}`} className="block text-sm leading-7 text-neutral-700 hover:text-[#8f7a61]">
+                    {item.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
 
-      <ContactSection />
       <Footer />
     </main>
   )

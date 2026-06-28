@@ -1,14 +1,13 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 
-import AiGeneratedNotice from '@/components/AiGeneratedNotice'
 import ContactSection from '@/components/ContactSection'
 import Footer from '@/components/Footer'
 import ServiceOfferings from '@/components/ServiceOfferings'
 import { createPageMetadata } from '../metadata'
 
 export const metadata: Metadata = createPageMetadata(
-  'サービス一覧 | 株式会社MOGCIA（福岡のAI・Web制作）',
+  'プロダクトと支援サービス | 株式会社MOGCIA（福岡のAI・Web制作）',
 )
 
 const inDevelopment = [
@@ -20,37 +19,57 @@ const inDevelopment = [
   },
   {
     label: 'In Development 02',
-    title: 'tellmo',
-    image: '/tellmo.png',
+    title: 'tellmo.',
+    image: '/tellmo1.png',
     imageClassName: 'object-contain',
   },
 ]
 
+function renderDevelopmentTitle(title: string) {
+  if (title !== 'tellmo.') return title
+
+  return (
+    <>
+      tellmo<span className="text-[#2f8f5b]">.</span>
+    </>
+  )
+}
+
 export default function ServicesPage() {
   return (
-    <main className="bg-[#f7f7f5] text-neutral-950">
-      <section className="relative hidden h-[80vh] overflow-hidden md:block">
-        <Image
-          src="/d.jpg"
-          alt="Services hero"
-          fill
-          priority
-          sizes="100vw"
-          className="hidden object-cover md:block"
-        />
-        <AiGeneratedNotice />
-      </section>
-
-      <section className="px-6 py-16 md:px-10 md:py-20 lg:px-16 xl:px-20">
-        <div className="mx-auto w-full max-w-[1320px]">
-          <div className="max-w-4xl space-y-6">
+    <main className="bg-gradient-to-b from-white via-[#f8f6f1] to-white text-neutral-950">
+      <section className="relative overflow-hidden px-6 pb-20 pt-36 md:px-10 md:pb-24 md:pt-40 lg:px-16 lg:pt-32 xl:px-20">
+        <div className="pointer-events-none absolute inset-0 lg:bottom-[-110px] lg:left-auto lg:right-0 lg:top-20 lg:w-[58%]">
+          <Image
+            // Services hero background visual. Replace this path if the hero visual changes.
+            src="/m308.png"
+            alt=""
+            fill
+            priority
+            sizes="58vw"
+            className="hidden object-cover object-[center_58%] opacity-70 [mask-image:linear-gradient(90deg,transparent_0%,black_28%,black_100%)] lg:block"
+          />
+          <Image
+            // Responsive hero background visual.
+            src="/d2.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[center_32%] scale-110 lg:hidden"
+          />
+        </div>
+        <div className="relative mx-auto w-full max-w-[1320px]">
+          <div className="max-w-3xl space-y-7">
             <p className="text-[11px] uppercase tracking-[0.42em] text-neutral-500">Services</p>
-            <h1 className="text-3xl font-light tracking-[-0.02em] text-neutral-950 md:text-5xl">
-              既存プロダクトと支援サービス
+            <h1 className="text-[2rem] font-light leading-[1.12] tracking-[-0.04em] text-neutral-950 md:text-[2.75rem] lg:text-[3.2rem]">
+              <span className="block whitespace-nowrap">既存プロダクトと</span>
+              <span className="block whitespace-nowrap">支援サービス</span>
             </h1>
-            <p className="max-w-3xl text-sm leading-8 text-neutral-600 md:text-base">
-              MOGCIAでは、既存プロダクトの提供に加えて、SNS運用代行やWeb制作、企業向けパック支援まで幅広く展開しています。
-              集客から体験、社内運用までを分断せず、ひとつの流れとして機能する設計を重視しています。
+            <p className="max-w-xl text-sm leading-8 text-neutral-600 md:text-base">
+              MOGCIAでは、AI・SNS・Web・SaaSの力を掛け合わせ、
+              <br className="hidden md:block" />
+              集客から体験、社内運用までをひとつの流れとして設計します。
             </p>
           </div>
         </div>
@@ -58,41 +77,46 @@ export default function ServicesPage() {
 
       <ServiceOfferings />
 
-      <section className="px-6 pb-20 md:px-10 md:pb-24 lg:px-16 xl:px-20">
+      <section className="px-6 py-20 md:px-10 md:py-24 lg:px-16 xl:px-20">
         <div className="mx-auto w-full max-w-[1320px]">
-          <div className="grid gap-12 xl:grid-cols-[0.7fr_1.3fr] xl:gap-20">
-            <div>
+          <div className="space-y-12">
+            <div className="max-w-3xl">
               <p className="text-[11px] uppercase tracking-[0.42em] text-neutral-500">Coming Soon</p>
               <h2 className="mt-4 text-3xl font-light tracking-[-0.02em] text-neutral-950 md:text-5xl xl:whitespace-nowrap">
                 開発中のプロダクト
               </h2>
+              <p className="mt-5 text-sm leading-8 text-neutral-600 md:text-base">
+                体験と運用の接点をさらに広げるため、次のプロダクトも少しずつ形にしています。
+              </p>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2">
               {inDevelopment.map(item => (
-                <div key={item.label} className="border border-neutral-200 bg-white px-6 py-8">
+                <article
+                  key={item.label}
+                  className="overflow-hidden border border-[#ded6ca]/80 bg-white p-6 opacity-90 shadow-[0_20px_70px_rgba(92,78,62,0.08)] md:p-8"
+                >
                   <p className="text-[11px] uppercase tracking-[0.3em] text-neutral-400">{item.label}</p>
-                  {'image' in item ? (
-                    <div className="relative mt-5 aspect-[4/3] overflow-hidden">
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        fill
-                        sizes="(min-width: 768px) 50vw, 100vw"
-                        className={item.imageClassName}
-                      />
-                      <AiGeneratedNotice className="bottom-2 right-2 md:bottom-3 md:right-3 lg:bottom-3 lg:right-3" />
-                    </div>
-                  ) : null}
-                  <h3 className="mt-4 text-xl font-light text-neutral-950">{item.title}</h3>
-                </div>
+                  <div className="relative mt-6 aspect-[4/3] overflow-hidden bg-[#f7f4ee]">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      className={`${item.imageClassName} p-5`}
+                    />
+                  </div>
+                  <h3 className="mt-6 text-xl font-light tracking-[-0.02em] text-neutral-900 md:text-2xl">
+                    {renderDevelopmentTitle(item.title)}
+                  </h3>
+                </article>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      <ContactSection />
+      <ContactSection variant="panel" />
       <Footer />
     </main>
   )

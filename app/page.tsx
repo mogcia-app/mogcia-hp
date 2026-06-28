@@ -4,71 +4,20 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import AiGeneratedNotice from '@/components/AiGeneratedNotice'
+import { renderBrandText } from '@/components/BrandText'
 import ProductsSection from '@/components/Products'
 import Footer from '@/components/Footer'
 import ContactSection from '@/components/ContactSection'
-
-const newsItems = [
-  {
-    date: '2025.12.05',
-    title: 'upmoのテスト導入スタート',
-    description: '企業の情報整理と業務改善を支援する AI ツールのテスト導入を複数社で開始しました。',
-    tag: 'PRESS',
-  },
-  {
-    date: '2025.08.15',
-    title: 'Signal. テスト導入スタート',
-    description: 'SNS運用の自動化を目指す AI ツールのテスト導入を複数社で開始しました。',
-    tag: 'NEWS',
-  },
-  {
-    date: '2025.01.08',
-    title: 'MOGCIA Coffee POPUP',
-    description: 'Choosebase SHIBUYA にて MOGCIA Coffee の販売を実施しました。',
-    tag: 'EVENT',
-  },
-]
+import { newsItems } from '@/lib/news'
+import { blogPosts, blogCategories } from '@/lib/blog'
 
 const newsTagStyles: Record<string, string> = {
-  PRESS: 'bg-[#e8f1ff] text-[#2457a6]',
-  NEWS: 'bg-[#edf7ee] text-[#2f6b3b]',
-  EVENT: 'bg-[#fff1e7] text-[#a45a1c]',
+  プレスリリース: 'bg-[#f4eee6] text-[#8f7a61]',
+  サービス: 'bg-[#f4eee6] text-[#8f7a61]',
+  お知らせ: 'bg-[#f4eee6] text-[#8f7a61]',
 }
 
-const blogPosts = [
-  {
-    title: 'LP作成って、何から始めるべき？',
-    image: '/blog5.jpg',
-    href: '/blog/lp-start-guide',
-    tag: 'お役立ち',
-  },
-  {
-    title: 'SNS運用代行の流れとは？',
-    image: '/sns2.png',
-    href: '/blog/sns-management-flow',
-    tag: 'プロダクト',
-  },
-  {
-    title: 'チャット対応を入れても満足度が上がらない理由',
-    image: '/blog3.jpg',
-    href: '/blog/sns-operations',
-    tag: 'お役立ち',
-  },
-  {
-    title: 'SNS運用が続かない会社の共通点',
-    image: '/blog2.jpg',
-    href: '/blog/product-design',
-    tag: 'お役立ち',
-  },
-  {
-    title: '「導入したのに変わらない」会社に共通する問題',
-    image: '/blog1.jpg',
-    href: '/blog/ai-adoption',
-    tag: 'お役立ち',
-  },
-]
-
-const blogFilters = ['すべて', 'お役立ち', 'プロダクト'] as const
+const blogFilters = blogCategories
 
 const heroBackgrounds = ['/mein1.jpg', '/mein2.jpg', '/mein3.jpg']
 const heroMobileBackgrounds = ['/gt1.png', '/gt2.png', '/gt3.png']
@@ -78,6 +27,8 @@ const capabilityBannerItems = [
   'LP Production',
   'Web Production',
   'Roomly',
+  'selmo',
+  'commo',
   'upmo',
   'Signal',
   'Strategy to Execution',
@@ -173,7 +124,7 @@ export default function Home() {
   const filteredBlogPosts =
     selectedBlogTag === 'すべて'
       ? blogPosts
-      : blogPosts.filter(post => post.tag === selectedBlogTag)
+      : blogPosts.filter(post => post.category === selectedBlogTag)
 
   return (
     <main className="min-h-screen bg-[#f7f7f5] text-neutral-950">
@@ -245,29 +196,39 @@ export default function Home() {
             </div>
 
             <div className="border-t border-neutral-200">
-              {newsItems.map(item => (
-                <article
+              {newsItems.slice(0, 3).map(item => (
+                <Link
                   key={`${item.date}-${item.title}`}
-                  className="grid gap-3 border-b border-neutral-200 py-7 transition-colors duration-300 md:grid-cols-[140px_90px_1fr] md:gap-6"
+                  href={`/news/${item.slug}`}
+                  className="grid gap-3 border-b border-neutral-200 py-7 transition-colors duration-300 md:grid-cols-[140px_120px_1fr] md:gap-6"
                 >
                   <p className="text-sm text-neutral-500">{item.date}</p>
                   <p
                     className={`inline-flex w-fit items-center rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.24em] ${
-                      newsTagStyles[item.tag] ?? 'bg-neutral-200 text-neutral-700'
+                      newsTagStyles[item.category] ?? 'bg-neutral-200 text-neutral-700'
                     }`}
                   >
-                    {item.tag}
+                    {item.category}
                   </p>
                   <div>
                     <h3 className="text-[1.15rem] font-light leading-[1.35] text-neutral-950 md:text-[1.35rem]">
-                      {item.title}
+                      {renderBrandText(item.title)}
                     </h3>
                     <p className="mt-3 max-w-3xl text-[12px] leading-6 text-neutral-600 md:text-[13px]">
                       {item.description}
                     </p>
                   </div>
-                </article>
+                </Link>
               ))}
+              <div className="pt-8">
+                <Link
+                  href="/news"
+                  className="inline-flex items-center gap-4 rounded-full border border-[#C7B299] bg-[#C7B299] px-7 py-4 text-xs uppercase tracking-[0.22em] text-white transition-colors hover:border-[#9a8062] hover:bg-[#9a8062]"
+                >
+                  お知らせ一覧を見る
+                  <span className="h-px w-10 bg-current" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -397,13 +358,13 @@ export default function Home() {
             <div className="flex w-max gap-5 md:gap-6">
               {filteredBlogPosts.map(post => (
                 <Link
-                  key={post.href}
-                  href={post.href}
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
                   className="group block w-[74vw] max-w-[420px] overflow-hidden border border-neutral-200 bg-white md:w-[38vw] lg:w-[30vw]"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden">
                     <Image
-                      src={post.image}
+                      src={post.thumbnail}
                       alt={post.title}
                       fill
                       sizes="(min-width: 1024px) 30vw, (min-width: 768px) 38vw, 74vw"
@@ -413,7 +374,7 @@ export default function Home() {
                   </div>
                   <div className="p-5 md:p-6">
                     <p className="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-[10px] uppercase tracking-[0.24em] text-neutral-600">
-                      {post.tag}
+                      {post.category}
                     </p>
                     <h3 className="mt-4 text-[1rem] font-light leading-[1.5] text-neutral-950 md:text-[1.1rem]">
                       {post.title}

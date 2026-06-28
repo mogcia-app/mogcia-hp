@@ -1,9 +1,24 @@
 import Link from 'next/link'
 
-export default function ContactSection() {
+type ContactSectionProps = {
+  variant?: 'default' | 'panel'
+}
+
+export default function ContactSection({ variant = 'default' }: ContactSectionProps) {
+  const isPanel = variant === 'panel'
+
   return (
-    <section id="contact" className="px-6 py-20 md:px-10 md:py-24 lg:px-16 xl:px-20">
-      <div className="mx-auto w-full max-w-[1320px] border-y border-neutral-200 py-8 md:py-10">
+    <section
+      id="contact"
+      className="px-6 py-20 md:px-10 md:py-24 lg:px-16 xl:px-20"
+    >
+      <div
+        className={`mx-auto w-full max-w-[1320px] ${
+          isPanel
+            ? 'rounded-[32px] border border-[#ded6ca]/70 bg-white/50 px-6 py-10 shadow-[0_14px_44px_rgba(92,78,62,0.04)] md:px-10 md:py-12'
+            : 'border-y border-neutral-200 py-8 md:py-10'
+        }`}
+      >
         <div className="grid gap-8 md:gap-10 xl:grid-cols-[0.78fr_1.22fr] xl:gap-16">
           <div>
             <p className="text-[11px] uppercase tracking-[0.42em] text-neutral-500">Contact</p>
@@ -14,7 +29,7 @@ export default function ContactSection() {
             </h2>
           </div>
 
-          <div className="border-t border-neutral-200 pt-7">
+          <div className="pt-7">
             <p className="max-w-2xl text-sm leading-8 text-neutral-600 md:text-base">
               事業課題や制作、運用のご相談はこちらから。内容を確認後、目的に合わせて最適なメンバーが順次ご連絡します。
             </p>

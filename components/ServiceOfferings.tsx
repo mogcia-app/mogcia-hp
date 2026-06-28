@@ -1,8 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import AiGeneratedNotice from '@/components/AiGeneratedNotice'
-
 type Product = {
   name: string
   image: string
@@ -21,6 +19,15 @@ type ServicePackage = {
 
 export const products: Product[] = [
   {
+    name: 'selmo.',
+    image: '/selmohp.png',
+    imageClassName: 'object-contain',
+    title: '営業教育を仕組み化するAIプラットフォーム',
+    description:
+      '商談分析・テレアポ分析・ロープレ・ナレッジ管理をひとつに。営業教育を仕組み化するAIプラットフォーム',
+    href: 'https://selmotool.com/',
+  },
+  {
     name: 'commo.',
     image: '/commohp.png',
     imageClassName: 'object-contain',
@@ -36,7 +43,7 @@ export const products: Product[] = [
     imageClassName: 'object-contain',
     title: 'アプリ不要のチャットで、ホテルの問い合わせ対応をもっとシンプルに',
     description:
-      'ゲストとホテルスタッフをつなぐ、チャット型フロントサポートツール。QRコードを読み取るだけでゲストはすぐに使え、スタッフはブラウザの管理画面からリアルタイムで確認・返信できます。',
+      'ゲストとホテルスタッフをつなぐ、チャット型フロントサポートツール。QRコードからすぐ使え、問い合わせ対応をシンプルにします。',
     href: 'https://roomlychat.com/',
   },
   {
@@ -87,109 +94,146 @@ type ServiceOfferingsProps = {
   servicesTitle?: string
 }
 
+export function renderProductName(name: string) {
+  if (name === 'selmo.') {
+    return (
+      <>
+        selmo<span className="text-[#f5c542]">.</span>
+      </>
+    )
+  }
+
+  if (name === 'Roomly.') {
+    return (
+      <>
+        Roomly<span className="text-[#8f1f1f]">.</span>
+      </>
+    )
+  }
+
+  if (name === 'Signal.') {
+    return (
+      <>
+        Signal<span className="text-[#ff8a15]">.</span>
+      </>
+    )
+  }
+
+  if (name !== 'commo.') return name
+
+  return (
+    <>
+      commo<span className="text-[#8b5cf6]">.</span>
+    </>
+  )
+}
+
+export function ProductCards() {
+  return (
+    <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+      {products.map(product => (
+        <article
+          key={product.name}
+          className="group flex min-h-full flex-col overflow-hidden border border-[#ded6ca]/80 bg-white shadow-[0_18px_60px_rgba(92,78,62,0.05)] transition duration-300 hover:-translate-y-1 hover:border-[#c9bba8] hover:shadow-[0_24px_80px_rgba(92,78,62,0.12)]"
+        >
+          <div className="relative aspect-[4/3] overflow-hidden bg-[#f7f4ee]">
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
+              className={`${product.imageClassName} p-5 transition duration-300 group-hover:scale-[1.03]`}
+            />
+          </div>
+
+          <div className="flex flex-1 flex-col p-6">
+            <p className="text-[11px] uppercase tracking-[0.3em] text-neutral-400">Product</p>
+            <h3 className="mt-3 text-2xl font-light tracking-[-0.02em] text-neutral-950">
+              {renderProductName(product.name)}
+            </h3>
+            <p className="mt-4 text-sm font-light leading-7 text-neutral-600">
+              {product.description}
+            </p>
+
+            <Link
+              href={product.href}
+              className="group/link mt-auto inline-flex w-fit items-center gap-3 rounded-full border border-[#ded6ca] px-4 py-2.5 text-[10px] uppercase tracking-[0.24em] text-neutral-700 transition-colors hover:border-[#9a8062] hover:bg-[#9a8062] hover:text-white"
+            >
+              Visit
+              <span className="h-px w-8 bg-current transition-transform duration-300 group-hover/link:translate-x-1" />
+            </Link>
+          </div>
+        </article>
+      ))}
+    </div>
+  )
+}
+
 export default function ServiceOfferings({
   productsLabel = 'Products',
   productsTitle = '既存プロダクト',
   servicesLabel = 'Support',
   servicesTitle = '支援サービス',
 }: ServiceOfferingsProps) {
-  const renderProductName = (name: string) => {
-    if (name !== 'commo.') return name
-
-    return (
-      <>
-        commo<span className="text-[#8b5cf6]">.</span>
-      </>
-    )
-  }
-
   return (
     <>
-      <section className="px-6 pb-20 md:px-10 md:pb-24 lg:px-16 xl:px-20">
+      <section className="px-6 py-20 md:px-10 md:py-24 lg:px-16 xl:px-20">
         <div className="mx-auto w-full max-w-[1320px]">
-          <div className="grid gap-12 xl:grid-cols-[0.7fr_1.3fr] xl:gap-20">
-            <div>
+          <div className="space-y-12">
+            <div className="max-w-3xl">
               <p className="text-[11px] uppercase tracking-[0.42em] text-neutral-500">{productsLabel}</p>
               <h2 className="mt-4 text-3xl font-light tracking-[-0.02em] text-neutral-950 md:text-5xl xl:whitespace-nowrap">
                 {productsTitle}
               </h2>
+              <p className="mt-5 text-sm leading-8 text-neutral-600 md:text-base">
+                集客、接客、社内運用を支える既存プロダクトを、課題に合わせて組み合わせます。
+              </p>
             </div>
 
-            <div className="border-t border-neutral-200">
-              {products.map(product => (
-                <article
-                  key={product.name}
-                  className="grid gap-5 border-b border-neutral-200 py-8 md:grid-cols-[200px_minmax(0,1fr)_auto] md:gap-8"
-                >
-                  <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      sizes="(min-width: 768px) 220px, 100vw"
-                      className={product.imageClassName}
-                    />
-                  </div>
-
-                  <div className="space-y-4">
-                    <p className="text-[11px] uppercase tracking-[0.3em] text-neutral-400">Product</p>
-                    <h3 className="mt-3 text-xl font-light text-neutral-950 md:text-2xl">
-                      {renderProductName(product.name)}
-                    </h3>
-                    <p className="max-w-3xl whitespace-pre-line text-[0.98rem] font-light leading-[1.65] text-neutral-950 md:text-[1.08rem]">
-                      {product.title}
-                    </p>
-                  </div>
-
-                  <div className="md:justify-self-end">
-                    <Link
-                      href={product.href}
-                      className="inline-flex items-center gap-3 rounded-full border border-neutral-300 px-4 py-2.5 text-[10px] uppercase tracking-[0.24em] text-neutral-700 transition-colors hover:border-neutral-950 hover:text-neutral-950"
-                    >
-                      Visit
-                      <span className="h-px w-8 bg-current" />
-                    </Link>
-                  </div>
-                </article>
-              ))}
-            </div>
+            <ProductCards />
           </div>
         </div>
       </section>
 
-      <section className="px-6 pb-20 md:px-10 md:pb-24 lg:px-16 xl:px-20">
+      <section className="px-6 py-20 md:px-10 md:py-24 lg:px-16 xl:px-20">
         <div className="mx-auto w-full max-w-[1320px]">
-          <div className="grid gap-12 xl:grid-cols-[0.7fr_1.3fr] xl:gap-20">
-            <div>
+          <div className="space-y-12">
+            <div className="max-w-3xl">
               <p className="text-[11px] uppercase tracking-[0.42em] text-neutral-500">{servicesLabel}</p>
               <h2 className="mt-4 text-3xl font-light tracking-[-0.02em] text-neutral-950 md:text-5xl">
                 {servicesTitle}
               </h2>
+              <p className="mt-5 text-sm leading-8 text-neutral-600 md:text-base">
+                プロダクトだけでは届きにくい戦略、制作、運用の領域を、事業の流れに沿って支援します。
+              </p>
             </div>
 
-            <div className="grid gap-0 border-t border-neutral-200">
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {servicePackages.map(item => (
-                <div
+                <article
                   key={item.title}
-                  className="grid gap-5 border-b border-neutral-200 py-7 md:grid-cols-[220px_minmax(0,1fr)] md:gap-8"
+                  className="grid min-h-full overflow-hidden border border-[#ded6ca]/80 bg-white shadow-[0_18px_60px_rgba(92,78,62,0.05)] transition duration-300 hover:-translate-y-1 hover:border-[#c9bba8] hover:shadow-[0_24px_80px_rgba(92,78,62,0.12)] sm:grid-cols-[0.95fr_1.05fr] xl:grid-cols-1"
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
+                  <div className="relative min-h-[220px] overflow-hidden bg-[#f7f4ee] xl:aspect-[16/10] xl:min-h-0">
                     <Image
                       src={item.image}
                       alt={item.title}
                       fill
-                      sizes="(min-width: 768px) 220px, 100vw"
-                      className={item.imageClassName}
+                      sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+                      className={`${item.imageClassName} p-5`}
                     />
-                    <AiGeneratedNotice className="bottom-2 right-2 md:bottom-3 md:right-3 lg:bottom-3 lg:right-3" />
                   </div>
-                  <div className="space-y-4">
+                  <div className="flex flex-col p-6">
+                    <p className="text-[11px] uppercase tracking-[0.3em] text-[#a18b72]">Support</p>
                     <h3 className="text-xl font-light text-neutral-950 md:text-2xl">{item.title}</h3>
-                    <p className="max-w-3xl text-[0.98rem] font-light leading-[1.65] text-neutral-950 md:text-[1.08rem]">
+                    <p className="mt-4 text-sm font-light leading-7 text-neutral-600">
                       {item.body}
                     </p>
+                    <p className="mt-auto pt-8 text-[10px] font-light tracking-[0.04em] text-neutral-400">
+                      この画像はAIで生成しています
+                    </p>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           </div>
