@@ -17,7 +17,7 @@ const serviceLinks = [
   { label: 'commo.', href: 'https://commotool.com/' },
   { label: 'Roomly.', href: 'https://roomlychat.com/' },
   { label: 'upmo', href: 'https://upmotool.com/' },
-  { label: 'Signal.', href: 'https://www.sgnalapp.com/' },
+  { label: 'Signal.', href: 'https://www.signalapp.jp/' },
   { label: 'MOGCIA Coffee', href: 'https://mogcia.official.ec/' },
 ]
 

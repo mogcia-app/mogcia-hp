@@ -62,7 +62,7 @@ export const products: Product[] = [
     title: 'あなた専属のSNS AI秘書',
     description:
       'SNS運用の次の一手をAIが自動で提案。分析も投稿アイデアも全部おまかせで、もう悩まないSNS運用へ。',
-    href: 'https://www.sgnalapp.com/',
+    href: 'https://www.signalapp.jp/',
   },
 ]
 
