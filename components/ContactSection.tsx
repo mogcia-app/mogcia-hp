@@ -35,6 +35,8 @@ export default function ContactSection({ variant = 'default' }: ContactSectionPr
             </p>
             <Link
               href="/contact"
+              data-mogcia-id="contact-section-contact"
+              data-mogcia-event="contact_click"
               className="group mt-8 inline-flex items-center gap-3 rounded-full border border-neutral-950 px-6 py-3 text-[10px] uppercase tracking-[0.24em] text-neutral-950 transition-colors duration-300 hover:bg-neutral-950 hover:text-white"
             >
               Contact Us

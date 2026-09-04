@@ -56,6 +56,8 @@ export default function Header() {
             })}
             <Link
               href="/contact"
+              data-mogcia-id="header-contact"
+              data-mogcia-event="contact_click"
               className="inline-flex items-center gap-2 rounded-full bg-[#C7B299] px-5 py-2 text-xs font-medium text-white transition-colors hover:bg-[#9a8062]"
             >
               <svg
@@ -99,6 +101,8 @@ export default function Header() {
           ))}
           <Link
             href="/contact"
+            data-mogcia-id="mobile-menu-contact"
+            data-mogcia-event="contact_click"
             className="block hover:text-gray-900 transition-colors"
             onClick={() => setMenuOpen(false)}
           >

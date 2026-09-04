@@ -60,6 +60,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
+      <head>
+        <script
+          defer
+          src="https://ismo-data.app/mogcia-analytics.js"
+          data-site-id="site-Kz26ZD6HZodwOvL6GP9jJqBr2ZC3"
+          data-endpoint="https://asia-northeast1-ismo-67b86.cloudfunctions.net/collect"
+          data-consent-mode="required"
+        />
+      </head>
       <body className={`${inter.variable} ${notoSansJp.variable}`}>
         <PageTransition />
         <Header />

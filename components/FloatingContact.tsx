@@ -107,7 +107,12 @@ export default function FloatingContact() {
             <p className="text-xs uppercase tracking-[0.35em] text-gray-400">Chat</p>
             <h3 className="text-lg font-light text-gray-900">お問い合わせチャット</h3>
             <p className="text-[10px] text-gray-500">
-              解決しない場合は <Link href="/contact" className="underline decoration-gray-300 hover:decoration-gray-900">
+              解決しない場合は <Link
+                href="/contact"
+                data-mogcia-id="chat-contact-form"
+                data-mogcia-event="contact_click"
+                className="underline decoration-gray-300 hover:decoration-gray-900"
+              >
                 お問い合わせフォーム
               </Link>をご利用ください。
             </p>
