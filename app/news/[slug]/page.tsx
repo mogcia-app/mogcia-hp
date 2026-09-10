@@ -21,10 +21,10 @@ export function generateMetadata({ params }: NewsDetailPageProps): Metadata {
   const item = newsItems.find(news => news.slug === params.slug)
 
   if (!item) {
-    return createPageMetadata('お知らせ | 株式会社MOGCIA')
+    return createPageMetadata('お知らせ | 株式会社MOGCIA', '/news')
   }
 
-  return createPageMetadata(`${item.title} | 株式会社MOGCIA`)
+  return createPageMetadata(`${item.title} | 株式会社MOGCIA`, `/news/${item.slug}`)
 }
 
 export default function NewsDetailPage({ params }: NewsDetailPageProps) {

@@ -6,6 +6,7 @@ import { createPageMetadata } from '../metadata'
 
 export const metadata: Metadata = createPageMetadata(
   '採用情報 | 株式会社MOGCIA（福岡のAI企業）',
+  '/recruit',
 )
 
 export default function RecruitPage() {

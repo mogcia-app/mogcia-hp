@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { renderBrandText } from '@/components/BrandText'
+import LineIcon from '@/components/LineIcon'
 
 const navLinks = [
   { label: 'サービス', href: '/services' },
@@ -70,6 +71,18 @@ export default function Footer() {
                 </p>
                 <p>営業時間：平日 10:00 - 17:00（土日祝除く）</p>
               </div>
+
+              <a
+                href="https://lin.ee/XjMOCFI"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-mogcia-id="footer-line"
+                data-mogcia-event="line_click"
+                className="inline-flex items-center gap-2 rounded-full border border-[#06c755]/30 px-5 py-2.5 text-xs font-medium text-[#06a94a] transition-colors hover:bg-[#06c755] hover:text-white"
+              >
+                <LineIcon className="h-5 w-5" />
+                MOGCIA公式LINEを友だち追加
+              </a>
             </div>
 
             <div>

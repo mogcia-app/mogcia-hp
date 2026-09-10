@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
+import LineIcon from '@/components/LineIcon'
 
 const navItems = [
   { label: 'サービス', href: '/services' },
@@ -19,9 +20,9 @@ export default function Header() {
   const pathname = usePathname()
 
   return (
-    <header className="sticky top-0 z-50">
-      <div className="relative bg-white">
-        <div className="w-full mx-auto px-6 sm:px-12 lg:px-24 h-20 flex items-center justify-between">
+    <header className="sticky top-0 z-50 border-b border-neutral-200/80 bg-white/95 backdrop-blur-md">
+      <div className="relative">
+        <div className="mx-auto flex h-[76px] w-full max-w-[1440px] items-center justify-between px-6 sm:px-10 lg:px-12 xl:px-16">
           <Link
             href="/"
             className="inline-flex items-center"
@@ -36,49 +37,51 @@ export default function Header() {
               alt="MOGCIA"
               width={160}
               height={48}
-              className="h-auto w-[56px] md:w-[72px]"
+              className="h-auto w-[56px] lg:w-[64px]"
               priority
             />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8 text-sm text-gray-700">
+          <nav className="hidden items-center lg:flex">
+            <div className="flex items-center gap-5 text-[13px] text-neutral-600 xl:gap-7">
             {navItems.map(item => {
               const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`)
 
               return (
-              <Link key={item.label} href={item.href} className="relative inline-flex flex-col items-center gap-1 hover:text-gray-900 transition-colors">
+              <Link key={item.label} href={item.href} className="relative inline-flex h-[76px] items-center whitespace-nowrap transition-colors hover:text-neutral-950">
                 <span>{item.label}</span>
-                <span className={`text-lg leading-none text-[#C7B299] ${isActive ? 'opacity-100' : 'opacity-0'}`}>
-                  ・
-                </span>
+                <span className={`absolute inset-x-0 bottom-0 h-[2px] bg-[#C7B299] transition-opacity ${isActive ? 'opacity-100' : 'opacity-0'}`} />
               </Link>
               )
             })}
-            <Link
-              href="/contact"
-              data-mogcia-id="header-contact"
-              data-mogcia-event="contact_click"
-              className="inline-flex items-center gap-2 rounded-full bg-[#C7B299] px-5 py-2 text-xs font-medium text-white transition-colors hover:bg-[#9a8062]"
-            >
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                className="h-4 w-4"
-                fill="none"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="1.8"
+            </div>
+
+            <div className="ml-6 flex items-center gap-4 border-l border-neutral-200 pl-6 xl:ml-8 xl:pl-8">
+              <a
+                href="https://lin.ee/XjMOCFI"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-mogcia-id="header-line"
+                data-mogcia-event="line_click"
+                className="inline-flex items-center gap-2 whitespace-nowrap text-xs font-medium text-[#06a94a] transition-colors hover:text-[#047f38]"
               >
-                <rect x="3.5" y="5.5" width="17" height="13" rx="2" />
-                <path d="m4.5 7 7.5 6 7.5-6" />
-              </svg>
-              お問い合わせ
-            </Link>
+                <LineIcon className="h-5 w-5" />
+                LINEで相談
+              </a>
+              <Link
+                href="/contact"
+                data-mogcia-id="header-contact"
+                data-mogcia-event="contact_click"
+                className="group inline-flex items-center gap-3 whitespace-nowrap rounded-full bg-[#C7B299] px-5 py-3 text-[11px] font-medium text-white transition-colors hover:bg-[#9a8062]"
+              >
+                お問い合わせ
+                <span className="h-px w-5 bg-current transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            </div>
           </nav>
 
           <button
-            className="md:hidden text-sm text-gray-700"
+            className="inline-flex h-10 items-center text-[11px] uppercase tracking-[0.2em] text-neutral-600 lg:hidden"
             onClick={() => setMenuOpen(prev => !prev)}
             aria-label="Toggle menu"
           >
@@ -88,26 +91,42 @@ export default function Header() {
       </div>
 
       {menuOpen && (
-        <div className="md:hidden bg-white px-6 py-6 space-y-4 text-sm text-gray-700">
-          {navItems.map(item => (
+        <div className="border-t border-neutral-100 bg-white px-6 py-7 shadow-[0_18px_40px_rgba(0,0,0,0.06)] sm:px-10 lg:hidden">
+          <div className="grid grid-cols-2 gap-x-8 gap-y-5 text-sm text-neutral-700">
+            {navItems.map(item => (
             <Link
               key={item.label}
               href={item.href}
-              className="block hover:text-gray-900 transition-colors"
+              className="block border-b border-neutral-100 pb-3 transition-colors hover:text-neutral-950"
               onClick={() => setMenuOpen(false)}
             >
               {item.label}
             </Link>
-          ))}
-          <Link
+            ))}
+          </div>
+          <div className="mt-7 grid gap-3 sm:grid-cols-2">
+            <a
+            href="https://lin.ee/XjMOCFI"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-mogcia-id="mobile-menu-line"
+            data-mogcia-event="line_click"
+            className="flex items-center justify-center gap-2 rounded-full border border-[#06c755]/40 px-5 py-3 text-xs font-medium text-[#06a94a] transition-colors hover:bg-[#06c755] hover:text-white"
+            onClick={() => setMenuOpen(false)}
+          >
+            <LineIcon className="h-5 w-5" />
+            LINEで相談
+            </a>
+            <Link
             href="/contact"
             data-mogcia-id="mobile-menu-contact"
             data-mogcia-event="contact_click"
-            className="block hover:text-gray-900 transition-colors"
+            className="flex items-center justify-center rounded-full bg-[#C7B299] px-5 py-3 text-xs font-medium text-white transition-colors hover:bg-[#9a8062]"
             onClick={() => setMenuOpen(false)}
-          >
-            お問い合わせ
-          </Link>
+            >
+              お問い合わせ
+            </Link>
+          </div>
         </div>
       )}
     </header>

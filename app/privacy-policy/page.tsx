@@ -1,5 +1,13 @@
+import type { Metadata } from 'next'
+
 import ContactSection from '@/components/ContactSection'
 import Footer from '@/components/Footer'
+import { createPageMetadata } from '../metadata'
+
+export const metadata: Metadata = createPageMetadata(
+  'プライバシーポリシー | 株式会社MOGCIA',
+  '/privacy-policy',
+)
 
 const sections = [
   {

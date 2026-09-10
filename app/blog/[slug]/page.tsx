@@ -21,10 +21,10 @@ export function generateMetadata({ params }: BlogPostPageProps): Metadata {
   const post = getBlogPost(params.slug)
 
   if (!post) {
-    return createPageMetadata('ブログ | 株式会社MOGCIA')
+    return createPageMetadata('ブログ | 株式会社MOGCIA', '/blog')
   }
 
-  return createPageMetadata(`${post.title} | 株式会社MOGCIA`)
+  return createPageMetadata(`${post.title} | 株式会社MOGCIA`, `/blog/${post.slug}`)
 }
 
 function renderBlock(block: BlogBlock, index: number) {

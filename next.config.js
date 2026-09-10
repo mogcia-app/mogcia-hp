@@ -4,6 +4,19 @@ const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
   },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: "frame-ancestors 'self' https://ismo-data.app https://*.ismo-data.app",
+          },
+        ],
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig

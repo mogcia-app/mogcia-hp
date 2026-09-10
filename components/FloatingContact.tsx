@@ -174,6 +174,8 @@ export default function FloatingContact() {
             />
             <button
               type="submit"
+              data-mogcia-id="chat-submit"
+              data-mogcia-event="chat_submit"
               disabled={isLoading}
               className="inline-flex items-center justify-center whitespace-nowrap rounded border border-gray-900 px-3 py-2 text-[11px] text-gray-900 transition-colors hover:bg-gray-900 hover:text-white disabled:cursor-not-allowed disabled:border-gray-300 disabled:text-gray-400 disabled:hover:bg-transparent"
             >

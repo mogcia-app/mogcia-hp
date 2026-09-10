@@ -1,8 +1,9 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter, Noto_Sans_JP } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import PageTransition from '@/components/PageTransition'
+import PageHeightSync from '@/components/PageHeightSync'
 import { defaultDescription, defaultOgTitle } from './metadata'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mogcia.net'
@@ -22,6 +23,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: defaultOgTitle,
   description: defaultDescription,
+  alternates: {
+    canonical: '/',
+  },
   other: {
     'google-site-verification': 'LHrNgdIlh6Lg9TM4sbVkqzoCiRWifXjkAJiK0OSUNOs',
   },
@@ -53,6 +57,11 @@ export const metadata: Metadata = {
   },
 }
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -70,6 +79,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${notoSansJp.variable}`}>
+        <PageHeightSync />
         <PageTransition />
         <Header />
         {children}

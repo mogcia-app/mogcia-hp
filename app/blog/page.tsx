@@ -6,7 +6,7 @@ import Footer from '@/components/Footer'
 import { blogCategories, blogPosts } from '@/lib/blog'
 import { createPageMetadata } from '../metadata'
 
-export const metadata: Metadata = createPageMetadata('ブログ | 株式会社MOGCIA')
+export const metadata: Metadata = createPageMetadata('ブログ | 株式会社MOGCIA', '/blog')
 
 const popularPosts = blogPosts.slice(0, 3)
 

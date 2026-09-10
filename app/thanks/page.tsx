@@ -1,3 +1,2 @@
-export { default } from '@/app/contact/thanks/page'
-
+export { default, metadata } from '@/app/contact/thanks/page'
 

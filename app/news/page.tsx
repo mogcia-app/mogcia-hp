@@ -7,7 +7,7 @@ import Footer from '@/components/Footer'
 import { createPageMetadata } from '../metadata'
 import { newsCategories, newsItems } from '@/lib/news'
 
-export const metadata: Metadata = createPageMetadata('お知らせ | 株式会社MOGCIA')
+export const metadata: Metadata = createPageMetadata('お知らせ | 株式会社MOGCIA', '/news')
 
 const newsItemsPerPage = 10
 const totalNewsPages = Math.ceil(newsItems.length / newsItemsPerPage)

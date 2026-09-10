@@ -1,12 +1,19 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 
 import AiGeneratedNotice from '@/components/AiGeneratedNotice'
 import Footer from '@/components/Footer'
+import { createPageMetadata } from '../../metadata'
+
+export const metadata: Metadata = createPageMetadata(
+  'お問い合わせ完了 | 株式会社MOGCIA',
+  '/thanks',
+)
 
 export default function ContactThanksPage() {
   return (
     <main className="min-h-screen bg-[#f7f7f5] text-neutral-950">
-      <section className="relative h-[62vh] min-h-[420px] overflow-hidden">
+      <section className="relative h-[clamp(420px,62svh,680px)] overflow-hidden">
         <Image
           src="/c.png"
           alt="Thanks hero"

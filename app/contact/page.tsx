@@ -6,8 +6,9 @@ import AiGeneratedNotice from '@/components/AiGeneratedNotice'
 import ContactSection from '@/components/ContactSection'
 import Footer from '@/components/Footer'
 import { createPageMetadata } from '../metadata'
+import LineIcon from '@/components/LineIcon'
 
-export const metadata: Metadata = createPageMetadata('お問い合わせ | 株式会社MOGCIA')
+export const metadata: Metadata = createPageMetadata('お問い合わせ | 株式会社MOGCIA', '/contact')
 
 const contactReasons = [
   { label: '課題整理・戦略立案' },
@@ -19,7 +20,7 @@ const contactReasons = [
 export default function ContactPage() {
   return (
     <main className="bg-[#f7f7f5] text-neutral-950">
-      <section className="relative hidden h-[70vh] min-h-[480px] overflow-hidden md:block">
+      <section className="relative hidden h-[clamp(480px,70svh,760px)] overflow-hidden md:block">
         <Image
           src="/d.jpg"
           alt="Contact hero"
@@ -64,6 +65,28 @@ export default function ContactPage() {
 
       <section className="px-6 pb-20 md:px-10 md:pb-24 lg:px-16 xl:px-20">
         <div className="mx-auto w-full max-w-[1320px]">
+          <div className="mb-14 grid gap-8 rounded-[28px] border border-[#06c755]/20 bg-white px-6 py-8 shadow-[0_14px_44px_rgba(6,199,85,0.06)] md:grid-cols-[1fr_auto] md:items-center md:px-10 md:py-10">
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.42em] text-[#06a94a]">Contact via LINE</p>
+              <h2 className="mt-3 text-2xl font-light tracking-[-0.025em] text-neutral-950 md:text-3xl">
+                まずはLINEで気軽にご相談ください。
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm leading-7 text-neutral-600">
+                サービスについてのご質問やご相談を、MOGCIA公式LINEから受け付けています。
+              </p>
+            </div>
+            <a
+              href="https://lin.ee/XjMOCFI"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-mogcia-id="contact-line"
+              data-mogcia-event="line_click"
+              className="inline-flex items-center justify-center gap-3 rounded-full bg-[#06c755] px-7 py-4 text-sm font-medium text-white transition-colors hover:bg-[#05ad4a]"
+            >
+              <LineIcon className="h-6 w-6" />
+              LINEから問い合わせる
+            </a>
+          </div>
           <div className="grid gap-12 xl:grid-cols-[0.62fr_1.38fr] xl:gap-20">
             <div>
               <div>
@@ -177,6 +200,8 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
+                  data-mogcia-id="contact-form-submit"
+                  data-mogcia-event="contact_submit"
                   data-formrun-error-text="未入力の項目があります"
                   data-formrun-submitting-text="送信中..."
                   className="inline-flex items-center gap-3 rounded-full bg-neutral-950 px-6 py-3 text-[10px] uppercase tracking-[0.24em] text-white transition-colors hover:bg-neutral-800"

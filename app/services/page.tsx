@@ -8,6 +8,7 @@ import { createPageMetadata } from '../metadata'
 
 export const metadata: Metadata = createPageMetadata(
   'プロダクトと支援サービス | 株式会社MOGCIA（福岡のAI・Web制作）',
+  '/services',
 )
 
 const inDevelopment = [

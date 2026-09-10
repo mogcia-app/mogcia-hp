@@ -7,13 +7,17 @@ export const defaultDescription =
 
 export const defaultOgTitle = '株式会社MOGCIA | 福岡のAI開発・SNS運用代行・Web制作'
 
-export function createPageMetadata(title: string): Metadata {
+export function createPageMetadata(title: string, pathname: string): Metadata {
   return {
     title,
     description: defaultDescription,
+    alternates: {
+      canonical: pathname,
+    },
     openGraph: {
       title,
       description: defaultDescription,
+      url: pathname,
     },
     twitter: {
       title,

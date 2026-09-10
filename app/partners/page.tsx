@@ -6,7 +6,7 @@ import Footer from '@/components/Footer'
 import { ProductCards } from '@/components/ServiceOfferings'
 import { createPageMetadata } from '../metadata'
 
-export const metadata: Metadata = createPageMetadata('パートナー募集 | 株式会社MOGCIA')
+export const metadata: Metadata = createPageMetadata('パートナー募集 | 株式会社MOGCIA', '/partners')
 
 const badges = ['紹介だけでもOK', 'ノルマなし', '商談同席サポートあり']
 

@@ -10,6 +10,7 @@ import Footer from '@/components/Footer'
 import ContactSection from '@/components/ContactSection'
 import { newsItems } from '@/lib/news'
 import { blogPosts, blogCategories } from '@/lib/blog'
+import LineIcon from '@/components/LineIcon'
 
 const newsTagStyles: Record<string, string> = {
   プレスリリース: 'bg-[#f4eee6] text-[#8f7a61]',
@@ -128,7 +129,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#f7f7f5] text-neutral-950">
-      <section className="relative min-h-[86vh] overflow-hidden">
+      <section className="relative min-h-[clamp(560px,86svh,900px)] overflow-hidden">
         <div className="absolute inset-0">
           {activeHeroBackgrounds.map((src, index) => (
             <Image
@@ -149,10 +150,10 @@ export default function Home() {
           ))}
         </div>
         <AiGeneratedNotice />
-        <div className="relative mx-auto flex min-h-[86vh] w-full max-w-[1320px] items-end px-6 pb-14 md:px-10 md:pb-18 lg:px-16 lg:pb-24 xl:px-20">
-          <div className="max-w-[680px]">
+        <div className="relative mx-auto flex min-h-[clamp(560px,86svh,900px)] w-full max-w-[1320px] items-end px-6 pb-14 md:px-10 md:pb-18 lg:px-16 lg:pb-24 xl:px-20">
+          <div className="ml-4 max-w-[680px] md:ml-8 lg:ml-12 xl:ml-16">
             <h1
-              className="max-w-none text-[1.28rem] font-light leading-[1.22] tracking-[-0.035em] text-white opacity-0 md:text-[1.95rem] lg:text-[2.3rem] lg:leading-[1.14]"
+              className="max-w-none text-[1.18rem] font-light leading-[1.24] tracking-[-0.035em] text-white opacity-0 md:text-[1.8rem] lg:text-[2.1rem] lg:leading-[1.16]"
               style={{ animation: 'slide-up 0.9s ease-out 0.1s forwards' }}
             >
               戦略も、体験も、運用も
@@ -182,17 +183,46 @@ export default function Home() {
 
       <ProductsSection />
 
+      <section className="bg-[#edf2ed] px-6 py-10 md:px-10 md:py-12 lg:px-16 xl:px-20">
+        <div className="mx-auto w-full max-w-[1320px]">
+          <a
+            href="https://lin.ee/XjMOCFI"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-mogcia-id="home-line"
+            data-mogcia-event="line_click"
+            className="group grid gap-7 md:grid-cols-[0.65fr_1.15fr_auto] md:items-center md:gap-10"
+          >
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.34em] text-neutral-500">Official Account</p>
+              <div className="mt-2 flex items-center gap-3 text-neutral-950">
+                <LineIcon className="h-7 w-7 text-[#06c755]" />
+                <p className="text-xl font-thin tracking-[0.02em] text-neutral-800 md:text-2xl">MOGCIA公式LINE</p>
+              </div>
+            </div>
+
+            <p className="max-w-xl text-sm leading-7 text-neutral-600 md:border-l md:border-neutral-900/10 md:pl-10">
+              ご相談からご契約後のやり取りまで、
+              <br className="hidden xl:block" />
+              MOGCIA公式LINEをお気軽にご利用ください
+            </p>
+
+            <span className="inline-flex w-fit items-center gap-2.5 rounded-full bg-[#06c755] px-6 py-3 text-xs font-medium text-white shadow-[0_8px_20px_rgba(6,199,85,0.14)] transition-colors group-hover:bg-[#05ad4a]">
+              <LineIcon className="h-5 w-5" />
+              LINEで友だち追加
+            </span>
+          </a>
+        </div>
+      </section>
+
       <section data-scroll-reveal className="scroll-reveal px-6 py-20 md:px-10 md:py-24 lg:px-16 xl:px-20">
         <div className="mx-auto w-full max-w-[1320px]">
           <div className="grid gap-12 xl:grid-cols-[0.62fr_1.38fr] xl:gap-20">
             <div>
               <p className="text-[11px] uppercase tracking-[0.42em] text-neutral-500">News</p>
-              <h2 className="text-3xl font-light tracking-[-0.02em] text-neutral-950 md:text-5xl">
+              <h2 className="mt-3 text-2xl font-light tracking-[-0.02em] text-neutral-950 md:text-3xl">
                 お知らせ
               </h2>
-              <p className="mt-6 max-w-sm text-sm leading-7 text-neutral-600 md:text-base">
-                MOGCIAの取り組みやプロダクトに関する最新情報を掲載しています。
-              </p>
             </div>
 
             <div className="border-t border-neutral-200">
@@ -211,7 +241,7 @@ export default function Home() {
                     {item.category}
                   </p>
                   <div>
-                    <h3 className="text-[1.15rem] font-light leading-[1.35] text-neutral-950 md:text-[1.35rem]">
+                    <h3 className="text-base font-light leading-[1.5] text-neutral-950 md:text-[1.1rem]">
                       {renderBrandText(item.title)}
                     </h3>
                     <p className="mt-3 max-w-3xl text-[12px] leading-6 text-neutral-600 md:text-[13px]">
@@ -251,7 +281,7 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/38 via-black/12 to-transparent" />
         <AiGeneratedNotice />
-        <div className="relative mx-auto flex min-h-[72vh] w-full max-w-[1320px] items-end">
+        <div className="relative mx-auto flex min-h-[clamp(520px,72svh,760px)] w-full max-w-[1320px] items-end">
           <div className="relative z-10 ml-auto max-w-3xl space-y-8 pb-4 md:pb-8">
             <div
               className={aboutVisible ? 'space-y-5 opacity-0' : 'space-y-5 opacity-100'}
