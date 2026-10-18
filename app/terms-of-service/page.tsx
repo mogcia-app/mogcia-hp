@@ -98,7 +98,7 @@ export default function TermsOfServicePage() {
       <div className="mt-14 border-b border-ink/25 pb-10">
         <div>
           <p className="font-display text-[10px] font-bold uppercase tracking-[.2em] text-ink-soft">Terms of Service</p>
-          <h1 className="mt-5 text-4xl font-black leading-[1.35] tracking-[-.04em] sm:text-5xl md:text-6xl">ルールを、<br />わかりやすく。</h1>
+          <h1 className="mt-5 text-balance text-[clamp(1.65rem,7.5vw,2.25rem)] font-black leading-[1.45] tracking-[-.04em] sm:text-5xl md:text-6xl">ルールを、<br />わかりやすく。</h1>
         </div>
         <div className="mt-9 max-w-2xl border-t border-ink pt-7">
           <p className="text-base font-bold leading-8">気持ちよくサービスをご利用いただくために。</p>

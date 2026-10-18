@@ -5,7 +5,7 @@ import { SectionHead, SectionLabel, tone } from '@/components/PageFrame'
 
 export const metadata = {
   title: 'MOGCIA Coffee | MOGCIA',
-  description: '商品企画からブランド、パッケージ、撮影、EC、発信まで。MOGCIAが自分たちで育てるコーヒーブランドです。',
+  description: '商品企画からブランド、パッケージ、撮影、EC、発信まで。MOGCIAが自分たちで育てるコーヒーブランドです',
   alternates: { canonical: '/coffee' },
 }
 
@@ -25,7 +25,7 @@ export default function Coffee() {
       <div className="mt-12 grid gap-9 lg:grid-cols-[.72fr_1.28fr] lg:items-end lg:gap-12">
         <div className="relative z-10 pb-2">
           <p className="font-display text-[10px] font-bold uppercase tracking-[.24em] text-ink-soft">MOGCIA / Side project</p>
-          <h1 className="mt-5 font-display text-[4.2rem] font-black leading-[.84] tracking-[-.075em] sm:text-[6rem] lg:text-[7.2rem]">Coffee<span className="text-[#c91f2c]">.</span></h1>
+          <h1 className="mt-5 whitespace-nowrap font-display text-[clamp(3.1rem,16vw,4.2rem)] font-black leading-[.84] tracking-[-.075em] sm:text-[6rem] lg:text-[7.2rem]">Coffee<span className="text-[#c91f2c]">.</span></h1>
           <h2 className="mt-8 text-2xl font-black leading-[1.55] tracking-[-.03em] md:text-3xl">今日の一杯を、<br />明日のきっかけに。</h2>
           <p className="mt-5 max-w-md text-sm leading-7 text-ink-soft">MOGCIA Coffeeは、企画して、つくって、届けて、育てることを、自分たち自身で実践するために生まれた小さなコーヒーブランドです。</p>
           <a href={EC} target="_blank" rel="noreferrer" className="button mt-7 bg-[#7f2027] text-xs text-white hover:bg-[#681a20]">オンラインショップを見る ↗</a>

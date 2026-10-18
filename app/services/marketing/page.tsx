@@ -3,7 +3,7 @@ import ServiceDetailPage from '@/components/ServiceDetailPage'
 
 export const metadata: Metadata = {
   title: 'SNS・Webマーケティング支援 | MOGCIA',
-  description: 'SNSで知ってもらい、Webで伝え、問い合わせや応募につなげる導線を一体で設計・制作・運用・改善します。',
+  description: 'SNSで知ってもらい、Webで伝え、問い合わせや応募につなげる導線を一体で設計・制作・運用・改善します',
   alternates: { canonical: '/services/marketing' },
 }
 

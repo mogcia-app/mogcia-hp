@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import Footer from '@/components/Footer'
 import { SectionLabel, SoftContact, tone, type Tone } from '@/components/PageFrame'
 import { guideArticles, guideExtras } from '@/lib/guide-data'
+import { withoutTerminalPeriod } from '../../metadata'
 
 const categoryTone: Record<string, Tone> = { 'AI活用': 'sky', 'SNS': 'pink', 'Web・集客': 'butter', '採用': 'lilac', '業務効率化': 'mint', 'セキュリティ': 'peach' }
 
@@ -14,11 +15,13 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const article = guideArticles.find(item => item.slug === params.slug)
   if (!article) return { title: '記事が見つかりません | 株式会社MOGCIA', robots: { index: false } }
+  const title = withoutTerminalPeriod(article.title)
+  const description = withoutTerminalPeriod(article.intro)
   return {
-    title: `${article.title} | MOGCIA Guide`,
-    description: article.intro,
+    title: `${title} | MOGCIA Guide`,
+    description,
     alternates: { canonical: `/guide/${article.slug}` },
-    openGraph: { title: article.title, description: article.intro, url: `/guide/${article.slug}` },
+    openGraph: { title, description, url: `/guide/${article.slug}` },
   }
 }
 
@@ -39,7 +42,7 @@ export default function GuideDetail({ params }: { params: { slug: string } }) {
         <p className="text-[10px] font-bold text-ink-soft"><Link href="/">TOP</Link>　／　<Link href="/guide">Guide</Link>　／　{article.category}</p>
         <div className="mt-16 max-w-6xl">
           <div className="flex items-center gap-3"><SectionLabel label={article.category} color={color} /><span className="text-[10px] font-bold text-ink-soft">約{article.minutes}分で読めます</span></div>
-          <h1 className="mt-7 text-balance text-3xl font-black leading-[1.5] tracking-[-.035em] md:text-[2.65rem] lg:whitespace-nowrap xl:text-5xl">{article.title}</h1>
+          <h1 className="mt-7 text-balance text-[clamp(1.4rem,6.6vw,1.875rem)] font-black leading-[1.65] tracking-[-.035em] sm:text-3xl md:text-[2.65rem] lg:whitespace-nowrap xl:text-5xl">{article.title}</h1>
           <p className="mt-8 max-w-2xl text-sm leading-8 text-ink-soft">{article.intro}</p>
         </div>
       </div>

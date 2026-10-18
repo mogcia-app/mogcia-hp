@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Footer from '@/components/Footer'
 import { PageHeader, SectionHead, tone, type Tone } from '@/components/PageFrame'
 
-export const metadata = { title: '営業・ご提案の方へ | MOGCIA', description: 'MOGCIAへの営業・ご提案の受付窓口です。' }
+export const metadata = { title: '営業・ご提案の方へ | MOGCIA', description: 'MOGCIAへの営業・ご提案の受付窓口です' }
 
 const rules: [string, string, string, Tone][] = [
   ['01', '営業専用メールへ', 'サービスのご紹介や協業のご提案は、sales@mogcia.comへお送りください', 'sky'],

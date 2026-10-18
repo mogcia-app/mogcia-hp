@@ -3,7 +3,7 @@ import ServiceDetailPage from '@/components/ServiceDetailPage'
 
 export const metadata: Metadata = {
   title: 'IT・AI活用コンサルティング | MOGCIA',
-  description: '福岡・天神のMOGCIAが、AI・SNS・Web・システム活用の課題整理から優先順位、実行計画まで伴走します。',
+  description: '福岡・天神のMOGCIAが、AI・SNS・Web・システム活用の課題整理から優先順位、実行計画まで伴走します',
   alternates: { canonical: '/services/consulting' },
 }
 

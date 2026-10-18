@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import Footer from '@/components/Footer'
 import { SectionHead, SoftContact, tone } from '@/components/PageFrame'
 import { stories } from '@/lib/site-data'
+import { withoutTerminalPeriod } from '../../metadata'
 
 const productColor: Record<string, string> = {
   'commo.': '#D7C5F7', 'Roomly.': '#F7C8C8', 'upmo': '#BCDCF7', 'Signal.': '#F6C08F',
@@ -19,11 +20,13 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const story = stories.find(item => item.slug === params.slug)
   if (!story) return { title: '事例が見つかりません | 株式会社MOGCIA', robots: { index: false } }
+  const title = withoutTerminalPeriod(story.problem)
+  const description = withoutTerminalPeriod(story.answer)
   return {
     title: `${story.client}の支援事例 | 株式会社MOGCIA`,
-    description: story.answer,
+    description,
     alternates: { canonical: `/works/${story.slug}` },
-    openGraph: { title: story.problem, description: story.answer, url: `/works/${story.slug}` },
+    openGraph: { title, description, url: `/works/${story.slug}` },
   }
 }
 
@@ -38,7 +41,7 @@ export default function WorkDetail({ params }: { params: { slug: string } }) {
       <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:items-end">
         <div>
           <div className="flex flex-wrap gap-2 text-[10px] font-bold"><span className="rounded-full px-3 py-1.5" style={{ backgroundColor: tone.lilac.chip }}>{story.industry}</span><span className="rounded-full px-3 py-1.5" style={{ backgroundColor: productColor[story.product] ?? '#f3f4f4' }}>{story.product}</span></div>
-          <h1 className="mt-7 text-3xl font-black leading-[1.55] tracking-[-.02em] md:text-[2.5rem]">{story.problem}</h1>
+          <h1 className="mt-7 text-balance text-[clamp(1.4rem,6.6vw,1.75rem)] font-black leading-[1.65] tracking-[-.02em] sm:text-3xl md:text-[2.5rem]">{story.problem}</h1>
           <p className="mt-5 text-[13px] font-bold text-ink-soft">{story.client}｜{story.clientDetail}</p>
         </div>
         <dl className="border-t border-ink text-xs leading-7">
@@ -89,7 +92,7 @@ export default function WorkDetail({ params }: { params: { slug: string } }) {
 
     <section className="page-shell py-24 md:py-28">
       <div className="flex items-end justify-between border-b border-ink pb-4"><h2 className="font-display text-3xl font-black tracking-[-.04em]">Other works</h2><Link href="/works" className="text-[11px] font-bold">一覧へ →</Link></div>
-      <div className="grid md:grid-cols-2">{others.map((item, index) => <Link href={'/works/' + item.slug} key={item.slug} className={'group grid grid-cols-[8rem_1fr] items-center gap-6 border-b border-ink/15 py-7 md:grid-cols-[10rem_1fr] ' + (index === 1 ? 'md:border-l md:pl-7' : 'md:pr-7')}><div className="relative aspect-[3/2] overflow-hidden bg-[#f6f7f8]"><Image src={item.image} alt={item.product + 'の事例'} fill unoptimized sizes="10rem" className="object-contain" /></div><div><span className="text-[10px] font-bold text-ink-soft">{item.product}</span><p className="mt-2 text-[15px] font-black leading-7">{item.problem}</p></div></Link>)}</div>
+      <div className="grid md:grid-cols-2">{others.map((item, index) => <Link href={'/works/' + item.slug} key={item.slug} className={'group grid grid-cols-[8rem_1fr] items-center gap-6 border-b border-ink/15 py-7 md:grid-cols-[10rem_1fr] ' + (index === 1 ? 'md:border-l md:pl-7' : 'md:pr-7')}><div className="relative aspect-[3/2] overflow-hidden bg-[#f6f7f8]"><Image src={item.image} alt={item.product + 'の事例'} fill sizes="10rem" className="object-contain" /></div><div><span className="text-[10px] font-bold text-ink-soft">{item.product}</span><p className="mt-2 text-[15px] font-black leading-7">{item.problem}</p></div></Link>)}</div>
     </section>
 
     <SoftContact title={<>似たお悩み、<br />ありませんか？</>} body="まずは気軽にお話を聞かせてください" />

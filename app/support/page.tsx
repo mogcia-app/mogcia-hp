@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Footer from '@/components/Footer'
 import { PageHeader, SectionHead, SoftContact, tone, type Tone } from '@/components/PageFrame'
 
-export const metadata = { title: 'Support | MOGCIA', description: 'MOGCIAのサポート体制。契約中のお客さまは24時間いつでも連絡でき、土日の打ち合わせにも対応しています。' }
+export const metadata = { title: 'Support | MOGCIA', description: 'MOGCIAのサポート体制。契約中のお客さまは24時間いつでも連絡でき、土日の打ち合わせにも対応しています' }
 
 const promises: [string, string, string, Tone][] = [
   ['24h', 'いつでも連絡OK', '時間を気にせず、気づいたときにメッセージを送ってください', 'sky'],

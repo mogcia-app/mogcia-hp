@@ -57,8 +57,8 @@ export default function Company() {
           <p className="mt-6 text-sm leading-8 text-ink-soft">必要なものをつくるだけでなく、使われ続ける流れまで整えることで、事業の中に自然に残る仕組みをつくります。自社プロダクトと、制作・運用の伴走支援。その両方を持っていることが、私たちの強みです。</p>
         </div>
         <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-white sm:aspect-[4/3] md:aspect-[3/2]">
-          <Image src="/hero-visual-r.png" alt="光を見上げる人物とカラフルなオブジェ" fill unoptimized sizes="100vw" className="scale-[1.08] object-cover object-[center_48%] md:hidden" />
-          <Image src="/hero-visual.png" alt="光を見上げる人物とカラフルなオブジェ" fill unoptimized sizes="(max-width: 1023px) 100vw, 58vw" className="hidden scale-[1.08] object-cover object-[72%_42%] md:block" />
+          <Image src="/hero-visual-r.png" alt="光を見上げる人物とカラフルなオブジェ" fill sizes="100vw" className="scale-[1.08] object-cover object-[center_48%] md:hidden" />
+          <Image src="/hero-visual.png" alt="光を見上げる人物とカラフルなオブジェ" fill sizes="(max-width: 1023px) 100vw, 58vw" className="hidden scale-[1.08] object-cover object-[72%_42%] md:block" />
           <div className="pointer-events-none absolute inset-0 bg-[#eaf3f8]/10" aria-hidden />
           <div className="absolute left-[7%] top-[7%] max-w-[62%]">
             <p className="font-display text-[7px] font-bold uppercase tracking-[.2em] text-ink-soft sm:text-[8px]">MOGCIA / Creative &amp; Technology</p>
@@ -149,7 +149,7 @@ export default function Company() {
     </section>
 
     <section className="page-shell grid gap-4 pb-24 md:grid-cols-2 md:pb-32">
-      <Link href="/recruit" className="group grid grid-cols-[8rem_1fr] items-center gap-6 rounded-[1.25rem] p-5 md:grid-cols-[10rem_1fr]" style={{ backgroundColor: tone.sky.band }}><div className="relative aspect-square overflow-hidden rounded-xl bg-white"><Image src="/recruit.png" alt="MOGCIAの採用情報" fill unoptimized sizes="10rem" className="object-cover transition-transform duration-500 group-hover:scale-[1.03]" /></div><div><SectionLabel label="Recruit" color="sky" /><h2 className="mt-3 text-xl font-black">採用情報</h2><p className="mt-2 text-xs leading-6 text-ink-soft">現在の募集状況はこちらからご覧ください →</p></div></Link>
+      <Link href="/recruit" className="group grid grid-cols-[8rem_1fr] items-center gap-6 rounded-[1.25rem] p-5 md:grid-cols-[10rem_1fr]" style={{ backgroundColor: tone.sky.band }}><div className="relative aspect-square overflow-hidden rounded-xl bg-white"><Image src="/recruit.png" alt="MOGCIAの採用情報" fill sizes="10rem" className="object-cover transition-transform duration-500 group-hover:scale-[1.03]" /></div><div><SectionLabel label="Recruit" color="sky" /><h2 className="mt-3 text-xl font-black">採用情報</h2><p className="mt-2 text-xs leading-6 text-ink-soft">現在の募集状況はこちらからご覧ください →</p></div></Link>
       <Link href="/coffee" className="group grid grid-cols-[8rem_1fr] items-center gap-6 rounded-[1.25rem] p-5 md:grid-cols-[10rem_1fr]" style={{ backgroundColor: tone.peach.band }}><div className="relative aspect-square overflow-hidden rounded-xl bg-white"><Image src="/coffee/coffee-cat-sachets.jpg" alt="MOGCIA Coffeeの商品と白い猫" fill sizes="10rem" className="object-cover transition-transform duration-500 group-hover:scale-[1.03]" /></div><div><SectionLabel label="Side project" color="peach" /><h2 className="mt-3 text-xl font-black">MOGCIA Coffee</h2><p className="mt-2 text-xs leading-6 text-ink-soft">MOGCIAが取り組む小さなプロジェクト →</p></div></Link>
     </section>
 

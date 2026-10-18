@@ -26,13 +26,13 @@ export default function ContactThanksPage() {
             <Link href="/">TOP</Link>　／　送信完了
           </p>
 
-          <p className="pointer-events-none mt-6 -ml-[.06em] select-none whitespace-nowrap font-display text-[5.6rem] font-black leading-[.9] tracking-[-.04em] text-[#E9F6F1] sm:text-[9rem] lg:text-[11.5rem]" style={{ WebkitTextStroke: `3px ${tone.mint.dot}`, paintOrder: 'stroke fill' }} aria-hidden>
+          <p className="pointer-events-none mt-6 -ml-[.06em] select-none whitespace-nowrap font-display text-[clamp(3rem,17vw,4.25rem)] font-black leading-[.9] tracking-[-.04em] text-[#E9F6F1] sm:text-[9rem] lg:text-[11.5rem]" style={{ WebkitTextStroke: `3px ${tone.mint.dot}`, paintOrder: 'stroke fill' }} aria-hidden>
             Thanks.
           </p>
 
           <div className="my-auto max-w-2xl py-12 sm:py-16">
             <SectionLabel label="Thank you" color="mint" />
-            <h1 className="mt-7 text-[2.15rem] font-black leading-[1.5] tracking-[-.02em] md:text-[3.1rem]">
+            <h1 className="mt-7 text-balance text-[clamp(1.5rem,7vw,1.9rem)] font-black leading-[1.55] tracking-[-.02em] sm:text-[2.15rem] md:text-[3.1rem]">
               送信を受け付けました
             </h1>
             <p className="mt-6 max-w-xl text-[13px] leading-[2] text-ink-soft">

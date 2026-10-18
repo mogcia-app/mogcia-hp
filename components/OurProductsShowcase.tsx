@@ -65,7 +65,7 @@ export default function OurProductsShowcase() {
                 </div>
                 <p className="mt-4 w-fit rounded-full bg-[#f9edf2] px-3 py-1.5 text-[10px] font-bold">{product.label}</p>
                 <div className="relative mt-5 aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-[#f8f7f5]">
-                  <Image src={productImages[index]} alt={`${product.name}の画面イメージ`} fill unoptimized sizes="320px" className="object-contain p-4 transition-transform duration-500 group-hover:scale-[1.035]" />
+                  <Image src={productImages[index]} alt={`${product.name}の画面イメージ`} fill sizes="320px" className="object-contain p-4 transition-transform duration-500 group-hover:scale-[1.035]" />
                 </div>
                 <h4 className="mt-5 text-lg font-black leading-7">{product.lead}</h4>
                 <p className="mt-3 line-clamp-3 text-xs leading-6 text-ink-soft">{product.description}</p>

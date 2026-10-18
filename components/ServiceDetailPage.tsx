@@ -37,12 +37,12 @@ export default function ServiceDetailPage({ eyebrow, title, lead, description, i
       <div className="mt-12 grid gap-10 lg:grid-cols-[.82fr_1.18fr] lg:items-center">
         <div>
           <SectionLabel label={eyebrow} color={color} />
-          <h1 className="mt-5 text-4xl font-black leading-[1.25] tracking-[-.04em] md:text-6xl">{title}</h1>
+          <h1 className="mt-5 text-balance text-[clamp(1.5rem,7vw,2rem)] font-black leading-[1.5] tracking-[-.04em] sm:text-4xl md:text-6xl">{title}</h1>
           <p className="mt-7 text-xl font-black leading-9"><span className="bg-no-repeat [background-position:0_88%] [background-size:100%_.45em]" style={{ backgroundImage: `linear-gradient(${tone[color].chip},${tone[color].chip})` }}>{lead}</span></p>
           <p className="mt-5 max-w-xl text-sm leading-8 text-ink-soft">{description}</p>
           <div className="mt-8 flex flex-wrap gap-3"><Link href="/contact" className="button button-dark text-xs">無料で相談する →</Link><a href="#price" className="button button-light text-xs">料金を見る</a></div>
         </div>
-        <div className="relative aspect-[3/2] overflow-hidden rounded-[1.5rem]" style={{ backgroundColor: tone[color].band }}><Image src={image} alt={imageAlt} fill priority unoptimized sizes="(max-width: 1023px) 100vw, 58vw" className="object-contain" /></div>
+        <div className="relative aspect-[3/2] overflow-hidden rounded-[1.5rem]" style={{ backgroundColor: tone[color].band }}><Image src={image} alt={imageAlt} fill priority sizes="(max-width: 1023px) 100vw, 58vw" className="object-contain" /></div>
       </div>
     </section>
 

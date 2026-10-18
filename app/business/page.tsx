@@ -3,7 +3,7 @@ import Footer from '@/components/Footer'
 import { PageHeader, SectionHead, SoftContact, tone, type Tone } from '@/components/PageFrame'
 import { products } from '@/lib/site-data'
 
-export const metadata = { title: '法人のご担当者さまへ | MOGCIA', description: '会社紹介・サービス・プロダクトの資料と、社内でご検討いただくための情報をまとめています。' }
+export const metadata = { title: '法人のご担当者さまへ | MOGCIA', description: '会社紹介・サービス・プロダクトの資料と、社内でご検討いただくための情報をまとめています' }
 
 const materials: [string, string, string, Tone][] = [
   ['会社紹介資料', 'MOGCIAの考え方・支援体制・取り組みをまとめた資料です', 'PDF・個別送付', 'sky'],

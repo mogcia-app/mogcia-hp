@@ -3,7 +3,7 @@ import Footer from '@/components/Footer'
 import { DiagonalAccent, SectionHead, SectionLabel, SoftContact, tone, type Tone } from '@/components/PageFrame'
 import { stories } from '@/lib/site-data'
 
-export const metadata = { title: '政治・行政分野の広報支援 | MOGCIA', description: '議員・首長の皆さまの日々の活動を、地域の方にわかりやすく届けるための広報・ブランディングを支援しています。' }
+export const metadata = { title: '政治・行政分野の広報支援 | MOGCIA', description: '議員・首長の皆さまの日々の活動を、地域の方にわかりやすく届けるための広報・ブランディングを支援しています' }
 
 const supports: [string, string, Tone][] = [
   ['01', '活動報告・政策発信のためのSNS運用支援', 'sky'],
@@ -29,7 +29,7 @@ export default function PublicServicePage() {
       <div className="mt-12">
         <div className="max-w-3xl">
           <SectionLabel label="Public relations" color="lilac" />
-          <h1 className="mt-5 text-4xl font-black leading-[1.3] tracking-[-.04em] md:text-[3.5rem]">政治・行政分野の<br />広報支援</h1>
+          <h1 className="mt-5 text-balance text-[clamp(1.5rem,7vw,2rem)] font-black leading-[1.5] tracking-[-.04em] sm:text-4xl md:text-[3.5rem]">政治・行政分野の<br />広報支援</h1>
           <p className="mt-7 max-w-xl text-sm leading-8 text-ink-soft">議員・首長の皆さまの日々の活動を、地域の方にわかりやすく届けるための広報・ブランディングを支援しています。議会での取り組みや政策を、SNS・Web・印刷物を通じて誠実に伝えるお手伝いをいたします。</p>
           <div className="mt-8 flex flex-wrap gap-3"><Link href="/contact" className="button button-dark text-xs">相談する →</Link><a href="#notice" className="button button-light text-xs">ご依頼にあたって</a></div>
         </div>

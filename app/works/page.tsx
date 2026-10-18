@@ -13,12 +13,12 @@ export default function Works() {
   const featured = stories[0]
 
   return <main className="bg-white text-ink">
-    <PageHeader crumbs={[['Works']]} title="Works" color="lilac" diagonalAccent lead={<>こんなお悩みを、<br />いっしょに解決しました</>} body={<>ご相談のきっかけから、MOGCIAがお手伝いしたこと、その後の変化までをご紹介します。<span className="mt-1 block">※お客さまの社名は伏せて掲載しています。</span></>} />
+    <PageHeader crumbs={[['Works']]} title="Works" color="lilac" diagonalAccent largeMobileTitle lead={<>こんなお悩みを、<br />いっしょに解決しました</>} body={<>ご相談のきっかけから、MOGCIAがお手伝いしたこと、その後の変化までをご紹介します。<span className="mt-1 block">※お客さまの社名は伏せて掲載しています。</span></>} />
 
     <section id="pickup" className="scroll-mt-24 py-24 md:py-32" style={{ backgroundColor: tone.sky.band }}><div className="page-shell">
       <SectionHead number="01" label="Pick up" color="sky" title="ピックアップ" note="いま一番読んでほしいストーリーです。" />
       <Link href={`/works/${featured.slug}`} className="group mt-12 grid overflow-hidden bg-white lg:grid-cols-2">
-        <div className="relative min-h-72 overflow-hidden bg-white lg:min-h-[28rem]"><Image src={featured.image} alt={featured.product + 'のプロダクトビジュアル'} fill unoptimized sizes="(max-width: 1023px) 100vw, 50vw" className="object-contain"/></div>
+        <div className="relative min-h-72 overflow-hidden bg-white lg:min-h-[28rem]"><Image src={featured.image} alt={featured.product + 'のプロダクトビジュアル'} fill sizes="(max-width: 1023px) 100vw, 50vw" className="object-contain"/></div>
         <div className="flex flex-col gap-6 p-8 md:p-12">
           <div className="flex flex-wrap gap-2 text-[10px] font-bold"><span className="rounded-full bg-ink px-3 py-1.5 text-white">PICK UP</span><span className="rounded-full px-3 py-1.5" style={{ backgroundColor: tone.lilac.chip }}>{featured.industry}</span><span className="rounded-full bg-[#d7c5f7] px-3 py-1.5">{featured.product}</span></div>
           <h3 className="whitespace-pre-line text-2xl font-black leading-[1.6] md:text-[1.75rem]">{featured.problem}</h3>

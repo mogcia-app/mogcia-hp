@@ -7,7 +7,7 @@ const LAB_PAGE_ENABLED = false
 
 export const metadata = {
   title: 'Lab | MOGCIA',
-  description: '動画・電話・音声・セキュリティの領域で、MOGCIAが開発しているプロダクトをご紹介します。',
+  description: '動画・電話・音声・セキュリティの領域で、MOGCIAが開発しているプロダクトをご紹介します',
 }
 
 type Product = {

@@ -5,7 +5,7 @@ import { PageHeader, SectionHead, SectionLabel, tone } from '@/components/PageFr
 
 export const metadata = {
   title: 'Contact | MOGCIA',
-  description: 'サービス、プロダクト、パートナー、採用など、MOGCIAへのご相談・お問い合わせはこちらから。',
+  description: 'サービス、プロダクト、パートナー、採用など、MOGCIAへのご相談・お問い合わせはこちらから',
 }
 
 const topics = ['AI・DX相談', 'SNS・Web制作', 'プロダクト導入', '協業・パートナー', '採用・取材', 'その他']

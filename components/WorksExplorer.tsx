@@ -46,7 +46,7 @@ export default function WorksExplorer() {
     </div> : <div className="mt-12 grid border-t border-ink sm:grid-cols-2 lg:grid-cols-3">
       {shown.map((story, index) => <Link href={`/works/${story.slug}`} key={story.slug} className={`group flex flex-col gap-4 border-b border-ink/15 py-8 sm:px-7 ${index % 2 === 1 ? 'sm:border-l' : ''} ${index % 3 !== 0 ? 'lg:border-l' : 'lg:border-l-0'}`}>
         <span className="font-display text-[10px] text-ink-soft">{String(stories.indexOf(story) + 1).padStart(2, '0')}</span>
-        <div className="relative aspect-[3/2] overflow-hidden" style={{ backgroundColor: tone[purposeTone(story.purpose)].band }}><Image src={story.image} alt={story.product + 'の事例イメージ'} fill unoptimized sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw" className="object-contain"/></div>
+        <div className="relative aspect-[3/2] overflow-hidden" style={{ backgroundColor: tone[purposeTone(story.purpose)].band }}><Image src={story.image} alt={story.product + 'の事例イメージ'} fill sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw" className="object-contain"/></div>
         <div className="flex flex-wrap gap-1.5"><span className="rounded-full px-2.5 py-1 text-[10px] font-bold" style={{ backgroundColor: tone[purposeTone(story.purpose)].chip }}>{story.purpose}</span><span className="rounded-full px-2.5 py-1 text-[10px] font-bold" style={{ backgroundColor: productColor[story.product] ?? '#f3f4f4' }}>{story.product}</span></div>
         <h3 className="whitespace-pre-line text-[17px] font-black leading-8">{story.problem}</h3>
         <p className="line-clamp-3 whitespace-pre-line text-xs leading-6 text-ink-soft">{story.answer}</p>

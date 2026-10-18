@@ -58,7 +58,7 @@ export default function SecurityPolicyPage() {
     <section className="page-shell pb-20 pt-12 md:pb-24 md:pt-20">
       <p className="text-[10px] font-bold text-ink-soft"><Link href="/">TOP</Link>　／　セキュリティ・AI利用方針</p>
       <div className="mt-14 border-b border-ink/25 pb-10">
-        <div><p className="font-display text-[10px] font-bold uppercase tracking-[.2em] text-ink-soft">Security &amp; AI Policy</p><h1 className="mt-5 text-3xl font-black leading-[1.5] md:text-5xl">セキュリティ・<br />AI利用方針</h1></div>
+        <div><p className="font-display text-[10px] font-bold uppercase tracking-[.2em] text-ink-soft">Security &amp; AI Policy</p><h1 className="mt-5 text-balance text-[clamp(1.55rem,7vw,1.875rem)] font-black leading-[1.55] sm:text-3xl md:text-5xl">セキュリティ・<br />AI利用方針</h1></div>
         <div className="mt-9 max-w-2xl border-t border-ink pt-7"><p className="text-base font-bold leading-8">安心してご相談いただくために、情報とAIを適切に取り扱います。</p><p className="mt-4 text-sm leading-8 text-ink-soft">当社の業務およびサービスにおける情報セキュリティと生成AI利用の基本的な考え方を、以下のとおり定めます。</p></div>
       </div>
     </section>

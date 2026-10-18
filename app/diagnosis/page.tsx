@@ -3,7 +3,7 @@ import Footer from '@/components/Footer'
 import DiagnosisQuiz from '@/components/DiagnosisQuiz'
 import { PageHeader, SectionHead, SoftContact, tone, type Tone } from '@/components/PageFrame'
 
-export const metadata = { title: 'AI診断 | MOGCIA', description: '4つの質問に答えるだけで、あなたの会社に合った始め方がわかります。' }
+export const metadata = { title: 'AI診断 | MOGCIA', description: '4つの質問に答えるだけで、あなたの会社に合った始め方がわかります' }
 
 const points: [string, string, string, Tone][] = [
   ['01', '約1分・4問だけ', '選ぶだけで答えられます。名前や連絡先の入力は不要です', 'sky'],
