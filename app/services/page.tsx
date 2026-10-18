@@ -78,7 +78,7 @@ const faqs: [string, string][] = [
 
 export default function Services() {
   return <main className="bg-white text-ink">
-    <PageHeader crumbs={[['サービス']]} title="Services" color="pink" diagonalAccent lead={<>プロダクトと伴走で<br />やりたいことを、つなげる。</>} body="AI・SNS・Webを組み合わせ、つくるところから運用・改善まで。必要な支援をひとつの流れで届けます。" />
+    <PageHeader crumbs={[['サービス']]} title="Services" color="pink" diagonalAccent showTitlePeriod={false} lead={<>プロダクトと伴走で<br />やりたいことを、つなげる。</>} body="AI・SNS・Webを組み合わせ、つくるところから運用・改善まで。必要な支援をひとつの流れで届けます。" />
 
     <section className="page-shell py-24 md:py-32"><div className="grid gap-12 lg:grid-cols-[.62fr_1.38fr] lg:gap-20">
       <div><SectionLabel number="01" label="Good match" color="mint"/><h2 className="mt-5 text-3xl font-black leading-[1.45]">こんなチームと、<br />相性がいいです</h2><p className="mt-5 max-w-sm text-xs leading-7 text-ink-soft">会社の規模や業種ではなく、進め方の相性。相談しながら、いっしょに動かしていきたい方に向いています。</p><p className="mt-8 -rotate-2 text-xl leading-tight text-ink/45 [font-family:'Bradley_Hand','Segoe_Print','Chalkboard_SE','Klee',cursive]">Good ideas<br/>grow together.</p></div>

@@ -18,9 +18,6 @@
 .home-hero {
   background: linear-gradient(180deg, #fafafa 0%, #f3f4f5 100%);
 }
-.home-hero-mobile-scrim {
-  background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,.98) 56%, rgba(255,255,255,.82) 76%, rgba(255,255,255,0) 100%);
-}
 .soft-spectrum {
   background:
     radial-gradient(circle at 18% 76%, rgba(158, 241, 232, .55), transparent 34%),

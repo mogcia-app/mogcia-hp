@@ -31,9 +31,9 @@ export function DiagonalAccent({ color }: { color: Tone }) {
   </svg>
 }
 
-export function PageHeader({ crumbs, title, lead, body, nav, cta, color = 'sky', spacious = true, animateTitle = true, diagonalAccent = false, largeMobileTitle = false }: { crumbs: [string, string?][]; title: string; lead: React.ReactNode; body?: React.ReactNode; nav?: [string, string][]; cta?: React.ReactNode; color?: Tone; spacious?: boolean; animateTitle?: boolean; diagonalAccent?: boolean; largeMobileTitle?: boolean }) {
+export function PageHeader({ crumbs, title, lead, body, nav, cta, color = 'sky', spacious = true, animateTitle = true, diagonalAccent = false, largeMobileTitle = false, showTitlePeriod = true }: { crumbs: [string, string?][]; title: string; lead: React.ReactNode; body?: React.ReactNode; nav?: [string, string][]; cta?: React.ReactNode; color?: Tone; spacious?: boolean; animateTitle?: boolean; diagonalAccent?: boolean; largeMobileTitle?: boolean; showTitlePeriod?: boolean }) {
   const labelTitle = title.replace(/\.$/, '')
-  const displayTitle = title.endsWith('.') ? title : `${title}.`
+  const displayTitle = showTitlePeriod && !title.endsWith('.') ? `${title}.` : title
 
   return <section className="relative min-h-[38rem] overflow-hidden bg-white sm:min-h-[43rem] lg:min-h-[44rem]">
     {diagonalAccent && <DiagonalAccent color={color} />}

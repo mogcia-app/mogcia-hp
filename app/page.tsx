@@ -50,16 +50,27 @@ export default function Home(){return <main className="home-page">
  <section className="home-hero relative min-h-[720px] overflow-hidden md:min-h-[calc(100svh-5rem)]">
   <picture className="absolute inset-0">
    <source media="(max-width: 767px)" srcSet="/hero-visual-r.png"/>
-   <Image src="/hero-visual.png" alt="" fill priority sizes="100vw" className="object-cover object-center md:object-center"/>
+   <Image src="/hero-visual.png" alt="" fill priority sizes="100vw" className="object-cover object-[58%_center] md:object-center"/>
   </picture>
-  <div className="home-hero-mobile-scrim pointer-events-none absolute inset-x-0 top-0 h-[68%] md:hidden" aria-hidden/>
   <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-white via-white/20 to-transparent md:block" aria-hidden/>
   <div className="page-shell relative z-10 min-h-[720px] py-12 md:min-h-[calc(100svh-5rem)] md:py-16">
    <div className="max-w-[47rem]">
     <p className="hero-copy-line hero-copy-line-one mb-6 font-logo text-[9px] font-bold uppercase tracking-[.22em] text-ink-soft md:text-[10px]">AI × Creative / Tenjin, Fukuoka</p>
     <h1 className="font-display text-[3.7rem] font-black leading-[.88] tracking-[-.075em] sm:text-[5rem] md:text-[6.7rem] lg:text-[7.8rem]"><span className="hero-copy-line hero-copy-line-one block">Make</span><span className="hero-copy-line hero-copy-line-one block">a kinder</span><span className="hero-copy-line hero-copy-line-two block">tomorrow.</span></h1>
-    <p className="mt-8 text-sm font-black tracking-[.1em] md:text-base">つくって、まわして、そだてていく。</p>
-    <p className="mt-4 text-xs leading-6 text-ink-soft md:text-sm md:leading-7">福岡・天神から、AIとクリエイティブで<br/>やりたいことが続く仕組みをつくる。</p>
+   <p className="mt-8 hidden text-sm font-black tracking-[.1em] md:block md:text-base">つくって、まわして、そだてていく。</p>
+   <p className="mt-4 hidden text-xs leading-6 text-ink-soft md:block md:text-sm md:leading-7">福岡・天神から、AIとクリエイティブで<br/>やりたいことが続く仕組みをつくる。</p>
+  </div>
+   <svg viewBox="0 0 92 92" className="pointer-events-none absolute right-[5%] top-[17%] h-20 w-20 rotate-6 md:hidden" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <path d="M48 8c1 12 4 18 15 20-11 2-15 8-16 20-2-12-6-18-16-20 11-2 15-8 17-20Z" strokeWidth="1.7"/>
+    <path d="M20 48c.5 7 3 10 9 11-6 1-9 4-10 11-1-7-3-10-9-11 6-1 9-4 10-11Z" strokeWidth="1.4"/>
+    <path d="M67 54c0 5 2 8 7 9-5 1-7 4-8 9-1-5-3-8-7-9 5-1 7-4 8-9Z" strokeWidth="1.4"/>
+    <path d="M72 18c3-3 6-4 9-4M76 24c4 0 7 1 9 3" strokeWidth="1.5"/>
+   <circle cx="38" cy="63" r="1.8" fill="currentColor" stroke="none"/>
+   <circle cx="80" cy="42" r="1.4" fill="currentColor" stroke="none"/>
+  </svg>
+   <div className="pointer-events-none absolute left-[7%] top-[55%] -rotate-6 md:hidden" aria-hidden>
+    <p className="text-lg leading-none [font-family:'Bradley_Hand','Segoe_Print','Chalkboard_SE','Klee',cursive]">hello, tomorrow!</p>
+    <svg viewBox="0 0 92 42" className="ml-16 mt-1 h-9 w-20 rotate-[-8deg]" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M3 34c20 2 39-1 55-10 9-5 15-11 21-19"/><path d="m69 8 10-3-1 10"/></svg>
    </div>
    <div className="absolute bottom-[6%] right-[3%] flex -rotate-6 items-start gap-2 md:bottom-[12%] md:gap-3"><p className="text-right text-lg leading-[.95] md:text-2xl lg:text-4xl [font-family:'Bradley_Hand','Segoe_Print','Chalkboard_SE','Klee',cursive]">Good ideas<br/>for a brighter<br/>tomorrow.</p><svg viewBox="0 0 48 48" aria-hidden="true" className="mt-1 h-7 w-7 md:h-10 md:w-10 lg:h-12 lg:w-12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="24" cy="24" r="18"/><path d="M17 20h.01M31 20h.01M16 28c2.5 5 6 7 8 7s5.5-2 8-7M24 3v5"/></svg></div>
    <div className="absolute bottom-8 left-0 flex items-center gap-4 text-[10px] font-bold tracking-[.12em] md:bottom-10"><span className="h-10 w-px bg-ink"/>Scroll</div>
