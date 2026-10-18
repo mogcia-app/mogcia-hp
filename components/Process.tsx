@@ -22,63 +22,63 @@ type ProcessFlow = {
 const defaultFlows: ProcessFlow[] = [
   {
     heading: '既存ツール提供の流れ',
-    description: 'スピーディに導入いただける既存ツールは、最小限のステップで本稼働まで伴走します。',
+    description: 'スピーディに導入いただける既存ツールは、最小限のステップで本稼働まで伴走します',
     steps: [
       {
         title: 'Contact',
         subtitle: 'お問い合わせ',
-        description: 'お客様の現状やご要望をお伺いし、最適なツール選定に向けた初期相談を行います。',
+        description: 'お客様の現状やご要望をお伺いし、最適なツール選定に向けた初期相談を行います',
       },
       {
         title: 'Hearing',
         subtitle: 'ヒアリング',
-        description: '課題や運用体制、既存システムとの連携状況を詳細にヒアリングし、導入の方向性を固めます。',
+        description: '課題や運用体制、既存システムとの連携状況を詳細にヒアリングし、導入の方向性を固めます',
       },
       {
         title: 'Customization',
         subtitle: 'AIカスタマイズ',
-        description: '必要に応じて AI 設定を調整し、既存ツールでも柔軟に最適化を行います。',
+        description: '必要に応じて AI 設定を調整し、既存ツールでも柔軟に最適化を行います',
       },
       {
         title: 'Launch',
         subtitle: '運用開始',
-        description: '短期間で本番運用へ移行し、初期オンボーディングも併せて支援します。',
+        description: '短期間で本番運用へ移行し、初期オンボーディングも併せて支援します',
       },
       {
         title: 'Support',
         subtitle: '継続的なサポート',
-        description: '運用状況を定期的に確認し、効果測定や改善提案を継続します。',
+        description: '運用状況を定期的に確認し、効果測定や改善提案を継続します',
       },
     ],
   },
   {
     heading: 'システム開発の流れ',
-    description: 'フルカスタムのシステム開発では、要件整理から運用支援まで一貫してサポートします。',
+    description: 'フルカスタムのシステム開発では、要件整理から運用支援まで一貫してサポートします',
     steps: [
       {
         title: 'Contact',
         subtitle: 'お問い合わせ',
-        description: '課題感、目的、スケジュール感などをヒアリングし、プロジェクトの前提を整理します。',
+        description: '課題感、目的、スケジュール感などをヒアリングし、プロジェクトの前提を整理します',
       },
       {
         title: 'Hearing',
         subtitle: 'ヒアリング',
-        description: '関係者インタビューや業務フロー分析を通じて、要件定義に向けた材料を集めます。',
+        description: '関係者インタビューや業務フロー分析を通じて、要件定義に向けた材料を集めます',
       },
       {
         title: 'Design',
         subtitle: '設計とご提案',
-        description: 'システム要件、UI/UX、データ構造を整理し、ロードマップと概算見積を提示します。',
+        description: 'システム要件、UI/UX、データ構造を整理し、ロードマップと概算見積を提示します',
       },
       {
         title: 'PoC',
         subtitle: '試験導入・検証',
-        description: '限定環境での PoC やプロトタイプ検証を通じて、効果と運用体制を確認します。',
+        description: '限定環境での PoC やプロトタイプ検証を通じて、効果と運用体制を確認します',
       },
       {
         title: 'Optimize',
         subtitle: '運用支援・最適化',
-        description: '本番導入後も継続的な改善を行い、追加開発や運用設計を支援します。',
+        description: '本番導入後も継続的な改善を行い、追加開発や運用設計を支援します',
       },
     ],
   },
@@ -88,7 +88,7 @@ export default function ProcessSection({
   id,
   title = 'Process / How We Work',
   eyebrow = 'Our Approach',
-  description = 'お問い合わせから導入、運用まで、MOGCIAが伴走する流れをご紹介します。',
+  description = 'お問い合わせから導入、運用まで、MOGCIAが伴走する流れをご紹介します',
   steps,
   flows,
 }: ProcessSectionProps) {

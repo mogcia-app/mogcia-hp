@@ -134,7 +134,7 @@ export default function PageTransition() {
         >
           <div className="relative mx-auto h-[86px] w-[110px] overflow-hidden md:h-[102px] md:w-[132px]">
             <Image
-              src="/m.png"
+              src="/character-icon.png"
               alt="MOGCIA"
               fill
               priority

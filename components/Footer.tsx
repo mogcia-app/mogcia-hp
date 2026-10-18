@@ -1,133 +1,60 @@
-import Image from 'next/image'
 import Link from 'next/link'
 
-import { renderBrandText } from '@/components/BrandText'
-import LineIcon from '@/components/LineIcon'
-
-const navLinks = [
-  { label: 'サービス', href: '/services' },
-  { label: 'パートナー制度', href: '/partners' },
-  { label: '求人募集', href: '/recruit' },
-  { label: '会社概要', href: '/company' },
-  { label: 'お知らせ', href: '/news' },
-  { label: 'ブログ', href: '/blog' },
+const menuItems = [
+  ['/services', 'Service'],
+  ['/works', 'Works'],
+  ['/guide', 'Guide'],
+  ['/support', 'Support'],
+  ['/coffee', 'MOGCIA Coffee'],
+  ['/company', 'Company'],
+  ['/partners', 'Partner'],
+  ['/diagnosis', '1分AI診断'],
 ]
 
-const serviceLinks = [
-  { label: 'selmo.', href: 'https://selmotool.com/' },
-  { label: 'commo.', href: 'https://commotool.com/' },
-  { label: 'Roomly.', href: 'https://roomlychat.com/' },
-  { label: 'upmo', href: 'https://upmotool.com/' },
-  { label: 'Signal.', href: 'https://www.signalapp.jp/' },
-  { label: 'MOGCIA Coffee', href: 'https://mogcia.official.ec/' },
-]
-
-const legalLinks = [
-  { label: 'プライバシーポリシー', href: '/privacy-policy' },
-  { label: '利用規約', href: '/terms-of-service' },
+const otherItems = [
+  ['/services/public', '政治・行政分野の広報支援'],
+  ['/business', '法人のご担当者さまへ'],
+  ['/proposal', '営業・ご提案の方へ'],
+  ['/security-policy', 'セキュリティ・AI利用方針'],
+  ['/privacy-policy', 'プライバシーポリシー'],
+  ['/terms-of-service', '利用規約'],
 ]
 
 export default function Footer() {
   return (
-    <footer className="border-t border-neutral-200 bg-white">
-      <div className="px-6 py-14 md:px-10 md:py-16 lg:px-16 xl:px-20">
-        <div className="mx-auto w-full max-w-[1320px]">
-          <div className="grid gap-12 md:grid-cols-2 xl:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr] xl:gap-12">
-            <div className="space-y-6">
-              <div className="flex items-center gap-3">
-                <Image
-                  src="/m.png"
-                  alt="MOGCIA"
-                  width={160}
-                  height={48}
-                  className="h-auto w-[42px] md:w-[48px]"
-                />
-                <h2 className="text-[1.2rem] font-light tracking-[0.18em] text-neutral-950 md:text-[1.4rem]">
-                  株式会社MOGCIA
-                </h2>
-              </div>
-
-              <div className="space-y-2 text-xs leading-6 text-neutral-600 md:text-sm">
-                <p>〒810-0001</p>
-                <p>
-                  福岡県福岡市中央区天神4-6-28
-                  <br />
-                  いちご天神ノースビル7階
-                </p>
-              </div>
-
-              <div className="space-y-2 text-xs leading-6 text-neutral-600 md:text-sm">
-                <p>
-                  TEL:{' '}
-                  <a href="tel:092-517-9804" className="transition-colors hover:text-neutral-950">
-                    092-517-9804
-                  </a>
-                </p>
-                <p>
-                  MAIL:{' '}
-                  <a href="mailto:info@mogcia.jp" className="transition-colors hover:text-neutral-950">
-                    info@mogcia.jp
-                  </a>
-                </p>
-                <p>営業時間：平日 10:00 - 17:00（土日祝除く）</p>
-              </div>
-
-              <a
-                href="https://lin.ee/XjMOCFI"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-mogcia-id="footer-line"
-                data-mogcia-event="line_click"
-                className="inline-flex items-center gap-2 rounded-full border border-[#06c755]/30 px-5 py-2.5 text-xs font-medium text-[#06a94a] transition-colors hover:bg-[#06c755] hover:text-white"
-              >
-                <LineIcon className="h-5 w-5" />
-                MOGCIA公式LINEを友だち追加
-              </a>
-            </div>
-
-            <div>
-              <h3 className="text-[10px] uppercase tracking-[0.42em] text-neutral-500">Navigation</h3>
-              <ul className="mt-5 space-y-3 text-xs text-neutral-600 md:text-sm">
-                {navLinks.map(link => (
-                  <li key={link.label}>
-                    <Link href={link.href} className="transition-colors hover:text-neutral-950">
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-[10px] uppercase tracking-[0.42em] text-neutral-500">Products</h3>
-              <ul className="mt-5 space-y-3 text-xs text-neutral-600 md:text-sm">
-                {serviceLinks.map(link => (
-                  <li key={link.label}>
-                    <Link href={link.href} className="transition-colors hover:text-neutral-950">
-                      {renderBrandText(link.label)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-[10px] uppercase tracking-[0.42em] text-neutral-500">Legal</h3>
-              <ul className="mt-5 space-y-3 text-xs text-neutral-600 md:text-sm">
-                {legalLinks.map(link => (
-                  <li key={link.label}>
-                    <Link href={link.href} className="transition-colors hover:text-neutral-950">
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+    <footer className="border-t border-ink/15 bg-[#f7f7f7] text-ink">
+      <div className="page-shell py-14 md:py-20">
+        <div className="grid gap-12 md:grid-cols-[1.3fr_.7fr_.7fr] lg:grid-cols-[1.5fr_.65fr_.65fr_.7fr]">
+          <div>
+            <Link href="/" className="font-logo text-xl font-black tracking-[-.03em]">MOGCIA</Link>
+            <p className="mt-4 max-w-xs text-[11px] leading-5 text-ink/60">AI × SNS × Web, from Fukuoka.<br/>つくって、まわして、そだてていく。</p>
+            <div className="mt-8 text-[10px] leading-5 text-ink/45"><p>〒810-0001 福岡県福岡市中央区天神4-6-28</p><p>いちご天神ノースビル7階</p></div>
           </div>
 
-          <div className="mt-12 border-t border-neutral-200 pt-6 text-[11px] text-neutral-400">
-            © 2023- MOGCIA Inc. All rights reserved.
+          <nav aria-label="メインナビゲーション">
+            <p className="font-display text-[9px] font-bold uppercase tracking-[.2em] text-ink/40">Menu</p>
+            <div className="mt-4 flex flex-col items-start gap-3">{menuItems.map(([href, label]) => <Link key={href} href={href} className="text-xs text-ink/70 transition-colors hover:text-ink">{label}</Link>)}</div>
+          </nav>
+
+          <nav aria-label="その他のナビゲーション">
+            <p className="font-display text-[9px] font-bold uppercase tracking-[.2em] text-ink/40">Information</p>
+            <div className="mt-4 flex flex-col items-start gap-3">{otherItems.map(([href, label]) => <Link key={href} href={href} className="text-xs text-ink/70 transition-colors hover:text-ink">{label}</Link>)}</div>
+          </nav>
+
+          <div>
+            <p className="font-display text-[9px] font-bold uppercase tracking-[.2em] text-ink/40">Contact</p>
+            <div className="mt-4 flex flex-col items-start gap-2.5">
+              <a href="tel:0925179804" className="text-xs font-bold text-ink/70 transition-colors hover:text-ink">092-517-9804</a>
+              <a href="mailto:info@mogcia.jp" className="text-xs text-ink/70 transition-colors hover:text-ink">info@mogcia.jp</a>
+              <p className="text-[9px] leading-4 text-ink/40">営業時間：平日 10:00 - 17:00（土日祝除く）</p>
+            </div>
+            <Link href="/contact" className="mt-5 flex items-center justify-between border-b border-ink/30 pb-2 text-xs font-bold">Contact <span>→</span></Link>
           </div>
+        </div>
+
+        <div className="mt-14 flex items-end justify-between border-t border-ink/15 pt-5 text-[9px] uppercase tracking-[.14em] text-ink/40">
+          <p>© MOGCIA Inc.</p>
+          <a href="#" className="transition-colors hover:text-ink">Page top ↑</a>
         </div>
       </div>
     </footer>

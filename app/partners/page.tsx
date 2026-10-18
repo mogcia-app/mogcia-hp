@@ -1,214 +1,94 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
-
-import ContactSection from '@/components/ContactSection'
+import Link from 'next/link'
 import Footer from '@/components/Footer'
-import { ProductCards } from '@/components/ServiceOfferings'
+import { PageHeader, SectionHead, SectionLabel, SoftContact, tone, type Tone } from '@/components/PageFrame'
+import { products } from '@/lib/site-data'
 import { createPageMetadata } from '../metadata'
 
 export const metadata: Metadata = createPageMetadata('パートナー募集 | 株式会社MOGCIA', '/partners')
 
-const badges = ['紹介だけでもOK', 'ノルマなし', '商談同席サポートあり']
-
-const rewardSteps = [
-  {
-    icon: '01',
-    title: '紹介',
-    body: '企業や店舗をご紹介ください。',
-  },
-  {
-    icon: '02',
-    title: '商談化',
-    body: 'MOGCIAが説明や提案を支援します。',
-  },
-  {
-    icon: '03',
-    title: '契約',
-    body: '条件が合えば正式に契約へ進みます。',
-  },
-  {
-    icon: '04',
-    title: '報酬発生',
-    body: '契約内容に応じて報酬が発生します。',
-  },
+const ways: [string, string, string, string, Tone][] = [
+  ['01', '気軽に', '紹介のみ', 'お知り合いの企業や店舗をご紹介いただくだけ。説明から提案、契約まではMOGCIAが対応します', 'sky'],
+  ['02', 'しっかり', '商談同行', '商談の場に一緒に入っていただく形。お客さまとの関係を活かしながら、提案はMOGCIAがサポートします', 'pink'],
+  ['03', '本格的に', '代理店として継続的に', '自社のサービスと組み合わせて、継続的にご提案いただく形。営業資料やデモ環境もご用意します', 'lilac'],
 ]
 
-const supportItems = [
-  '営業資料の提供',
-  '商談同席サポート',
-  'デモ・説明対応',
-  '提案サポート',
-  '導入・運用支援',
+const steps: [string, string, string, Tone][] = [
+  ['01', '紹介', '企業や店舗をご紹介ください', 'sky'],
+  ['02', 'ご相談・ご提案', 'MOGCIAが説明や提案を支援します', 'pink'],
+  ['03', 'ご成約', '条件が合えば正式に契約へ進みます', 'butter'],
+  ['04', '報酬のお支払い', '契約内容に応じた報酬をお支払いします', 'lilac'],
 ]
 
-const partnerTypes = [
-  'Web制作会社',
-  '広告代理店',
-  'SNS運用会社',
-  'フリーランス',
-  'コンサルタント',
-  '人材会社',
-  '士業',
+const productDots = ['#f7df83', '#d7c5f7', '#f6b2b5', '#bcdcf7', '#f6c08f', '#fddde5']
+const partnerServices: [string, string, Tone][] = [
+  ['SNS運用代行', '企画から投稿制作、分析・改善まで。発信を続けられる形に整えます', 'sky'],
+  ['LP・HP・EC制作', '価値と導線を整理し、公開後の改善まで見据えたサイトを制作します', 'pink'],
+  ['SNS・Web一体支援', 'SNSで知ってもらい、Webから応募やお問い合わせにつながる導線をつくります', 'butter'],
+  ['販促物制作', '名刺・パンフレット・チラシなど、デザインから印刷・納品まで対応します', 'lilac'],
+  ['システム開発', '業務や現場の流れを整理し、使い続けられるシステムやAIを開発します', 'mint'],
+  ['プランニング', '内容が決まっていない段階から、必要な施策と進め方を一緒に整理します', 'peach'],
+]
+const supportItems = ['営業資料の提供', '商談同席サポート', 'デモ・説明対応', '提案サポート', '導入・運用支援']
+const faqs = [
+  ['個人でも参加できますか？', 'はい。フリーランスや個人事業主の方もご参加いただけます'],
+  ['費用はかかりますか？', '関わり方や内容によって異なります。詳細は個別にご相談のうえ、ご案内します'],
+  ['報酬はいつ、どのように支払われますか？', '契約内容に応じて、事前に報酬とお支払い条件をご案内します'],
+  ['紹介したお客さまとのやり取りは誰がしますか？', '説明や提案はMOGCIAが支援します。商談への同席もサポートしています'],
+  ['契約書は交わしますか？', 'はい。関わり方や報酬条件を確認したうえで契約書を取り交わします'],
 ]
 
-export default function PartnersPage() {
-  return (
-    <main className="bg-gradient-to-b from-white via-[#f8f6f1] to-white text-neutral-950">
-      <section className="relative overflow-hidden px-6 pb-20 pt-36 md:px-10 md:pb-24 md:pt-40 lg:px-16 lg:pt-32 xl:px-20">
-        <div className="pointer-events-none absolute inset-0">
-          <Image
-            src="/m309.png"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="hidden object-contain object-right lg:block"
-          />
-          <Image
-            src="/d1.png"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center scale-110 lg:hidden"
-          />
-        </div>
-        <div className="relative mx-auto w-full max-w-[1320px]">
-          <div className="max-w-3xl">
-            <p className="text-[11px] uppercase tracking-[0.42em] text-neutral-500">Partners</p>
-            <h1 className="mt-5 text-[2rem] font-light leading-[1.14] tracking-[-0.04em] text-neutral-950 md:text-[2.75rem] lg:text-[3.2rem]">
-              一緒に、価値を届ける
-              <br />
-              パートナーへ
-            </h1>
-            <p className="mt-7 max-w-xl text-sm leading-8 text-neutral-600 md:text-base">
-              AI・SNS・Web制作・SaaS。
-              <br />
-              MOGCIAのサービスを紹介いただける
-              <br className="hidden md:block" />
-              パートナーを募集しています。
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              {badges.map(badge => (
-                <span
-                  key={badge}
-                  className="rounded-full border border-[#ded6ca] bg-white/80 px-4 py-2 text-xs text-neutral-700 shadow-[0_10px_30px_rgba(92,78,62,0.06)]"
-                >
-                  {badge}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+export default function Partners() {
+  return <main className="bg-white text-ink">
+    <PageHeader crumbs={[['パートナー制度']]} title="Partner" color="peach" diagonalAccent lead={<>紹介するだけでも、<br />いっしょに届けられる</>} body="MOGCIAのサービスやプロダクトを、企業や店舗にご紹介いただく制度です。紹介だけ、商談同行、継続的な代理店活動など、関わり方に合わせて柔軟に参加できます。" />
 
-      <section className="px-6 py-20 md:px-10 md:py-24 lg:px-16 xl:px-20">
-        <div className="mx-auto w-full max-w-[1320px]">
-          <div className="grid gap-8 border-y border-[#ded6ca]/70 py-10 md:py-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-            <div>
-              <p className="text-[11px] uppercase tracking-[0.42em] text-neutral-500">About</p>
-              <h2 className="mt-4 text-xl font-light tracking-[-0.02em] text-neutral-950 md:text-2xl">
-                MOGCIAのパートナー制度とは
-              </h2>
-            </div>
-            <p className="mt-6 max-w-4xl text-sm leading-8 text-neutral-600 md:text-base">
-              MOGCIAのサービスやプロダクトを、企業や店舗にご紹介いただく制度です。
-              紹介だけ、商談同行、継続的な代理店活動など、関わり方に合わせて柔軟に参加できます。
-            </p>
-          </div>
-        </div>
-      </section>
+    <section id="ways" className="page-shell scroll-mt-24 pb-24 md:pb-32">
+      <SectionHead number="01" label="Ways to join" color="sky" title="関わり方は、3つから" note="できる範囲で大丈夫です。途中で関わり方を変えることもできます" />
+      <div className="mt-12 grid gap-3 md:grid-cols-3">{ways.map(([number, label, title, body, color]) => <article key={number} className="flex flex-col gap-4 rounded-[1.5rem] p-7 md:p-8" style={{backgroundColor:tone[color].band}}>
+        <div className="flex items-center gap-3"><span className="font-display text-sm font-black text-ink-soft">{number}</span><span className="rounded-full px-3 py-1 text-[10px] font-bold" style={{ backgroundColor: tone[color].chip }}>{label}</span></div>
+        <h3 className="text-[22px] font-black">{title}</h3>
+        <p className="text-[13px] leading-7 text-ink-soft">{body}</p>
+      </article>)}</div>
+    </section>
 
-      <section className="px-6 py-20 md:px-10 md:py-24 lg:px-16 xl:px-20">
-        <div className="mx-auto w-full max-w-[1320px] space-y-12">
-          <div className="max-w-3xl">
-            <p className="text-[11px] uppercase tracking-[0.42em] text-neutral-500">Lineup</p>
-            <h2 className="mt-4 text-3xl font-light tracking-[-0.02em] text-neutral-950 md:text-5xl">
-              紹介できる商材
-            </h2>
-          </div>
+    <section id="lineup" className="scroll-mt-24 py-24 md:py-32" style={{ backgroundColor: tone.butter.band }}><div className="page-shell">
+      <SectionHead number="02" label="Lineup" color="butter" title="紹介できるプロダクト・サービス" action={<Link href="/services" className="border-b border-ink pb-1 text-xs font-bold">サービスの詳細を見る →</Link>} />
+      <div className="mt-12 flex items-center gap-4"><h3 className="text-sm font-black">自社プロダクト</h3><span className="h-px flex-1 bg-ink/15" aria-hidden /></div>
+      <div className="mt-5 grid gap-3 md:grid-cols-2 lg:grid-cols-3">{products.map((product, index) => <article key={product.name} className="grid grid-cols-[4rem_1fr] items-start gap-4 rounded-[1.25rem] bg-white p-6">
+        <span className="h-16 w-16 rounded-full" style={{ backgroundColor: productDots[index % productDots.length] }} aria-hidden />
+        <div><p className="text-[10px] font-bold text-ink-soft">{product.label}</p><h3 className="mt-1.5 font-logo text-xl font-black">{product.name}</h3><p className="mt-1.5 text-xs leading-6 text-ink-soft">{product.description}</p></div>
+      </article>)}</div>
+      <div className="mt-12 flex items-center gap-4"><h3 className="text-sm font-black">支援サービス</h3><span className="h-px flex-1 bg-ink/15" aria-hidden /></div>
+      <div className="mt-5 grid gap-3 md:grid-cols-2 lg:grid-cols-3">{partnerServices.map(([name, description, color], index) => <article key={name} className="rounded-[1.25rem] bg-white p-6">
+        <div className="flex items-center justify-between gap-4"><span className="font-display text-[10px] font-black text-ink-soft">{String(index + 1).padStart(2, '0')}</span><span className="h-3 w-3 rounded-full" style={{ backgroundColor: tone[color].dot }} aria-hidden /></div>
+        <h3 className="mt-5 text-lg font-black">{name}</h3><p className="mt-3 text-xs leading-6 text-ink-soft">{description}</p>
+      </article>)}</div>
+    </div></section>
 
-          <ProductCards />
-        </div>
-      </section>
+    <section id="flow" className="page-shell scroll-mt-24 py-24 md:py-32">
+      <SectionHead number="03" label="Flow" color="pink" title="パートナー活動の流れ" />
+      <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{steps.map(([number, title, body, color]) => <article key={number} className="relative overflow-hidden rounded-[1.5rem] p-7" style={{backgroundColor:tone[color].band}}>
+        <p className="grid h-[4.5rem] w-[4.5rem] place-items-center rounded-full font-display text-2xl font-black" style={{ backgroundColor: tone[color].chip }}>{number}</p>
+        <h3 className="mt-5 text-[15px] font-black">{title}</h3>
+        <p className="mt-2.5 text-xs leading-7 text-ink-soft">{body}</p>
+      </article>)}</div>
+    </section>
 
-      <section className="px-6 py-20 md:px-10 md:py-24 lg:px-16 xl:px-20">
-        <div className="mx-auto w-full max-w-[1320px] space-y-12">
-          <div className="max-w-3xl">
-            <p className="text-[11px] uppercase tracking-[0.42em] text-neutral-500">Flow</p>
-            <h2 className="mt-4 text-3xl font-light tracking-[-0.02em] text-neutral-950 md:text-5xl">
-              報酬発生の流れ
-            </h2>
-          </div>
+    <section id="support" className="scroll-mt-24 py-24 md:py-32" style={{ backgroundColor: tone.lilac.band }}><div className="page-shell grid gap-12 lg:grid-cols-[.55fr_1fr] lg:gap-20">
+      <div>
+        <SectionLabel number="04" label="Support" color="lilac" />
+        <h2 className="mt-5 text-3xl font-black">MOGCIAのサポート</h2>
+        <p className="mt-4 text-xs leading-6 text-ink-soft">営業が得意でなくても大丈夫。説明や提案はMOGCIAが担います</p>
+      </div>
+      <ol className="border-t border-ink">{supportItems.map((item, index) => <li key={item} className="flex min-h-14 items-center gap-5 border-b border-ink/15 text-sm font-bold"><span className="font-display text-[10px] text-ink-soft">{String(index + 1).padStart(2, '0')}</span>{item}</li>)}</ol>
+    </div></section>
 
-          <div className="grid gap-5 md:grid-cols-4">
-            {rewardSteps.map((step, index) => (
-              <article
-                key={step.title}
-                className="relative rounded-[28px] border border-[#ded6ca]/80 bg-white p-6 shadow-[0_18px_60px_rgba(92,78,62,0.05)]"
-              >
-                {index < rewardSteps.length - 1 ? (
-                  <span className="absolute -bottom-6 left-1/2 text-lg text-[#a18b72] md:-right-4 md:bottom-auto md:left-auto md:top-1/2 md:-translate-y-1/2">
-                    →
-                  </span>
-                ) : null}
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#f7f4ee] text-xs tracking-[0.18em] text-[#9a8062]">
-                  {step.icon}
-                </div>
-                <h3 className="mt-5 text-xl font-light text-neutral-950">{step.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-neutral-600">{step.body}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+    <section id="faq" className="page-shell grid scroll-mt-24 gap-12 py-24 md:py-32 lg:grid-cols-[.55fr_1fr]">
+      <div><SectionLabel number="05" label="FAQ" color="mint" /><h2 className="mt-5 text-3xl font-black">よくある質問</h2></div>
+      <div className="border-t border-ink">{faqs.map(([question, answer], index) => <details key={question} className="group border-b border-ink/20 py-6" open={index === 0}><summary className="flex cursor-pointer list-none items-center justify-between gap-5 text-sm font-bold"><span><small className="mr-4 font-display">Q{index + 1}</small>{question}</span><span className="group-open:rotate-45">＋</span></summary><p className="pl-9 pt-4 text-xs leading-6 text-ink-soft">{answer}</p></details>)}</div>
+    </section>
 
-      <section className="px-6 py-20 md:px-10 md:py-24 lg:px-16 xl:px-20">
-        <div className="mx-auto w-full max-w-[1320px] space-y-12">
-          <div className="max-w-3xl">
-            <p className="text-[11px] uppercase tracking-[0.42em] text-neutral-500">Support</p>
-            <h2 className="mt-4 text-3xl font-light tracking-[-0.02em] text-neutral-950 md:text-5xl">
-              サポート内容
-            </h2>
-          </div>
-
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-            {supportItems.map((item, index) => (
-              <article key={item} className="rounded-[28px] border border-[#ded6ca]/80 bg-white p-6 shadow-[0_18px_60px_rgba(92,78,62,0.05)]">
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#f7f4ee] text-xs tracking-[0.18em] text-[#9a8062]">
-                  0{index + 1}
-                </div>
-                <h3 className="mt-5 text-lg font-light leading-7 text-neutral-950">{item}</h3>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 py-20 md:px-10 md:py-24 lg:px-16 xl:px-20">
-        <div className="mx-auto w-full max-w-[1320px] space-y-12">
-          <div className="max-w-3xl">
-            <p className="text-[11px] uppercase tracking-[0.42em] text-neutral-500">Partners</p>
-            <h2 className="mt-4 text-3xl font-light tracking-[-0.02em] text-neutral-950 md:text-5xl">
-              募集しているパートナー
-            </h2>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {partnerTypes.map((type, index) => (
-              <article key={type} className="flex items-center gap-4 rounded-[24px] border border-[#ded6ca]/80 bg-white p-5 shadow-[0_14px_44px_rgba(92,78,62,0.045)]">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#f7f4ee] text-xs tracking-[0.18em] text-[#9a8062]">
-                  0{index + 1}
-                </div>
-                <h3 className="text-base font-light text-neutral-950">{type}</h3>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <ContactSection variant="panel" />
-      <Footer />
-    </main>
-  )
+    <div id="apply" className="scroll-mt-24"><SoftContact body="パートナー制度について、まずは話を聞いてみたいという方もお気軽にご相談ください。" /></div>
+    <Footer />
+  </main>
 }

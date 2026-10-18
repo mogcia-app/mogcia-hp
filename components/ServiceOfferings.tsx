@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import AiGeneratedNotice from './AiGeneratedNotice'
 
 type Product = {
   name: string
@@ -24,7 +25,7 @@ export const products: Product[] = [
     imageClassName: 'object-contain',
     title: '営業教育を仕組み化するAIプラットフォーム',
     description:
-      '商談分析・テレアポ分析・ロープレ・ナレッジ管理をひとつに。営業教育を仕組み化するAIプラットフォーム',
+      '商談分析・テレアポ分析・ロープレ・ナレッジ管理をひとつに営業教育を仕組み化するAIプラットフォーム',
     href: 'https://selmotool.com/',
   },
   {
@@ -34,7 +35,7 @@ export const products: Product[] = [
     title:
       '顧客は、集めるより育てる時代へ\nLINE公式アカウントの構築から\n予約導線づくり クーポン配信\nリピーター施策までまるっとサポート',
     description:
-      'LINE公式アカウントの構築から予約導線づくり、クーポン配信、リピーター施策まで支援します。',
+      'LINE公式アカウントの構築から予約導線づくり、クーポン配信、リピーター施策まで支援します',
     href: 'https://commotool.com/',
   },
   {
@@ -43,7 +44,7 @@ export const products: Product[] = [
     imageClassName: 'object-contain',
     title: 'アプリ不要のチャットで、ホテルの問い合わせ対応をもっとシンプルに',
     description:
-      'ゲストとホテルスタッフをつなぐ、チャット型フロントサポートツール。QRコードからすぐ使え、問い合わせ対応をシンプルにします。',
+      'ゲストとホテルスタッフをつなぐ、チャット型フロントサポートツールQRコードからすぐ使え、問い合わせ対応をシンプルにします',
     href: 'https://roomlychat.com/',
   },
   {
@@ -52,7 +53,7 @@ export const products: Product[] = [
     imageClassName: 'object-contain',
     title: '社内の情報をAIで一元化',
     description:
-      'PDFやマニュアルなど社内情報をAIが理解し、チャットで必要な答えをすぐ引き出せる企業向けAIです。',
+      'PDFやマニュアルなど社内情報をAIが理解し、チャットで必要な答えをすぐ引き出せる企業向けAIです',
     href: 'https://upmotool.com/',
   },
   {
@@ -61,8 +62,17 @@ export const products: Product[] = [
     imageClassName: 'object-contain',
     title: 'あなた専属のSNS AI秘書',
     description:
-      'SNS運用の次の一手をAIが自動で提案。分析も投稿アイデアも全部おまかせで、もう悩まないSNS運用へ。',
+      'SNS運用の次の一手をAIが自動で提案分析も投稿アイデアも全部おまかせで、もう悩まないSNS運用へ',
     href: 'https://www.signalapp.jp/',
+  },
+  {
+    name: 'ismo.',
+    image: '/ismo-mein.png',
+    imageClassName: 'object-contain',
+    title: '見えなかった改善が、見えてくる',
+    description:
+      'アクセス解析やユーザー行動、SNSからLPへの導線をまとめて可視化データを成果につながる改善へ変える分析サービスです',
+    href: 'https://www.ismo-data.com/',
   },
 ]
 
@@ -71,19 +81,19 @@ export const servicePackages: ServicePackage[] = [
     image: '/sns2.png',
     imageClassName: 'object-contain',
     title: 'SNS運用代行',
-    body: '企画、投稿設計、制作、改善までを一気通貫で支援します。',
+    body: '企画、投稿設計、制作、改善までを一気通貫で支援します',
   },
   {
     image: '/hp.png',
     imageClassName: 'object-contain',
     title: 'LP作成・HP作成',
-    body: '伝えたい価値と導線設計を整理し、目的に合わせたLPやコーポレートサイトを制作。公開後の改善も見据えて設計します。',
+    body: '伝えたい価値と導線設計を整理し、目的に合わせたLPやコーポレートサイトを制作公開後の改善も見据えて設計します',
   },
   {
     image: '/pac.png',
     imageClassName: 'object-contain',
     title: '企業向けパック',
-    body: '運用代行とLP作成を組み合わせた支援パッケージ。集客と受け皿を分断せず、一連の流れとして整えます。',
+    body: '運用代行とLP作成を組み合わせた支援パッケージ集客と受け皿を分断せず、一連の流れとして整えます',
   },
 ]
 
@@ -119,6 +129,14 @@ export function renderProductName(name: string) {
     )
   }
 
+  if (name === 'ismo.') {
+    return (
+      <>
+        ismo<span className="text-[#ff5775]">.</span>
+      </>
+    )
+  }
+
   if (name !== 'commo.') return name
 
   return (
@@ -130,7 +148,7 @@ export function renderProductName(name: string) {
 
 export function ProductCards() {
   return (
-    <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+    <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
       {products.map(product => (
         <article
           key={product.name}
@@ -186,7 +204,7 @@ export default function ServiceOfferings({
                 {productsTitle}
               </h2>
               <p className="mt-5 text-sm leading-8 text-neutral-600 md:text-base">
-                集客、接客、社内運用を支える既存プロダクトを、課題に合わせて組み合わせます。
+                集客、接客、社内運用を支える既存プロダクトを、課題に合わせて組み合わせます
               </p>
             </div>
 
@@ -204,7 +222,7 @@ export default function ServiceOfferings({
                 {servicesTitle}
               </h2>
               <p className="mt-5 text-sm leading-8 text-neutral-600 md:text-base">
-                プロダクトだけでは届きにくい戦略、制作、運用の領域を、事業の流れに沿って支援します。
+                プロダクトだけでは届きにくい戦略、制作、運用の領域を、事業の流れに沿って支援します
               </p>
             </div>
 
@@ -222,15 +240,13 @@ export default function ServiceOfferings({
                       sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
                       className={`${item.imageClassName} p-5`}
                     />
+                    <AiGeneratedNotice textClassName="text-[5px] text-neutral-500/60 md:text-[5px] md:text-neutral-500/60" />
                   </div>
                   <div className="flex flex-col p-6">
                     <p className="text-[11px] uppercase tracking-[0.3em] text-[#a18b72]">Support</p>
                     <h3 className="text-xl font-light text-neutral-950 md:text-2xl">{item.title}</h3>
                     <p className="mt-4 text-sm font-light leading-7 text-neutral-600">
                       {item.body}
-                    </p>
-                    <p className="mt-auto pt-8 text-[10px] font-light tracking-[0.04em] text-neutral-400">
-                      この画像はAIで生成しています
                     </p>
                   </div>
                 </article>

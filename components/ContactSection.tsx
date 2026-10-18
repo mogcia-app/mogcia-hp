@@ -31,7 +31,7 @@ export default function ContactSection({ variant = 'default' }: ContactSectionPr
 
           <div className="pt-7">
             <p className="max-w-2xl text-sm leading-8 text-neutral-600 md:text-base">
-              事業課題や制作、運用のご相談はこちらから。内容を確認後、目的に合わせて最適なメンバーが順次ご連絡します。
+              事業課題や制作、運用のご相談はこちらから内容を確認後、目的に合わせて最適なメンバーが順次ご連絡します
             </p>
             <Link
               href="/contact"

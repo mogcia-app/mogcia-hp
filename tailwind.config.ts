@@ -11,10 +11,16 @@ const config: Config = {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
+        surface: 'var(--surface)',
+        ink: 'var(--ink)',
+        'ink-soft': 'var(--ink-soft)',
+        'pastel-blue': 'var(--blue)',
+        'pastel-pink': 'var(--pink)',
+        'pastel-purple': 'var(--purple)',
+        silver: 'var(--silver)',
       },
     },
   },
   plugins: [],
 }
 export default config
-

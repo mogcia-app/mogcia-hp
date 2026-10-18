@@ -8,7 +8,7 @@ const productPreviewGroups = [
     label: "Products",
     title: "既存プロダクト",
     description:
-      "営業AI、LINE導線、宿泊業向けチャット、社内AI、SNS支援まで、複数の自社プロダクトを展開しています。",
+      "営業AI、LINE導線、宿泊業向けチャット、社内AI、SNS支援まで、複数の自社プロダクトを展開しています",
     hero: { src: "/selmohp.png", alt: "selmo" },
     items: [
       { src: "/selmohp.png", alt: "selmo" },
@@ -22,7 +22,7 @@ const productPreviewGroups = [
     label: "Support",
     title: "支援サービス",
     description:
-      "SNS運用代行、LP制作、Web制作、企業向けパック支援まで、集客から運用までを一気通貫で支援します。",
+      "SNS運用代行、LP制作、Web制作、企業向けパック支援まで、集客から運用までを一気通貫で支援します",
     hero: { src: "/sns2.png", alt: "SNS support", imageClassName: "object-contain p-3 md:p-4" },
     items: [
       { src: "/sns2.png", alt: "SNS support", imageClassName: "object-contain p-1 md:p-2" },
@@ -34,7 +34,7 @@ const productPreviewGroups = [
     label: "Coming Soon",
     title: "開発中のプロダクト",
     description:
-      "現在進行中の新規プロダクトも含めて、事業の接点を広げる仕組みを継続的に開発しています。",
+      "現在進行中の新規プロダクトも含めて、事業の接点を広げる仕組みを継続的に開発しています",
     hero: { src: "/tellmo1.png", alt: "tellmo", imageClassName: "object-contain p-3 md:p-4" },
     items: [
       { src: "/viocom.png", alt: "Viocom", imageClassName: "object-contain p-1 md:p-2" },
@@ -58,7 +58,7 @@ export default function ProductsSection() {
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-neutral-600 md:text-base">
               既存プロダクトだけでなく、支援サービスや開発中のプロダクトまで含めて、
-              MOGCIAが提供している価値の広がりをまとめて紹介します。
+              MOGCIAが提供している価値の広がりをまとめて紹介します
             </p>
           </div>
           <Link

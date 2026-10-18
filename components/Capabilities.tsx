@@ -13,21 +13,21 @@ const capabilities: Capability[] = [
     title: "AIを活用した課題解決",
     subtitle: "データ分析から意思決定支援まで",
     headline: "",
-    description: "AI・機械学習技術を活用して業務効率化を実現。データドリブンな経営をサポートします。",
+    description: "AI・機械学習技術を活用して業務効率化を実現データドリブンな経営をサポートします",
     image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1600&q=80&auto=format&fit=crop",
   },
   {
     title: "SNS運用支援",
     subtitle: "戦略設計から運用・分析まで",
     headline: "Signal.を活用したAI運用",
-    description: "効果的なマーケティングを実現します。",
+    description: "効果的なマーケティングを実現します",
     image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=1600&q=80&auto=format&fit=crop",
   },
   {
     title: "Webサイト・LP構築",
     subtitle: "成果に直結する導線設計",
     headline: "高変換率を実現するWebサイト・LP",
-    description: "SEO最適化で集客力を向上します。",
+    description: "SEO最適化で集客力を向上します",
     image: "https://images.unsplash.com/photo-1529101091764-c3526daf38fe?w=1600&q=80&auto=format&fit=crop",
   },
 ]
@@ -59,5 +59,4 @@ export default function CapabilitiesSection() {
     </section>
   )
 }
-
 
