@@ -78,7 +78,7 @@ const faqs: [string, string][] = [
 
 export default function Services() {
   return <main className="bg-white text-ink">
-    <PageHeader crumbs={[['サービス']]} title="Services" color="pink" diagonalAccent showTitlePeriod={false} lead={<>プロダクトと伴走で<br />やりたいことを、つなげる。</>} body="AI・SNS・Webを組み合わせ、つくるところから運用・改善まで。必要な支援をひとつの流れで届けます。" />
+    <PageHeader crumbs={[['サービス']]} title="Services" color="pink" diagonalAccent showTitlePeriod lead={<>プロダクトと伴走で<br />やりたいことを、つなげる。</>} body="AI・SNS・Webを組み合わせ、つくるところから運用・改善まで。必要な支援をひとつの流れで届けます。" />
 
     <section className="page-shell py-24 md:py-32"><div className="grid gap-12 lg:grid-cols-[.62fr_1.38fr] lg:gap-20">
       <div><SectionLabel number="01" label="Good match" color="mint"/><h2 className="mt-5 text-3xl font-black leading-[1.45]">こんなチームと、<br />相性がいいです</h2><p className="mt-5 max-w-sm text-xs leading-7 text-ink-soft">会社の規模や業種ではなく、進め方の相性。相談しながら、いっしょに動かしていきたい方に向いています。</p><p className="mt-8 -rotate-2 text-xl leading-tight text-ink/45 [font-family:'Bradley_Hand','Segoe_Print','Chalkboard_SE','Klee',cursive]">Good ideas<br/>grow together.</p></div>
@@ -110,7 +110,7 @@ export default function Services() {
         <div className="px-6 py-5 md:px-7" style={{backgroundColor:tone[plan.color].chip}}><p className="text-[11px] font-bold">{plan.target}</p><h3 className="mt-1 text-xl font-black">{plan.name}</h3></div>
         <div className="flex flex-1 flex-col p-6 md:p-7">
           <p className="text-xs leading-6 text-ink-soft">{plan.body}</p>
-          <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:items-stretch">{plan.items.map(([label,role],index)=><div key={label} className="flex items-center gap-2 sm:flex-1"><div className="flex flex-1 flex-col items-center justify-center rounded-xl border border-ink/10 px-3 py-4 text-center"><span className="font-logo text-sm font-black">{label}</span><span className="mt-1 text-[10px] leading-4 text-ink-soft">{role}</span></div>{index<plan.items.length-1&&<span className="shrink-0 text-center font-display text-lg font-black max-sm:w-full" style={{color:tone[plan.color].dot}} aria-hidden>+</span>}</div>)}</div>
+          <div className="mt-6 flex flex-col gap-2 lg:flex-row lg:items-stretch">{plan.items.map(([label,role],index)=><div key={label} className="flex flex-col items-stretch gap-2 lg:flex-1 lg:flex-row lg:items-center"><div className="flex w-full flex-1 flex-col items-center justify-center rounded-xl border border-ink/10 px-3 py-4 text-center"><span className="font-logo text-sm font-black">{label}</span><span className="mt-1 text-[10px] leading-4 text-ink-soft">{role}</span></div>{index<plan.items.length-1&&<span className="w-full shrink-0 text-center font-display text-lg font-black lg:w-auto" style={{color:tone[plan.color].dot}} aria-hidden>+</span>}</div>)}</div>
           <Link href="/contact" className="mt-6 flex items-center justify-between border-t border-ink/10 pt-5 text-xs font-bold">このプランについて相談する<span aria-hidden>→</span></Link>
         </div>
       </article>)}</div>

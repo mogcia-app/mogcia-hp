@@ -29,7 +29,7 @@ export default function PublicServicePage() {
       <div className="mt-12">
         <div className="max-w-3xl">
           <SectionLabel label="Public relations" color="lilac" />
-          <h1 className="mt-5 text-balance text-[clamp(1.5rem,7vw,2rem)] font-black leading-[1.5] tracking-[-.04em] sm:text-4xl md:text-[3.5rem]">政治・行政分野の<br />広報支援</h1>
+          <h1 className="mt-5 text-balance text-[clamp(1.5rem,7vw,2rem)] font-black leading-[1.75] tracking-[-.02em] sm:text-4xl sm:leading-[1.5] md:text-[3.5rem] md:leading-[1.35]">政治・行政分野の<br />広報支援</h1>
           <p className="mt-7 max-w-xl text-sm leading-8 text-ink-soft">議員・首長の皆さまの日々の活動を、地域の方にわかりやすく届けるための広報・ブランディングを支援しています。議会での取り組みや政策を、SNS・Web・印刷物を通じて誠実に伝えるお手伝いをいたします。</p>
           <div className="mt-8 flex flex-wrap gap-3"><Link href="/contact" className="button button-dark text-xs">相談する →</Link><a href="#notice" className="button button-light text-xs">ご依頼にあたって</a></div>
         </div>
