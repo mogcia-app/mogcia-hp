@@ -8,10 +8,11 @@ const menuItems = [
   ['/coffee', 'MOGCIA Coffee'],
   ['/company', 'Company'],
   ['/partners', 'Partner'],
-  ['/diagnosis', '1分AI診断'],
+  ['/diagnosis', 'AI診断'],
 ]
 
 const otherItems = [
+  ['/services/ai', 'AI導入支援'],
   ['/services/public', '政治・行政分野の広報支援'],
   ['/business', '法人のご担当者さまへ'],
   ['/proposal', '営業・ご提案の方へ'],

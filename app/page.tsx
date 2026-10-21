@@ -16,11 +16,22 @@ const newsTones: Tone[] = ['butter', 'sky', 'pink']
 const workTones: Tone[] = ['sky', 'pink', 'mint']
 const guideTones: Tone[] = ['sky', 'pink', 'mint']
 
-const whatWeDoItems = [
-  ['01', 'AI & SYSTEM', 'AI・システム開発', 'AI活用／業務効率化／システム開発', 'bg-[#eaf3f8]', 'bg-[#d6e8f7]', ['業務を整理', '仕組みを開発']],
-  ['02', 'SNS', 'SNS運用', '企画／制作／投稿運用／分析・改善', 'bg-[#fbeff3]', 'bg-[#fbd9e2]', ['発信を企画', '運用を改善']],
-  ['03', 'WEB', 'Web制作', 'LP制作／HP制作／公開後の改善', 'bg-[#f2effb]', 'bg-[#e4daf8]', ['魅力を設計', '成果へ改善']],
-  ['04', 'CONSULTING', 'コンサルティング', '事業整理／課題整理／改善提案', 'bg-[#fff6d9]', 'bg-[#fcebb0]', ['課題を整理', '進み方を提案']],
+const featureSteps: [string, string, string, Tone][] = [
+  ['AI研修', '動画と講座で、基本と業務での使い方を覚える', 'STEP 1', 'butter'],
+  ['導入の伴走', '月1回の定例とチャットで、社内に定着させる', 'STEP 2', 'mint'],
+  ['仕組みづくり', 'AIでつくったツールの裏側を構築し、月額でお預かり', 'STEP 3', 'lilac'],
+]
+const featureUseCases = ['議事録・日報', '見積もり・請求', '問い合わせ対応', 'SNS投稿の下書き', '社内マニュアル検索', '採用・求人票']
+
+const featuredServices: { no: string; tag: string; en: string; title: string; body: string; link: string; href: string; color: Tone; subs: [string, string, Tone][] }[] = [
+  { no: '01', tag: '使い方から定着まで', en: 'AI CONSULTING', title: 'AIコンサルティング', body: 'AIをどこで使うかを整理し、研修と伴走で、社員が日々の業務に使える状態まで支援します。', link: 'AIコンサルティングを見る', href: '/services/ai', color: 'mint', subs: [['活用設計', '使える業務を見つける', 'mint'], ['AI研修', '基本から実務まで学ぶ', 'butter'], ['定着支援', '使い続ける習慣をつくる', 'peach']] },
+  { no: '02', tag: '業務に合う仕組みを開発', en: 'AI & SYSTEM', title: 'AI導入・システム開発', body: '既製ツールでは合わない業務に。AI機能を組み込んだ社内ツールやシステムを設計・開発し、運用まで支えます。', link: 'システム開発を見る', href: '/services/system', color: 'sky', subs: [['業務整理', '必要な機能を見極める', 'sky'], ['設計・開発', '現場に合う形でつくる', 'lilac'], ['保守・運用', '公開後も改善を続ける', 'pink']] },
+]
+
+const whatWeDoItems: [string, string, string, string, Tone, string[], string][] = [
+  ['03', 'SNS', 'SNS運用', '企画／制作／投稿運用／分析・改善', 'pink', ['発信を企画', '運用を改善'], '/services/sns'],
+  ['04', 'WEB', 'Web制作', 'LP制作／HP制作／公開後の改善', 'lilac', ['魅力を設計', '成果へ改善'], '/services/web'],
+  ['05', 'CONSULTING', 'コンサルティング', '事業整理／課題整理／改善提案', 'butter', ['課題を整理', '進み方を提案'], '/services'],
 ]
 
 const problemItems: [string, React.ReactNode, string][] = [
@@ -56,7 +67,7 @@ export default function Home(){return <main className="home-page">
   <div className="page-shell relative z-10 min-h-[720px] py-12 md:min-h-[calc(100svh-5rem)] md:py-16">
    <div className="max-w-[47rem]">
     <p className="hero-copy-line hero-copy-line-one mb-6 font-logo text-[9px] font-bold uppercase tracking-[.22em] text-ink-soft md:text-[10px]">AI × Creative / Tenjin, Fukuoka</p>
-    <h1 className="font-display text-[3.7rem] font-black leading-[.88] tracking-[-.075em] sm:text-[5rem] md:text-[6.7rem] lg:text-[7.8rem]"><span className="hero-copy-line hero-copy-line-one block">Make</span><span className="hero-copy-line hero-copy-line-one block">a kinder</span><span className="hero-copy-line hero-copy-line-two block">tomorrow.</span></h1>
+    <h1 className="font-display text-[3.7rem] font-black leading-[.88] tracking-[-.075em] sm:text-[5rem] md:text-[6.7rem] lg:text-[7.8rem]"><span className="hero-copy-line hero-copy-line-one block">Make</span><span className="hero-copy-line hero-copy-line-one block">AI work</span><span className="hero-copy-line hero-copy-line-two block">for you.</span></h1>
    <p className="mt-8 hidden text-sm font-black tracking-[.1em] md:block md:text-base">つくって、まわして、そだてていく。</p>
    <p className="mt-4 hidden text-xs leading-6 text-ink-soft md:block md:text-sm md:leading-7">福岡・天神から、AIとクリエイティブで<br/>やりたいことが続く仕組みをつくる。</p>
   </div>
@@ -81,7 +92,7 @@ export default function Home(){return <main className="home-page">
 
  <section className="bg-white pb-8 pt-16 md:py-32">
   <div className="page-shell grid items-center gap-10 lg:grid-cols-[.78fr_1.22fr] lg:gap-8">
-   <div><SectionLabel number="01">Our belief</SectionLabel><div className="mt-5 max-w-3xl"><h2 className="text-3xl font-black leading-[1.45] tracking-[-.03em] md:text-5xl">やりたいことを<br/>いっしょに育てる</h2><div className="mt-8 border-l-2 border-[#F08FA8] pl-5"><p className="text-sm font-bold leading-8 md:text-base">「できたらいいな」を、続いていく形へ。</p><p className="mt-3 max-w-xl text-xs leading-7 text-ink-soft md:text-sm md:leading-8">アイデアを整理し、つくり、動かし、育てる。そのすべてを、いっしょに。</p></div><div className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-5"><Link href="/company" className="group inline-flex min-h-12 items-center gap-8 border border-ink bg-white px-5 text-xs font-black shadow-[5px_5px_0_#FBD9E2] transition-transform hover:-translate-y-0.5"><span>私たちについて</span><span className="text-base transition-transform group-hover:translate-x-1" aria-hidden>→</span></Link><span className="font-display text-[8px] font-bold uppercase tracking-[.18em] text-ink/30">Make · Operate · Grow</span></div></div></div>
+   <div><SectionLabel number="01">Our belief</SectionLabel><div className="mt-5 max-w-3xl"><h2 className="text-3xl font-black leading-[1.45] tracking-[-.03em] md:text-5xl">やりたいことを<br/>いっしょに育てる</h2><div className="mt-8 border-l-2 border-[#F08FA8] pl-5"><p className="text-sm font-bold leading-8 md:text-base">「できたらいいな」を、続いていく形へ。</p><p className="mt-3 max-w-xl text-xs leading-7 text-ink-soft md:max-w-none md:whitespace-nowrap md:text-sm md:leading-8">アイデアを整理し、つくり、動かし、育てる。そのすべてを、いっしょに。</p></div><div className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-5"><Link href="/company" className="group inline-flex min-h-12 items-center gap-8 border border-ink bg-white px-5 text-xs font-black shadow-[5px_5px_0_#FBD9E2] transition-transform hover:-translate-y-0.5"><span>私たちについて</span><span className="text-base transition-transform group-hover:translate-x-1" aria-hidden>→</span></Link><span className="font-display text-[8px] font-bold uppercase tracking-[.18em] text-ink/30">Make · Operate · Grow</span></div></div></div>
    <div className="relative w-full lg:scale-[1.06] lg:origin-right">
     <Image src="/our-belief.png" alt="アイデアを一緒に積み上げ、育てていく人々" width={1536} height={1024} sizes="(max-width: 1023px) 100vw, 62vw" className="h-auto w-full" />
     <p className="absolute right-[5%] top-[1%] -rotate-6 text-right text-base leading-[1.05] text-ink/80 md:text-2xl [font-family:'Bradley_Hand','Segoe_Print','Chalkboard_SE','Klee',cursive]">Better ideas<br/>grow together.</p>
@@ -116,7 +127,7 @@ export default function Home(){return <main className="home-page">
    </div>
    <Link href="/diagnosis" className="group mt-10 grid w-full max-w-4xl border border-[#F2C94C] bg-white text-left shadow-[7px_7px_0_#FCEBB0] transition-transform hover:-translate-y-0.5 sm:grid-cols-[9rem_1fr_auto] sm:items-stretch">
     <span className="flex items-center border-b border-[#F2C94C] bg-[#F2C94C] px-5 py-4 text-ink sm:border-b-0 sm:border-r"><span><b className="block font-display text-3xl leading-none">01</b><small className="mt-2 block font-display text-[8px] font-bold uppercase tracking-[.18em] text-ink/60">Minute check</small></span></span>
-    <span className="px-5 py-6 sm:px-7"><span className="font-display text-[9px] font-bold uppercase tracking-[.18em] text-ink-soft">Quick diagnosis</span><strong className="mt-2 block text-lg font-black leading-7 md:text-xl">どこから始めるか迷ったら、1分AI診断</strong><span className="mt-1 block text-[11px] leading-5 text-ink-soft">今の課題に合う進め方を、いくつかの質問から整理します。</span></span>
+    <span className="px-5 py-6 sm:px-7"><span className="font-display text-[9px] font-bold uppercase tracking-[.18em] text-ink-soft">Quick diagnosis</span><strong className="mt-2 block text-lg font-black leading-7 md:text-xl">どこから始めるか迷ったら、AI診断</strong><span className="mt-1 block text-[11px] leading-5 text-ink-soft">今の課題に合う進め方を、いくつかの質問から整理します。</span></span>
     <span className="flex items-center justify-between border-t border-[#F2C94C] px-5 py-4 text-xs font-black text-[#9A7600] sm:min-w-[9rem] sm:justify-center sm:border-l sm:border-t-0">診断する<span className="ml-4 text-lg transition-transform group-hover:translate-x-1" aria-hidden>→</span></span>
    </Link>
   </div>
@@ -124,20 +135,53 @@ export default function Home(){return <main className="home-page">
 
  <section className="bg-white py-16 md:py-32"><div className="page-shell">
   <SectionHead number="03" label="What we do" color="sky" title="できること、いろいろ" note="入口はひとつでも、必要な方法はひとつとは限りません。事業に合わせて、領域をまたいだ支援を組み立てます。" action={<Link href="/services" className="group inline-flex min-h-12 self-start items-center gap-8 border border-ink bg-white px-5 text-xs font-black shadow-[5px_5px_0_#D6E8F7] transition-transform hover:-translate-y-0.5 md:self-auto"><span>サービスを見る</span><span className="text-base transition-transform group-hover:translate-x-1" aria-hidden>→</span></Link>} />
-  <div className="mt-10 grid gap-4 lg:grid-cols-2">{whatWeDoItems.map(([number,en,title,tags,cardColor,chipColor,points])=><Link href="/services" key={number as string} className={`group flex min-h-[17rem] flex-col rounded-[1.5rem] p-6 transition-transform duration-300 hover:-translate-y-1 md:p-8 ${cardColor}`}>
+  <div className="mt-10 grid gap-6 lg:grid-cols-2">{featuredServices.map(item => <Link key={item.no} href={item.href} className="group flex flex-col overflow-hidden border border-ink bg-white transition-transform hover:-translate-y-1" style={{ boxShadow: `8px 8px 0 ${tone[item.color].chip}` }}>
+   <span className="flex flex-wrap items-center justify-between gap-3 border-b border-ink px-6 py-4 md:px-7"><span className="flex items-center gap-3"><span className="grid h-11 w-11 place-items-center rounded-full border border-ink bg-white font-display text-[10px] font-black">{item.no}</span><span className="text-[11px] font-black">{item.tag}</span></span><small className="font-display text-[9px] font-bold tracking-[.14em] text-ink-soft">{item.en}</small></span>
+   <span className="flex flex-1 flex-col p-6 md:p-8">
+    <strong className="block text-2xl font-black md:text-[28px]">{item.title}</strong>
+    <span className="mt-3 max-w-xl text-[13px] leading-7 text-ink-soft">{item.body}</span>
+    <span className="mt-6 grid gap-2 sm:grid-cols-3">{item.subs.map(([title, text, color]) => <span key={title} className="flex flex-col gap-1 border border-ink/15 bg-white px-4 py-3.5" style={{ boxShadow: `3px 3px 0 ${tone[color].chip}` }}><span className="text-[13px] font-black">{title}</span><span className="text-[11px] leading-5 text-ink-soft">{text}</span></span>)}</span>
+    <span className="mt-7 inline-flex min-h-11 w-fit items-center gap-6 border border-ink bg-white px-4 text-xs font-black" style={{ boxShadow: `4px 4px 0 ${tone[item.color].chip}` }}>{item.link} <span className="inline-block transition-transform group-hover:translate-x-1" aria-hidden>→</span></span>
+   </span>
+  </Link>)}</div>
+  <div className="mt-8 grid gap-5 md:grid-cols-3">{whatWeDoItems.map(([number,en,title,tags,color,points,href])=><Link href={href} key={number} className="group flex min-h-[15rem] flex-col border border-ink bg-white p-6 transition-transform duration-300 hover:-translate-y-1 md:p-7" style={{ boxShadow: `6px 6px 0 ${tone[color].chip}` }}>
    <div className="flex items-center justify-between border-b border-ink/10 pb-5">
-    <span className={`grid h-11 w-11 place-items-center rounded-full font-display text-[10px] font-black ${chipColor}`}>{number as string}</span>
-    <small className="font-display text-[9px] font-bold tracking-[.14em] text-ink-soft">{en as string}</small>
+    <span className="grid h-11 w-11 place-items-center rounded-full border border-ink bg-white font-display text-[10px] font-black">{number}</span>
+    <small className="font-display text-[9px] font-bold tracking-[.14em] text-ink-soft">{en}</small>
    </div>
    <div className="pt-6">
-    <strong className="block text-xl font-black md:text-2xl">{title as string}</strong>
-    <span className="mt-3 block text-xs leading-6 text-ink-soft">{tags as string}</span>
+    <strong className="block text-xl font-black md:text-2xl">{title}</strong>
+    <span className="mt-3 block text-xs leading-6 text-ink-soft">{tags}</span>
    </div>
    <div className="mt-auto flex items-end justify-between gap-5 pt-7">
-    <span className="flex flex-wrap gap-x-4 gap-y-2">{(points as string[]).map(point=><span key={point} className="flex items-center gap-2 text-[10px] font-bold"><span className={`h-2 w-2 rounded-full ${chipColor}`} aria-hidden />{point}</span>)}</span>
-    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-sm transition-transform group-hover:translate-x-1" aria-hidden>→</span>
+    <span className="flex flex-wrap gap-x-4 gap-y-2">{points.map(point=><span key={point} className="flex items-center gap-2 text-[10px] font-bold"><span className="h-2 w-2 rounded-full" style={{ backgroundColor: tone[color].dot }} aria-hidden />{point}</span>)}</span>
+    <span className="grid h-10 w-10 shrink-0 place-items-center border border-ink bg-white text-sm transition-transform group-hover:translate-x-1" aria-hidden>→</span>
    </div>
   </Link>)}</div>
+ </div></section>
+
+ <section className="py-20 md:py-28" style={{ backgroundColor: tone.mint.band }}><div className="page-shell">
+  <div className="mx-auto max-w-3xl text-center">
+   <p className="flex items-center justify-center gap-2.5 font-display text-[10px] font-bold uppercase tracking-[.24em] text-ink-soft"><span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: tone.mint.dot }} aria-hidden />Feature — AI consulting</p>
+   <h2 className="mt-5 text-[1.9rem] font-black leading-[1.45] tracking-[-.03em] sm:text-4xl md:text-5xl">AIを、<br className="sm:hidden" />現場で使える力に</h2>
+   <p className="mx-auto mt-6 max-w-2xl text-xs leading-7 text-ink-soft md:text-sm md:leading-8">研修で使い方を覚え、伴走で社内に定着させ、裏側の仕組みづくりまで。情シスやSEがいない会社でも、AIを「自分たちの道具」にできるよう支援します。</p>
+  </div>
+  <ol className="relative mt-12 grid gap-5 md:grid-cols-3 md:gap-6">
+   <span className="absolute left-[16%] right-[16%] top-1/2 hidden border-t-2 border-dashed border-ink/25 md:block" aria-hidden />
+   {featureSteps.map(([title, text, step, color], index) => <li key={title} className="relative flex flex-col gap-2.5 border border-ink bg-white p-6 md:p-7" style={{ boxShadow: `5px 5px 0 ${tone[color].chip}` }}>
+    <span className="flex items-center justify-between"><span className="grid h-12 w-12 place-items-center rounded-full font-display text-base font-black" style={{ backgroundColor: tone[color].chip }}>{index + 1}</span><span className="font-display text-[10px] font-black tracking-[.14em] text-ink-soft">{step}</span></span>
+    <span className="text-xl font-black md:text-[22px]">{title}</span>
+    <span className="text-xs leading-6 text-ink-soft">{text}</span>
+   </li>)}
+  </ol>
+  <div className="mt-10 flex flex-col items-center gap-3.5">
+   <p className="text-xs font-black text-ink-soft">たとえば、こんな業務が変わります</p>
+   <ul className="flex flex-wrap justify-center gap-2.5">{featureUseCases.map(item => <li key={item} className="border border-ink bg-white px-4 py-2 text-xs font-bold">{item}</li>)}</ul>
+  </div>
+  <div className="mt-11 flex flex-wrap justify-center gap-4">
+   <Link href="/services/ai" className="group inline-flex min-h-[3.25rem] items-center gap-8 border border-ink bg-ink px-5 text-xs font-black text-white transition-transform hover:-translate-y-0.5" style={{ boxShadow: `5px 5px 0 ${tone.mint.chip}` }}><span>AIコンサルティングを見る</span><span className="text-base transition-transform group-hover:translate-x-1" aria-hidden>→</span></Link>
+   <Link href="/diagnosis" className="group inline-flex min-h-[3.25rem] items-center gap-8 border border-ink bg-white px-5 text-xs font-black transition-transform hover:-translate-y-0.5" style={{ boxShadow: `5px 5px 0 ${tone.butter.chip}` }}><span>AI診断で、うちの使い方を知る</span><span className="text-base transition-transform group-hover:translate-x-1" aria-hidden>→</span></Link>
+  </div>
  </div></section>
 
  <OurProductsShowcase/>
@@ -148,7 +192,7 @@ export default function Home(){return <main className="home-page">
   <SectionHead number="06" label="Selected projects" color="lilac" title="支援事例" note="「こんなこと頼めるのかな？」の参考に。実際にいただいたご相談と、MOGCIAが行ったことです。" action={<Link href="/works" className="group inline-flex min-h-12 self-start items-center gap-8 border border-ink bg-white px-5 text-xs font-black shadow-[5px_5px_0_#E4DAF8] transition-transform hover:-translate-y-0.5 md:self-auto"><span>Worksをもっと見る</span><span className="text-base transition-transform group-hover:translate-x-1" aria-hidden>→</span></Link>} />
   <div className="mt-10 grid gap-4 lg:grid-cols-3">{stories.slice(0, 3).map((story,index)=>{const t=workTones[index % workTones.length];return <Link href={`/works/${story.slug}`} key={story.client} className="group flex flex-col overflow-hidden rounded-[1.5rem] bg-white">
     <div className="relative m-3 mb-0 aspect-[4/3] overflow-hidden rounded-[1.1rem]" style={{ backgroundColor: tone[t].band }}><Image src={story.image} alt={`${story.product}の事例イメージ`} fill sizes="(max-width: 1023px) 100vw, 33vw" className="object-contain p-4 transition-transform duration-500 group-hover:scale-[1.04]"/><span className="absolute left-4 top-4 rounded-full bg-white px-3 py-1 text-[10px] font-bold">{story.client}</span></div>
-    <div className="flex flex-1 flex-col p-6"><span className="w-fit rounded-full px-2.5 py-1 text-[10px] font-bold" style={{ backgroundColor: tone[t].chip }}>{story.product}</span><h3 className="mt-4 text-lg font-black leading-8">「{story.problem}」</h3><p className="mt-3 line-clamp-3 whitespace-pre-line text-xs leading-7 text-ink-soft">{story.answer}</p><span className="mt-auto flex items-center justify-between pt-5 text-xs font-bold">事例を見る <span className="grid h-9 w-9 place-items-center rounded-full transition-transform group-hover:translate-x-1" style={{ backgroundColor: tone[t].chip }} aria-hidden>→</span></span></div>
+    <div className="flex flex-1 flex-col p-6"><span className="w-fit rounded-full px-2.5 py-1 text-[10px] font-bold" style={{ backgroundColor: tone[t].chip }}>{story.product}</span><h3 className="mt-4 text-lg font-black leading-8">「{story.problem}」</h3><p className="mt-3 line-clamp-3 whitespace-pre-line text-xs leading-7 text-ink-soft">{story.answer}</p><span className="mt-auto inline-flex min-h-10 w-fit items-center gap-5 border border-ink bg-white px-4 text-xs font-black" style={{ boxShadow: `4px 4px 0 ${tone[t].chip}` }}>事例を見る <span className="transition-transform group-hover:translate-x-1" aria-hidden>→</span></span></div>
   </Link>})}</div>
  </div></section>
 

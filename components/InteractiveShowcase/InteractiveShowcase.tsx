@@ -90,7 +90,7 @@ export default function InteractiveShowcase() {
           <div className="pointer-events-none mx-auto mt-7 aspect-square w-[70%] max-w-[18rem]">
             <ShowcaseVisual items={showcaseItems} activeId={activeItem.id} />
           </div>
-          <div className="relative mt-8 min-h-[13rem] rounded-[1.5rem] bg-white/80 p-6">
+          <div className="relative mt-8 min-h-[13rem] border border-ink bg-white/90 p-6 shadow-[6px_6px_0_#DCCEF6]">
             {showcaseItems.map((item) => (
               <div
                 key={item.id}

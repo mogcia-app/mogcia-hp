@@ -7,8 +7,8 @@ import { useEffect, useRef } from 'react'
 
 const nav = [
   ['/services', 'Service'],
+  ['/services/ai', 'AI'],
   ['/works', 'Works'],
-  ['/guide', 'Guide'],
   ['/support', 'Support'],
   ['/coffee', 'Coffee'],
   ['/company', 'Company'],
@@ -17,8 +17,8 @@ const nav = [
 
 const mobileNavColors = [
   ['#FBEFF3', '#F08FA8'],
+  ['#EDF8F4', '#5DC3A0'],
   ['#F2EFFB', '#A98BE0'],
-  ['#EAF3F8', '#6FA8DC'],
   ['#EAF3F8', '#6FA8DC'],
   ['#F8EEEE', '#9B3038'],
   ['#FFF6D9', '#F2C94C'],
@@ -28,7 +28,11 @@ const mobileNavColors = [
 export default function Header() {
   const pathname = usePathname()
   const mobileMenuRef = useRef<HTMLDetailsElement>(null)
-  const isActive = (href: string) => !href.includes('#') && (pathname === href || pathname.startsWith(`${href}/`))
+  const isActive = (href: string) => {
+    if (href === '/services/ai') return pathname === href || pathname.startsWith(`${href}/`)
+    if (href === '/services') return pathname === href || (pathname.startsWith(`${href}/`) && !pathname.startsWith('/services/ai'))
+    return !href.includes('#') && (pathname === href || pathname.startsWith(`${href}/`))
+  }
 
   const closeMobileMenu = () => {
     if (mobileMenuRef.current) mobileMenuRef.current.open = false
@@ -53,7 +57,7 @@ export default function Header() {
         </nav>
         <span className="h-6 w-px bg-ink/15" aria-hidden />
         <a href="https://lin.ee/XjMOCFI" target="_blank" rel="noreferrer" className="flex h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-ink/15 bg-white px-4 text-[11px] font-bold text-ink transition-colors hover:border-ink/35"><span className="h-2 w-2 rounded-full bg-[#23ae58]" aria-hidden />LINEで相談</a>
-        <Link href="/diagnosis" className={`flex h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-[#FFF6D9] px-5 text-[11px] font-bold shadow-[inset_0_0_0_1px_rgba(242,201,76,.6)] transition-transform hover:-translate-y-0.5 ${isActive('/diagnosis') ? 'text-ink' : ''}`}><span className="h-2 w-2 rounded-full bg-[#F2C94C]" aria-hidden />1分AI診断</Link>
+        <Link href="/diagnosis" className={`flex h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-[#FFF6D9] px-5 text-[11px] font-bold shadow-[inset_0_0_0_1px_rgba(242,201,76,.6)] transition-transform hover:-translate-y-0.5 ${isActive('/diagnosis') ? 'text-ink' : ''}`}><span className="h-2 w-2 rounded-full bg-[#F2C94C]" aria-hidden />AI診断</Link>
         <Link href="/contact" className="flex h-11 shrink-0 items-center gap-4 whitespace-nowrap rounded-full bg-[#F08FA8] px-5 text-[11px] font-bold text-ink transition-transform hover:-translate-y-0.5">Contact <span aria-hidden>→</span></Link>
       </div>
 
@@ -75,7 +79,7 @@ export default function Header() {
                 <div className="flex items-center gap-2.5"><span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: accent }} aria-hidden /><span className="text-base font-black">{label}</span></div>
               </Link>
             })}</nav>
-            <Link href="/diagnosis" onClick={closeMobileMenu} className="mt-5 flex min-h-14 items-center justify-between rounded-[1.15rem] bg-[#FFF6D9] px-5 text-[11px] font-bold shadow-[inset_0_0_0_1px_rgba(242,201,76,.5)]"><span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-[#F2C94C]" aria-hidden />1分AI診断</span><span>なにから始める？ →</span></Link>
+            <Link href="/diagnosis" onClick={closeMobileMenu} className="mt-5 flex min-h-14 items-center justify-between rounded-[1.15rem] bg-[#FFF6D9] px-5 text-[11px] font-bold shadow-[inset_0_0_0_1px_rgba(242,201,76,.5)]"><span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-[#F2C94C]" aria-hidden />AI診断</span><span>なにから始める？ →</span></Link>
             <div className="mt-4 grid grid-cols-2 gap-3"><a href="https://lin.ee/XjMOCFI" target="_blank" rel="noreferrer" onClick={closeMobileMenu} className="flex min-h-16 items-center justify-center gap-2.5 rounded-full border border-ink/20 bg-white px-3 text-[13px] font-black shadow-[3px_3px_0_#D5EFE5]"><span className="h-2.5 w-2.5 rounded-full bg-[#23ae58]" aria-hidden />LINEで相談</a><Link href="/contact" onClick={closeMobileMenu} className="flex min-h-16 items-center justify-center gap-3 rounded-full bg-[#F08FA8] px-3 text-[13px] font-black text-ink shadow-[3px_3px_0_#FBD9E2]">Contact <span aria-hidden>→</span></Link></div>
           </div>
         </div>

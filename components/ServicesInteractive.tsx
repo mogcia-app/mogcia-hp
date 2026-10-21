@@ -56,11 +56,11 @@ export default function ServicesInteractive() {
               <p className="font-display text-[10px] font-bold uppercase tracking-[.2em] text-ink-soft">Selected service</p>
               <span className="font-display text-6xl font-black text-ink/10">{active.number}</span>
             </div>
-            <div className="mt-auto max-w-xl rounded-[1.5rem] bg-white/90 p-7 shadow-[0_24px_60px_-42px_rgba(30,41,59,.45)] backdrop-blur md:p-9">
+            <div className="mt-auto max-w-xl border border-ink bg-white/95 p-7 shadow-[6px_6px_0_#D8ECFF] backdrop-blur md:p-9">
               <h3 className="text-2xl font-black leading-9 md:text-3xl">{active.title}</h3>
               <p className="mt-5 text-sm leading-8 text-ink-soft">{active.description}</p>
               <div className="mt-6 flex flex-wrap gap-2">{active.tags.map(tag => <span key={tag} className="rounded-full border border-ink/15 px-3 py-1.5 text-[10px] font-bold">{tag}</span>)}</div>
-              <Link href="/services" className="mt-7 inline-flex items-center gap-3 text-xs font-bold">詳しく見る <span className="grid h-7 w-7 place-items-center rounded-full bg-ink text-white">→</span></Link>
+              <Link href="/services" className="mt-7 inline-flex min-h-11 w-fit items-center gap-5 border border-ink bg-white px-4 text-xs font-black shadow-[4px_4px_0_#D8ECFF]">詳しく見る <span aria-hidden>→</span></Link>
             </div>
           </div>
         </div>

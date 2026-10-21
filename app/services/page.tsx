@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import type { CSSProperties } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Footer from '@/components/Footer'
@@ -16,6 +17,8 @@ const productImages = [
   '/our-products-signal.png',
   '/our-products-ismo.png',
 ]
+
+const productColors = ['#F7DF83', '#D7C5F7', '#F6B2B5', '#BCDCF7', '#F6C08F', '#FDDDE5'] as const
 
 const idealCompanies = [
   ['相談先を一本化したい', 'AI・SNS・Web・システムを別々の会社へ依頼せず、全体を見ながら進めたい会社'],
@@ -87,7 +90,7 @@ export default function Services() {
 
     <section id="products" className="scroll-mt-24 bg-[#FFF6D9] py-24 md:py-32"><div className="page-shell">
       <div><SectionLabel number="02" label="Products" color="butter"/><h2 className="mt-5 text-3xl font-black">プロダクト</h2><p className="mt-4 max-w-xl text-xs leading-6 text-ink-soft">集客、接客、社内業務を支える自社プロダクト。課題に合わせて組み合わせられます。</p></div>
-      <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{products.map((product,index)=><article key={product.name} className="flex min-h-[23rem] flex-col rounded-[1.5rem] bg-white p-5"><div className="relative aspect-[3/2] overflow-hidden bg-white"><Image src={productImages[index]} alt={`${product.name}のプロダクトビジュアル`} fill sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw" className="object-contain"/></div><div className="mt-5 flex items-start justify-between gap-3"><div><h3 className="font-logo text-xl font-black">{product.name}</h3><p className="mt-2 text-xs font-black">{product.lead}</p></div><span className="text-[9px] text-ink-soft">{product.label}</span></div><div className="mt-4 border-l-2 border-[#F2C94C] pl-3"><p className="text-[9px] font-bold text-ink-soft">解決すること</p><p className="mt-1 text-[11px] font-bold leading-5">{productProblems[index]}</p></div><p className="mt-4 text-[11px] leading-5 text-ink-soft">{product.description}</p><a href={product.href} target="_blank" rel="noreferrer" className="mt-auto pt-5 text-[10px] font-bold">詳しく見る ↗</a></article>)}</div>
+      <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{products.map((product,index)=>{const productColor=productColors[index%productColors.length];return <article key={product.name} className="flex min-h-[23rem] flex-col rounded-[1.5rem] bg-white p-5" style={{'--card-accent':productColor} as CSSProperties}><div className="relative aspect-[3/2] overflow-hidden bg-white"><Image src={productImages[index]} alt={`${product.name}のプロダクトビジュアル`} fill sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw" className="object-contain"/></div><div className="mt-5 flex items-start justify-between gap-3"><div><h3 className="font-logo text-xl font-black">{product.name}</h3><p className="mt-2 text-xs font-black">{product.lead}</p></div><span className="text-[9px] text-ink-soft">{product.label}</span></div><div className="mt-4 border-l-2 pl-3" style={{borderColor:productColor}}><p className="text-[9px] font-bold text-ink-soft">解決すること</p><p className="mt-1 text-[11px] font-bold leading-5">{productProblems[index]}</p></div><p className="mt-4 text-[11px] leading-5 text-ink-soft">{product.description}</p><div className="mt-auto pt-7"><a href={product.href} target="_blank" rel="noreferrer" className="inline-flex min-h-10 w-fit items-center border border-ink bg-white px-4 text-[10px] font-black" style={{boxShadow:`4px 4px 0 ${productColor}`}}>詳しく見る ↗</a></div></article>})}</div>
     </div></section>
 
     <section id="support" className="page-shell scroll-mt-24 py-24 md:py-32">
@@ -99,7 +102,7 @@ export default function Services() {
           <p className="mt-3 text-xs leading-6 text-ink-soft">{item[1]}</p>
           <ul className="mt-5 flex flex-col gap-2 border-t border-ink/10 pt-5">{item[2].map(point=><li key={point} className="flex items-start gap-2.5 text-xs font-bold leading-5"><span className="mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full" style={{backgroundColor:tone[t].chip}} aria-hidden><svg viewBox="0 0 12 12" className="h-2.5 w-2.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 6.2 5 8.5l4.5-5"/></svg></span>{point}</li>)}</ul>
           {item[4] && <Link href={item[4][1]} className="relative z-10 mt-4 flex items-center justify-between rounded-xl px-4 py-3 text-xs font-bold transition-opacity hover:opacity-80" style={{backgroundColor:tone[t].band}}><span><span className="mr-2 text-[10px] text-ink-soft">こんな支援も</span>{item[4][0]}</span><span aria-hidden>→</span></Link>}
-          <span className="mt-auto flex items-center justify-between pt-6 text-xs font-bold">{item[3]==='/contact'?'相談してみる':'詳しく見る'}<span className="grid h-9 w-9 place-items-center rounded-full transition-transform group-hover:translate-x-1" style={{backgroundColor:tone[t].chip}} aria-hidden>→</span></span>
+          <div className="mt-auto pt-6"><span className="inline-flex min-h-10 w-fit items-center gap-5 border border-ink bg-white px-4 text-xs font-black" style={{boxShadow:`4px 4px 0 ${tone[t].chip}`}}>{item[3]==='/contact'?'相談してみる':'詳しく見る'}<span className="transition-transform group-hover:translate-x-1" aria-hidden>→</span></span></div>
         </div>
       </article>})}</div>
     </section>

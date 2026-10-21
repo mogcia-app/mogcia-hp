@@ -18,7 +18,7 @@ export default function ProposalPage() {
 
     <section className="page-shell py-24 md:py-32">
       <SectionHead number="01" label="Please" color="sky" title="ご提案いただく前に" />
-      <div className="mt-10 grid gap-4 md:grid-cols-3">{rules.map(([no, title, body, color]) => <article key={no} className="rounded-[1.5rem] p-7" style={{ backgroundColor: tone[color].band }}>
+      <div className="mt-10 grid gap-5 md:grid-cols-3">{rules.map(([no, title, body, color]) => <article key={no} className="border border-ink bg-white p-7" style={{ boxShadow: `5px 5px 0 ${tone[color].chip}` }}>
         <p className="grid h-14 w-14 place-items-center rounded-full font-display text-lg font-black" style={{ backgroundColor: tone[color].chip }}>{no}</p>
         <h3 className="mt-5 text-lg font-black">{title}</h3>
         <p className="mt-2.5 text-xs leading-7 text-ink-soft">{body}</p>
@@ -27,7 +27,7 @@ export default function ProposalPage() {
 
     <section className="py-24 md:py-32" style={{ backgroundColor: tone.peach.band }}><div className="page-shell grid gap-12 lg:grid-cols-[.6fr_1fr] lg:gap-20">
       <SectionHead number="02" label="What to include" color="peach" title={<>検討しやすいご提案に<br />必要なこと</>} note="簡潔で構いません。次の内容があると確認がスムーズです" />
-      <div className="rounded-[1.75rem] bg-white p-7 md:p-10"><div className="border-t border-ink">{helpfulDetails.map((item, index) => <p key={item} className="grid grid-cols-[3rem_1fr] items-center border-b border-ink/15 py-5 text-sm font-bold"><span className="font-display text-[10px] text-ink-soft">{String(index + 1).padStart(2, '0')}</span>{item}</p>)}</div><p className="mt-7 text-xs leading-7 text-ink-soft">資料がある場合は、ファイルを直接添付せず、閲覧できるURLをご記載ください。</p></div>
+      <div className="border border-ink bg-white p-7 shadow-[6px_6px_0_#F6CFBD] md:p-10"><div className="border-t border-ink">{helpfulDetails.map((item, index) => <p key={item} className="grid grid-cols-[3rem_1fr] items-center border-b border-ink/15 py-5 text-sm font-bold"><span className="font-display text-[10px] text-ink-soft">{String(index + 1).padStart(2, '0')}</span>{item}</p>)}</div><p className="mt-7 text-xs leading-7 text-ink-soft">資料がある場合は、ファイルを直接添付せず、閲覧できるURLをご記載ください。</p></div>
     </div></section>
 
     <section id="email" className="scroll-mt-24 py-24 md:py-32" style={{ backgroundColor: tone.lilac.band }}><div className="page-shell grid items-start gap-12 lg:grid-cols-[.7fr_1.3fr] lg:gap-20">
@@ -35,7 +35,7 @@ export default function ProposalPage() {
         <SectionHead number="03" label="Email" color="lilac" title="メールでお送りください" note="内容を確認のうえ、詳しくお話を伺いたい場合に担当者からご連絡します" />
         <div className="mt-8 rounded-[1.5rem] bg-white p-6 text-xs leading-6"><p className="font-black">ご相談・ご依頼の方はこちら</p><p className="mt-1 text-ink-soft">MOGCIAへのお仕事のご相談は、通常のお問い合わせからどうぞ。</p><Link href="/contact" className="mt-3 inline-block border-b border-ink pb-0.5 font-bold">お問い合わせへ →</Link></div>
       </div>
-      <div className="rounded-[1.75rem] bg-white p-7 md:p-10 lg:p-12">
+      <div className="border border-ink bg-white p-7 shadow-[6px_6px_0_#DCCEF6] md:p-10 lg:p-12">
         <p className="font-display text-[10px] font-bold uppercase tracking-[.18em] text-ink-soft">Sales contact</p>
         <a href="mailto:sales@mogcia.com" className="mt-5 block break-all text-[clamp(1.55rem,4vw,2.75rem)] font-black tracking-[-.03em] underline decoration-2 underline-offset-8 transition-opacity hover:opacity-60">sales@mogcia.com</a>
         <p className="mt-7 max-w-xl text-xs leading-7 text-ink-soft">会社名、ご担当者名、ご提案の概要、費用や条件、確認できる資料URLをご記載のうえお送りください。</p>

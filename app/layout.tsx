@@ -98,7 +98,7 @@ export const metadata: Metadata = {
         url: '/opengraph-image.png',
         width: 1200,
         height: 630,
-        alt: 'MOGCIA — Make a kinder tomorrow.',
+        alt: 'MOGCIA — Make AI work for you.',
       },
     ],
   },

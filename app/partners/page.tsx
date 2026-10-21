@@ -21,6 +21,7 @@ const steps: [string, string, string, Tone][] = [
 ]
 
 const productDots = ['#f7df83', '#d7c5f7', '#f6b2b5', '#bcdcf7', '#f6c08f', '#fddde5']
+const productTones: Tone[] = ['butter', 'lilac', 'pink', 'sky', 'peach', 'pink']
 const partnerServices: [string, string, Tone][] = [
   ['SNS運用代行', '企画から投稿制作、分析・改善まで。発信を続けられる形に整えます', 'sky'],
   ['LP・HP・EC制作', '価値と導線を整理し、公開後の改善まで見据えたサイトを制作します', 'pink'],
@@ -44,7 +45,7 @@ export default function Partners() {
 
     <section id="ways" className="page-shell scroll-mt-24 pb-24 md:pb-32">
       <SectionHead number="01" label="Ways to join" color="sky" title="関わり方は、3つから" note="できる範囲で大丈夫です。途中で関わり方を変えることもできます" />
-      <div className="mt-12 grid gap-3 md:grid-cols-3">{ways.map(([number, label, title, body, color]) => <article key={number} className="flex flex-col gap-4 rounded-[1.5rem] p-7 md:p-8" style={{backgroundColor:tone[color].band}}>
+      <div className="mt-12 grid gap-5 md:grid-cols-3">{ways.map(([number, label, title, body, color]) => <article key={number} className="flex flex-col gap-4 border border-ink bg-white p-7 md:p-8" style={{boxShadow:`5px 5px 0 ${tone[color].chip}`}}>
         <div className="flex items-center gap-3"><span className="font-display text-sm font-black text-ink-soft">{number}</span><span className="rounded-full px-3 py-1 text-[10px] font-bold" style={{ backgroundColor: tone[color].chip }}>{label}</span></div>
         <h3 className="text-[22px] font-black">{title}</h3>
         <p className="text-[13px] leading-7 text-ink-soft">{body}</p>
@@ -54,12 +55,12 @@ export default function Partners() {
     <section id="lineup" className="scroll-mt-24 py-24 md:py-32" style={{ backgroundColor: tone.butter.band }}><div className="page-shell">
       <SectionHead number="02" label="Lineup" color="butter" title="紹介できるプロダクト・サービス" action={<Link href="/services" className="border-b border-ink pb-1 text-xs font-bold">サービスの詳細を見る →</Link>} />
       <div className="mt-12 flex items-center gap-4"><h3 className="text-sm font-black">自社プロダクト</h3><span className="h-px flex-1 bg-ink/15" aria-hidden /></div>
-      <div className="mt-5 grid gap-3 md:grid-cols-2 lg:grid-cols-3">{products.map((product, index) => <article key={product.name} className="grid grid-cols-[4rem_1fr] items-start gap-4 rounded-[1.25rem] bg-white p-6">
+      <div className="mt-5 grid gap-5 md:grid-cols-2 lg:grid-cols-3">{products.map((product, index) => <article key={product.name} className="grid grid-cols-[4rem_1fr] items-start gap-4 border border-ink bg-white p-6" style={{boxShadow:`5px 5px 0 ${tone[productTones[index%productTones.length]].chip}`}}>
         <span className="h-16 w-16 rounded-full" style={{ backgroundColor: productDots[index % productDots.length] }} aria-hidden />
         <div><p className="text-[10px] font-bold text-ink-soft">{product.label}</p><h3 className="mt-1.5 font-logo text-xl font-black">{product.name}</h3><p className="mt-1.5 text-xs leading-6 text-ink-soft">{product.description}</p></div>
       </article>)}</div>
       <div className="mt-12 flex items-center gap-4"><h3 className="text-sm font-black">支援サービス</h3><span className="h-px flex-1 bg-ink/15" aria-hidden /></div>
-      <div className="mt-5 grid gap-3 md:grid-cols-2 lg:grid-cols-3">{partnerServices.map(([name, description, color], index) => <article key={name} className="rounded-[1.25rem] bg-white p-6">
+      <div className="mt-5 grid gap-5 md:grid-cols-2 lg:grid-cols-3">{partnerServices.map(([name, description, color], index) => <article key={name} className="border border-ink bg-white p-6" style={{boxShadow:`5px 5px 0 ${tone[color].chip}`}}>
         <div className="flex items-center justify-between gap-4"><span className="font-display text-[10px] font-black text-ink-soft">{String(index + 1).padStart(2, '0')}</span><span className="h-3 w-3 rounded-full" style={{ backgroundColor: tone[color].dot }} aria-hidden /></div>
         <h3 className="mt-5 text-lg font-black">{name}</h3><p className="mt-3 text-xs leading-6 text-ink-soft">{description}</p>
       </article>)}</div>
@@ -67,7 +68,7 @@ export default function Partners() {
 
     <section id="flow" className="page-shell scroll-mt-24 py-24 md:py-32">
       <SectionHead number="03" label="Flow" color="pink" title="パートナー活動の流れ" />
-      <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{steps.map(([number, title, body, color]) => <article key={number} className="relative overflow-hidden rounded-[1.5rem] p-7" style={{backgroundColor:tone[color].band}}>
+      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{steps.map(([number, title, body, color]) => <article key={number} className="relative overflow-hidden border border-ink bg-white p-7" style={{boxShadow:`5px 5px 0 ${tone[color].chip}`}}>
         <p className="grid h-[4.5rem] w-[4.5rem] place-items-center rounded-full font-display text-2xl font-black" style={{ backgroundColor: tone[color].chip }}>{number}</p>
         <h3 className="mt-5 text-[15px] font-black">{title}</h3>
         <p className="mt-2.5 text-xs leading-7 text-ink-soft">{body}</p>

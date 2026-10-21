@@ -293,3 +293,30 @@
 .home-page p,.home-page li{line-break:strict}
 .home-page a[class*="shadow-"]>span:first-child{white-space:nowrap}
 @media(max-width:640px){.home-page h2{letter-spacing:-.025em}.home-page section p{line-height:1.85}}
+
+/* Shared card language: black keyline with a contextual color offset. */
+:where(main) :is(article, details, blockquote)[class*="rounded-"],
+:where(main) a[class*="rounded-"]:not(.rounded-full):not(.button) {
+  --card-accent: #d8ecff;
+  border: 1px solid var(--ink) !important;
+  border-radius: 0 !important;
+  background-color: #fff !important;
+  box-shadow: 6px 6px 0 var(--card-accent) !important;
+}
+:where(main) :is(article, details, blockquote, a):nth-child(6n + 2) { --card-accent: #fbd9e2; }
+:where(main) :is(article, details, blockquote, a):nth-child(6n + 3) { --card-accent: #fceab3; }
+:where(main) :is(article, details, blockquote, a):nth-child(6n + 4) { --card-accent: #cde9dd; }
+:where(main) :is(article, details, blockquote, a):nth-child(6n + 5) { --card-accent: #dccff3; }
+:where(main) :is(article, details, blockquote, a):nth-child(6n) { --card-accent: #f6cfbd; }
+
+/* Buttons use the same outlined, color-offset visual language as cards. */
+.button {
+  border: 1px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--button-accent, #d8ecff);
+}
+.button-dark { --button-accent: #fbd9e2; }
+.button-light { --button-accent: #d8ecff; }
+.button:hover {
+  transform: translate(-1px, -2px);
+  box-shadow: 7px 7px 0 var(--button-accent, #d8ecff);
+}

@@ -25,7 +25,8 @@ const contactFlow = [
 
 const fieldClass = 'mt-2 h-14 w-full rounded-2xl border border-ink/15 bg-white px-4 text-sm outline-none transition focus:border-ink focus:ring-2 focus:ring-ink/10'
 
-export default function Contact() {
+export default function Contact({ searchParams }: { searchParams?: { diagnosis?: string | string[] } }) {
+  const diagnosis = typeof searchParams?.diagnosis === 'string' ? searchParams.diagnosis.slice(0, 1500) : ''
   return <main className="overflow-hidden bg-white text-ink">
     <PageHeader color="pink" diagonalAccent
       crumbs={[["Contact"]]}
@@ -75,7 +76,7 @@ export default function Contact() {
                 <label className="text-sm font-bold">会社名<input name="会社名" placeholder="株式会社○○" className={fieldClass} /></label>
               </div>
               <label className="text-sm font-bold">メールアドレス <Required /><input name="メールアドレス" type="email" data-formrun-type="email" data-formrun-required placeholder="you@example.com" className={fieldClass} /></label>
-              <label className="text-sm font-bold">お問い合わせ内容 <Required /><textarea name="お問い合わせ" data-formrun-required rows={7} placeholder="ご相談の背景や、今困っていることなどをご自由にお書きください。" className="mt-2 w-full resize-none rounded-2xl border border-ink/15 bg-white p-4 text-sm leading-7 outline-none transition focus:border-ink focus:ring-2 focus:ring-ink/10" /></label>
+              <label className="text-sm font-bold">お問い合わせ内容 <Required /><textarea name="お問い合わせ" data-formrun-required rows={7} defaultValue={diagnosis ? `${diagnosis}\n\n【ご相談内容】\n` : undefined} placeholder="ご相談の背景や、今困っていることなどをご自由にお書きください。" className="mt-2 w-full resize-none rounded-2xl border border-ink/15 bg-white p-4 text-sm leading-7 outline-none transition focus:border-ink focus:ring-2 focus:ring-ink/10" /></label>
 
               <fieldset className="rounded-2xl p-5" style={{ backgroundColor: tone.sky.band }}>
                 <legend className="px-1 text-sm font-bold">ご希望の連絡方法 <span className="ml-1 text-[10px] font-medium text-ink-soft">任意</span></legend>

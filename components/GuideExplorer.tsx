@@ -22,7 +22,7 @@ export default function GuideExplorer({ guides }: { guides: Guide[] }) {
     <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">{list.map((g) => {
       const c = colorOf(g.category)
       const number = String(guides.findIndex(item => item.slug === g.slug) + 1).padStart(2, '0')
-      return <Link href={`/guide/${g.slug}`} key={g.title} className="group relative flex min-h-[22rem] flex-col overflow-hidden rounded-[1.75rem] border-t-[5px] bg-white transition-transform duration-300 hover:-translate-y-1" style={{ borderColor: tone[c].dot }}>
+      return <Link href={`/guide/${g.slug}`} key={g.title} className="group relative flex min-h-[22rem] flex-col overflow-hidden border border-ink bg-white transition-transform duration-300 hover:-translate-y-1" style={{ boxShadow: `6px 6px 0 ${tone[c].chip}` }}>
         <span className="pointer-events-none absolute -right-3 top-4 font-display text-[7rem] font-black leading-none tracking-[-.08em] opacity-70" style={{ color: tone[c].band }} aria-hidden>{number}</span>
         <div className="relative flex flex-1 flex-col p-7 md:p-8">
           <div className="flex items-center justify-between gap-3 text-[10px] font-bold"><span className="rounded-full px-3 py-1.5" style={{ backgroundColor: tone[c].chip }}>{g.category}</span><span className="font-display tracking-[.16em] text-ink-soft">GUIDE {number}</span></div>

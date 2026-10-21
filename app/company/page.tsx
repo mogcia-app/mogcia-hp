@@ -76,16 +76,31 @@ export default function Company() {
       </dl>
     </div></section>
 
-    <section id="name" className="scroll-mt-24 bg-[#fffcf5] py-24 md:bg-white md:py-32"><div className="page-shell">
-      <SectionHead number="02" label="Our name" color="butter" title="社名にこめた想い" action={<p className="relative overflow-hidden rounded-[1.75rem] bg-[#FFF6D9] px-6 py-8 font-display text-6xl font-black tracking-[-.06em] after:absolute after:-bottom-7 after:-right-5 after:h-24 after:w-24 after:rounded-full after:bg-[#FCEBB0] after:content-[''] md:overflow-visible md:rounded-none md:bg-transparent md:p-0 md:text-7xl md:after:hidden"><span className="relative z-10">mog<span className="text-ink/30">·</span>cía</span></p>} />
-      <div className="mt-8 grid gap-3 sm:mt-12 sm:grid-cols-2 sm:gap-0 sm:border-t sm:border-ink lg:grid-cols-4">{nameItems.map(([mark, en, title, body, color], index) => <article key={mark} className={`relative overflow-hidden rounded-[1.25rem] border border-ink/5 bg-white px-6 py-7 shadow-[0_16px_40px_-32px_rgba(30,41,59,.45)] sm:overflow-visible sm:rounded-none sm:border-0 sm:border-b sm:border-ink/15 sm:bg-transparent sm:py-8 sm:shadow-none ${index % 2 === 1 ? 'sm:border-l' : 'sm:pl-0'} ${index > 0 ? 'lg:border-l lg:pl-6' : ''}`}>
-        <span className="absolute right-[-1.25rem] top-[-1.25rem] h-24 w-24 rounded-full opacity-70 sm:hidden" style={{ backgroundColor: tone[color].band }} aria-hidden />
-        <div className="relative flex items-center justify-between sm:h-[4.5rem] sm:flex-col sm:items-start sm:justify-end"><span className="font-display text-4xl font-black tracking-[-.06em]">{mark}</span><span className="grid h-10 w-10 place-items-center rounded-full font-display text-[10px] font-black sm:mt-3 sm:block sm:h-1 sm:w-10 sm:rounded-none sm:text-transparent" style={{ backgroundColor: tone[color].dot }}>{String(index + 1).padStart(2, '0')}</span></div>
-        <p className="mt-5 font-display text-[10px] font-bold uppercase tracking-[.16em] text-ink-soft">{en}</p>
+    <section id="name" className="scroll-mt-24 bg-[#fffcf5] py-24 md:py-32"><div className="page-shell">
+      <SectionHead number="02" label="Our name" color="butter" title="社名にこめた想い" note="3つの姿勢と、スペイン語で「会社」を表す言葉を組み合わせた名前です" />
+
+      <div className="mt-10 border border-ink bg-white px-6 py-7 sm:px-8 sm:py-8" style={{ boxShadow: `8px 8px 0 ${tone.butter.chip}` }}>
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-2 font-display font-black tracking-[-.05em] sm:gap-x-5">
+          <span className="text-4xl sm:text-5xl">M</span><span className="text-xl text-ink/30">＋</span>
+          <span className="text-4xl sm:text-5xl">O</span><span className="text-xl text-ink/30">＋</span>
+          <span className="text-4xl sm:text-5xl">G</span><span className="text-xl text-ink/30">＋</span>
+          <span className="text-4xl sm:text-5xl">cía</span><span className="text-xl text-ink/30">＝</span>
+          <span className="text-4xl sm:text-5xl">MOGCIA</span>
+        </div>
+        <p className="mt-4 font-display text-[10px] font-bold uppercase tracking-[.16em] text-ink-soft">Make · Operate · Grow · compañía</p>
+      </div>
+
+      <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{nameItems.map(([mark, en, title, body, color], index) => <article key={mark} className="relative flex min-h-64 flex-col border border-ink bg-white p-6" style={{ boxShadow: `7px 7px 0 ${tone[color].chip}` }}>
+        <div className="flex items-start justify-between border-b border-ink/15 pb-5">
+          <span className="font-display text-4xl font-black tracking-[-.06em]">{mark}</span>
+          <span className="grid h-9 w-9 place-items-center rounded-full font-display text-[10px] font-black" style={{ backgroundColor: tone[color].band }}>{String(index + 1).padStart(2, '0')}</span>
+        </div>
+        <p className="mt-6 font-display text-[10px] font-bold uppercase tracking-[.16em] text-ink-soft">{en}</p>
         <h3 className="mt-1.5 text-lg font-black">{title}</h3>
         <p className="mt-3 text-xs leading-7 text-ink-soft">{body}</p>
       </article>)}</div>
-      <div className="mt-6 rounded-[1.25rem] bg-ink p-8 text-white md:mt-10 md:flex md:items-center md:justify-between md:gap-10 md:bg-[#f7f7f7] md:text-ink"><h3 className="text-xl font-black">つくって、まわして、そだてていく</h3><p className="mt-4 text-xs leading-7 text-white/70 md:mt-0 md:max-w-xl md:text-ink-soft">つくって終わりではなく、事業の中で使われ続けるところまで伴走する会社でありたい。その想いを、MOGCIAという名前にこめています。</p></div>
+
+      <div className="mt-10 grid gap-4 border border-ink bg-white p-7 sm:p-8 md:grid-cols-[.8fr_1.2fr] md:items-center md:gap-10" style={{ boxShadow: `8px 8px 0 ${tone.butter.chip}` }}><h3 className="text-xl font-black leading-8">つくって、まわして、<br className="hidden md:block" />そだてていく</h3><p className="text-xs leading-7 text-ink-soft">つくって終わりではなく、事業の中で使われ続けるところまで伴走する会社でありたい。その想いを、MOGCIAという名前にこめています。</p></div>
     </div></section>
 
     <section id="thinking" className="page-shell scroll-mt-24 py-24 md:py-32">

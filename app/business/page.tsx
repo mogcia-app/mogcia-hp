@@ -42,7 +42,7 @@ export default function BusinessPage() {
 
     <section id="materials" className="page-shell scroll-mt-24 py-24 md:py-32">
       <SectionHead number="01" label="Materials" color="sky" title="ご用意している資料" note="フォームからリクエストいただくと、担当者よりお送りします" />
-      <div className="mt-10 grid gap-4 md:grid-cols-3">{materials.map(([title, body, meta, color]) => <Link key={title} href="/contact" className="group flex flex-col rounded-[1.5rem] p-3" style={{ backgroundColor: tone[color].band }}>
+      <div className="mt-10 grid gap-5 md:grid-cols-3">{materials.map(([title, body, meta, color]) => <Link key={title} href="/contact" className="group flex flex-col border border-ink bg-white p-3" style={{ boxShadow: `5px 5px 0 ${tone[color].chip}` }}>
         <div className="relative grid aspect-[4/3] place-items-center rounded-[1.1rem] bg-white">
           <div className="flex h-[70%] w-[46%] flex-col justify-between rounded-lg p-4 shadow-[0_12px_30px_-18px_rgba(30,41,59,.45)]" style={{ backgroundColor: tone[color].chip }} aria-hidden><span className="font-logo text-[10px] font-black">MOGCIA</span><span className="text-[11px] font-black leading-4">{title}</span></div>
         </div>
@@ -53,12 +53,12 @@ export default function BusinessPage() {
 
     <section className="py-24 md:py-32" style={{ backgroundColor: tone.lilac.band }}><div className="page-shell grid gap-12 lg:grid-cols-[.62fr_1fr] lg:gap-20">
       <div><SectionHead number="02" label="For internal review" color="lilac" title={<>社内で検討しやすい<br />情報をそろえます</>} /><p className="mt-6 max-w-md text-xs leading-7 text-ink-soft">担当者さまだけで判断を抱えずに済むよう、上長や関係部署へ説明するための情報も整理してお渡しします。</p></div>
-      <div className="rounded-[1.75rem] bg-white p-7 md:p-10"><p className="text-[10px] font-bold tracking-[.18em] text-ink-soft">ご提案時に整理すること</p><div className="mt-6 grid gap-x-8 md:grid-cols-2">{reviewItems.map((item, index) => <p key={item} className="flex items-center gap-4 border-t border-ink/15 py-5 text-sm font-bold"><span className="font-display text-[10px] text-ink-soft">{String(index + 1).padStart(2, '0')}</span>{item}</p>)}</div></div>
+      <div className="border border-ink bg-white p-7 shadow-[6px_6px_0_#DCCEF6] md:p-10"><p className="text-[10px] font-bold tracking-[.18em] text-ink-soft">ご提案時に整理すること</p><div className="mt-6 grid gap-x-8 md:grid-cols-2">{reviewItems.map((item, index) => <p key={item} className="flex items-center gap-4 border-t border-ink/15 py-5 text-sm font-bold"><span className="font-display text-[10px] text-ink-soft">{String(index + 1).padStart(2, '0')}</span>{item}</p>)}</div></div>
     </div></section>
 
     <section id="reasons" className="scroll-mt-24 py-24 md:py-32" style={{ backgroundColor: tone.butter.band }}><div className="page-shell">
-      <SectionHead number="03" label="Why MOGCIA" color="butter" title="MOGCIAが選ばれる理由" action={<Link href="/works" className="border-b border-ink pb-1 text-xs font-bold">導入事例を見る →</Link>} />
-      <div className="mt-10 grid gap-4 md:grid-cols-3">{reasons.map(([no, title, body, color]) => <article key={no} className="rounded-[1.5rem] bg-white p-7">
+      <SectionHead number="03" label="Why MOGCIA" color="butter" title="MOGCIAが選ばれる理由" action={<Link href="/works" className="inline-flex min-h-11 items-center border border-ink bg-white px-4 text-xs font-black shadow-[4px_4px_0_#FCEAB3]">導入事例を見る →</Link>} />
+      <div className="mt-10 grid gap-5 md:grid-cols-3">{reasons.map(([no, title, body, color]) => <article key={no} className="border border-ink bg-white p-7" style={{ boxShadow: `5px 5px 0 ${tone[color].chip}` }}>
         <p className="grid h-16 w-16 place-items-center rounded-full font-display text-xl font-black" style={{ backgroundColor: tone[color].chip }}>{no}</p>
         <h3 className="mt-5 text-lg font-black">{title}</h3>
         <p className="mt-2.5 text-xs leading-7 text-ink-soft">{body}</p>
@@ -72,7 +72,7 @@ export default function BusinessPage() {
 
     <section id="faq" className="page-shell scroll-mt-24 grid gap-12 py-24 md:py-32 lg:grid-cols-[.55fr_1fr]">
       <SectionHead number="05" label="FAQ" color="pink" title="ご担当者さまからよくある質問" />
-      <div className="grid gap-3">{faqs.map(([q, a], index) => <details key={q} className="group rounded-[1.5rem] px-6 py-5" style={{ backgroundColor: tone.pink.band }} open={index === 0}><summary className="flex cursor-pointer list-none items-center justify-between gap-5 text-sm font-bold"><span><small className="mr-4 font-display">Q{index + 1}</small>{q}</span><span className="group-open:rotate-45">＋</span></summary><p className="pl-9 pt-4 text-xs leading-6 text-ink-soft">{a}</p></details>)}</div>
+      <div className="grid gap-5">{faqs.map(([q, a], index) => <details key={q} className="group border border-ink bg-white px-6 py-5 shadow-[5px_5px_0_#FBD9E2]" open={index === 0}><summary className="flex cursor-pointer list-none items-center justify-between gap-5 text-sm font-bold"><span><small className="mr-4 font-display">Q{index + 1}</small>{q}</span><span className="group-open:rotate-45">＋</span></summary><p className="pl-9 pt-4 text-xs leading-6 text-ink-soft">{a}</p></details>)}</div>
     </section>
 
     <SoftContact body="資料のリクエストや、社内検討に向けたご相談もお気軽にどうぞ" />

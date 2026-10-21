@@ -22,6 +22,8 @@ const productFeatures = [
   ['アクセス解析', '行動分析', '導線改善'],
 ]
 
+const productShadows = ['#F7DF83', '#D7C5F7', '#F6B2B5', '#BCDCF7', '#F6C08F', '#FBD9E2']
+
 export default function OurProductsShowcase() {
   const scrollerRef = useRef<HTMLDivElement>(null)
 
@@ -55,13 +57,12 @@ export default function OurProductsShowcase() {
 
           <div ref={scrollerRef} className="-mr-[max(1.25rem,calc((100vw-76rem)/2))] flex snap-x snap-mandatory gap-4 overflow-x-auto pb-5 pr-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {products.map((product, index) => (
-              <a href={product.href} target="_blank" rel="noreferrer" key={product.name} className="group flex min-h-[34rem] w-[78vw] max-w-[21rem] shrink-0 snap-start flex-col overflow-hidden rounded-[1.75rem] border border-ink/10 bg-white p-5 transition-transform duration-300 hover:-translate-y-1 sm:w-[20rem] md:min-h-[37rem] md:p-6">
-                <div className="flex items-start justify-between gap-4">
+              <a href={product.href} target="_blank" rel="noreferrer" key={product.name} className="group flex min-h-[34rem] w-[78vw] max-w-[21rem] shrink-0 snap-start flex-col overflow-hidden border border-ink bg-white p-5 transition-transform duration-300 hover:-translate-y-1 sm:w-[20rem] md:min-h-[37rem] md:p-6" style={{ boxShadow: `6px 6px 0 ${productShadows[index]}` }}>
+                <div>
                   <div>
                     <p className="font-display text-[9px] font-bold uppercase tracking-[.16em] text-ink-soft">{String(index + 1).padStart(2, '0')} / Product</p>
                     <h3 className="mt-2 font-display text-4xl font-black tracking-[-.055em]">{product.name}</h3>
                   </div>
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#f9edf2] text-sm transition-transform group-hover:rotate-45" aria-hidden>↗</span>
                 </div>
                 <p className="mt-4 w-fit rounded-full bg-[#f9edf2] px-3 py-1.5 text-[10px] font-bold">{product.label}</p>
                 <div className="relative mt-5 aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-[#f8f7f5]">
