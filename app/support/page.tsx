@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Footer from '@/components/Footer'
 import { PageHeader, SectionHead, SoftContact, tone, type Tone } from '@/components/PageFrame'
 
-export const metadata = { title: 'Support | MOGCIA', description: 'MOGCIAのサポート体制。契約中のお客さまは24時間いつでも連絡でき、土日の打ち合わせにも対応しています' }
+export const metadata = { title: 'Support | MOGCIA', description: 'MOGCIAのサポート体制契約中のお客さまは24時間いつでも連絡でき、土日の打ち合わせにも対応しています' }
 
 const promises: [string, string, string, Tone][] = [
   ['24h', 'いつでも連絡OK', '時間を気にせず、気づいたときにメッセージを送ってください', 'sky'],
@@ -11,7 +11,7 @@ const promises: [string, string, string, Tone][] = [
 ]
 
 const channels: [string, string, string, Tone][] = [
-  ['LINE', '気軽な連絡に', '急ぎのご連絡や、ちょっとした確認に。思いついたときにそのまま送れます', 'mint'],
+  ['LINE', '気軽な連絡に', '急ぎのご連絡や、ちょっとした確認に思いついたときにそのまま送れます', 'mint'],
   ['メール', '資料や素材の共有に', 'ファイルの送付や、内容をまとめて伝えたいときにご利用ください', 'lilac'],
   ['ミーティング', 'オンライン・対面', '進捗や数字を確認しながら、次に取り組むことを一緒に整理します', 'peach'],
 ]
@@ -51,21 +51,21 @@ const flow: [string, string, string, Tone][] = [
 ]
 
 const faqs: [string, string][] = [
-  ['夜や休日に連絡しても大丈夫ですか？', 'はい。時間を気にせず、気づいたときにご連絡ください。土日の打ち合わせにも対応しています。'],
-  ['急ぎのときは、どこに連絡すればいいですか？', 'LINEでのご連絡が最も確認しやすいです。契約時にご案内する連絡先へお送りください。'],
-  ['担当者が不在のときはどうなりますか？', 'ご相談内容はチームで共有し、対応できるメンバーへつなぎます。'],
-  ['契約内容の変更や追加の相談もできますか？', 'はい。日々の連絡やミーティングの際に、いつでもご相談いただけます。'],
+  ['夜や休日に連絡しても大丈夫ですか？', 'はい時間を気にせず、気づいたときにご連絡ください土日の打ち合わせにも対応しています'],
+  ['急ぎのときは、どこに連絡すればいいですか？', 'LINEでのご連絡が最も確認しやすいです契約時にご案内する連絡先へお送りください'],
+  ['担当者が不在のときはどうなりますか？', 'ご相談内容はチームで共有し、対応できるメンバーへつなぎます'],
+  ['契約内容の変更や追加の相談もできますか？', 'はい日々の連絡やミーティングの際に、いつでもご相談いただけます'],
 ]
 
 export default function SupportPage() {
   return <main className="bg-white text-ink">
-    <PageHeader color="sky" diagonalAccent crumbs={[['Support']]} title="Support" lead={<>24時間・土日も、<br />ちゃんとつながる</>} body="つくって終わりではなく、まわして、そだてていくのがMOGCIAの仕事です。だからこそ、困ったときにすぐ相談できる体制を大切にしています。" />
+    <PageHeader color="sky" diagonalAccent crumbs={[['Support']]} title="Support" lead={<>24時間・土日も、<br />ちゃんとつながる</>} body="つくって終わりではなく、まわして、そだてていくのがMOGCIAの仕事ですだからこそ、困ったときにすぐ相談できる体制を大切にしています" />
 
     <section className="py-24 md:py-32" style={{ backgroundColor: tone.pink.band }}><div className="page-shell grid gap-12 lg:grid-cols-[.55fr_1fr] lg:gap-20">
       <SectionHead number="01" label="Our support" color="pink" title={<>MOGCIAの<br />手厚いサポート</>} />
       <div>
-        <p className="text-2xl font-black leading-[1.7] md:text-3xl">使い始めてから見える課題まで、<br />いっしょに解決したいから。</p>
-        <div className="mt-8 max-w-2xl space-y-5 text-sm leading-8 text-ink-soft"><p>システムも、Webサイトも、SNSも、完成や導入がゴールではありません。実際の現場で使い始めると、分からないことや、もっと良くしたいことが必ず出てきます。</p><p>そんなときに「誰へ聞けばいいか分からない」「作った会社へ相談しづらい」という状態にしたくありません。背景を知っている私たちが、そのまま相談を受け、必要な対応と次の改善まで一緒に考えます。</p></div>
+        <p className="text-2xl font-black leading-[1.7] md:text-3xl">使い始めてから見える課題まで、<br />いっしょに解決したいから</p>
+        <div className="mt-8 max-w-2xl space-y-5 text-sm leading-8 text-ink-soft"><p>システムも、Webサイトも、SNSも、完成や導入がゴールではありません実際の現場で使い始めると、分からないことや、もっと良くしたいことが必ず出てきます</p><p>そんなときに「誰へ聞けばいいか分からない」「作った会社へ相談しづらい」という状態にしたくありません背景を知っている私たちが、そのまま相談を受け、必要な対応と次の改善まで一緒に考えます</p></div>
         <div className="mt-10 border-t border-ink">{['困ったときに、相談先を探さなくていい', '状況を最初から説明し直さなくていい', '直すだけでなく、次の改善まで考えられる'].map((item, index) => <p key={item} className="grid grid-cols-[3rem_1fr] border-b border-ink/15 py-5 text-sm font-black"><span className="font-display text-[10px] text-ink-soft">0{index + 1}</span>{item}</p>)}</div>
       </div>
     </div></section>

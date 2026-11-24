@@ -11,7 +11,7 @@ const guides: Guide[] = guideArticles
 
 export default function GuidePage() {
   return <main className="bg-white text-ink">
-    <PageHeader color="sky" diagonalAccent largeMobileTitle crumbs={[['Guide']]} title="Guide" lead={<>むずかしいことを、<br />やさしく</>} body="AI・SNS・Webを、自分たちで活かすためのガイドです。現場で実際にやってきたことを、できるだけわかりやすくまとめています。" />
+    <PageHeader color="sky" diagonalAccent largeMobileTitle crumbs={[['Guide']]} title="Guide" lead={<>むずかしいことを、<br />やさしく</>} body="AI・SNS・Webを、自分たちで活かすためのガイドです現場で実際にやってきたことを、できるだけわかりやすくまとめています" />
 
     <section id="featured" className="page-shell scroll-mt-24 py-24 md:py-32">
       <SectionHead number="01" label="Featured" color="sky" title="まずはここから" />

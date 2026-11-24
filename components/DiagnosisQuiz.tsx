@@ -44,11 +44,11 @@ const labelOf = (id: string, a: Answers) => {
 }
 
 const types: Record<string, { title: string; body: string; color: Tone }> = {
-  recruit: { title: '「会社の魅力を、届けきれていない」タイプ', body: '働く人の雰囲気や仕事のやりがいは、求人票だけでは伝わりません。SNSや採用ページで会社の日常を発信し、「ここで働きたい」と思ってもらうきっかけを増やすのがおすすめです。', color: 'sky' },
-  attract: { title: '「いいものがあるのに、見つけてもらえていない」タイプ', body: '商品やサービスの良さが、まだ届くべき人に届いていない状態です。ホームページ・SNS・Googleマップをつなげて、検索や投稿からお問い合わせまでの道すじを整えましょう。', color: 'pink' },
-  connect: { title: '「一度きりで終わらせない仕組みが必要」タイプ', body: '新しいお客さまを探すより、一度来てくれた方との関係を続けるほうが近道なこともあります。LINEなどで連絡の窓口をひとつにまとめ、リピートにつながる仕組みをつくりましょう。', color: 'lilac' },
-  ops: { title: '「手作業を減らして、攻めに回す」タイプ', body: '毎日くり返している作業に、時間をとられている状態です。まずは手作業をAIと仕組みで減らし、空いた時間を本来の仕事やお客さま対応に回すのがおすすめです。', color: 'mint' },
-  ai: { title: '「AIを、使える道具に変える」タイプ', body: 'AIへの関心はあるものの、まだ社内の「当たり前」にはなっていない状態です。使い方を学び、ルールを決め、業務に組みこむことで、AIを毎日の道具にしていきましょう。', color: 'butter' },
+  recruit: { title: '「会社の魅力を、届けきれていない」タイプ', body: '働く人の雰囲気や仕事のやりがいは、求人票だけでは伝わりませんSNSや採用ページで会社の日常を発信し、「ここで働きたい」と思ってもらうきっかけを増やすのがおすすめです', color: 'sky' },
+  attract: { title: '「いいものがあるのに、見つけてもらえていない」タイプ', body: '商品やサービスの良さが、まだ届くべき人に届いていない状態ですホームページ・SNS・Googleマップをつなげて、検索や投稿からお問い合わせまでの道すじを整えましょう', color: 'pink' },
+  connect: { title: '「一度きりで終わらせない仕組みが必要」タイプ', body: '新しいお客さまを探すより、一度来てくれた方との関係を続けるほうが近道なこともありますLINEなどで連絡の窓口をひとつにまとめ、リピートにつながる仕組みをつくりましょう', color: 'lilac' },
+  ops: { title: '「手作業を減らして、攻めに回す」タイプ', body: '毎日くり返している作業に、時間をとられている状態ですまずは手作業をAIと仕組みで減らし、空いた時間を本来の仕事やお客さま対応に回すのがおすすめです', color: 'mint' },
+  ai: { title: '「AIを、使える道具に変える」タイプ', body: 'AIへの関心はあるものの、まだ社内の「当たり前」にはなっていない状態です使い方を学び、ルールを決め、業務に組みこむことで、AIを毎日の道具にしていきましょう', color: 'butter' },
 }
 
 const services: Record<string, { name: string; text: string; href: string; color: Tone }> = {
@@ -83,19 +83,19 @@ const roadmaps: Record<string, [string, string, string][]> = {
 }
 
 const advice: Record<string, [string, string]> = {
-  none: ['いまの取り組みについて', 'ゼロからでも大丈夫。まずは小さく始めて、効果を見ながら広げていきましょう。'],
-  self: ['いまの取り組みについて', '今の取り組みを活かしながら、手間のかかる部分からおまかせいただけます。'],
-  outsourced: ['いまの取り組みについて', '今の施策を一度見える化して、どこを変えると成果につながるか一緒に整理します。'],
-  nobody: ['担当者について', '担当者がいなくても、つくるところから運用までまるっと対応できます。'],
-  part: ['担当者について', '兼任の方の負担が増えないよう、まわる仕組みづくりからお手伝いします。'],
-  full: ['担当者について', '担当者さまと二人三脚で、社内にノウハウが残る形で進めます。'],
+  none: ['いまの取り組みについて', 'ゼロからでも大丈夫まずは小さく始めて、効果を見ながら広げていきましょう'],
+  self: ['いまの取り組みについて', '今の取り組みを活かしながら、手間のかかる部分からおまかせいただけます'],
+  outsourced: ['いまの取り組みについて', '今の施策を一度見える化して、どこを変えると成果につながるか一緒に整理します'],
+  nobody: ['担当者について', '担当者がいなくても、つくるところから運用までまるっと対応できます'],
+  part: ['担当者について', '兼任の方の負担が増えないよう、まわる仕組みづくりからお手伝いします'],
+  full: ['担当者について', '担当者さまと二人三脚で、社内にノウハウが残る形で進めます'],
 }
 
 const budgetAdvice: Record<string, string> = {
-  b1: 'まずは単発の研修や、ひとつのサービスから小さく始めるのがおすすめです。',
-  b2: '1〜2つのサービスを組み合わせて、3か月ほど試してみるのがおすすめです。',
-  b3: '複数のサービスを組み合わせて、仕組みと発信を同時に整えられます。',
-  b4: 'ご相談のうえ、効果の出やすいところから無理のない形をご提案します。',
+  b1: 'まずは単発の研修や、ひとつのサービスから小さく始めるのがおすすめです',
+  b2: '1〜2つのサービスを組み合わせて、3か月ほど試してみるのがおすすめです',
+  b3: '複数のサービスを組み合わせて、仕組みと発信を同時に整えられます',
+  b4: 'ご相談のうえ、効果の出やすいところから無理のない形をご提案します',
 }
 
 const industryMap: Record<string, string[]> = {
@@ -230,7 +230,7 @@ export default function DiagnosisQuiz() {
         <div className="flex flex-col gap-3 border border-ink bg-white p-6 md:p-7" style={box('butter')}>
           <span className="text-base font-black">ご予算について（{labelOf('budget', answers) || '未回答'}）</span>
           <span className="text-[13px] leading-7 text-ink-soft">{budgetAdvice[answers.budget?.[0] ?? 'b4']}</span>
-          <span className="text-[11px] text-ink-soft">※ご相談・お見積もりは無料です。ご予算に合わせて組み合わせを調整します。</span>
+          <span className="text-[11px] text-ink-soft">※ご相談・お見積もりは無料ですご予算に合わせて組み合わせを調整します</span>
         </div>
         {story && <Link href={`/works/${story.slug}`} className="group flex flex-col gap-2.5 border border-ink bg-white p-6 transition-transform hover:-translate-y-0.5" style={box('pink')}>
           <span className="flex flex-wrap items-center gap-2 text-[10px] font-bold"><span className="rounded-full px-2.5 py-1" style={{ backgroundColor: tone.pink.chip }}>近い事例</span><span className="text-ink-soft">{story.client}</span></span>

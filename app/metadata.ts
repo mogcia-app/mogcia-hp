@@ -7,7 +7,7 @@ export const defaultDescription =
 
 export const defaultOgTitle = '株式会社MOGCIA | AI・SNS・Web・システム開発'
 
-export const withoutTerminalPeriod = (value: string) => value.replace(/[。．]+$/u, '')
+export const withoutTerminalPeriod = (value: string) => value.replace(/[．]+$/u, '')
 
 export function createPageMetadata(title: string, pathname: string): Metadata {
   const cleanTitle = withoutTerminalPeriod(title)

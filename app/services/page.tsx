@@ -9,16 +9,41 @@ import { createPageMetadata } from '../metadata'
 
 export const metadata: Metadata = createPageMetadata('サービス | 株式会社MOGCIA', '/services')
 
-const productImages = [
-  '/our-products-selmo.png',
-  '/our-products-commo.png',
-  '/our-products-roomly.png',
-  '/our-products-upmo.png',
-  '/our-products-signal.png',
-  '/our-products-ismo.png',
-]
+const productLogos = ['/product-logos/selmo.png', '/product-logos/commo.png', '/product-logos/roomly.png', '/product-logos/upmo.png', '/product-logos/signal.svg', '/product-logos/ismo.png', '/product-logos/seqmo.png'] as const
 
-const productColors = ['#F7DF83', '#D7C5F7', '#F6B2B5', '#BCDCF7', '#F6C08F', '#FDDDE5'] as const
+const productColors = ['#F7DF83', '#D7C5F7', '#F6B2B5', '#BCDCF7', '#F6C08F', '#FDDDE5', '#DDF5FF'] as const
+
+const productShadowColors: Record<string, string> = {
+  'product-yellow': '#F2CC3D',
+  'product-purple': '#A77BE8',
+  'product-red': '#E96770',
+  'product-blue': '#65ADE8',
+  'product-orange': '#F49A45',
+  pink: '#FDDDE5',
+  'product-cyan': '#8DD5FA',
+}
+
+const serviceProducts = [
+  ...products.map(product => {
+    if (product.name === 'upmo') return {
+      ...product,
+      description: 'PDFやマニュアルなど、散らばった社内情報をAIが理解\n必要な答えをチャットですぐに引き出せます',
+    }
+    if (product.name === 'selmo.') return {
+      ...product,
+      description: '商談分析からロープレ・ナレッジ管理まで\nAIで営業教育を仕組み化します',
+    }
+    return product
+  }),
+  {
+    name: 'seQmo.',
+    label: 'システム監視・セキュリティAI',
+    lead: 'セキュリティにAIという視点を',
+    description: '古い業務システムの作り直しから、保守・セキュリティ監視までまとめてサポート\n日々の業務を安心して任せられるシステムに整えます',
+    tone: 'product-cyan',
+    href: 'https://www.seqmo.net/',
+  },
+]
 
 const idealCompanies = [
   ['相談先を一本化したい', 'AI・SNS・Web・システムを別々の会社へ依頼せず、全体を見ながら進めたい会社'],
@@ -34,15 +59,16 @@ const productProblems = [
   '社内資料が散らばり、必要な情報を探す時間や質問対応が増えている',
   'SNSで何を投稿し、どこを改善すべきか判断できない',
   'アクセス数は見えても、問い合わせにつながらない原因が分からない',
+  '長年使っている業務システム情報漏洩のリスクや安全性が分からず\nこのまま使い続けていいのか不安がある',
 ]
 
 const support: [string, string, string[], string, [string, string]?][] = [
-  ['SNS運用代行', '企画から投稿制作、分析・改善まで。見つけてもらえる発信を、続けられる形にします。', ['企画・投稿設計', '撮影・制作', '投稿・分析・改善'], '/services/sns'],
-  ['LP・HP・EC制作', '伝えたい価値と導線を整理し、公開後の改善まで見据えたサイトをつくります。', ['構成・原稿作成', 'デザイン・実装', '公開後の改善'], '/services/web'],
-  ['SNS・Web一体支援', 'SNSで知ってもらい、Webで詳しく伝え、応募や問い合わせにつながる導線をつくります。', ['採用支援', '認知・問い合わせ', '個別見積もり'], '/services/marketing'],
-  ['販促物制作', '目的や届けたい相手を整理し、デザインから印刷・製造、納品まで対応します。', ['名刺・パンフレット', 'チラシ・看板', 'ショップカード・卓上POP'], '/services/promotion'],
-  ['システム開発', '業務や現場の流れを整理し、必要な機能を一緒に考えながら、使い続けられる仕組みをつくります。', ['業務整理・要件設計', 'システム・AI開発', '運用・改善'], '/services/system'],
-  ['プランニング', '何をすればよいか決まっていない段階から、必要な施策と進め方を一緒に整理します。', ['相談無料', 'オンライン・対面', '時間・回数の一律制限なし'], '/services/consulting', ['政治・行政分野の広報支援', '/services/public']],
+  ['SNS運用代行', '企画から投稿制作、分析・改善まで見つけてもらえる発信を、続けられる形にします', ['企画・投稿設計', '撮影・制作', '投稿・分析・改善'], '/services/sns'],
+  ['LP・HP・EC制作', '伝えたい価値と導線を整理し、公開後の改善まで見据えたサイトをつくります', ['構成・原稿作成', 'デザイン・実装', '公開後の改善'], '/services/web'],
+  ['SNS・Web一体支援', 'SNSで知ってもらい、Webで詳しく伝え、応募や問い合わせにつながる導線をつくります', ['採用支援', '認知・問い合わせ', '個別見積もり'], '/services/marketing'],
+  ['販促物制作', '目的や届けたい相手を整理し、デザインから印刷・製造、納品まで対応します', ['名刺・パンフレット', 'チラシ・看板', 'ショップカード・卓上POP'], '/services/promotion'],
+  ['システム開発', '業務や現場の流れを整理し、必要な機能を一緒に考えながら、使い続けられる仕組みをつくります', ['業務整理・要件設計', 'システム・AI開発', '運用・改善'], '/services/system'],
+  ['プランニング', '何をすればよいか決まっていない段階から、必要な施策と進め方を一緒に整理します', ['相談無料', 'オンライン・対面', '時間・回数の一律制限なし'], '/services/consulting', ['政治・行政分野の広報支援', '/services/public']],
 ]
 
 const supportTones = ['sky','pink','butter','lilac','mint','peach'] as const
@@ -57,44 +83,75 @@ const supportImages = [
 ]
 
 const combinations: { name: string; target: string; body: string; color: 'sky' | 'pink' | 'butter' | 'mint'; items: [string, string][] }[] = [
-  { name: '宿泊まるごとプラン', target: 'ホテル・旅館の方へ', body: 'ホテル・旅館の集客から、滞在中の案内、宿泊後の再訪まで。', color: 'sky', items: [['SNS運用', '知ってもらう'], ['Roomly.', '滞在中の案内'], ['commo.', '再訪につなげる']] },
-  { name: '集客スタートプラン', target: 'これから集客を始めたい方へ', body: '魅力を伝える場所と、知ってもらう流れをまとめてつくります。', color: 'pink', items: [['LP制作', '魅力を伝える場所'], ['SNS運用', '知ってもらう'], ['Signal.', '次の一手を提案']] },
-  { name: '集客改善プラン', target: '発信しているのに成果が見えない方へ', body: 'SNSとWebの反応を見ながら、発信とページを継続的に改善します。', color: 'butter', items: [['Signal.', 'SNSの改善提案'], ['ismo.', 'Webの反応を分析'], ['LP改善', 'ページを直す']] },
-  { name: 'チーム強化プラン', target: '育成や社内の情報共有に悩む方へ', body: '営業練習と社内情報の検索をAIで支え、育成を仕組みにします。', color: 'mint', items: [['selmo.', '営業練習'], ['upmo', '社内情報の検索'], ['AI開発', '自社に合わせる']] },
+  { name: '宿泊まるごとプラン', target: 'ホテル・旅館の方へ', body: 'ホテル・旅館の集客から、滞在中の案内、宿泊後の再訪まで', color: 'sky', items: [['SNS運用', '知ってもらう'], ['Roomly.', '滞在中の案内'], ['commo.', '再訪につなげる']] },
+  { name: '集客スタートプラン', target: 'これから集客を始めたい方へ', body: '魅力を伝える場所と、知ってもらう流れをまとめてつくります', color: 'pink', items: [['LP制作', '魅力を伝える場所'], ['SNS運用', '知ってもらう'], ['Signal.', '次の一手を提案']] },
+  { name: '集客改善プラン', target: '発信しているのに成果が見えない方へ', body: 'SNSとWebの反応を見ながら、発信とページを継続的に改善します', color: 'butter', items: [['Signal.', 'SNSの改善提案'], ['ismo.', 'Webの反応を分析'], ['LP改善', 'ページを直す']] },
+  { name: 'チーム強化プラン', target: '育成や社内の情報共有に悩む方へ', body: '営業練習と社内情報の検索をAIで支え、育成を仕組みにします', color: 'mint', items: [['selmo.', '営業練習'], ['upmo', '社内情報の検索'], ['AI開発', '自社に合わせる']] },
 ]
 
 
 const flow: [string, string, string][] = [
-  ['Hi', 'ご相談・ご提案', 'まだ内容がまとまっていなくても大丈夫です。まずは今のお悩みを聞かせてください。'],
-  ['M', 'つくる', '目的と使う人に合わせて、企画・設計・制作を進めます。'],
-  ['O', 'まわす', '現場で無理なく使い続けられるよう、運用まで一緒に整えます。'],
-  ['G', 'そだてる', '反応や数字を見ながら改善し、事業とともに育てていきます。'],
+  ['Hi', 'ご相談・ご提案', 'まだ内容がまとまっていなくても大丈夫ですまずは今のお悩みを聞かせてください'],
+  ['M', 'つくる', '目的と使う人に合わせて、企画・設計・制作を進めます'],
+  ['O', 'まわす', '現場で無理なく使い続けられるよう、運用まで一緒に整えます'],
+  ['G', 'そだてる', '反応や数字を見ながら改善し、事業とともに育てていきます'],
 ]
 
 const faqs: [string, string][] = [
-  ['相談だけでも大丈夫ですか？', 'はい。内容が固まっていない段階でも、課題の整理から一緒に進めます。'],
-  ['LINEから相談できますか？', 'はい。MOGCIA公式LINEからお気軽にご相談いただけます。'],
-  ['プロダクトは1つだけでも導入できますか？', 'はい。必要なものを1つから導入できます。'],
-  ['福岡以外の企業でも対応できますか？', 'はい。オンラインで全国の企業さまに対応しています。'],
-  ['費用はどれくらいかかりますか？', '内容と規模を伺ったうえで、事前にお見積もりをご案内します。'],
+  ['相談だけでも大丈夫ですか？', 'はい内容が固まっていない段階でも、課題の整理から一緒に進めます'],
+  ['LINEから相談できますか？', 'はいMOGCIA公式LINEからお気軽にご相談いただけます'],
+  ['プロダクトは1つだけでも導入できますか？', 'はい必要なものを1つから導入できます'],
+  ['福岡以外の企業でも対応できますか？', 'はいオンラインで全国の企業さまに対応しています'],
+  ['費用はどれくらいかかりますか？', '内容と規模を伺ったうえで、事前にお見積もりをご案内します'],
 ]
 
 export default function Services() {
   return <main className="bg-white text-ink">
-    <PageHeader crumbs={[['サービス']]} title="Services" color="pink" diagonalAccent showTitlePeriod lead={<>プロダクトと伴走で<br />やりたいことを、つなげる。</>} body="AI・SNS・Webを組み合わせ、つくるところから運用・改善まで。必要な支援をひとつの流れで届けます。" />
+    <PageHeader crumbs={[['サービス']]} title="Services" color="pink" diagonalAccent showTitlePeriod lead={<>プロダクトと伴走で<br />やりたいことを、つなげる</>} body="AI・SNS・Webを組み合わせ、つくるところから運用・改善まで必要な支援をひとつの流れで届けます" />
 
     <section className="page-shell py-24 md:py-32"><div className="grid gap-12 lg:grid-cols-[.62fr_1.38fr] lg:gap-20">
-      <div><SectionLabel number="01" label="Good match" color="mint"/><h2 className="mt-5 text-3xl font-black leading-[1.45]">こんなチームと、<br />相性がいいです</h2><p className="mt-5 max-w-sm text-xs leading-7 text-ink-soft">会社の規模や業種ではなく、進め方の相性。相談しながら、いっしょに動かしていきたい方に向いています。</p><p className="mt-8 -rotate-2 text-xl leading-tight text-ink/45 [font-family:'Bradley_Hand','Segoe_Print','Chalkboard_SE','Klee',cursive]">Good ideas<br/>grow together.</p></div>
+      <div><SectionLabel number="01" label="Good match" color="mint"/><h2 className="mt-5 text-3xl font-black leading-[1.45]">こんなチームと、<br />相性がいいです</h2><p className="mt-5 max-w-sm text-xs leading-7 text-ink-soft">会社の規模や業種ではなく、進め方の相性相談しながら、いっしょに動かしていきたい方に向いています</p><p className="mt-8 -rotate-2 text-xl leading-tight text-ink/45 [font-family:'Bradley_Hand','Segoe_Print','Chalkboard_SE','Klee',cursive]">Good ideas<br/>grow together.</p></div>
       <div className="grid gap-3 sm:grid-cols-2">{idealCompanies.map(([title,body],index)=>{const colors=[tone.sky.band,tone.pink.band,tone.butter.band,tone.mint.band];const chips=[tone.sky.chip,tone.pink.chip,tone.butter.chip,tone.mint.chip];return <article key={title} className="relative min-h-[13rem] overflow-hidden rounded-[1.5rem] p-6 md:p-7" style={{backgroundColor:colors[index]}}><span className="grid h-10 w-10 place-items-center rounded-full font-display text-[10px] font-black" style={{backgroundColor:chips[index]}}>0{index+1}</span><h3 className="mt-5 text-lg font-black">{title}</h3><p className="mt-3 text-xs leading-7 text-ink-soft">{body}</p><span className="pointer-events-none absolute -bottom-8 -right-3 font-display text-[7rem] font-black leading-none text-white/45" aria-hidden>0{index+1}</span></article>})}</div>
     </div></section>
 
     <section id="products" className="scroll-mt-24 bg-[#FFF6D9] py-24 md:py-32"><div className="page-shell">
-      <div><SectionLabel number="02" label="Products" color="butter"/><h2 className="mt-5 text-3xl font-black">プロダクト</h2><p className="mt-4 max-w-xl text-xs leading-6 text-ink-soft">集客、接客、社内業務を支える自社プロダクト。課題に合わせて組み合わせられます。</p></div>
-      <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{products.map((product,index)=>{const productColor=productColors[index%productColors.length];return <article key={product.name} className="flex min-h-[23rem] flex-col rounded-[1.5rem] bg-white p-5" style={{'--card-accent':productColor} as CSSProperties}><div className="relative aspect-[3/2] overflow-hidden bg-white"><Image src={productImages[index]} alt={`${product.name}のプロダクトビジュアル`} fill sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw" className="object-contain"/></div><div className="mt-5 flex items-start justify-between gap-3"><div><h3 className="font-logo text-xl font-black">{product.name}</h3><p className="mt-2 text-xs font-black">{product.lead}</p></div><span className="text-[9px] text-ink-soft">{product.label}</span></div><div className="mt-4 border-l-2 pl-3" style={{borderColor:productColor}}><p className="text-[9px] font-bold text-ink-soft">解決すること</p><p className="mt-1 text-[11px] font-bold leading-5">{productProblems[index]}</p></div><p className="mt-4 text-[11px] leading-5 text-ink-soft">{product.description}</p><div className="mt-auto pt-7"><a href={product.href} target="_blank" rel="noreferrer" className="inline-flex min-h-10 w-fit items-center border border-ink bg-white px-4 text-[10px] font-black" style={{boxShadow:`4px 4px 0 ${productColor}`}}>詳しく見る ↗</a></div></article>})}</div>
+      <div>
+        <p className="font-display text-sm font-black uppercase tracking-[.16em]">02 — Products</p>
+        <h2 className="mt-5 text-4xl font-black md:text-5xl">プロダクト</h2>
+        <p className="mt-6 text-sm leading-7 text-ink-soft">集客、接客、社内業務を支える自社プロダクト課題に合わせて組み合わせられます</p>
+      </div>
+      <div className="mt-11 grid gap-6 lg:grid-cols-2">
+        {[6, 5, 0, 1, 2, 3, 4].map(index => {
+          const product = serviceProducts[index]
+          const productColor = productColors[index]
+          return <article key={product.name} className="grid grid-cols-[4rem_minmax(0,1fr)] gap-x-4 rounded-[1.5rem] border border-ink bg-white p-5 sm:grid-cols-[6.125rem_minmax(0,1fr)] sm:gap-x-6 sm:p-6" style={{ '--card-accent': productShadowColors[product.tone], boxShadow: `6px 6px 0 ${productShadowColors[product.tone]}` } as CSSProperties}>
+            <div className="relative h-16 w-16 overflow-hidden rounded-[1.5rem] border border-ink bg-white sm:row-span-2 sm:h-[6.125rem] sm:w-[6.125rem]">
+              <Image src={productLogos[index]} alt={`${product.name}のロゴ`} fill sizes="(max-width: 639px) 64px, 98px" className="object-contain p-1" />
+            </div>
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <h3 className="font-logo text-xl font-black">{product.name.endsWith('.') ? <>{product.name.slice(0, -1)}<span style={{ color: productShadowColors[product.tone] }}>.</span></> : product.name}</h3>
+                <p className="rounded-full border border-ink/10 px-3 py-1 text-xs font-bold leading-5 text-ink" style={{ backgroundColor: productColor }}>{product.label}</p>
+              </div>
+              <p className="mt-1 text-sm font-black leading-6">{product.lead}</p>
+            </div>
+            <div className="col-span-2 mt-4 flex flex-col sm:col-start-2 sm:mt-2">
+              <p className="whitespace-pre-line text-[13px] leading-[1.7] text-ink-soft">{product.description}</p>
+              <div className="mt-auto flex flex-col items-start gap-4 pt-5 sm:flex-row sm:items-center sm:justify-between">
+                <div className="border-l-2 pl-3" style={{ borderColor: productColor }}>
+                  <p className="text-[11px] font-bold leading-5 text-ink-soft">こんなお悩みに</p>
+                  <p className="mt-1 whitespace-pre-line text-xs font-bold leading-5">{productProblems[index]}</p>
+                </div>
+                {product.href && <a href={product.href} target="_blank" rel="noreferrer" aria-label={`${product.name}を詳しく見る（新しいタブで開く）`} style={{ '--product-hover': productColor } as CSSProperties} className="inline-flex min-h-12 shrink-0 items-center justify-center gap-1 border border-ink bg-white px-4 text-xs font-black text-ink transition-colors hover:bg-[var(--product-hover)] focus-visible:bg-[var(--product-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink">詳しく見る <span aria-hidden="true">→</span></a>}
+              </div>
+            </div>
+          </article>
+        })}
+      </div>
     </div></section>
 
     <section id="support" className="page-shell scroll-mt-24 py-24 md:py-32">
-      <div><SectionLabel number="03" label="Support" color="sky"/><h2 className="mt-5 text-3xl font-black">支援サービス</h2><p className="mt-4 max-w-xl text-xs leading-6 text-ink-soft">プロダクトだけでは届きにくい、戦略・制作・運用の領域も伴走します。</p></div>
+      <div><SectionLabel number="03" label="Support" color="sky"/><h2 className="mt-5 text-3xl font-black">支援サービス</h2><p className="mt-4 max-w-xl text-xs leading-6 text-ink-soft">プロダクトだけでは届きにくい、戦略・制作・運用の領域も伴走します</p></div>
       <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{support.map((item,index)=>{const t=supportTones[index%supportTones.length];return <article key={item[0]} className="group relative flex flex-col overflow-hidden rounded-[1.5rem] border border-ink/10 bg-white transition-transform duration-300 hover:-translate-y-1">
         <div className="relative aspect-[3/2] overflow-hidden" style={{backgroundColor:tone[t].band}}>{supportImages[index]?<Image src={supportImages[index]} alt={`${item[0]}のサービスイメージ`} fill sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw" className="object-contain"/>:<span className="absolute inset-0 grid place-items-center font-display text-[8px] font-bold uppercase tracking-[.16em] text-ink/30">Image placeholder</span>}<span className="absolute left-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-white font-display text-[11px] font-black">0{index+1}</span></div>
         <div className="flex flex-1 flex-col p-6 md:p-7">
@@ -108,7 +165,7 @@ export default function Services() {
     </section>
 
     <section id="combo" className="scroll-mt-24 bg-[#F5F5F3] py-24 text-ink md:py-32"><div className="page-shell">
-      <div><SectionLabel number="04" label="Combinations" color="lilac"/><h2 className="mt-5 text-3xl font-black">組み合わせ例</h2><p className="mt-4 max-w-xl text-xs leading-6 text-ink-soft">業種や課題に合わせて、必要なものだけを組み合わせます。</p></div>
+      <div><SectionLabel number="04" label="Combinations" color="lilac"/><h2 className="mt-5 text-3xl font-black">組み合わせ例</h2><p className="mt-4 max-w-xl text-xs leading-6 text-ink-soft">業種や課題に合わせて、必要なものだけを組み合わせます</p></div>
       <div className="mt-12 grid gap-4 md:grid-cols-2">{combinations.map(plan=><article key={plan.name} className="flex flex-col overflow-hidden rounded-[1.5rem] bg-white">
         <div className="px-6 py-5 md:px-7" style={{backgroundColor:tone[plan.color].chip}}><p className="text-[11px] font-bold">{plan.target}</p><h3 className="mt-1 text-xl font-black">{plan.name}</h3></div>
         <div className="flex flex-1 flex-col p-6 md:p-7">

@@ -36,8 +36,8 @@ export default function ContactThanksPage() {
               送信を受け付けました
             </h1>
             <p className="mt-6 max-w-xl text-[13px] leading-[2] text-ink-soft">
-              お問い合わせいただき、ありがとうございます。<br className="hidden sm:block" />
-              内容を確認のうえ、必要に応じて担当者からご連絡いたします。
+              お問い合わせいただき、ありがとうございます<br className="hidden sm:block" />
+              内容を確認のうえ、必要に応じて担当者からご連絡いたします
             </p>
             <Link href="/" className="button button-dark mt-9 text-sm">
               トップページへ戻る →
@@ -60,7 +60,7 @@ export default function ContactThanksPage() {
             ))}
           </div>
           <p className="mt-8 text-center text-[11px] leading-6 text-ink-soft">
-            送信内容によっては、ご連絡までお時間をいただく場合があります。
+            送信内容によっては、ご連絡までお時間をいただく場合があります
           </p>
         </div>
       </section>

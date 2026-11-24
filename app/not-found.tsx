@@ -32,11 +32,11 @@ export default function NotFound() {
 
           <div className="max-w-2xl border-t border-ink pt-8 lg:justify-self-end">
             <h1 className="text-[2rem] font-black leading-[1.5] tracking-[-.02em] sm:text-[2.75rem]">ページが、<br />見つかりませんでした</h1>
-            <p className="mt-6 max-w-xl text-[13px] leading-8 text-ink-soft">URLが変わったか、ページが移動した可能性があります。下のメニューから、もう一度探してみてください。</p>
+            <p className="mt-6 max-w-xl text-[13px] leading-8 text-ink-soft">URLが変わったか、ページが移動した可能性があります下のメニューから、もう一度探してみてください</p>
             <nav className="mt-9 grid grid-cols-2 gap-3" aria-label="404ページからの案内">
               {links.map(([label, href], index) => <Link key={href} href={href} className="group flex min-h-16 items-center justify-between rounded-2xl px-5 text-xs font-black transition-transform hover:-translate-y-0.5" style={{ backgroundColor: [tone.butter.band, tone.sky.band, tone.mint.band, tone.pink.band][index] }}><span>{label}</span><span className="transition-transform group-hover:translate-x-1" aria-hidden>→</span></Link>)}
             </nav>
-            <p className="mt-8 text-[11px] leading-6 text-ink-soft">それでも見つからない場合は、<Link href="/contact" className="font-black text-ink underline decoration-[#F08FA8] decoration-2 underline-offset-4">お問い合わせ</Link>からお声がけください。</p>
+            <p className="mt-8 text-[11px] leading-6 text-ink-soft">それでも見つからない場合は、<Link href="/contact" className="font-black text-ink underline decoration-[#F08FA8] decoration-2 underline-offset-4">お問い合わせ</Link>からお声がけください</p>
           </div>
         </div>
       </div>

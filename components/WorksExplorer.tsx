@@ -41,7 +41,7 @@ export default function WorksExplorer() {
     </div>
 
     {shown.length === 0 ? <div className="mt-12 flex flex-col gap-5 rounded-[1.25rem] bg-[#f7f7f7] p-10 sm:flex-row sm:items-center sm:justify-between">
-      <p className="text-sm font-bold leading-7">この目的の事例は、いま掲載準備中です。<span className="block text-xs font-normal text-ink-soft">似たお悩みがあれば、気軽に聞かせてください。</span></p>
+      <p className="text-sm font-bold leading-7">この目的の事例は、いま掲載準備中です<span className="block text-xs font-normal text-ink-soft">似たお悩みがあれば、気軽に聞かせてください</span></p>
       <a href="https://lin.ee/XjMOCFI" target="_blank" rel="noreferrer" className="button button-dark text-xs">LINEで相談する →</a>
     </div> : <div className="mt-12 grid border-t border-ink sm:grid-cols-2 lg:grid-cols-3">
       {shown.map((story, index) => <Link href={`/works/${story.slug}`} key={story.slug} className={`group flex flex-col gap-4 border-b border-ink/15 py-8 sm:px-7 ${index % 2 === 1 ? 'sm:border-l' : ''} ${index % 3 !== 0 ? 'lg:border-l' : 'lg:border-l-0'}`}>

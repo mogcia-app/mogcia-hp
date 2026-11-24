@@ -13,10 +13,10 @@ export default function Works() {
   const featured = stories[0]
 
   return <main className="bg-white text-ink">
-    <PageHeader crumbs={[['Works']]} title="Works" color="lilac" diagonalAccent largeMobileTitle lead={<>こんなお悩みを、<br />いっしょに解決しました</>} body={<>ご相談のきっかけから、MOGCIAがお手伝いしたこと、その後の変化までをご紹介します。<span className="mt-1 block">※お客さまの社名は伏せて掲載しています。</span></>} />
+    <PageHeader crumbs={[['Works']]} title="Works" color="lilac" diagonalAccent largeMobileTitle lead={<>こんなお悩みを、<br />いっしょに解決しました</>} body={<>ご相談のきっかけから、MOGCIAがお手伝いしたこと、その後の変化までをご紹介します<span className="mt-1 block">※お客さまの社名は伏せて掲載しています</span></>} />
 
     <section id="pickup" className="scroll-mt-24 py-24 md:py-32" style={{ backgroundColor: tone.sky.band }}><div className="page-shell">
-      <SectionHead number="01" label="Pick up" color="sky" title="ピックアップ" note="いま一番読んでほしいストーリーです。" />
+      <SectionHead number="01" label="Pick up" color="sky" title="ピックアップ" note="いま一番読んでほしいストーリーです" />
       <Link href={`/works/${featured.slug}`} className="group mt-12 grid overflow-hidden bg-white lg:grid-cols-2">
         <div className="relative min-h-72 overflow-hidden bg-white lg:min-h-[28rem]"><Image src={featured.image} alt={featured.product + 'のプロダクトビジュアル'} fill sizes="(max-width: 1023px) 100vw, 50vw" className="object-contain"/></div>
         <div className="flex flex-col gap-6 p-8 md:p-12">
@@ -32,12 +32,12 @@ export default function Works() {
     </div></section>
 
     <section id="stories" className="page-shell scroll-mt-24 py-24 md:py-32">
-      <SectionHead number="02" label="Stories" color="butter" title="ご相談ストーリー" note="ご相談の「目的」から、近い事例を探せます。" />
+      <SectionHead number="02" label="Stories" color="butter" title="ご相談ストーリー" note="ご相談の「目的」から、近い事例を探せます" />
       <WorksExplorer />
     </section>
 
     <section id="voices" className="scroll-mt-24 py-24 md:py-32" style={{ backgroundColor: tone.pink.band }}><div className="page-shell">
-      <SectionHead number="03" label="Voices" color="pink" title="お客さまの声" note="一緒に取り組んだお客さまから、いただいた言葉です。" />
+      <SectionHead number="03" label="Voices" color="pink" title="お客さまの声" note="一緒に取り組んだお客さまから、いただいた言葉です" />
       <div className="mt-12 grid gap-4 md:grid-cols-3">{stories.slice(0, 3).map(story => <blockquote key={story.slug} className="flex min-h-64 flex-col gap-4 rounded-[1.25rem] bg-white p-7"><span className="font-display text-5xl font-black leading-none" style={{ color: tone.pink.dot }}>“</span><p className="text-sm font-bold leading-7">{story.quote}</p><footer className="mt-auto border-t border-ink/10 pt-4 text-[11px] text-ink-soft">{story.quoteBy}</footer></blockquote>)}</div>
     </div></section>
 

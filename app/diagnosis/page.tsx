@@ -6,14 +6,14 @@ import { PageHeader, SectionHead, SoftContact, tone, type Tone } from '@/compone
 export const metadata = { title: 'AI診断 | MOGCIA', description: '9つの質問に答えるだけで、あなたの会社のタイプと、合った始め方がわかります' }
 
 const points: [string, string, string, Tone][] = [
-  ['01', '約2分・9問', '選ぶだけで答えられます。名前や連絡先の入力は不要です', 'sky'],
+  ['01', '約2分・9問', '選ぶだけで答えられます名前や連絡先の入力は不要です', 'sky'],
   ['02', 'その場で結果がわかる', '会社のタイプといまの状態、おすすめのサービスと最初の一歩をお伝えします', 'pink'],
   ['03', 'そのまま相談もできる', '診断の回答はお問い合わせフォームに自動で入るので、そのまま無料でご相談いただけます', 'mint'],
 ]
 
 export default function Diagnosis() {
   return <main className="bg-white text-ink">
-    <PageHeader color="butter" diagonalAccent crumbs={[['AI診断']]} title="Check" lead={<>なにから始める？<br />1分でわかる、AI診断</>} body="「AIやSNSが気になるけど、うちは何をすればいい？」そんな方のための簡単な診断です。9つの質問に答えるだけで、あなたの会社のタイプといまの状態、合った始め方をご提案します。" />
+    <PageHeader color="butter" diagonalAccent crumbs={[['AI診断']]} title="Check" lead={<>なにから始める？<br />1分でわかる、AI診断</>} body="「AIやSNSが気になるけど、うちは何をすればいい？」そんな方のための簡単な診断です9つの質問に答えるだけで、あなたの会社のタイプといまの状態、合った始め方をご提案します" />
 
     <section id="quiz" className="page-shell scroll-mt-24 pb-24 md:pb-32">
       <SectionHead number="01" label="Start" color="sky" title="さっそく診断してみる" />
@@ -29,7 +29,7 @@ export default function Diagnosis() {
       </article>)}</div>
     </div></section>
 
-    <SoftContact title={<>診断しなくても、<br />もちろん相談できます</>} body="「まだぼんやりしている」段階でも大丈夫。お話ししながら一緒に整理します" />
+    <SoftContact title={<>診断しなくても、<br />もちろん相談できます</>} body="「まだぼんやりしている」段階でも大丈夫お話ししながら一緒に整理します" />
     <Footer />
   </main>
 }

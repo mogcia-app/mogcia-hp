@@ -70,7 +70,7 @@ export default function Header() {
           <div className="page-shell px-5 pb-8 pt-6 md:px-7">
             <div className="mb-6 flex items-end justify-between border-b border-ink/15 pb-5">
               <div><p className="font-display text-[9px] font-bold uppercase tracking-[.24em] text-ink-soft">Explore MOGCIA</p><p className="mt-1 font-display text-4xl font-black tracking-[-.06em]">Menu<span className="text-[#F08FA8]">.</span></p></div>
-              <p className="max-w-[9rem] text-right text-[9px] leading-4 text-ink-soft">つくる・まわす・<br />そだてていく。</p>
+              <p className="max-w-[9rem] text-right text-[9px] leading-4 text-ink-soft">つくる・まわす・<br />そだてていく</p>
             </div>
             <nav className="grid grid-cols-2 gap-3" aria-label="モバイルメニュー">{nav.map(([href, label], index) => {
               const [background, accent] = mobileNavColors[index]

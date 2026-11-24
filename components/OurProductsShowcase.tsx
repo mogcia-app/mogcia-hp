@@ -47,7 +47,7 @@ export default function OurProductsShowcase() {
             <h2 className="mt-4 font-display text-5xl font-black leading-none tracking-[-.06em] md:text-7xl">Products</h2>
             <p className="mt-5 text-xl font-black">提供しているプロダクト</p>
             <p className="mt-6 max-w-sm text-sm leading-8 text-ink-soft">
-              日々の仕事にある小さな不便を、使い続けられる仕組みに。営業・接客・社内情報・分析など、現場の課題から生まれたプロダクトです。
+              日々の仕事にある小さな不便を、使い続けられる仕組みに営業・接客・社内情報・分析など、現場の課題から生まれたプロダクトです
             </p>
             <div className="mt-8 flex gap-3 lg:mt-auto">
               <button type="button" onClick={() => move(-1)} aria-label="前のプロダクトを見る" className="grid h-12 w-12 place-items-center rounded-full border border-ink bg-white text-lg transition-transform hover:-translate-x-1">←</button>

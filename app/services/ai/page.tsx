@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Footer from '@/components/Footer'
 import { DiagonalAccent, SectionHead, SectionLabel, SoftContact, tone, type Tone } from '@/components/PageFrame'
 
-export const metadata = { title: 'AI導入支援 | MOGCIA', description: 'AIの使い方を学び、自社の業務で実践し、自分たちで活用・改善できる状態まで伴走する法人向けパッケージです。' }
+export const metadata = { title: 'AI導入支援 | MOGCIA', description: 'AIの使い方を学び、自社の業務で実践し、自分たちで活用・改善できる状態まで伴走する法人向けパッケージです' }
 
 const worries: [string, Tone][] = [
   ['AIを導入したいが、社内に詳しい担当者がいない', 'sky'],
@@ -13,9 +13,9 @@ const worries: [string, Tone][] = [
 ]
 
 const approaches: [string, string, Tone][] = [
-  ['使い方を学ぶ', '生成AIの基本と安全な使い方を、はじめてAIを使う方にも分かる言葉で身につけます。', 'lilac'],
-  ['自社の仕事で使う', '一般的な例題ではなく、日々使う資料や実際の作業を題材に、業務がどう変わるかを試します。', 'pink'],
-  ['自分たちで回せるようにする', '手順やテンプレートを社内に残し、外部へ頼り続けなくても活用と改善を続けられる状態を目指します。', 'mint'],
+  ['使い方を学ぶ', '生成AIの基本と安全な使い方を、はじめてAIを使う方にも分かる言葉で身につけます', 'lilac'],
+  ['自社の仕事で使う', '一般的な例題ではなく、日々使う資料や実際の作業を題材に、業務がどう変わるかを試します', 'pink'],
+  ['自分たちで回せるようにする', '手順やテンプレートを社内に残し、外部へ頼り続けなくても活用と改善を続けられる状態を目指します', 'mint'],
 ]
 
 const flow: [string, string, string, string, Tone][] = [
@@ -39,10 +39,10 @@ const trainingPlans: { badge: string; name: string; price: string; rows: [string
 ]
 
 const supportSteps: [string, string][] = [
-  ['業務の洗い出し', 'どの業務にAIを使うと効果が大きいかを、一緒に整理します。'],
-  ['使い方を決める', 'ツール選びと、社内での使い方・ルールを決めます。'],
-  ['現場で試す', '小さく始めて、うまくいった使い方を社内に広げます。'],
-  ['毎月ふりかえる', '月1回の定例で、成果と次の改善を確認します。'],
+  ['業務の洗い出し', 'どの業務にAIを使うと効果が大きいかを、一緒に整理します'],
+  ['使い方を決める', 'ツール選びと、社内での使い方・ルールを決めます'],
+  ['現場で試す', '小さく始めて、うまくいった使い方を社内に広げます'],
+  ['毎月ふりかえる', '月1回の定例で、成果と次の改善を確認します'],
 ]
 
 const builds: [string, string][] = [
@@ -55,12 +55,12 @@ const builds: [string, string][] = [
 ]
 
 const useCases: [string, string, Tone][] = [
-  ['議事録・日報', '会議の録音から議事録を自動で。日報のまとめも数秒で。', 'sky'],
-  ['見積もり・請求', '過去の見積もりから、たたき台を自動で作成。', 'butter'],
-  ['問い合わせ対応', 'よくある質問への一次回答を、AIが24時間。', 'pink'],
-  ['SNS・広報', '投稿文や画像の下書きを、ブランドのトーンで。', 'lilac'],
-  ['社内マニュアル', '「あの資料どこ？」に答える、社内向けAI検索。', 'mint'],
-  ['採用・人事', '求人票の作成や、応募者対応の効率化に。', 'peach'],
+  ['議事録・日報', '会議の録音から議事録を自動で日報のまとめも数秒で', 'sky'],
+  ['見積もり・請求', '過去の見積もりから、たたき台を自動で作成', 'butter'],
+  ['問い合わせ対応', 'よくある質問への一次回答を、AIが24時間', 'pink'],
+  ['SNS・広報', '投稿文や画像の下書きを、ブランドのトーンで', 'lilac'],
+  ['社内マニュアル', '「あの資料どこ？」に答える、社内向けAI検索', 'mint'],
+  ['採用・人事', '求人票の作成や、応募者対応の効率化に', 'peach'],
 ]
 
 const priceGroups: { title: string; items: [string, string, string, string, Tone][] }[] = [
@@ -69,17 +69,17 @@ const priceGroups: { title: string; items: [string, string, string, string, Tone
 ]
 
 const securities: [string, string][] = [
-  ['入力しない情報を決める', '個人情報や機密情報の扱いを、社内ルールとして明文化します。'],
-  ['業務向けの設定で使う', '学習に使われない設定・法人向けプランなど、安全な使い方を選びます。'],
-  ['権限とログを管理', '誰が何にアクセスできるかを整理し、記録を残します。'],
-  ['MOGCIAの方針も公開', '自社のセキュリティ・AI利用方針を公開しています。'],
+  ['入力しない情報を決める', '個人情報や機密情報の扱いを、社内ルールとして明文化します'],
+  ['業務向けの設定で使う', '学習に使われない設定・法人向けプランなど、安全な使い方を選びます'],
+  ['権限とログを管理', '誰が何にアクセスできるかを整理し、記録を残します'],
+  ['MOGCIAの方針も公開', '自社のセキュリティ・AI利用方針を公開しています'],
 ]
 
 const faqs: [string, string][] = [
-  ['ITに詳しい社員がいなくても大丈夫ですか？', 'はい。パソコンの基本操作ができれば始められる内容から用意しています。'],
-  ['どのAIツールを使いますか？', 'ChatGPT・Claude・Geminiなど、業務や予算に合わせてご提案します。'],
-  ['研修だけのサービスですか？', 'いいえ。業務の整理から実践、社内への定着、必要に応じた小さな仕組みづくりまで対応します。'],
-  ['福岡以外でも対応できますか？', '九州全域に対応しています。研修や定例はオンラインでも行えます。'],
+  ['ITに詳しい社員がいなくても大丈夫ですか？', 'はいパソコンの基本操作ができれば始められる内容から用意しています'],
+  ['どのAIツールを使いますか？', 'ChatGPT・Claude・Geminiなど、業務や予算に合わせてご提案します'],
+  ['研修だけのサービスですか？', 'いいえ業務の整理から実践、社内への定着、必要に応じた小さな仕組みづくりまで対応します'],
+  ['福岡以外でも対応できますか？', '九州全域に対応しています研修や定例はオンラインでも行えます'],
 ]
 
 const shadow = (color: Tone, size = 5) => ({ boxShadow: `${size}px ${size}px 0 ${tone[color].chip}` })
@@ -136,14 +136,14 @@ export default function AiServicePage() {
         <div className="mt-12 max-w-3xl">
           <SectionLabel label="AI consulting" color="mint" />
           <h1 className="mt-5 text-balance text-[clamp(1.5rem,7vw,2rem)] font-black leading-[1.75] tracking-[-.02em] sm:text-4xl sm:leading-[1.5] md:text-[3.5rem] md:leading-[1.35]">AIを、<br />現場で使える力に</h1>
-          <p className="mt-7 max-w-xl text-sm leading-8 text-ink-soft">AIの知識を学ぶだけではなく、社内の困りごとを整理し、実際の仕事で試し、使い続けられる形にするまで。業務改善を一緒に進めるAI活用支援です。九州全域・オンライン対応。</p>
+          <p className="mt-7 max-w-xl text-sm leading-8 text-ink-soft">AIの知識を学ぶだけではなく、社内の困りごとを整理し、実際の仕事で試し、使い続けられる形にするまで業務改善を一緒に進めるAI活用支援です九州全域・オンライン対応</p>
           <div className="mt-8 flex flex-wrap gap-3"><Link href="/contact" className="button button-dark text-xs">相談する →</Link><Link href="/diagnosis" className="button button-light text-xs">AI診断を試す</Link></div>
         </div>
       </div>
     </section>
 
     <section className="py-20 md:py-24" style={{ backgroundColor: tone.sky.band }}><div className="page-shell">
-      <SectionHead number="01" label="For you" color="sky" title="このような会社・チーム向けです" note="業種は問いません。AIを仕事に取り入れたいものの、社内だけでは進め方を決めにくい組織を支援します。" />
+      <SectionHead number="01" label="For you" color="sky" title="このような会社・チーム向けです" note="業種は問いませんAIを仕事に取り入れたいものの、社内だけでは進め方を決めにくい組織を支援します" />
       <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{worries.map(([text, color], index) => <div key={text} className="flex flex-col gap-4 border border-ink bg-white p-6" style={shadow(color)}>
         <span className="grid h-9 w-9 place-items-center rounded-full font-display text-[11px] font-black" style={{ backgroundColor: tone[color].chip }}>0{index + 1}</span>
         <p className="text-base font-black leading-7">{text}</p>
@@ -151,7 +151,7 @@ export default function AiServicePage() {
     </div></section>
 
     <section className="page-shell py-20 md:py-24">
-      <SectionHead number="02" label="Our approach" color="lilac" title="学ぶ、使う、自分たちで回す" note="AIを試してみたい法人向けに、使い方の研修から実務での実践、自社だけで活用を続けられる状態までをひとつのパッケージで支援します。" />
+      <SectionHead number="02" label="Our approach" color="lilac" title="学ぶ、使う、自分たちで回す" note="AIを試してみたい法人向けに、使い方の研修から実務での実践、自社だけで活用を続けられる状態までをひとつのパッケージで支援します" />
       <div className="mt-10 grid gap-5 md:grid-cols-3">{approaches.map(([title, text, color], index) => <div key={title} className="flex flex-col gap-3.5 border border-ink bg-white p-7 md:p-8" style={shadow(color)}>
         <span className="grid h-14 w-14 place-items-center rounded-full font-display text-base font-black" style={{ backgroundColor: tone[color].chip }}>0{index + 1}</span>
         <h3 className="text-xl font-black leading-8">{title}</h3>
@@ -160,7 +160,7 @@ export default function AiServicePage() {
     </section>
 
     <section className="py-20 md:py-24" style={{ backgroundColor: tone.butter.band }}><div className="page-shell">
-      <SectionHead number="03" label="How it works" color="butter" title="AIを、会社の中に残すパッケージ" note="目標は、支援が終わったあとも自分たちで使えること。研修だけで終わらず、実務への落とし込みと社内運用までを一続きで進めます。" />
+      <SectionHead number="03" label="How it works" color="butter" title="AIを、会社の中に残すパッケージ" note="目標は、支援が終わったあとも自分たちで使えること研修だけで終わらず、実務への落とし込みと社内運用までを一続きで進めます" />
       <ol className="relative mt-10 grid gap-5 md:grid-cols-3">
         <span className="absolute left-[16%] right-[16%] top-1/2 hidden border-t-2 border-dashed border-ink/25 md:block" aria-hidden />
         {flow.map(([step, title, text, id, color]) => <li key={id} className="relative"><a href={`#${id}`} className="flex h-full flex-col gap-2.5 border border-ink bg-white p-7 transition-transform hover:-translate-y-0.5" style={shadow(color)}>
@@ -173,7 +173,7 @@ export default function AiServicePage() {
     </div></section>
 
     <section id="roadmap" className="scroll-mt-24 py-20 md:py-24" style={{ backgroundColor: tone.mint.band }}><div className="page-shell">
-      <SectionHead number="04" label="AI roadmap" color="mint" title="AIレベルと、進み方のロードマップ" note="いまのレベルに合わせて、どこからでも始められます。" action={<Link href="/diagnosis" className="group inline-flex min-h-12 items-center gap-8 self-start border border-ink bg-white px-5 text-xs font-black transition-transform hover:-translate-y-0.5 md:self-auto" style={shadow('butter')}><span>1分AI診断で、いまのレベルを確認</span><span className="text-base transition-transform group-hover:translate-x-1" aria-hidden>→</span></Link>} />
+      <SectionHead number="04" label="AI roadmap" color="mint" title="AIレベルと、進み方のロードマップ" note="いまのレベルに合わせて、どこからでも始められます" action={<Link href="/diagnosis" className="group inline-flex min-h-12 items-center gap-8 self-start border border-ink bg-white px-5 text-xs font-black transition-transform hover:-translate-y-0.5 md:self-auto" style={shadow('butter')}><span>1分AI診断で、いまのレベルを確認</span><span className="text-base transition-transform group-hover:translate-x-1" aria-hidden>→</span></Link>} />
       <h3 className="mb-4 mt-12 text-base font-black">AIレベル（5段階）</h3>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5 lg:items-end">{aiLevels.map(([lv, title, text, can, color], i) => <div key={lv} className={`flex flex-col gap-2 border border-ink bg-white p-5 ${levelStairs[i]}`} style={shadow(color)}>
         <span className="self-start px-2.5 py-1 font-display text-xs font-black" style={{ backgroundColor: tone[color].chip }}>{lv}</span>
@@ -201,7 +201,7 @@ export default function AiServicePage() {
       <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
         <div>
           <SectionHead number="05" label="Practical program" color="butter" title={<ServiceTitle title="実務で学ぶAI活用" sub="自社の仕事を、題材にする" />} />
-          <p className="mt-5 text-[13px] leading-7 text-ink-soft">決まった講義を聞くだけではなく、まず社内の困りごとを整理します。そのうえで、実際の資料や作業を題材にAIを試し、仕事で使える手順へ整えます。</p>
+          <p className="mt-5 text-[13px] leading-7 text-ink-soft">決まった講義を聞くだけではなく、まず社内の困りごとを整理しますそのうえで、実際の資料や作業を題材にAIを試し、仕事で使える手順へ整えます</p>
           <p className="mt-6 text-[11px] font-bold tracking-[.08em] text-ink-soft">含まれるもの</p>
           <ul className="mt-3 grid gap-1.5">{['社内の困りごと・対象業務の整理', '実際の業務を題材にした実践', 'AIに任せる範囲と確認方法の設計', '繰り返し使える手順・テンプレート', '社内向けAI利用ルールの整理'].map(item => <Check key={item} color={tone.butter.chip}>{item}</Check>)}</ul>
           <Link href="/services/ai/practical" className="group mt-7 inline-flex min-h-12 items-center gap-8 border border-ink bg-white px-5 text-xs font-black transition-transform hover:-translate-y-0.5" style={shadow('butter')}><span>詳しくはこちら</span><span className="text-base transition-transform group-hover:translate-x-1" aria-hidden>→</span></Link>
@@ -224,7 +224,7 @@ export default function AiServicePage() {
       <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
         <div>
           <SectionHead number="06" label="Support" color="mint" title={<ServiceTitle title="実践と定着の伴走" sub="試して、直して、社内に広げる" />} />
-          <p className="mt-5 text-[13px] leading-7 text-ink-soft">試した使い方が本当に役立ったかを毎月振り返ります。うまくいかない部分を直し、担当者だけのコツを手順やテンプレートにして、社内で使える形へ整えます。</p>
+          <p className="mt-5 text-[13px] leading-7 text-ink-soft">試した使い方が本当に役立ったかを毎月振り返りますうまくいかない部分を直し、担当者だけのコツを手順やテンプレートにして、社内で使える形へ整えます</p>
           <p className="mt-6 text-[11px] font-bold tracking-[.08em] text-ink-soft">含まれるもの</p>
           <ul className="mt-3 grid gap-1.5">{['月1回のオンライン定例', 'チャットでの相談（平日）', '活用状況のふりかえりと改善提案', '社内ルール・マニュアルの整備', '新しいツールや機能の情報共有'].map(item => <Check key={item} color="#FFFFFF">{item}</Check>)}</ul>
           <Link href="/services/ai/support" className="group mt-7 inline-flex min-h-12 items-center gap-8 border border-ink bg-white px-5 text-xs font-black transition-transform hover:-translate-y-0.5" style={shadow('mint')}><span>詳しくはこちら</span><span className="text-base transition-transform group-hover:translate-x-1" aria-hidden>→</span></Link>
@@ -239,22 +239,22 @@ export default function AiServicePage() {
       <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
         <div>
           <SectionHead number="07" label="Technical support" color="lilac" title={<ServiceTitle title="つくれる部分は、自分たちで" sub="難しい裏側だけ、MOGCIAに" />} />
-          <p className="mt-5 text-[13px] leading-7 text-ink-soft">AIを使えば、専門的な開発知識がなくても、画面や小さな業務ツールを試作し、現場に合わせて直せるようになってきました。そこは自分たちで育てる。データベース、権限、外部サービスとの連携、公開環境など、専門知識が必要な部分だけをMOGCIAが設計・構築します。</p>
+          <p className="mt-5 text-[13px] leading-7 text-ink-soft">AIを使えば、専門的な開発知識がなくても、画面や小さな業務ツールを試作し、現場に合わせて直せるようになってきましたそこは自分たちで育てるデータベース、権限、外部サービスとの連携、公開環境など、専門知識が必要な部分だけをMOGCIAが設計・構築します</p>
           <div className="mt-6 flex flex-wrap gap-2.5">{['画面・使い勝手は自分たちで改善', 'データ・権限・連携はMOGCIA', '必要な技術支援だけ選べる'].map(item => <span key={item} className="rounded-full border border-ink/15 bg-white px-3.5 py-2 text-xs font-bold">{item}</span>)}</div>
           <Link href="/services/ai/tech" className="group mt-7 inline-flex min-h-12 items-center gap-8 border border-ink bg-white px-5 text-xs font-black transition-transform hover:-translate-y-0.5" style={shadow('lilac')}><span>詳しくはこちら</span><span className="text-base transition-transform group-hover:translate-x-1" aria-hidden>→</span></Link>
         </div>
         <div className="relative aspect-[3/2] overflow-hidden rounded-[1.5rem] bg-white"><Image src="/ai-technical-support.png" alt="AIシステムの技術支援に取り組むイメージ" fill sizes="(min-width: 1024px) 600px, 100vw" className="object-cover" /></div>
       </div>
       <div className="mt-12 grid gap-5 md:grid-cols-2">
-        <div className="border border-ink bg-white p-6 md:p-7" style={shadow('mint')}><span className="font-display text-[10px] font-black tracking-[.14em] text-ink-soft">YOUR TEAM</span><h3 className="mt-3 text-xl font-black">自分たちで育てる部分</h3><p className="mt-3 text-xs leading-6 text-ink-soft">画面のレイアウト、入力項目、文章、日々の使い方など。現場の人がAIと一緒に試し、仕事に合わせて改善します。</p></div>
-        <div className="border border-ink bg-white p-6 md:p-7" style={shadow('lilac')}><span className="font-display text-[10px] font-black tracking-[.14em] text-ink-soft">MOGCIA</span><h3 className="mt-3 text-xl font-black">専門家に任せる部分</h3><p className="mt-3 text-xs leading-6 text-ink-soft">データベース、ログイン・権限、API連携、公開環境、バックアップなど。安全に動かし続けるための裏側を担当します。</p></div>
+        <div className="border border-ink bg-white p-6 md:p-7" style={shadow('mint')}><span className="font-display text-[10px] font-black tracking-[.14em] text-ink-soft">YOUR TEAM</span><h3 className="mt-3 text-xl font-black">自分たちで育てる部分</h3><p className="mt-3 text-xs leading-6 text-ink-soft">画面のレイアウト、入力項目、文章、日々の使い方など現場の人がAIと一緒に試し、仕事に合わせて改善します</p></div>
+        <div className="border border-ink bg-white p-6 md:p-7" style={shadow('lilac')}><span className="font-display text-[10px] font-black tracking-[.14em] text-ink-soft">MOGCIA</span><h3 className="mt-3 text-xl font-black">専門家に任せる部分</h3><p className="mt-3 text-xs leading-6 text-ink-soft">データベース、ログイン・権限、API連携、公開環境、バックアップなど安全に動かし続けるための裏側を担当します</p></div>
       </div>
       <div className="mt-14"><SubHead>対応できること</SubHead><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{builds.map(([title, text]) => <div key={title} className="flex flex-col gap-2 border border-ink bg-white p-6" style={shadow('lilac')}><span className="flex items-center gap-2.5"><span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: tone.lilac.dot }} aria-hidden /><span className="text-base font-black">{title}</span></span><span className="text-xs leading-6 text-ink-soft">{text}</span></div>)}</div></div>
       <div className="mt-10 grid gap-5 md:grid-cols-2"><PriceBar label="設計・構築＋保守（初期費用0円・12か月）" price="月30,000円〜" color="lilac" /><PriceBar label="保守のみ" price="月20,000円〜" color="lilac" /></div>
     </div></section>
 
     <section className="page-shell py-20 md:py-24">
-      <SectionHead number="08" label="Use cases" color="pink" title="こんな業務に使えます" note="「自社だと何に使える？」から一緒に考えます。業種を問わず、まずは時間のかかっている作業から。" />
+      <SectionHead number="08" label="Use cases" color="pink" title="こんな業務に使えます" note="「自社だと何に使える？」から一緒に考えます業種を問わず、まずは時間のかかっている作業から" />
       <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{useCases.map(([title, text, color]) => <div key={title} className="flex flex-col gap-2.5 border border-ink bg-white p-6" style={shadow(color)}>
         <span className="self-start rounded-full px-2.5 py-1 font-display text-[10px] font-black" style={{ backgroundColor: tone[color].chip }}>USE CASE</span>
         <span className="text-base font-black">{title}</span>
@@ -268,7 +268,7 @@ export default function AiServicePage() {
         <div className="flex flex-col gap-3">
           <span className="self-start rounded-full px-3 py-1 text-[11px] font-bold" style={{ backgroundColor: tone.sky.chip }}>おすすめ</span>
           <span className="text-2xl font-black">AI活用 伴走プラン</span>
-          <span className="text-[13px] leading-7 text-ink-soft">対象業務を決め、実践と振り返りを重ねながら、社内で使い続けられる形へ整えるプランです。</span>
+          <span className="text-[13px] leading-7 text-ink-soft">対象業務を決め、実践と振り返りを重ねながら、社内で使い続けられる形へ整えるプランです</span>
           <div className="flex flex-wrap gap-2 text-xs font-bold">{([['課題整理', 'butter'], ['実務での実践', 'mint'], ['定着・改善', 'lilac']] as [string, Tone][]).map(([name, c]) => <span key={name} className="rounded-full px-3.5 py-1.5" style={{ backgroundColor: tone[c].band }}>{name}</span>)}</div>
         </div>
         <div className="flex flex-col gap-1 md:items-end"><span className="text-3xl font-black md:text-4xl">月50,000円〜</span></div>
@@ -287,7 +287,7 @@ export default function AiServicePage() {
           <span className="mt-2 text-right text-xl font-black">{price}</span>
         </a>)}</div>
       </div>)}
-      <p className="mt-6 text-[11px] leading-6 text-ink-soft">※すべて税抜。ご相談内容と対象業務を確認したうえで、合ったプランをご案内します。</p>
+      <p className="mt-6 text-[11px] leading-6 text-ink-soft">※すべて税抜ご相談内容と対象業務を確認したうえで、合ったプランをご案内します</p>
     </section>
 
     <section className="py-20 md:py-24" style={{ backgroundColor: tone.mint.band }}><div className="page-shell">
@@ -314,7 +314,7 @@ export default function AiServicePage() {
       </Link>
     </section>
 
-    <SoftContact body="「何に使えるかわからない」段階でも大丈夫。お話ししながら一緒に整理します" />
+    <SoftContact body="「何に使えるかわからない」段階でも大丈夫お話ししながら一緒に整理します" />
     <Footer />
   </main>
 }

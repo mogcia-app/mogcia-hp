@@ -2,7 +2,7 @@ import Footer from '@/components/Footer'
 import { PageHeader, SectionHead, SoftContact, tone, type Tone } from '@/components/PageFrame'
 import { notFound } from 'next/navigation'
 
-// LABページは公開準備が整うまで一時的に非公開。
+// LABページは公開準備が整うまで一時的に非公開
 const LAB_PAGE_ENABLED = false
 
 export const metadata = {
@@ -24,26 +24,26 @@ type Product = {
 const products: Product[] = [
   {
     no: '01', name: 'Viocom', category: 'AI VIDEO EDITOR',
-    catchcopy: '方言も、伝わる動画へ。',
-    body: '動画編集の手間を減らし、もっと気軽に発信できるように。特に方言を含む音声にも対応した、AI動画編集ツールを開発しています。',
+    catchcopy: '方言も、伝わる動画へ',
+    body: '動画編集の手間を減らし、もっと気軽に発信できるように特に方言を含む音声にも対応した、AI動画編集ツールを開発しています',
     status: '開発中', color: 'pink', visual: 'video',
   },
   {
     no: '02', name: 'tellmo.', category: 'AI PHONE ASSISTANT',
-    catchcopy: '電話の「最初」を、AIに。',
-    body: 'かかってきた電話にAIが一次対応。用件を聞くだけでなく、予約受付などの日常的な電話業務を支えるプロダクトです。',
+    catchcopy: '電話の「最初」を、AIに',
+    body: 'かかってきた電話にAIが一次対応用件を聞くだけでなく、予約受付などの日常的な電話業務を支えるプロダクトです',
     status: '開発中', color: 'sky', visual: 'phone',
   },
   {
     no: '03', name: 'viomo', category: 'VOICE TO TEXT',
-    catchcopy: '録った声を、使える言葉に。',
-    body: '録音した音声を、自動で読みやすいテキストへ。会話や現場の声を、記録・共有・活用しやすくする文字起こしツールです。',
+    catchcopy: '録った声を、使える言葉に',
+    body: '録音した音声を、自動で読みやすいテキストへ会話や現場の声を、記録・共有・活用しやすくする文字起こしツールです',
     status: '開発中', color: 'mint', visual: 'voice',
   },
   {
     no: '04', name: '名称未定', category: 'SECURITY TOOL',
-    catchcopy: '安心を、もっと身近なものに。',
-    body: '専門的で難しくなりがちなセキュリティを、日々の仕事の中で扱いやすくするための新しいツールを構想・開発しています。',
+    catchcopy: '安心を、もっと身近なものに',
+    body: '専門的で難しくなりがちなセキュリティを、日々の仕事の中で扱いやすくするための新しいツールを構想・開発しています',
     status: '企画・開発中', color: 'lilac', visual: 'security',
   },
 ]
@@ -87,15 +87,15 @@ export default function Lab() {
     <PageHeader color="mint" diagonalAccent
       crumbs={[["Lab"]]}
       title="Lab"
-      lead={<>まだ名前のない便利を、<br />プロダクトに。</>}
-      body="MOGCIA LABは、現場で見つけた課題を新しいプロダクトへ育てる場所です。動画・電話・音声・セキュリティの領域で、4つのプロダクトを開発しています。"
+      lead={<>まだ名前のない便利を、<br />プロダクトに</>}
+      body="MOGCIA LABは、現場で見つけた課題を新しいプロダクトへ育てる場所です動画・電話・音声・セキュリティの領域で、4つのプロダクトを開発しています"
     />
 
     <section id="products" className="relative scroll-mt-24 overflow-hidden pb-24 pt-24 md:pb-32 md:pt-32">
       <span className="pointer-events-none absolute -left-24 top-40 h-72 w-72 rounded-full bg-[#FFF6D9]" aria-hidden />
       <span className="pointer-events-none absolute -right-32 top-[38rem] h-96 w-96 rounded-full bg-[#E9F6F1]" aria-hidden />
       <div className="page-shell relative">
-      <SectionHead number="01" label="In development" color="butter" title="開発中のプロダクト" note="まだ開発途中だからこそ、実際に使う人の声を大切にしながら、一つずつ形にしています。" />
+      <SectionHead number="01" label="In development" color="butter" title="開発中のプロダクト" note="まだ開発途中だからこそ、実際に使う人の声を大切にしながら、一つずつ形にしています" />
 
       <div className="relative mt-12 min-h-[22rem] overflow-hidden rounded-[2rem] bg-ink p-8 text-white md:p-12 lg:grid lg:grid-cols-[.9fr_1.1fr] lg:items-end lg:gap-14">
         <span className="absolute -right-24 -top-28 h-80 w-80 rounded-full border border-white/15" aria-hidden />
@@ -107,7 +107,7 @@ export default function Lab() {
             <strong className="font-display text-[8rem] font-black leading-[.75] tracking-[-.08em] sm:text-[10rem]">04</strong>
             <p className="pb-1 text-xs font-black leading-5 tracking-[.16em]">PROJECTS<br />IN DEVELOPMENT</p>
           </div>
-          <p className="mt-8 max-w-sm text-xs leading-7 text-white/65">まだ完成していない。だから、もっと良くできる。現場の声から生まれた4つのアイデアを、毎日少しずつ前へ進めています。</p>
+          <p className="mt-8 max-w-sm text-xs leading-7 text-white/65">まだ完成していないだから、もっと良くできる現場の声から生まれた4つのアイデアを、毎日少しずつ前へ進めています</p>
         </div>
         <div className="relative mt-12 grid grid-cols-2 gap-3 lg:mt-0">
           {products.map((product) => <div key={product.no} className="flex min-h-24 flex-col justify-between rounded-2xl p-4 text-ink" style={{ backgroundColor: tone[product.color].chip }}>
@@ -134,7 +134,7 @@ export default function Lab() {
     </section>
 
     <section id="process" className="scroll-mt-24 py-24 md:py-32" style={{ backgroundColor: tone.sky.band }}><div className="page-shell">
-      <SectionHead number="02" label="How we build" color="sky" title="プロダクトの育て方" note="完成を決めつけるのではなく、使う人と一緒に試し、学びながら育てていきます。" />
+      <SectionHead number="02" label="How we build" color="sky" title="プロダクトの育て方" note="完成を決めつけるのではなく、使う人と一緒に試し、学びながら育てていきます" />
       <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{steps.map(([no, title, body, color], index) => <article key={no} className="relative rounded-[1.5rem] bg-white p-7">
         <p className="grid h-14 w-14 place-items-center rounded-full font-display text-lg font-black" style={{ backgroundColor: tone[color].chip }}>{no}</p>
         <h3 className="mt-5 text-xl font-black">{title}</h3>

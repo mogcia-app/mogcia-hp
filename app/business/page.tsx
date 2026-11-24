@@ -12,17 +12,17 @@ const materials: [string, string, string, Tone][] = [
 ]
 
 const reasons: [string, string, string, Tone][] = [
-  ['01', 'プロダクトと、伴走の両方', '自社プロダクトと、制作・運用の伴走支援。課題に合わせて組み合わせられます', 'sky'],
+  ['01', 'プロダクトと、伴走の両方', '自社プロダクトと、制作・運用の伴走支援課題に合わせて組み合わせられます', 'sky'],
   ['02', '24時間連絡OK・土日も相談可能', '契約中は時間を気にせず連絡でき、土日の打ち合わせにも対応しています', 'pink'],
   ['03', 'つくって、まわして、そだてる', '公開して終わりではなく、レポートと改善提案で成果まで伴走します', 'mint'],
 ]
 
 const faqs: [string, string][] = [
-  ['見積書や提案書を作ってもらえますか？', 'はい。内容を伺ったうえで、社内で共有・検討しやすい形にまとめてお送りします。'],
-  ['秘密保持契約（NDA）は結べますか？', 'はい。ご相談の段階から対応可能です。貴社指定の書式がある場合もお知らせください。'],
-  ['請求書払いに対応していますか？', 'はい。法人のお客さまは請求書払いに対応しています。支払条件は事前に確認のうえ決定します。'],
-  ['福岡以外の会社でも依頼できますか？', 'はい。オンラインミーティングを活用し、全国の企業さまに対応しています。'],
-  ['まだ要件が決まっていなくても相談できますか？', 'はい。課題や社内状況を伺い、必要な施策と進め方を整理するところからご一緒します。'],
+  ['見積書や提案書を作ってもらえますか？', 'はい内容を伺ったうえで、社内で共有・検討しやすい形にまとめてお送りします'],
+  ['秘密保持契約（NDA）は結べますか？', 'はいご相談の段階から対応可能です貴社指定の書式がある場合もお知らせください'],
+  ['請求書払いに対応していますか？', 'はい法人のお客さまは請求書払いに対応しています支払条件は事前に確認のうえ決定します'],
+  ['福岡以外の会社でも依頼できますか？', 'はいオンラインミーティングを活用し、全国の企業さまに対応しています'],
+  ['まだ要件が決まっていなくても相談できますか？', 'はい課題や社内状況を伺い、必要な施策と進め方を整理するところからご一緒します'],
 ]
 
 const reviewItems = ['目的と解決したい課題', '支援範囲と役割分担', '概算費用と契約条件', '導入・制作スケジュール', '運用開始後のサポート', '社内共有用の補足資料']
@@ -38,7 +38,7 @@ const productTones: Tone[] = ['butter', 'lilac', 'pink', 'sky', 'peach', 'mint']
 
 export default function BusinessPage() {
   return <main className="bg-white text-ink">
-    <PageHeader color="lilac" diagonalAccent crumbs={[['法人のご担当者さまへ']]} title="Business" lead={<>社内で検討しやすい<br />資料、そろえています</>} body="会社紹介やサービス・プロダクトの資料をご用意しています。稟議や社内共有にもご活用ください。" />
+    <PageHeader color="lilac" diagonalAccent crumbs={[['法人のご担当者さまへ']]} title="Business" lead={<>社内で検討しやすい<br />資料、そろえています</>} body="会社紹介やサービス・プロダクトの資料をご用意しています稟議や社内共有にもご活用ください" />
 
     <section id="materials" className="page-shell scroll-mt-24 py-24 md:py-32">
       <SectionHead number="01" label="Materials" color="sky" title="ご用意している資料" note="フォームからリクエストいただくと、担当者よりお送りします" />
@@ -52,7 +52,7 @@ export default function BusinessPage() {
     </section>
 
     <section className="py-24 md:py-32" style={{ backgroundColor: tone.lilac.band }}><div className="page-shell grid gap-12 lg:grid-cols-[.62fr_1fr] lg:gap-20">
-      <div><SectionHead number="02" label="For internal review" color="lilac" title={<>社内で検討しやすい<br />情報をそろえます</>} /><p className="mt-6 max-w-md text-xs leading-7 text-ink-soft">担当者さまだけで判断を抱えずに済むよう、上長や関係部署へ説明するための情報も整理してお渡しします。</p></div>
+      <div><SectionHead number="02" label="For internal review" color="lilac" title={<>社内で検討しやすい<br />情報をそろえます</>} /><p className="mt-6 max-w-md text-xs leading-7 text-ink-soft">担当者さまだけで判断を抱えずに済むよう、上長や関係部署へ説明するための情報も整理してお渡しします</p></div>
       <div className="border border-ink bg-white p-7 shadow-[6px_6px_0_#DCCEF6] md:p-10"><p className="text-[10px] font-bold tracking-[.18em] text-ink-soft">ご提案時に整理すること</p><div className="mt-6 grid gap-x-8 md:grid-cols-2">{reviewItems.map((item, index) => <p key={item} className="flex items-center gap-4 border-t border-ink/15 py-5 text-sm font-bold"><span className="font-display text-[10px] text-ink-soft">{String(index + 1).padStart(2, '0')}</span>{item}</p>)}</div></div>
     </div></section>
 

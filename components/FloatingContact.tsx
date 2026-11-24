@@ -11,7 +11,7 @@ type ChatMessage = {
 
 const initialMessage: ChatMessage = {
   sender: "bot",
-  text: "こんにちは！mogcia AIです。サービスのこと、料金のこと、どこから相談すればいいか、なんでも聞いてください。",
+  text: "こんにちは！mogcia AIですサービスのこと、料金のこと、どこから相談すればいいか、なんでも聞いてください",
 }
 
 const quickQuestions = [
@@ -48,7 +48,7 @@ export default function FloatingContact() {
       console.error(error)
       setMessages(previous => [...previous, {
         sender: "bot",
-        text: "ありがとうございます。詳しい内容はLINEまたはお問い合わせフォームから担当者におつなぎできます。",
+        text: "ありがとうございます詳しい内容はLINEまたはお問い合わせフォームから担当者におつなぎできます",
       }])
     } finally {
       setIsLoading(false)
@@ -95,7 +95,7 @@ export default function FloatingContact() {
 
       <div className="flex min-h-0 flex-1 flex-col bg-surface">
         <div className="min-h-0 flex-1 space-y-4 overflow-y-auto p-4 sm:p-5">
-          {messages.length === 1 ? <div className="flex flex-col items-center pb-1 text-center"><Image src="/character-float.png" alt="手をふるmogciaのキャラクター" width={120} height={102} className="h-24 w-28 object-contain"/><p className="text-[11px] font-bold text-ink-soft">AIが答えます。むずかしいことは担当者におつなぎします。</p></div> : null}
+          {messages.length === 1 ? <div className="flex flex-col items-center pb-1 text-center"><Image src="/character-float.png" alt="手をふるmogciaのキャラクター" width={120} height={102} className="h-24 w-28 object-contain"/><p className="text-[11px] font-bold text-ink-soft">AIが答えますむずかしいことは担当者におつなぎします</p></div> : null}
           {messages.map((message,index)=><div key={`${message.sender}-${index}-${message.text}`} className={`flex items-end gap-2 ${message.sender === "user" ? "justify-end" : ""}`}>
             {message.sender === "bot" ? <Image src="/character-icon.png" alt="" width={30} height={30} className="h-8 w-8 shrink-0 rounded-full object-cover"/> : null}
             <p className={`max-w-[78%] px-4 py-3 text-sm font-medium leading-7 shadow-sm ${message.sender === "user" ? "rounded-[1.25rem_1.25rem_.35rem_1.25rem] bg-ink text-white" : "rounded-[1.25rem_1.25rem_1.25rem_.35rem] bg-white text-ink"}`}>{message.text}</p>

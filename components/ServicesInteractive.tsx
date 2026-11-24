@@ -22,7 +22,7 @@ export default function ServicesInteractive() {
           <p className="font-display text-[10px] font-bold uppercase tracking-[.24em] text-ink-soft">What we do</p>
           <h2 className="mt-3 font-display text-5xl font-black tracking-[-.06em] md:text-7xl">Services.</h2>
         </div>
-        <p className="mt-5 max-w-lg text-sm font-light leading-7 text-ink-soft">課題に必要なものを組み合わせ、企画から制作、運用、改善まで一つのチームで支援します。</p>
+        <p className="mt-5 max-w-lg text-sm font-light leading-7 text-ink-soft">課題に必要なものを組み合わせ、企画から制作、運用、改善まで一つのチームで支援します</p>
       </div>
 
       <div className="mt-14 grid gap-10 lg:grid-cols-[.88fr_1.12fr] lg:items-stretch">

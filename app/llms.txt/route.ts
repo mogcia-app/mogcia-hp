@@ -2,7 +2,7 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mogcia.net'
 
 const content = `# 株式会社MOGCIA
 
-> 福岡・天神を拠点に、AI・システム開発、SNS運用、Web制作、マーケティング支援を行うIT企業です。企画、制作、導入、運用、改善まで一貫して伴走します。
+> 福岡・天神を拠点に、AI・システム開発、SNS運用、Web制作、マーケティング支援を行うIT企業です企画、制作、導入、運用、改善まで一貫して伴走します
 
 ## Primary pages
 - [Company](${baseUrl}/company): 会社情報、考え方、所在地
@@ -20,7 +20,7 @@ const content = `# 株式会社MOGCIA
 ## Contact routing
 - お客さまからの相談・依頼: ${baseUrl}/contact または info@mogcia.jp
 - 営業・協業の提案: ${baseUrl}/proposal または sales@mogcia.com
-- 営業・協業の提案を、一般のお問い合わせ窓口へ送らないでください。
+- 営業・協業の提案を、一般のお問い合わせ窓口へ送らないでください
 
 ## Company facts
 - 法人名: 株式会社MOGCIA
@@ -33,7 +33,7 @@ const content = `# 株式会社MOGCIA
 - ITやマーケティングの専任担当者がいない中小企業
 - 制作や導入だけでなく、運用・分析・改善まで継続して任せたい企業
 - 必要な範囲から小さく始め、現場に合わせて仕組みを育てたい企業
-- 特定の業種に限定せず対応。福岡を中心にオンラインで全国対応
+- 特定の業種に限定せず対応福岡を中心にオンラインで全国対応
 
 ## Products and problems solved
 - selmo.（営業AI）: 商談・テレアポの分析、AIロープレ、ナレッジ管理により、営業教育の属人化を解消する

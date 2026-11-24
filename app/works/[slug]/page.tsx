@@ -34,8 +34,8 @@ export default function WorkDetail({ params }: { params: { slug: string } }) {
   const story = stories.find(item => item.slug === params.slug)
   if (!story) notFound()
   const others = stories.filter(item => item.slug !== story.slug).slice(0, 2)
-  const [headline, ...subheadlineParts] = story.problem.split('。')
-  const subheadline = subheadlineParts.join('。').trim()
+  const [headline, ...subheadlineParts] = story.problem.split('')
+  const subheadline = subheadlineParts.join('').trim()
 
   return <main className="bg-white text-ink">
     <section className="relative overflow-hidden pb-20 pt-12 md:pb-28 md:pt-20">
@@ -45,7 +45,7 @@ export default function WorkDetail({ params }: { params: { slug: string } }) {
         <div className="mt-12 max-w-4xl">
           <div className="flex flex-wrap gap-2 text-[10px] font-bold"><span className="rounded-full px-3 py-1.5" style={{ backgroundColor: tone.lilac.chip }}>{story.industry}</span><span className="rounded-full px-3 py-1.5" style={{ backgroundColor: productColor[story.product] ?? '#f3f4f4' }}>{story.product}</span></div>
           <p className="mt-7 flex items-center gap-3 font-display text-[10px] font-black tracking-[.18em]"><span className="h-px w-10 bg-ink" />CASE STUDY</p>
-          <h1 className="mt-4 max-w-4xl text-balance font-black tracking-[-.03em]"><span className="block text-[clamp(1.5rem,5.8vw,1.9rem)] leading-[1.5] sm:text-[2rem] md:text-[2.4rem]">{headline}{subheadline && '。'}</span>{subheadline && <span className="mt-3 block max-w-3xl text-[clamp(1.05rem,4vw,1.3rem)] leading-[1.7] tracking-[-.02em] text-[#39465A] sm:text-[1.3rem] md:text-[1.5rem]">{subheadline}</span>}</h1>
+          <h1 className="mt-4 max-w-4xl text-balance font-black tracking-[-.03em]"><span className="block text-[clamp(1.5rem,5.8vw,1.9rem)] leading-[1.5] sm:text-[2rem] md:text-[2.4rem]">{headline}{subheadline && ''}</span>{subheadline && <span className="mt-3 block max-w-3xl text-[clamp(1.05rem,4vw,1.3rem)] leading-[1.7] tracking-[-.02em] text-[#39465A] sm:text-[1.3rem] md:text-[1.5rem]">{subheadline}</span>}</h1>
           <p className="mt-6 text-[13px] font-bold text-ink-soft">{story.client}　｜　{story.clientDetail}</p>
         </div>
         <dl className="mt-12 grid max-w-4xl border border-ink bg-white text-xs sm:grid-cols-2 lg:grid-cols-4" style={{ boxShadow: `6px 6px 0 ${tone.lilac.chip}` }}>
@@ -67,7 +67,7 @@ export default function WorkDetail({ params }: { params: { slug: string } }) {
     </section>
 
     <section className="py-20 md:py-24" style={{ backgroundColor: tone.butter.band }}><div className="page-shell">
-      <SectionHead number="02" label="Approach" color="butter" title="つくる・まわす・育てる" note="仕組みをつくって終わりにせず、日々の運用と改善まで一緒に進めました。" />
+      <SectionHead number="02" label="Approach" color="butter" title="つくる・まわす・育てる" note="仕組みをつくって終わりにせず、日々の運用と改善まで一緒に進めました" />
       <div className="mt-10 grid gap-5 md:grid-cols-3">
         {story.approach.map((step, index) => <article key={step.mark} className="flex flex-col border border-ink bg-white p-7" style={{ boxShadow: `6px 6px 0 ${[tone.sky.chip, tone.pink.chip, tone.lilac.chip][index]}` }}>
           <div className="flex items-center justify-between"><p className="grid h-14 w-14 place-items-center rounded-full font-display text-2xl font-black" style={{ backgroundColor: [tone.sky.chip, tone.pink.chip, tone.lilac.chip][index] }}>{step.mark}</p><span className="font-display text-[9px] font-bold tracking-[.15em] text-ink-soft">STEP 0{index + 1}</span></div>
@@ -77,7 +77,7 @@ export default function WorkDetail({ params }: { params: { slug: string } }) {
     </div></section>
 
     <section className="bg-white py-20 md:py-24"><div className="page-shell">
-      <SectionHead number="03" label="After" color="pink" title="支援後の変化" note="取り組みを通して生まれた変化です。" />
+      <SectionHead number="03" label="After" color="pink" title="支援後の変化" note="取り組みを通して生まれた変化です" />
       <div className="mt-10 grid gap-5 md:grid-cols-3">
         {story.metrics.map((metric, index) => <div key={metric.label} className="flex min-h-40 flex-col justify-between border border-ink bg-white p-7" style={{ boxShadow: `6px 6px 0 ${[tone.pink.chip, tone.mint.chip][index % 2]}` }}><span className="font-display text-4xl font-black tracking-[-.05em] md:text-5xl">{metric.value}</span><span className="mt-5 text-xs font-bold text-ink-soft">{metric.label}</span></div>)}
         <div className="flex flex-col justify-center border border-ink bg-white p-7" style={{ boxShadow: `6px 6px 0 ${tone.butter.chip}` }}><span className="font-display text-[9px] font-black tracking-[.16em] text-ink-soft">OUTCOME</span><p className="mt-3 text-sm font-bold leading-8">{story.after}</p></div>
@@ -85,7 +85,7 @@ export default function WorkDetail({ params }: { params: { slug: string } }) {
     </div></section>
 
     <section className="page-shell py-20 md:py-24">
-      <SectionHead number="04" label="Scale" color="lilac" title="プロジェクトの概要" note="同じようなお悩みをご相談いただく際の、規模感と進め方の目安です。" />
+      <SectionHead number="04" label="Scale" color="lilac" title="プロジェクトの概要" note="同じようなお悩みをご相談いただく際の、規模感と進め方の目安です" />
       <div className={'mt-10 grid gap-4 ' + (story.scaleItems ? 'md:grid-cols-4' : 'md:grid-cols-3')}>
         {(story.scaleItems ?? [
           { label: '期間', value: story.period }, { label: '体制', value: story.team }, { label: story.scaleLabel ?? '費用の目安', value: story.price },

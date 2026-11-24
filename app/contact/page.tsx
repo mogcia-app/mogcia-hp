@@ -31,19 +31,19 @@ export default function Contact({ searchParams }: { searchParams?: { diagnosis?:
     <PageHeader color="pink" diagonalAccent
       crumbs={[["Contact"]]}
       title="Contact"
-      lead={<>まだ、うまく言葉に<br />できなくても大丈夫。</>}
-      body="ご相談の内容が決まっていなくても、今感じていることからお聞かせください。話しながら、必要なことを一緒に整理します。"
+      lead={<>まだ、うまく言葉に<br />できなくても大丈夫</>}
+      body="ご相談の内容が決まっていなくても、今感じていることからお聞かせください話しながら、必要なことを一緒に整理します"
     />
 
     <section id="ways" className="page-shell scroll-mt-24 pb-24 pt-16 md:pb-32 md:pt-24">
-      <SectionHead number="01" label="Ways to contact" color="butter" title="話しやすい方法を、選んでください" note="短いメッセージならLINE、内容をまとめて送りたいときはフォームから。どちらからでも同じ担当者が丁寧に対応します。" />
+      <SectionHead number="01" label="Ways to contact" color="butter" title="話しやすい方法を、選んでください" note="短いメッセージならLINE、内容をまとめて送りたいときはフォームからどちらからでも同じ担当者が丁寧に対応します" />
       <div className="mt-10 grid gap-4 lg:grid-cols-2">
         <a href="https://lin.ee/XjMOCFI" target="_blank" rel="noreferrer" className="group relative flex min-h-[17rem] flex-col overflow-hidden rounded-[1.75rem] border border-[#23ae58]/15 bg-[#edf8f1] p-7 text-ink md:p-9">
           <span className="absolute -right-12 -top-12 h-44 w-44 rounded-full border border-[#23ae58]/15" />
           <div className="relative flex items-center justify-between gap-4"><SectionLabel label="Quick message" color="mint" /><span className="rounded-full bg-white px-3 py-2 text-[10px] font-bold">いちばん気軽</span></div>
           <div className="relative mt-auto pt-10">
             <div className="flex items-center gap-4"><span className="h-3 w-3 rounded-full bg-[#23ae58]" aria-hidden /><h2 className="text-2xl font-black">LINEで相談する</h2></div>
-            <p className="mt-3 max-w-md text-xs leading-6 text-ink-soft">「ちょっと聞いてみたい」という一言からどうぞ。ご相談後のやり取りも、そのままLINEで進められます。</p>
+            <p className="mt-3 max-w-md text-xs leading-6 text-ink-soft">「ちょっと聞いてみたい」という一言からどうぞご相談後のやり取りも、そのままLINEで進められます</p>
             <span className="mt-5 flex items-center justify-between border-t border-ink/10 pt-4 text-xs font-bold">MOGCIA公式LINEを開く<span className="transition-transform group-hover:translate-x-1" aria-hidden>→</span></span>
           </div>
         </a>
@@ -52,7 +52,7 @@ export default function Contact({ searchParams }: { searchParams?: { diagnosis?:
           <div className="flex items-center justify-between gap-4"><SectionLabel label="Contact form" color="sky" /><span className="rounded-full bg-white px-3 py-2 text-[10px] font-bold">24時間受付</span></div>
           <div className="mt-auto pt-10">
             <div className="flex items-center gap-4"><span className="h-3 w-3 rounded-full bg-[#6FA8DC]" aria-hidden /><h2 className="text-2xl font-black">フォームから送る</h2></div>
-            <p className="mt-3 max-w-md text-xs leading-6 text-ink-soft">ご相談内容をまとめて伝えたい方はこちらから。必須項目以外は、分かる範囲でご入力ください。</p>
+            <p className="mt-3 max-w-md text-xs leading-6 text-ink-soft">ご相談内容をまとめて伝えたい方はこちらから必須項目以外は、分かる範囲でご入力ください</p>
             <span className="mt-5 flex items-center justify-between border-t border-ink/10 pt-4 text-xs font-bold">フォームへ進む<span className="transition-transform group-hover:translate-x-1" aria-hidden>↓</span></span>
           </div>
         </a>
@@ -62,7 +62,7 @@ export default function Contact({ searchParams }: { searchParams?: { diagnosis?:
 
     <section id="form" className="scroll-mt-24 py-24 md:py-32" style={{ backgroundColor: tone.lilac.band }}>
       <div className="page-shell">
-        <SectionHead number="02" label="Form" color="lilac" title="お問い合わせフォーム" note="すべて決まっていなくても大丈夫です。まずは分かる範囲でお聞かせください。" />
+        <SectionHead number="02" label="Form" color="lilac" title="お問い合わせフォーム" note="すべて決まっていなくても大丈夫ですまずは分かる範囲でお聞かせください" />
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.35fr_.65fr] lg:items-start">
           <div className="rounded-[1.75rem] bg-white p-6 shadow-[0_30px_60px_-45px_rgba(30,41,59,.35)] md:p-10">
             <form className="formrun grid gap-8" action="https://form.run/api/v1/r/7tbbkege85us5qykn1vsn7i3" method="post" data-formrun-success-url="/thanks" autoComplete="off">
@@ -76,7 +76,7 @@ export default function Contact({ searchParams }: { searchParams?: { diagnosis?:
                 <label className="text-sm font-bold">会社名<input name="会社名" placeholder="株式会社○○" className={fieldClass} /></label>
               </div>
               <label className="text-sm font-bold">メールアドレス <Required /><input name="メールアドレス" type="email" data-formrun-type="email" data-formrun-required placeholder="you@example.com" className={fieldClass} /></label>
-              <label className="text-sm font-bold">お問い合わせ内容 <Required /><textarea name="お問い合わせ" data-formrun-required rows={7} defaultValue={diagnosis ? `${diagnosis}\n\n【ご相談内容】\n` : undefined} placeholder="ご相談の背景や、今困っていることなどをご自由にお書きください。" className="mt-2 w-full resize-none rounded-2xl border border-ink/15 bg-white p-4 text-sm leading-7 outline-none transition focus:border-ink focus:ring-2 focus:ring-ink/10" /></label>
+              <label className="text-sm font-bold">お問い合わせ内容 <Required /><textarea name="お問い合わせ" data-formrun-required rows={7} defaultValue={diagnosis ? `${diagnosis}\n\n【ご相談内容】\n` : undefined} placeholder="ご相談の背景や、今困っていることなどをご自由にお書きください" className="mt-2 w-full resize-none rounded-2xl border border-ink/15 bg-white p-4 text-sm leading-7 outline-none transition focus:border-ink focus:ring-2 focus:ring-ink/10" /></label>
 
               <fieldset className="rounded-2xl p-5" style={{ backgroundColor: tone.sky.band }}>
                 <legend className="px-1 text-sm font-bold">ご希望の連絡方法 <span className="ml-1 text-[10px] font-medium text-ink-soft">任意</span></legend>

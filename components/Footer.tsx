@@ -28,7 +28,7 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-[1.3fr_.7fr_.7fr] lg:grid-cols-[1.5fr_.65fr_.65fr_.7fr]">
           <div>
             <Link href="/" className="font-logo text-xl font-black tracking-[-.03em]">MOGCIA</Link>
-            <p className="mt-4 max-w-xs text-[11px] leading-5 text-ink/60">AI × SNS × Web, from Fukuoka.<br/>つくって、まわして、そだてていく。</p>
+            <p className="mt-4 max-w-xs text-[11px] leading-5 text-ink/60">AI × SNS × Web, from Fukuoka.<br/>つくって、まわして、そだてていく</p>
             <div className="mt-8 text-[10px] leading-5 text-ink/45"><p>〒810-0001 福岡県福岡市中央区天神4-6-28</p><p>いちご天神ノースビル7階</p></div>
           </div>
 

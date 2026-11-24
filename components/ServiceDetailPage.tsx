@@ -64,7 +64,7 @@ export default function ServiceDetailPage({ eyebrow, title, lead, description, i
 
     <section className="page-shell grid gap-12 py-20 md:py-28 lg:grid-cols-[.55fr_1fr]"><div><SectionLabel number={cases ? '06' : '05'} label="FAQ" color="mint" /><h2 className="mt-5 text-3xl font-black">よくある質問</h2></div><div className="border-t border-ink">{faqs.map(([question, answer], index) => <details key={question} className="group border-b border-ink/20 py-6"><summary className="flex cursor-pointer list-none items-center justify-between gap-5 text-sm font-bold"><span><small className="mr-4 font-display">Q{index + 1}</small>{question}</span><span className="group-open:rotate-45">＋</span></summary><p className="pl-9 pt-4 text-xs leading-7 text-ink-soft">{answer}</p></details>)}</div></section>
 
-    <SoftContact body="まだ内容がまとまっていなくても大丈夫。目的や今の状況を聞きながら、必要なことを一緒に整理します" />
+    <SoftContact body="まだ内容がまとまっていなくても大丈夫目的や今の状況を聞きながら、必要なことを一緒に整理します" />
     <Footer />
   </main>
 }

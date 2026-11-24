@@ -12,14 +12,14 @@ export const metadata: Metadata = createPageMetadata(
 
 export default function RecruitPage() {
   const values = [
-    ['01', '一緒に考える', '役割や立場を越えて意見を交わし、よりよい方法をチームで考えます。', 'sky'],
-    ['02', 'まず形にする', '小さくても手を動かし、試した結果から次の改善へつなげます。', 'pink'],
-    ['03', '育て続ける', '完成をゴールにせず、使う人の声をもとにサービスや仕組みを育てます。', 'lilac'],
+    ['01', '一緒に考える', '役割や立場を越えて意見を交わし、よりよい方法をチームで考えます', 'sky'],
+    ['02', 'まず形にする', '小さくても手を動かし、試した結果から次の改善へつなげます', 'pink'],
+    ['03', '育て続ける', '完成をゴールにせず、使う人の声をもとにサービスや仕組みを育てます', 'lilac'],
   ] as const
 
   return (
     <main className="bg-white text-ink">
-      <PageHeader crumbs={[['採用情報']]} title="Recruit" color="mint" diagonalAccent lead={<>つくることを楽しみ、<br />いっしょに育てる仲間へ</>} body="MOGCIAは、企画・制作・運用・改善をチームでつなぎ、お客さまのやりたいことを形にしています。" />
+      <PageHeader crumbs={[['採用情報']]} title="Recruit" color="mint" diagonalAccent lead={<>つくることを楽しみ、<br />いっしょに育てる仲間へ</>} body="MOGCIAは、企画・制作・運用・改善をチームでつなぎ、お客さまのやりたいことを形にしています" />
 
       <section className="py-24 md:py-32" style={{ backgroundColor: tone.sky.band }}><div className="page-shell">
         <SectionHead number="01" label="Working at MOGCIA" color="sky" title="MOGCIAで働くということ" note="職種に関係なく、大切にしている3つの姿勢" />
@@ -40,8 +40,8 @@ export default function RecruitPage() {
             <span className="absolute -right-12 -top-16 h-52 w-52 rounded-full bg-[#FBD9E2]" aria-hidden />
             <div className="relative">
             <span className="inline-flex rounded-full px-3 py-1.5 text-[10px] font-bold" style={{ backgroundColor: tone.pink.chip }}>現在の募集</span>
-            <p className="mt-6 text-2xl font-black leading-10">現在、求人募集は行っていません。</p>
-            <p className="mt-5 max-w-xl text-sm leading-8 text-ink-soft">MOGCIAに関心をお寄せいただきありがとうございます。募集を再開する際は、本ページにて職種や応募方法をお知らせします。</p>
+            <p className="mt-6 text-2xl font-black leading-10">現在、求人募集は行っていません</p>
+            <p className="mt-5 max-w-xl text-sm leading-8 text-ink-soft">MOGCIAに関心をお寄せいただきありがとうございます募集を再開する際は、本ページにて職種や応募方法をお知らせします</p>
             </div>
           </div>
         </div>
